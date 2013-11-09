@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>       <!--  	1	  -->
+<MCCI_MT000100HT03.Message 
+  xmlns="urn:hl7-org:v3"                          
+  xmlns:fo="http://www.w3.org/1999/XSL/Format" 
+  xmlns:voc="urn:hl7-org:v3/voc" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:htb="http://www.w3.org/justsomething"
+  xsi_schemaLocation="urn:hl7-org:v3 MCCI_MT000100HT03.xsd"  >
+  
+  <!--  	1	      -->
+  <id root="1.2.3.4.1000.60.x" extension="1234567890"/>
+  <!--  	1	Vrednost atributa extension pomeni zaporedno številko sporočila. X je BPI zdravstvene ustanove (velja enako za celotno ostalo sporočilo).      -->
+  <creationTime value="20031212063000"/>
+  <!--  	1	Čas kreiranja sporočila (YYYYMMDDHHMISS) - format velja za celotno ostalo sporočilo.      -->
+  <interactionId root="2.1" extension="POXX_HN121011"/>
+  <!--  	1	"Možne vrednosti (Ujemati se marajo z ControlActEvent.code):
+-POXX_HN121002 (Create Complete Observation Order From Null)
+-POXX_HN121011 (Revise Completed Specimen Observation Order)
+-POXX_HN121009 (Nullify Specimen Observation Order)"      -->
+  <processingCode code="P"/>
+  <!--  	1	Konstanta      -->
+  <processingModeCode code="T"/>
+  <!--  	1	Konstanta      -->
+  <acceptAckCode code="AL"/>
+  <!--  	1	Konstanta      -->
+  
+  <communicationFunctionRCV type="CommunicationFunction" htb:association="communicationFunction">
+    <!--  	1	Konstanta   -->
+    <typeCode code="RCV"/>
+    <!--  	1	Prejemnik sporočila   -->
+    <deviceRCV type="Device" classCode="DEV" determinerCode="INSTANCE" htb:association="entity">
+      <!--  	1	Konstanta   -->
+      <id root="1.2.3.4.1000.61.x.1" extension="LABEX"/>
+      <!--  	1	V extensionu se poda šifro prejemnika (programa LABEX ali b21App), v root pa OID prejemnika (1.2.3.4.1000.61.x.1 za Labex in 1.2.3.4.1000.60.x.1 za Birpis)   -->
+    </deviceRCV>
+    <!--  	1	Konstanta      -->
+  </communicationFunctionRCV>
+  
+  <!--  	1	Konstanta      -->
+  <communicationFunctionRSP type="CommunicationFunction" htb:association="communicationFunction">
+    <!--  	1	Odzivnik sporočila   -->
+    <typeCode code="RSP"/>
+    <!--  	1	Konstanta   -->
+    <deviceRSP type="Device" classCode="DEV" determinerCode="INSTANCE" htb:association="entity">
+      <!--  	1	Konstanta   -->
+      <id root="1.2.3.4.1000.60.x.1" extension="b21App"/>
+      <!--  	1	V extensionu se poda šifro odzivnika (programa LABEX ali b21App), v root pa OID odzivnika (1.2.3.4.1000.61.x.1 za Labex in 1.2.3.4.1000.60.x.1 za Birpis)   -->
+    </deviceRSP>
+    <!--  	1	Konstanta      -->
+  </communicationFunctionRSP>
+  
+  <!--  	1	Konstanta      -->
+  <communicationFunctionSND type="CommunicationFunction" htb:association="communicationFunction">
+    <!--  	1	Pošiljatelj sporočila   -->
+    <typeCode code="SND"/>
+    <!--  	1	Konstanta   -->
+    <deviceSND type="Device" classCode="DEV" determinerCode="INSTANCE" htb:association="entity">
+      <!--  	1	Konstanta   -->
+      <id root="1.2.3.4.1000.60.x.1" extension="b21App"/>
+      <!--  	1	V extensionu se poda šifro pošiljatelja (programa LABEX ali b21App), v root pa OID pošiljatelja (1.2.3.4.1000.61.x.1 za Labex in 1.2.3.4.1000.60.x.1 za Birpis)   -->
+    </deviceSND>
+    <!--  	1	Konstanta      -->
+  </communicationFunctionSND>
+  
+  <!--  	1	Konstanta      -->
+  <MCAI_MT000001HT03.ControlActEvent type="ControlAct" classCode="CACT" moodCode="EVN" htb:association="controlAct">
+    <!--  	1	Konstanta   -->
+    <code code="POXX_TE121011" codeSystemName="HTB Supplemental"/>
+    <!--  	1	"Obvezno ujemanje z interactionId. Možne vrednosti za code so:
+-POXX_TE121002 (Create Complete Observation Order From Null)
+-POXX_TE121011 (Revise Completed Specimen Observation Order)
+-POXX_TE121009 (Nullify Specimen Observation Order)"   -->
+    <subject type="ActRelationship" typeCode="SUBJ" htb:association="outboundRelationship">
+      <!--  	1	Vsebina sporočila - Konstanta   -->
+      <contextConductionInd value="false"/>
+      <!--  	1	Konstanta   -->
+      <POXX_MT121000HT02.SpecimenObservationOrder type="Observation" classCode="SPCOBS" moodCode="RQO" htb:association="target" negationInd="false">
+        <!--  	1	Dogodek - Konstanta   -->
+        <id root="1.2.3.4.1000.60.x.3" extension="2103/06"/>
+        <!--  	1	Številka naročila   -->
+        <code code="LAB" codeSystemName="IB - OrderType"/>
+        <!--  	1	Koda preiskave   -->
+        <statusCode code="completed"/>
+        <!--  	1	Status naročila je completed ali nullified   -->
+        <text encoding="TXT" mediaType="text/plain">
+          <!-- Komentar pred opombo. -->
+          To je opomba.
+          <!--  Tole je opomba  -->
+        </text>
+        <!--  	0..1	Tekst komentarja   -->
+        <effectiveTime value="20030410130405"/>
+        <!--  	1	Čas naročila   -->
+        <priorityCode code="UR" codeSystemName="ActPriority"/>
+        <!--  	1	"Uporabljajo se šifre R in UR in T  -->
+        <!--   R - routine   -->
+        <!--   UR - urgent  -->
+        <!--   T - timing critical" zelo nujno   -->
+        <subject type="Participation" typeCode="SBJ" htb:association="participation">
+          <!--  	0..n	Vzorci   -->
+          <Specimen classCode="SPEC" type="RoleHeir" htb:association="role">
+            <!--  	1	   -->
+            <id root="1.2.3.4.1122.12" extension="580"/>
+            <!--  	0..1	Id vzorca   -->
+            <code code="BRB" codeSystemName="IB - SpecimenType" displayName="bris bezgavke"/>
+            <!--  	1	Koda in opis vzorca   -->
+            <productOf type="Participation" typeCode="PRD" htb:association="participation">
+              <!--  	0..1	Konstanta   -->
+              <procedureEventSpecimenCollection classCode="PROC" moodCode="EVN" htb:association="act">
+                <!--  	1	Konstanta   -->
+                <code/>
+                <!--  	1	Koda za odvzem vzorca - Konstanta   -->
+                <statusCode code="completed"/>
+                <!--  	1	Konstanta   -->
+                <methodCode code="FORMALIN" codeSystemName="IB - FixativeType"/>
+                <!--  	0..n	Koda fiksativa   -->
+                <targetSideCode code="ORGAN"/>
+                <!--  	0..n	Mesto odvzema   -->
+                <effectiveTime htb:dataType="IVL_TS" value="20060315190000"/>
+                <!--  	0..1	Čas odvzema vzorca   -->
+              </procedureEventSpecimenCollection>
+              <!--  	1	   -->
+            </productOf>
+            <!--  	1	   -->
+          </Specimen>
+          <!--  	1	
+         -->
+        </subject>
+        <!--  	1	   -->
+        <recordTarget type="Participation" typeCode="RCT" htb:association="participation">
+          <!--  	1	Podatki o pacientu - Konstanta   -->
+          <Patient type="Patient" classCode="PAT" htb:association="role">
+            <!--  	1	Konstanta   -->
+            <id root="1.2.3.4.1000.60.x.2" extension=" 112506"/>
+            <!--  	1	Id pacienta   -->
+            <Person classCode="PSN" type="Person" determinerCode="INSTANCE" htb:association="player">
+              <!--  	1	Oseba - Konstanta   -->
+              <name use="L" htb:dataType="PN">
+                <!--  	1	Tipizacija imena - Konstanta   -->
+                <family partType="FAM">
+                  <!--  AMBROŽIČ  -->
+                </family>
+                <!--  	1	Priimek osebe   -->
+                <given partType="GIV">
+                  <!--  ŠIME  -->
+                </given>
+                <!--  	1	Ime osebe   -->
+              </name>
+              <!--  	1	Konstanta   -->
+              <telecom value="041655543"/>
+              <!--  	0..1	Telefonska številka   -->
+              <administrativeGenderCode code="1" codeSystemName="IB - Gender SI"/>
+              <!--  	1	"Spol:
+1 - Moški
+2 - Ženska"   -->
+              <birthTime value="19550101"/>
+              <!--  	1	Datum rojstva (YYYYMMDD)   -->
+              <deceasedInd value="false"/>
+              <!--  	1	Mrtev pacient (true, false)   -->
+              <addr use="H">
+                <!--  	0..1	Tipizacija naslova   -->
+                <country partType="CNT" encoding="TXT">
+                  <!--  705  -->
+                </country>
+                <!--  	1	Država (šifrant Statističnega urada RS)   -->
+                <city partType="CTY" encoding="TXT">
+                  <!--  VOLČJA DRAGA  -->
+                </city>
+                <!--  	1	Kraj   -->
+                <postalCode partType="ZIP" encoding="TXT">
+                  <!--  5293  -->
+                </postalCode>
+                <!--  	1	Poštna številka   -->
+                <streetAddressLine partType="SAL" encoding="TXT">
+                  <!--  KAPELSKA CESTA 15  -->
+                </streetAddressLine>
+                <!--  	1	Ulica in hišna številka   -->
+              </addr>
+              <!--  	0..1	Konstanta   -->
+              <birthplace  classCode="BIRTHPL" type="RoleHeir" htb:association="scopedRole">
+                <!--  	0..1	Kraj rojstva   -->
+                <Place  classCode="PLC" type="Place" determinerCode="INSTANCE" htb:association="player">
+                  <!--  	1	Konstanta
+                                      -->
+                  <name use="L">
+                    <!--  POSTOJNA  -->
+                  </name>
+                  <!--  	1	Kraj rojstva   -->
+                </Place>
+                <!--  	1	Konstanta   -->
+              </birthplace>
+              <!--  	0..1	Konstanta   -->
+              <playedIdentifications type="RoleHeir" classCode="ROL" htb:association="playedRole">
+                <!--  	0..1	ZZZS številka   -->
+                <id root="1.2.3.4.1122.1" extension="029124415"/>
+                <!--  	1	ZZZS številka   -->
+              </playedIdentifications>
+              <!--  	1	Konstanta   -->
+            </Person>
+            <!--  	1	Konstanta   -->
+          </Patient>
+          <!--  	1	Konstanta   -->
+        </recordTarget>
+        <!--  	1	Konstanta   -->
+        <author type="Participation" typeCode="AUT" htb:association="participation">
+          <!--  	1	Avtor (naročnik) - Konstanta   -->
+          <AssignedEntity type="RoleHeir" classCode="ASSIGNED" htb:association="role">
+            <!--  	1	Konstanta   -->
+            <id root="1.2.3.4.1122.9" extension="7942"/>
+            <!--  	1	BPI avtorja (osebe)   -->
+            <Organization type="Organization" classCode="ORG" determinerCode="INSTANCE" htb:association="scoper">
+              <!--  	1	Konstanta   -->
+              <id root="1.2.3.4.1122.9" extension="10481"/>
+              <!--  	1	BPI ustanove avtorja   -->
+              <name use="L" htb:dataType="ON">
+                <!--  KOPA GOLNIK  -->
+              </name>
+              <!--  	0..1	Naziv avtorjeve ustanove   -->
+            </Organization>
+            <!--  	1	Konstanta   -->
+            <assignedEntityChoice htb:choice="true">
+              <!--  	0..1	Podatki o zdravniku   -->
+              <Person classCode="PSN" determinerCode="INSTANCE">
+                <!--  	1	Oseba - Konstanta   -->
+                <name use="L" htb:dataType="PN">
+                  <!--  	1	Tipizacija imena - Konstanta
+                                      -->
+                  <family partType="FAM" encoding="TXT">
+                    <!--  Novak  -->
+                  </family>
+                  <!--  	1	Priimek osebe
+                                      -->
+                  <given partType="GIV" encoding="TXT">
+                    <!--  Janez  -->
+                  </given>
+                  <!--  	1	Ime osebe   -->
+                </name>
+                <!--  	1	Konstanta   -->
+              </Person>
+              <!--  	1	Konstanta   -->
+            </assignedEntityChoice>
+            <!--  	1	Konstanta   -->
+          </AssignedEntity>
+          <!--  	1	Konstanta   -->
+        </author>
+        <!--  	1	Konstanta   -->
+        <component typeCode="COMP" type="ActRelationship" htb:association="outboundRelationship">
+          <!--  	1..n	Naročena preiskava   -->
+          <SpecimenObservationOrder classCode="SPCOBS" moodCode="RQO"  type="Observation">
+            <!--  	1	Konstanta   -->
+            <id root="1.2.3.4.1000.60.x.4" extension="lab_id1"/>
+            <!--  	1	Lokalni id posamezne naročene preiskave   -->
+            <code code="CIT" codeSystemName="IB - ObservationCode"/>
+            <!--  	1	Koda preiskave   -->
+          </SpecimenObservationOrder>
+          <!--  	Konstanta   -->
+        </component>
+        <!--  	1	Konstanta   -->
+        <reason type="ActRelationship" typeCode="RSON" htb:association="outboundRelationship">
+          <!--  	0..n	Diagnoza   -->
+          <ObservationEventDx classCode="OBS" moodCode="EVN">
+            <!--  	1	Konstanta   -->
+            <text encoding="TXT" mediaType="text/plain">
+              <!--  Diagnoza  -->
+            </text>
+            <!--  	0..1	Tekst diagnoze   -->
+            <value htb:dataType="CE" code="ABCX" codeSystemName="ICD-10"/>
+            <!--  	0..1	Koda diagnoze   -->
+          </ObservationEventDx>
+          <!--  	1	Konstanta   -->
+        </reason>
+        <!--  	1	Konstanta   -->
+      </POXX_MT121000HT02.SpecimenObservationOrder>
+      <!--  	1	Konstanta   -->
+    </subject>
+    <!--  	1	Konstanta      -->
+  </MCAI_MT000001HT03.ControlActEvent>
+  <!--  	1	Konstanta  -->
+</MCCI_MT000100HT03.Message>       <!--      	1	Konstanta   -->

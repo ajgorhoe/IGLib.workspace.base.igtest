@@ -1,0 +1,2721 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     96158,       2712]
+NotebookOptionsPosition[     85324,       2363]
+NotebookOutlinePosition[     85871,       2385]
+CellTagsIndexPosition[     85828,       2382]
+WindowFrame->Normal
+ContainsDynamic->False*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.571573273659418*^9}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ StyleBox["MathLink Interface with IGLib.NET",
+  FontFamily->"Old English Text MT",
+  FontSize->24,
+  FontWeight->"Bold",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["\n",
+  FontFamily->"Old English Text MT",
+  FontSize->20,
+  FontWeight->"Bold"],
+ StyleBox["\nOriginal file is contained in \
+.../workspace/base/igtest/iglib_develop_shellext/mathematica/notebooks . ",
+  FontWeight->"Bold",
+  FontColor->RGBColor[0, 0, 1],
+  Background->GrayLevel[0.666667]]
+}], "Subsubtitle",
+ CellChangeTimes->{{3.5715733129017982`*^9, 3.5715735474143624`*^9}, {
+  3.571582221993346*^9, 3.5715822449946613`*^9}}],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Set working directory:\n  ",
+ StyleBox[" ",
+  FontSize->36],
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    RowBox[{
+    "Allways", " ", "check", " ", "that", "  ", "working", " ", "directory", 
+     " ", "is", " ", "set", " ", 
+     RowBox[{"correctly", "!"}]}],
+    FontSize->12,
+    FontColor->RGBColor[1, 0, 1]], TraditionalForm]],
+  FontSize->24],
+ StyleBox[" ",
+  FontSize->24]
+}], "Subsubtitle"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Gradbena", ":", "\[IndentingNewLine]", 
+    RowBox[{
+    "SetDirectory", "[", 
+     "\"\<E:/users/c3m/igor/enlub/work/SRT_identification_2006-01-20/\
+StripReduction\>\"", "]"}]}], "\[IndentingNewLine]", "*)"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+   "SetDirectory", "[", 
+    "\"\<c:/users/igor/doc/pr/enlub/work/SRT_identification_2006-01-20/\
+StripReduction/\>\"", "]"}], "\[IndentingNewLine]"}]}]], "Input"],
+
+Cell[BoxData["\<\"c:\\\\users\\\\igor\\\\doc\\\\pr\\\\enlub\\\\work\\\\SRT_\
+identification_2006-01-20\\\\StripReduction\"\>"], "Output"]
+}, Open  ]],
+
+Cell[BoxData[""], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Initialization of IGLib interface", "Subtitle",
+ CellChangeTimes->{{3.571638280168001*^9, 3.5716382886184845`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Instructions", "Subsubtitle",
+ CellChangeTimes->{{3.571639434683786*^9, 3.5716394409334526`*^9}}],
+
+Cell[TextData[{
+ "The following things must be done before using the IGLib code:\n",
+ StyleBox["Loading of .NET environment:",
+  FontWeight->"Bold"],
+ "\n\n  ",
+ Cell[BoxData[
+  RowBox[{"Needs", "[", "\"\<NETLink`\>\"", "]"}]], "Input"],
+ StyleBox["; (*\[LineSeparator] Imports the .", "Input"],
+ StyleBox["NET/Link", "Input",
+  FontSlant->"Italic"],
+ StyleBox[" module *) ", "Input"],
+ "\n",
+ Cell[BoxData[
+  RowBox[{"  ", 
+   RowBox[{"ReInstallNET", "[", "]"}]}]], "Input",
+  CellChangeTimes->{{3.571585430602748*^9, 3.571585436717862*^9}}],
+ StyleBox["; (* Installs the .NET runtime environment *)", "Input"],
+ "\n\n",
+ StyleBox["Important!",
+  FontWeight->"Bold"],
+ "\nIt must be ensured that the right .NET framework wersion is loaded. The \
+framework is loaded by the .NET program ",
+ StyleBox["InstallableNET.exe",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ " that is found in the \"",
+ StyleBox["SystemFiles/Links/NETLink/",
+  FontSlant->"Italic"],
+ "\" subdirectory of the ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " installation directory. The exact location of this program is obtainef by\n\
+",
+ StyleBox["  StringJoin[$InstallationDirectory, \"/\", \"SystemFiles/\", \
+\"Links/\", \"NETLink/\", \"InstallableNET.exe\"]", "Input"],
+ "\nWhich framework is preferably loaded can be specified in the program's \
+config file, that is the ",
+ StyleBox["InstallableNET.exe.config",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ " located in teh same directory. You just edit this file and add the \
+possible .NET runtime versions from the most preferable to the least \
+preferable in the <",
+ StyleBox["supportedRuntime",
+  FontSlant->"Italic"],
+ "/> XML elements. For exemple, teh file can lool like:\n",
+ StyleBox["<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<configuration>\n\t\
+<startup>\n\t\t<supportedRuntime version=\"v4.0\" />\n\t</startup>\n\
+</configuration>",
+  FontColor->GrayLevel[0.5]],
+ "\nThis means that the ",
+ StyleBox["InstallableNET.exe",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ " will try to load the runtime environment version 4. If the earlier runtime \
+is loaded that that in which the assemblies (dll-s and exe-s) to be used were \
+created, then ",
+ StyleBox["MathLink",
+  FontSlant->"Italic"],
+ " will not be able to load these assemblies.\n",
+ StyleBox["Warning:",
+  FontWeight->"Bold"],
+ " after editing the configuration file, you may need to restart the machine \
+in order to prevent possible cashed vertions to make effect!\n\n",
+ StyleBox["Loading assemblies and using their types:",
+  FontWeight->"Bold"],
+ "\nAfter the runtime has been loaded, assemblies (dll-s and exe-s) san be \
+loaded and their types can be instantiated and their methods, properties and \
+fields can be called directly from ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ". Within ",
+ StyleBox["Initialization",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ " block, there are some definitions to make the access of IGLib code easier. \
+You can check that everything works correctly in the \"",
+ StyleBox["Test IGLib Interface",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ "\" block."
+}], "Text",
+ CellChangeTimes->{{3.571639442700265*^9, 3.5716394429792805`*^9}, {
+   3.5716394783303027`*^9, 3.5716395210897484`*^9}, {3.571639560826021*^9, 
+   3.5716395906577277`*^9}, {3.571646212106635*^9, 3.5716462344705043`*^9}, {
+   3.5716463231748977`*^9, 3.5716467106507673`*^9}, {3.5716467950859914`*^9, 
+   3.5716468751788855`*^9}, {3.5716469060186496`*^9, 3.571647020111888*^9}, {
+   3.5716470697243843`*^9, 3.571647418578864*^9}, {3.5716474982524977`*^9, 
+   3.5716475454423046`*^9}, {3.5716534492904105`*^9, 3.571653519483204*^9}, 
+   3.571816123599845*^9}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.5716394448123856`*^9, 3.5716394450904016`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Set basic variables", "Subsubtitle",
+ CellChangeTimes->{{3.5716383377902975`*^9, 3.571638349362959*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Things", " ", "that", " ", "can", " ", "vary", " ", "from", " ", "user", 
+    " ", "to", " ", 
+    RowBox[{"user", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"WorkspaceBaseDirectory", " ", ":=", " ", "\"\<d:/users/\>\""}], 
+    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "definitions", " ", "relevant", " ", "for", " ", "correct", " ", 
+     "directory", " ", 
+     RowBox[{"locations", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"WorkspaceDirectory", " ", ":=", " ", 
+      RowBox[{"StringJoin", "[", 
+       RowBox[{"WorkspaceBaseDirectory", ",", "\"\<workspace/\>\""}], "]"}]}],
+      ";"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"WorkspaceProjectsDirectory", " ", ":=", " ", 
+     RowBox[{"StringJoin", "[", 
+      RowBox[{"WorkspaceBaseDirectory", ",", "\"\<workspaceprojects/\>\""}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"IGLibBinDirectory", " ", ":=", " ", 
+     RowBox[{"StringJoin", "[", 
+      RowBox[{"WorkspaceDirectory", ",", "\"\<bin/\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"IGLibDebugDirectory", ":=", 
+     RowBox[{"StringJoin", "[", 
+      RowBox[{
+      "WorkspaceDirectory", ",", "IGLibSelectedProjectPath", ",", 
+       "IGLibDebugRelativePath"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"IGLibAssemblyDirectory", " ", ":=", " ", 
+     RowBox[{"If", "[", 
+      RowBox[{
+      "IGLibUseDebugDirectory", ",", " ", "IGLibDebugDirectory", ",", " ", 
+       "IGLibBinDirectory"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"IGLibMathematicaDirectory", ":=", " ", 
+     RowBox[{"StringJoin", "[", 
+      RowBox[{"WorkspaceDirectory", ",", "IGLibSelectedMathematicaPath"}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"IGLibAssemblyPath", "[", "assemblyName_", "]"}], ":=", 
+     RowBox[{"StringJoin", "[", 
+      RowBox[{"IGLibAssemblyDirectory", ",", "assemblyName"}], "]"}]}], ";"}],
+    "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"IGLibMathematicaPath", "[", "mathematicaFilename_", "]"}], ":=",
+      
+     RowBox[{"StringJoin", "[", 
+      RowBox[{"IGLibMathematicaDirectory", ",", "mathematicaFilename"}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Constants", " ", "for", " ", "directory", " ", 
+     RowBox[{"locations", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"IGLibDebugRelativePath", " ", "=", " ", "\"\<bin/Debug/\>\""}], 
+    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Available", " ", "GLib", " ", 
+     RowBox[{"(", 
+      RowBox[{"C", "#"}], ")"}], " ", 
+     RowBox[{"Projects", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "IGLibProjectPathIGSX", " ", "=", " ", 
+     "\"\<base/igtest/iglib_develop_shellext/\>\""}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "IGLibProjectPathIGS", " ", "=", " ", 
+     "\"\<base/igtest/iglib_develop_shell/\>\""}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"Available", " ", "GLib", " ", 
+      RowBox[{"(", 
+       RowBox[{"C", "#"}], ")"}], " ", "Projects"}], " ", "-", " ", 
+     RowBox[{
+     "neural", " ", "network", " ", "extensions", " ", "used", " ", "in", " ",
+       
+      RowBox[{"COBIK", ":"}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "IGLibProjectPathNeuralShell", "=", " ", 
+     "\"\<develop/shell/extensions/ExtShellApp/\>\""}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "IGLibProjectPathNeuralShellExt", " ", "=", " ", 
+     "\"\<develop/shell/extensions/ExtShellApp/Ext\>\""}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"IGLibProjectPaths", " ", "=", " ", 
+     RowBox[{"{", 
+      RowBox[{
+      "IGLibProjectPathIGSX", ",", " ", "IGLibProjectPathIGS", ",", " ", 
+       "IGLibProjectPathNeuralShell", ",", "IGLibProjectPathNeuralShellExt"}],
+       " ", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Available", " ", "IGLib", " ", "Mathematica", " ", 
+     RowBox[{"directories", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "IGLibMathematicaPathIGSX", " ", "=", " ", 
+     "\"\<base/igtest/iglib_develop_shellext/mathematica/notebooks/\>\""}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"IGLibMathematicaPaths", " ", "=", " ", 
+     RowBox[{"{", "IGLibMathematicaPathIGSX", "}"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"DEFAULT", " ", "CONFIGURATION"}], " ", "-", " ", "SETTINGS"}], 
+    " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Selection", " ", "of", " ", "IGLib", " ", 
+     RowBox[{"(", 
+      RowBox[{"C", "#"}], ")"}], " ", 
+     RowBox[{"project", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "IGLibSelectedProjectPath", " ", "=", " ", "IGLibProjectPathIGSX"}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "Selecton", " ", "of", " ", "IGLib", " ", "Mathematica", " ", "directory",
+      " ", "containing", " ", 
+     RowBox[{"packages", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "IGLibSelectedMathematicaPath", " ", "=", " ", 
+     "IGLibMathematicaPathIGSX"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Selection", " ", "-", " ", 
+     RowBox[{
+     "switch", " ", "beteeen", " ", "project", " ", "Debug", " ", "directory",
+       " ", "and", " ", 
+      RowBox[{"workspace", "/", "bin"}], " ", "directory", " ", "as", " ", 
+      "directory", " ", "containing", " ", "the", " ", "IGLib", " ", "dll"}], 
+     "-", 
+     RowBox[{"s", " ", "and", " ", "exe"}], "-", 
+     RowBox[{"s", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"IGLibUseDebugDirectory", " ", "=", " ", "True"}], ";"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.57163835252414*^9, 3.5716383527551527`*^9}, {
+   3.5716383896662645`*^9, 3.5716384349548545`*^9}, {3.5716384672587023`*^9, 
+   3.5716388049465427`*^9}, {3.5716388740425177`*^9, 3.57163888103133*^9}, {
+   3.571638994689731*^9, 3.571639177054971*^9}, {3.5716392114735374`*^9, 
+   3.571639426836972*^9}, {3.5716438594809546`*^9, 3.571643957338899*^9}, 
+   3.571644453825121*^9, {3.5716447728489304`*^9, 3.571644994392087*^9}, {
+   3.571645034560894*^9, 3.5716451905296183`*^9}, 3.5716452474830036`*^9, {
+   3.5716453780747833`*^9, 3.571645428242436*^9}, {3.571645491280879*^9, 
+   3.5716456426389637`*^9}, {3.571645702751467*^9, 3.571645729935979*^9}, {
+   3.5716457870080695`*^9, 3.571645820312559*^9}, {3.571645885225846*^9, 
+   3.5716459500523434`*^9}, {3.5716539838285217`*^9, 3.571654074700498*^9}, {
+   3.571654106711329*^9, 3.5716542229757013`*^9}, {3.571654257054651*^9, 
+   3.5716542662881784`*^9}, {3.571654316583179*^9, 3.571654651165905*^9}, {
+   3.571654914784055*^9, 3.571654934683193*^9}},
+ Background->RGBColor[
+  0.984313725490196, 0.9725490196078431, 0.8431372549019608]],
+
+Cell[CellGroupData[{
+
+Cell["Configuration :", "Subsubsection",
+ CellChangeTimes->{{3.571646081299281*^9, 3.571646084875486*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Configuration", ":"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+    "IGLibSelectedProjectPath", " ", "=", " ", "IGLibProjectPathIGSX"}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "IGLibSelectedMathematicaPath", " ", "=", " ", 
+     "IGLibMathematicaPathIGSX"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"IGLibUseDebugDirectory", " ", "=", " ", "True"}], 
+    ";"}]}]}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.5716458305726147`*^9, 3.5716458758200455`*^9}, {
+   3.5716459767008677`*^9, 3.5716460036364083`*^9}, {3.5716460603399096`*^9, 
+   3.571646068436323*^9}, 3.5716539384689274`*^9, {3.571654290611518*^9, 
+   3.5716542959569993`*^9}, {3.571654756604907*^9, 3.571654758476014*^9}, {
+   3.5716549599417615`*^9, 3.571654961156831*^9}},
+ Background->RGBColor[
+  0.984313725490196, 0.9725490196078431, 0.8431372549019608]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.57164608756664*^9, 3.571646087763651*^9}}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.57164398839122*^9, 3.571644003611019*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.5716383541962357`*^9, 3.571638354346244*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Installation of .NET runtime and dlls", "Subsubtitle",
+ CellChangeTimes->{{3.5716382472403383`*^9, 3.5716382596423597`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Installation", " ", 
+    RowBox[{"of", " ", ".", "NET"}], " ", 
+    RowBox[{"runtime", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Needs", "[", "\"\<NETLink`\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"ReinstallNET", "[", "]"}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"NETVersion", "[", "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", "}"}], ",", 
+       RowBox[{
+        RowBox[{"LoadNETType", "[", "\"\<System.Environment\>\"", "]"}], ";", 
+        
+        RowBox[{"System`Environment`Version", "@", 
+         RowBox[{"ToString", "[", "]"}]}]}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"IGLibLoadAssembly", "[", "assemblyName_", "]"}], ":=", 
+     RowBox[{"LoadNETAssembly", "[", 
+      RowBox[{"IGLibAssemblyPath", "[", "assemblyName", "]"}], "]"}]}], ";"}],
+    "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"IGLidLoadAssemblies", "[", "]"}], ":=", 
+     RowBox[{"IGLibLoadAssemblies", "[", "IGLibSelectedAssemblies", "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"IGLibLoadAssemblies", "[", "assemblyNames_", "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"num", ",", "i", ",", "name"}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"num", " ", "=", " ", 
+         RowBox[{"Length", "[", "assemblyNames", "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"For", "[", 
+         RowBox[{
+          RowBox[{"i", " ", "=", " ", "1"}], ",", 
+          RowBox[{"i", "\[LessEqual]", "num"}], ",", 
+          RowBox[{"i", "=", 
+           RowBox[{"i", "+", "1"}]}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"name", "=", 
+            RowBox[{"assemblyNames", "[", 
+             RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"(*", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"Print", "[", 
+              RowBox[{
+              "\"\<Loading IGLib assembly \>\"", ",", "name", ",", 
+               "\"\<...\>\""}], "]"}], ";"}], "\[IndentingNewLine]", "*)"}], 
+           "\[IndentingNewLine]", 
+           RowBox[{"IGLibLoadAssembly", "[", "name", "]"}]}]}], 
+         "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+     "Returns", " ", "IGLib", " ", "type", " ", "loaded", " ", "from", " ", 
+      "the", " ", "specified", " ", "IGLib", " ", "assembly"}], ";", " ", 
+     RowBox[{
+     "assembly", " ", "can", " ", "be", " ", "specified", " ", "by", " ", 
+      "the", " ", "assembly", " ", "file", " ", "name", " ", "or", " ", "by", 
+      " ", 
+      RowBox[{"(", "loaded", ")"}], " ", "assembly", " ", 
+      RowBox[{"object", ":"}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"IGLibType", "[", 
+      RowBox[{"typeName_", ",", "assembly_"}], "]"}], ":=", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Head", "[", "assembly", "]"}], "\[Equal]", "String"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"LoadNETType", "[", 
+        RowBox[{"typeName", ",", 
+         RowBox[{"IGLibLoadAssembly", "[", "assembly", "]"}], ",", 
+         RowBox[{"AllowShortContext", "->", "IGLibUseShortNames"}]}], "]"}], 
+       ",", "\[IndentingNewLine]", 
+       RowBox[{"LoadNETType", "[", 
+        RowBox[{"typeName", ",", "assembly", ",", 
+         RowBox[{"AllowShortContext", "->", "IGLibUseShortNames"}]}], "]"}], 
+       ",", "\[IndentingNewLine]", 
+       RowBox[{"LoadNETType", "[", 
+        RowBox[{"typeName", ",", "assembly", ",", 
+         RowBox[{"AllowShortContext", "->", "IGLibUseShortNames"}]}], "]"}]}],
+       "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"IGLibType", "[", "typeName_", "]"}], ":=", 
+     RowBox[{"LoadNETType", "[", 
+      RowBox[{"typeName", ",", 
+       RowBox[{"AllowShortContext", "->", "IGLibUseShortNames"}]}], "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"IGLibTypes", "[", "typeNames_", "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"num", ",", "i", ",", "name", ",", "ret"}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"ret", "=", 
+         RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"num", " ", "=", " ", 
+         RowBox[{"Length", "[", "typeNames", "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"For", "[", 
+         RowBox[{
+          RowBox[{"i", " ", "=", " ", "1"}], ",", 
+          RowBox[{"i", "\[LessEqual]", "num"}], ",", 
+          RowBox[{"i", "=", 
+           RowBox[{"i", "+", "1"}]}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"name", "=", 
+            RowBox[{"typeNames", "[", 
+             RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"(*", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"Print", "[", 
+              RowBox[{
+              "\"\<Adding IGLib type \>\"", ",", "name", ",", 
+               "\"\< ...\>\""}], "]"}], ";"}], "\[IndentingNewLine]", "*)"}], 
+           "\[IndentingNewLine]", 
+           RowBox[{"ret", "=", 
+            RowBox[{"Append", "[", 
+             RowBox[{"ret", ",", 
+              RowBox[{"IGLibType", "[", "name", "]"}]}], "]"}]}], ";"}]}], 
+         "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"(*", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Print", "[", 
+           RowBox[{"\"\<Value to be returned: \>\"", ",", "ret"}], "]"}], 
+          ";"}], "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+        "ret"}]}], "\[IndentingNewLine]", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"IGLibTypes", "[", 
+      RowBox[{"typeNames_", ",", "assembly_"}], "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"num", ",", "i", ",", "name", ",", "ret"}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"ret", "=", 
+         RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"num", " ", "=", " ", 
+         RowBox[{"Length", "[", "typeNames", "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"For", "[", 
+         RowBox[{
+          RowBox[{"i", " ", "=", " ", "1"}], ",", 
+          RowBox[{"i", "\[LessEqual]", "num"}], ",", 
+          RowBox[{"i", "=", 
+           RowBox[{"i", "+", "1"}]}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"name", "=", 
+            RowBox[{"typeNames", "[", 
+             RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"(*", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"Print", "[", 
+              RowBox[{
+              "\"\<Adding IGLib type \>\"", ",", "name", ",", 
+               "\"\< ...\>\""}], "]"}], ";"}], "\[IndentingNewLine]", "*)"}], 
+           "\[IndentingNewLine]", 
+           RowBox[{"ret", "=", 
+            RowBox[{"Append", "[", 
+             RowBox[{"ret", ",", 
+              RowBox[{"IGLibType", "[", 
+               RowBox[{"name", ",", "assembly"}], "]"}]}], "]"}]}], ";"}]}], 
+         "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"(*", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Print", "[", 
+           RowBox[{"\"\<Value to be returned: \>\"", ",", "ret"}], "]"}], 
+          ";"}], "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+        "ret"}]}], "\[IndentingNewLine]", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]"}]}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.5716552677988296`*^9, 3.571655301492757*^9}, {
+   3.571655351000367*^9, 3.5716553647411532`*^9}, {3.571655502704546*^9, 
+   3.571655615642684*^9}, 3.5716556569426146`*^9, {3.571655706534829*^9, 
+   3.5716557096150055`*^9}, {3.571656090782465*^9, 3.5716563667928767`*^9}, {
+   3.5716564598809795`*^9, 3.5716566066769333`*^9}, {3.571656683691061*^9, 
+   3.5716567581374426`*^9}, {3.571656805786168*^9, 3.5716568150746994`*^9}, {
+   3.5716568710350237`*^9, 3.5716569082741537`*^9}, {3.571656943546549*^9, 
+   3.57165698728205*^9}, 3.571657070967215*^9, {3.5716574025701847`*^9, 
+   3.5716575665164638`*^9}, {3.5716576205715556`*^9, 3.571657792363759*^9}, {
+   3.571657867980789*^9, 3.571658048734832*^9}, {3.571658180196638*^9, 
+   3.5716581865870037`*^9}, {3.571658279307689*^9, 3.5716582846529336`*^9}, {
+   3.5716584142313986`*^9, 3.571658421998843*^9}, {3.571658778095686*^9, 
+   3.571658792134489*^9}, {3.571658868023613*^9, 3.571658885815631*^9}, {
+   3.5716591158723097`*^9, 3.571659143574894*^9}, {3.571659186249735*^9, 
+   3.571659208100113*^9}, {3.5716592665348597`*^9, 3.5716592757823887`*^9}, {
+   3.5716593990082054`*^9, 3.5716595263778114`*^9}, {3.5716595890612364`*^9, 
+   3.5716596035720663`*^9}, {3.5716597305002556`*^9, 3.571659744986514*^9}, {
+   3.5716597775681686`*^9, 3.571659792369179*^9}, 3.5716598541967154`*^9, {
+   3.571660006703207*^9, 3.57166001636576*^9}, {3.5716600609258785`*^9, 
+   3.5716601236814675`*^9}, {3.57166019321303*^9, 3.5716601959551864`*^9}, {
+   3.5716602294894347`*^9, 3.5716602411281004`*^9}, {3.571660279249281*^9, 
+   3.57166030275159*^9}, {3.571660362216669*^9, 3.5716604243277335`*^9}, {
+   3.571660465217292*^9, 3.571660466703377*^9}, {3.5716605248354893`*^9, 
+   3.5716605816030636`*^9}, {3.5716606393378663`*^9, 
+   3.5716606819453034`*^9}, {3.5716607463357735`*^9, 
+   3.5716607589734964`*^9}, {3.571660872334956*^9, 3.5716608723979597`*^9}, 
+   3.571824892919202*^9},
+ Background->RGBColor[
+  0.984313725490196, 0.9725490196078431, 0.8431372549019608]],
+
+Cell[CellGroupData[{
+
+Cell["Configuration :", "Subsubsection",
+ CellChangeTimes->{{3.571646081299281*^9, 3.571646084875486*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Whether", " ", "class", " ", "names", " ", "are", " ", "allowed", " ", 
+    "without", " ", "full", " ", "context", " ", "specification"}], " ", 
+   "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"IGLibUseShortNames", "=", "True"}], ";"}], "\[IndentingNewLine]",
+    "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "Define", " ", "IGLib", " ", "assemblies", " ", "that", " ", "are", " ", 
+     RowBox[{"loaded", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"IGLibSelectedAssemblies", "=", 
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+      "\"\<iglib.dll\>\"", ",", "\[IndentingNewLine]", "\"\<igform.dll\>\""}],
+       "\[IndentingNewLine]", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"IGLibLoadAssemblies", "[", "]"}], ";"}]}]}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.5716458305726147`*^9, 3.5716458758200455`*^9}, {
+   3.5716459767008677`*^9, 3.5716460036364083`*^9}, {3.5716460603399096`*^9, 
+   3.571646068436323*^9}, 3.5716539384689274`*^9, {3.571654290611518*^9, 
+   3.5716542959569993`*^9}, {3.571654756604907*^9, 3.571654758476014*^9}, {
+   3.5716549599417615`*^9, 3.571654961156831*^9}, {3.5716566479862967`*^9, 
+   3.57165666985224*^9}, {3.571659174550666*^9, 3.571659180341997*^9}, 
+   3.571660839462944*^9, {3.571824850052374*^9, 3.5718248870298653`*^9}},
+ Background->RGBColor[
+  0.984313725490196, 0.9725490196078431, 0.8431372549019608]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.57164608756664*^9, 3.571646087763651*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.5716556621639132`*^9, 3.5716556728845263`*^9}, {
+  3.5716608577089877`*^9, 3.5716608826535463`*^9}}],
+
+Cell[BoxData["\<\"4.0.30319.296\"\>"], "Output",
+ CellChangeTimes->{{3.571655666062136*^9, 3.571655673926586*^9}, {
+  3.571655718561517*^9, 3.5716557387336707`*^9}}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.571638334220093*^9, 3.5716383344351053`*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.571638298876071*^9, 3.5716382991070843`*^9}}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.5716382971649733`*^9, 3.5716382973949866`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Test of IGLib interface", "Subtitle",
+ CellChangeTimes->{{3.571638280168001*^9, 3.5716382886184845`*^9}, {
+  3.5716535401263847`*^9, 3.571653543403572*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Instructions", "Subsubtitle",
+ CellChangeTimes->{{3.571639434683786*^9, 3.5716394409334526`*^9}}],
+
+Cell["\<\
+This block is used for testing that th IGLib interface works correctly.
+Just execute cells one by one and see if expected results are obtained.
+\
+\>", "Text",
+ CellChangeTimes->{{3.571639442700265*^9, 3.5716394429792805`*^9}, {
+  3.5716394783303027`*^9, 3.5716395210897484`*^9}, {3.571639560826021*^9, 
+  3.5716395906577277`*^9}, {3.571646212106635*^9, 3.5716462344705043`*^9}, {
+  3.5716463231748977`*^9, 3.5716467106507673`*^9}, {3.5716467950859914`*^9, 
+  3.5716468751788855`*^9}, {3.5716469060186496`*^9, 3.571647020111888*^9}, {
+  3.5716470697243843`*^9, 3.571647418578864*^9}, {3.5716474982524977`*^9, 
+  3.5716475454423046`*^9}, {3.5716534492904105`*^9, 3.571653519483204*^9}, {
+  3.571653554224191*^9, 3.5716536080830507`*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.5716394448123856`*^9, 3.5716394450904016`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Checks of basic variables", "Subsubtitle",
+ CellChangeTimes->{{3.5716383377902975`*^9, 3.571638349362959*^9}, {
+  3.571653620907784*^9, 3.571653623586937*^9}, {3.5716608076921268`*^9, 
+  3.571660826732216*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Test of directories", "Subsection",
+ CellChangeTimes->{{3.5716440234631543`*^9, 3.571644027194979*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Configuration :", "Subsubsection",
+ CellChangeTimes->{{3.571646081299281*^9, 3.571646084875486*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Configuration", ":"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+    "IGLibSelectedProjectPath", " ", "=", " ", "IGLibProjectPathIGSX"}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "IGLibSelectedMathematicaPath", " ", "=", " ", 
+     "IGLibMathematicaPathIGSX"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"IGLibUseDebugDirectory", " ", "=", " ", "True"}], 
+    ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.5716458305726147`*^9, 3.5716458758200455`*^9}, {
+   3.5716459767008677`*^9, 3.5716460036364083`*^9}, {3.5716460603399096`*^9, 
+   3.571646068436323*^9}, 3.571654991021539*^9}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.57164608756664*^9, 3.571646087763651*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "\[IndentingNewLine]", 
+   RowBox[{"SetDirectory", "[", "WorkspaceDirectory", "]"}], 
+   "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\"\<WorkspaceDirectory\>\"", ",", "WorkspaceDirectory"}], "}"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<WorkspaceProjectsDirectory\>\"", ",", "WorkspaceProjectsDirectory"}],
+     "}"}], "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"\"\<IGLibBinDirectory\>\"", ",", "IGLibBinDirectory"}], "}"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"\"\<IGLibDebugDirectory\>\"", ",", "IGLibDebugDirectory"}], 
+    "}"}], "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"\"\<IGLibAssemblyDirectory\>\"", ",", "IGLibAssemblyDirectory"}],
+     "}"}], "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"\"\<Path of iglib.dll\>\"", ",", 
+     RowBox[{"IGLibAssemblyPath", "[", "\"\<iglib.dll\>\"", "]"}]}], "}"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"\"\<Path of IGLib.m\>\"", ",", 
+     RowBox[{"IGLibMathematicaPath", "[", "\"\<iglib.m\>\"", "]"}]}], "}"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", "\[IndentingNewLine]", 
+    RowBox[{"SetDirectory", "[", "IGLibAssemblyDirectory", "]"}], 
+    "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.571638820078569*^9, 3.5716388568352423`*^9}, {
+   3.5716388990805616`*^9, 3.5716389331978216`*^9}, {3.571638985635213*^9, 
+   3.5716389868112803`*^9}, {3.5716439702182217`*^9, 3.571643971357024*^9}, {
+   3.571644469410719*^9, 3.5716444947640066`*^9}, {3.571644530461176*^9, 
+   3.571644619301378*^9}, {3.5716446529658904`*^9, 3.571644659621271*^9}, {
+   3.571645235021291*^9, 3.5716452881812243`*^9}, 3.5716456922535105`*^9, {
+   3.5716550263847113`*^9, 3.571655043534666*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"WorkspaceDirectory\"\>", ",", "\<\"d:/users/workspace/\"\>"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.571638825632179*^9, 3.5716388854929376`*^9}, 
+   3.571638946473445*^9, 3.5716389878653407`*^9, {3.5716439721214256`*^9, 
+   3.5716440073642335`*^9}, {3.5716440539756575`*^9, 3.5716440630251756`*^9}, 
+   3.5716444959690757`*^9, 3.571644625354724*^9, 3.571644660707333*^9, 
+   3.57164472419766*^9, {3.5716452508823576`*^9, 3.5716452922264557`*^9}, {
+   3.5716456272381287`*^9, 3.571645646371177*^9}, {3.5716456818482924`*^9, 
+   3.5716456954203157`*^9}, {3.57164572569878*^9, 3.571645733367985*^9}, 
+   3.571645796219181*^9, 3.5716550315699816`*^9, 3.5716551021271973`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"WorkspaceProjectsDirectory\"\>", 
+   ",", "\<\"d:/users/workspaceprojects/\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{{3.571638825632179*^9, 3.5716388854929376`*^9}, 
+   3.571638946473445*^9, 3.5716389878653407`*^9, {3.5716439721214256`*^9, 
+   3.5716440073642335`*^9}, {3.5716440539756575`*^9, 3.5716440630251756`*^9}, 
+   3.5716444959690757`*^9, 3.571644625354724*^9, 3.571644660707333*^9, 
+   3.57164472419766*^9, {3.5716452508823576`*^9, 3.5716452922264557`*^9}, {
+   3.5716456272381287`*^9, 3.571645646371177*^9}, {3.5716456818482924`*^9, 
+   3.5716456954203157`*^9}, {3.57164572569878*^9, 3.571645733367985*^9}, 
+   3.571645796219181*^9, 3.5716550315699816`*^9, 3.571655102129197*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"IGLibBinDirectory\"\>", 
+   ",", "\<\"d:/users/workspace/bin/\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{{3.571638825632179*^9, 3.5716388854929376`*^9}, 
+   3.571638946473445*^9, 3.5716389878653407`*^9, {3.5716439721214256`*^9, 
+   3.5716440073642335`*^9}, {3.5716440539756575`*^9, 3.5716440630251756`*^9}, 
+   3.5716444959690757`*^9, 3.571644625354724*^9, 3.571644660707333*^9, 
+   3.57164472419766*^9, {3.5716452508823576`*^9, 3.5716452922264557`*^9}, {
+   3.5716456272381287`*^9, 3.571645646371177*^9}, {3.5716456818482924`*^9, 
+   3.5716456954203157`*^9}, {3.57164572569878*^9, 3.571645733367985*^9}, 
+   3.571645796219181*^9, 3.5716550315699816`*^9, 3.571655102131197*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"IGLibDebugDirectory\"\>", 
+   ",", "\<\"d:/users/workspace/base/igtest/iglib_develop_shellext/bin/Debug/\
+\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{{3.571638825632179*^9, 3.5716388854929376`*^9}, 
+   3.571638946473445*^9, 3.5716389878653407`*^9, {3.5716439721214256`*^9, 
+   3.5716440073642335`*^9}, {3.5716440539756575`*^9, 3.5716440630251756`*^9}, 
+   3.5716444959690757`*^9, 3.571644625354724*^9, 3.571644660707333*^9, 
+   3.57164472419766*^9, {3.5716452508823576`*^9, 3.5716452922264557`*^9}, {
+   3.5716456272381287`*^9, 3.571645646371177*^9}, {3.5716456818482924`*^9, 
+   3.5716456954203157`*^9}, {3.57164572569878*^9, 3.571645733367985*^9}, 
+   3.571645796219181*^9, 3.5716550315699816`*^9, 3.5716551021321974`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"IGLibAssemblyDirectory\"\>", 
+   ",", "\<\"d:/users/workspace/base/igtest/iglib_develop_shellext/bin/Debug/\
+\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{{3.571638825632179*^9, 3.5716388854929376`*^9}, 
+   3.571638946473445*^9, 3.5716389878653407`*^9, {3.5716439721214256`*^9, 
+   3.5716440073642335`*^9}, {3.5716440539756575`*^9, 3.5716440630251756`*^9}, 
+   3.5716444959690757`*^9, 3.571644625354724*^9, 3.571644660707333*^9, 
+   3.57164472419766*^9, {3.5716452508823576`*^9, 3.5716452922264557`*^9}, {
+   3.5716456272381287`*^9, 3.571645646371177*^9}, {3.5716456818482924`*^9, 
+   3.5716456954203157`*^9}, {3.57164572569878*^9, 3.571645733367985*^9}, 
+   3.571645796219181*^9, 3.5716550315699816`*^9, 3.5716551021341977`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"Path of iglib.dll\"\>", 
+   ",", "\<\"d:/users/workspace/base/igtest/iglib_develop_shellext/bin/Debug/\
+iglib.dll\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{{3.571638825632179*^9, 3.5716388854929376`*^9}, 
+   3.571638946473445*^9, 3.5716389878653407`*^9, {3.5716439721214256`*^9, 
+   3.5716440073642335`*^9}, {3.5716440539756575`*^9, 3.5716440630251756`*^9}, 
+   3.5716444959690757`*^9, 3.571644625354724*^9, 3.571644660707333*^9, 
+   3.57164472419766*^9, {3.5716452508823576`*^9, 3.5716452922264557`*^9}, {
+   3.5716456272381287`*^9, 3.571645646371177*^9}, {3.5716456818482924`*^9, 
+   3.5716456954203157`*^9}, {3.57164572569878*^9, 3.571645733367985*^9}, 
+   3.571645796219181*^9, 3.5716550315699816`*^9, 3.5716551021361976`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"Path of IGLib.m\"\>", 
+   ",", "\<\"d:/users/workspace/base/igtest/iglib_develop_shellext/\
+mathematica/notebooks/iglib.m\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{{3.571638825632179*^9, 3.5716388854929376`*^9}, 
+   3.571638946473445*^9, 3.5716389878653407`*^9, {3.5716439721214256`*^9, 
+   3.5716440073642335`*^9}, {3.5716440539756575`*^9, 3.5716440630251756`*^9}, 
+   3.5716444959690757`*^9, 3.571644625354724*^9, 3.571644660707333*^9, 
+   3.57164472419766*^9, {3.5716452508823576`*^9, 3.5716452922264557`*^9}, {
+   3.5716456272381287`*^9, 3.571645646371177*^9}, {3.5716456818482924`*^9, 
+   3.5716456954203157`*^9}, {3.57164572569878*^9, 3.571645733367985*^9}, 
+   3.571645796219181*^9, 3.5716550315699816`*^9, 3.5716551021832004`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Check", " ", "that", " ", "directories", " ", "actually", " ", 
+    RowBox[{"exist", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"SetDirectory", "[", "WorkspaceDirectory", "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"SetDirectory", "[", "IGLibAssemblyDirectory", "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+   "SetDirectory", "[", "IGLibMathematicaDirectory", "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.5716550487969675`*^9, 3.5716550633167973`*^9}, {
+  3.5716551083725543`*^9, 3.571655206892968*^9}}],
+
+Cell[BoxData["\<\"d:\\\\users\\\\workspace\"\>"], "Output",
+ CellChangeTimes->{{3.5716551338660126`*^9, 3.571655207732016*^9}}],
+
+Cell[BoxData["\<\"d:\\\\users\\\\workspace\\\\base\\\\igtest\\\\iglib_develop_\
+shellext\\\\bin\\\\Debug\"\>"], "Output",
+ CellChangeTimes->{{3.5716551338660126`*^9, 3.5716552077490172`*^9}}],
+
+Cell[BoxData["\<\"d:\\\\users\\\\workspace\\\\base\\\\igtest\\\\iglib_develop_\
+shellext\\\\mathematica\\\\notebooks\"\>"], "Output",
+ CellChangeTimes->{{3.5716551338660126`*^9, 3.571655207751017*^9}}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.5716550745594406`*^9, 3.571655074736451*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.571644039931856*^9, 3.5716440401190567`*^9}}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.57164398839122*^9, 3.571644003611019*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.5716383541962357`*^9, 3.571638354346244*^9}}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Tests of .NET runtime and dlls", "Subsubtitle",
+ CellChangeTimes->{{3.5716382472403383`*^9, 3.5716382596423597`*^9}, {
+  3.5716536486123457`*^9, 3.5716536524595656`*^9}, {3.5716608191717834`*^9, 
+  3.571660820883881*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Configuration :", "Subsubsection",
+ CellChangeTimes->{{3.5716610689607925`*^9, 3.5716610726048155`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"IGLibUseShortNames", "=", "True"}], ";"}], "\[IndentingNewLine]",
+    
+   RowBox[{
+    RowBox[{"IGLibSelectedAssemblies", "=", 
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+      "\"\<iglib.dll\>\"", ",", "\[IndentingNewLine]", "\"\<igform.dll\>\""}],
+       "\[IndentingNewLine]", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"IGLibLoadAssemblies", "[", "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.57166105483455*^9, 3.5716610655101604`*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.571661086337139*^9, 3.5716610865401506`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "List", " ", "all", " ", "loaded", " ", "assemblies", " ", "and", " ", 
+    RowBox[{"types", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"LoadedNETAssemblies", "[", "]"}], "\[IndentingNewLine]", 
+   RowBox[{"LoadedNETTypes", "[", "]"}], "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.5718247437645187`*^9, 3.5718247911192274`*^9}, 
+   3.571824910491207*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"NETAssembly", "[", 
+    RowBox[{"\<\"mscorlib\"\>", ",", "3"}], "]"}], ",", 
+   RowBox[{"NETAssembly", "[", 
+    RowBox[{"\<\"InstallableNET\"\>", ",", "4"}], "]"}], ",", 
+   RowBox[{"NETAssembly", "[", 
+    RowBox[{"\<\"Wolfram.NETLink\"\>", ",", "5"}], "]"}], ",", 
+   RowBox[{"NETAssembly", "[", 
+    RowBox[{"\<\"System\"\>", ",", "6"}], "]"}], ",", 
+   RowBox[{"NETAssembly", "[", 
+    RowBox[{"\<\"System.Windows.Forms\"\>", ",", "7"}], "]"}], ",", 
+   RowBox[{"NETAssembly", "[", 
+    RowBox[{"\<\"System.Drawing\"\>", ",", "8"}], "]"}], ",", 
+   RowBox[{"NETAssembly", "[", 
+    RowBox[{"\<\"iglib\"\>", ",", "1"}], "]"}], ",", 
+   RowBox[{"NETAssembly", "[", 
+    RowBox[{"\<\"igforms\"\>", ",", "2"}], "]"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.5718247930802364`*^9, {3.5718249063679714`*^9, 3.571824910846227*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"NETType", "[", 
+    RowBox[{"\<\"System.Environment\"\>", ",", "1"}], "]"}], ",", 
+   RowBox[{"NETType", "[", 
+    RowBox[{"\<\"System.Version\"\>", ",", "2"}], "]"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.5718247930802364`*^9, {3.5718249063679714`*^9, 3.5718249108492274`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"Get", " ", "version", " ", "of", " ", 
+     RowBox[{"loaded", " ", ".", "NET"}], " ", "runtime", " ", 
+     RowBox[{"(", 
+      RowBox[{
+      "also", " ", "a", " ", "test", " ", "if", " ", "the", " ", 
+       "environment", " ", "was", " ", "properly", " ", "loaded"}], ")"}]}], 
+    ":"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"NETVersion", "[", "]"}]}]], "Input",
+ CellChangeTimes->{{3.571660888275868*^9, 3.5716609246139135`*^9}}],
+
+Cell[BoxData["\<\"4.0.30319.296\"\>"], "Output",
+ CellChangeTimes->{3.5716609253779573`*^9, 3.5718249046588736`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Get", " ", 
+    RowBox[{"(", "load", ")"}], " ", "some", " ", "IGLib", " ", 
+    RowBox[{"types", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"IGLibType", "[", 
+    RowBox[{"\"\<IG.Lib.Util\>\"", ",", "\"\<IGLib.dll\>\""}], "]"}], "  ", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "load", " ", "type", " ", "from", " ", "the", " ", "specified", " ", 
+     "assembly"}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"IGLibType", "[", "\"\<IG.Lib.Util\>\"", "]"}], " ", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "load", " ", "type", " ", "from", " ", "alerady", " ", "known", " ", 
+     "assembly"}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Load", " ", "several", " ", "types", " ", "at", " ", 
+     RowBox[{"onse", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"IGLibTypes", "[", 
+    RowBox[{"{", 
+     RowBox[{"\"\<IG.Lib.Util\>\"", ",", "\"\<IG.Lib.UtilSystem\>\""}], "}"}],
+     "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.5716609520304813`*^9, 3.5716610453500075`*^9}, {
+  3.5716611118205967`*^9, 3.5716611654468527`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"NETType", "[", 
+  RowBox[{"\<\"IG.Lib.Util\"\>", ",", "48"}], "]"}]], "Output",
+ CellChangeTimes->{{3.5716609432319784`*^9, 3.5716609762238655`*^9}, 
+   3.5716611005639534`*^9, 3.571661166240898*^9}],
+
+Cell[BoxData[
+ RowBox[{"NETType", "[", 
+  RowBox[{"\<\"IG.Lib.Util\"\>", ",", "48"}], "]"}]], "Output",
+ CellChangeTimes->{{3.5716609432319784`*^9, 3.5716609762238655`*^9}, 
+   3.5716611005639534`*^9, 3.571661166243898*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"NETType", "[", 
+    RowBox[{"\<\"IG.Lib.Util\"\>", ",", "48"}], "]"}], ",", 
+   RowBox[{"NETType", "[", 
+    RowBox[{"\<\"IG.Lib.UtilSystem\"\>", ",", "47"}], "]"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.5716609432319784`*^9, 3.5716609762238655`*^9}, 
+   3.5716611005639534`*^9, 3.571661166293901*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Execute", " ", "a", " ", "static", " ", "method", " ", "on", " ", "a", 
+    " ", 
+    RowBox[{"type", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"IG`Lib`UtilSystem`GetComputerName", "[", "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"IG`Lib`UtilSystem`GetIpAddressLocal", "[", "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.5716611775536175`*^9, 3.5716612419649243`*^9}, {
+   3.571661306764631*^9, 3.5716613312690325`*^9}, {3.5716613939336166`*^9, 
+   3.571661394532651*^9}, {3.5716615659816017`*^9, 3.5716615811814713`*^9}, 
+   3.5716616187426195`*^9}],
+
+Cell[BoxData["\<\"BOA\"\>"], "Output",
+ CellChangeTimes->{
+  3.5716614161658883`*^9, {3.5716615710118895`*^9, 3.5716615833545957`*^9}, 
+   3.571661620717733*^9}],
+
+Cell[BoxData["\<\"192.168.2.104\"\>"], "Output",
+ CellChangeTimes->{
+  3.5716614161658883`*^9, {3.5716615710118895`*^9, 3.5716615833545957`*^9}, 
+   3.571661620721733*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+     "Execute", " ", "a", " ", "static", " ", "method", " ", "on", " ", "a", 
+      " ", "type"}], " ", "-", " ", 
+     RowBox[{
+     "by", " ", "using", " ", "short", " ", "type", " ", "name", " ", 
+      RowBox[{"(", ")"}]}]}], ":"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"UtilSystem`GetSystemInfoString", "[", "]"}]}]], "Input",
+ CellChangeTimes->{{3.571661422925275*^9, 3.5716614920614405`*^9}, {
+  3.5716615294385777`*^9, 3.5716615521658783`*^9}}],
+
+Cell[BoxData["\<\"Current user:    igor\\r\\nComputer name:   BOA\\r\\nDomain \
+name:     BOA\\r\\nIP address:      192.168.2.104\\r\\nMAC address:     \
+1CC1DEB5E223\\r\\nRuntime version: 4.0.30319.296\\r\\n\"\>"], "Output",
+ CellChangeTimes->{{3.5716614586309404`*^9, 3.5716614925144663`*^9}, {
+  3.5716615315276976`*^9, 3.5716615542219954`*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.571638334220093*^9, 3.5716383344351053`*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.571638298876071*^9, 3.5716382991070843`*^9}}]
+}, Open  ]],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{{3.5716382971649733`*^9, 3.5716382973949866`*^9}, 
+   3.571661744687932*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Development", "Title",
+ CellChangeTimes->{{3.571582251449015*^9, 3.5715822704409103`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Development Sandbox", "Subtitle",
+ CellChangeTimes->{{3.5715822890599756`*^9, 3.571582298684526*^9}, {
+  3.5715896064466076`*^9, 3.571589606516611*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Basic NetLink Stuff", "Subsubtitle",
+ CellChangeTimes->{{3.571582328380974*^9, 3.571582361746882*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Installation of .NET runtime", "Subsection",
+ CellChangeTimes->{{3.5715854688917027`*^9, 3.571585475054055*^9}}],
+
+Cell[BoxData[
+ RowBox[{"<<", "NETLink`"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<NETLink`\>\"", "]"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"InstallNET", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.571585430602748*^9, 3.571585436717862*^9}}],
+
+Cell[BoxData[
+ RowBox[{"LinkObject", "[", 
+  RowBox[{"\<\"C:\\\\Program Files (x86)\\\\Wolfram Research\\\\Mathematica\\\
+\\6.0\\\\SystemFiles\\\\Links\\\\NETLink\\\\InstallableNET.exe\"\>", ",", "7",
+    ",", "7"}], "]"}]], "Output",
+ CellChangeTimes->{
+  3.5715854388179827`*^9, {3.571585493082086*^9, 3.5715855320440683`*^9}, {
+   3.5715864909441085`*^9, 3.57158649376827*^9}, {3.5715865934965887`*^9, 
+   3.571586597657727*^9}, 3.5715866404191723`*^9, 3.571590028699669*^9, 
+   3.571590810244501*^9, 3.5715909443297215`*^9, 3.5715914841173725`*^9, 
+   3.5716354600682383`*^9, 3.571637683897815*^9, 3.5716377693643656`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"UninstallNET", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.5715854098735733`*^9, 3.57158541419282*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ReinstallNET", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.57158524831487*^9, 3.5715852589854803`*^9}, {
+  3.5715852896415195`*^9, 3.571585293331525*^9}, {3.5715853966148148`*^9, 
+  3.571585403090185*^9}}],
+
+Cell[BoxData[
+ RowBox[{"LinkObject", "[", 
+  RowBox[{"\<\"C:\\\\Program Files (x86)\\\\Wolfram Research\\\\Mathematica\\\
+\\6.0\\\\SystemFiles\\\\Links\\\\NETLink\\\\InstallableNET.exe\"\>", ",", 
+   "13", ",", "7"}], "]"}]], "Output",
+ CellChangeTimes->{{3.5715852520290823`*^9, 3.571585260437563*^9}, 
+   3.57158529689153*^9, {3.571585423844372*^9, 3.5715854259664936`*^9}, {
+   3.571585493758125*^9, 3.571585534909232*^9}, 3.5715866055691795`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"Directory", " ", "containing", " ", "the", " ", 
+     RowBox[{"interlude", ".", "NET"}], " ", "application", " ", "to", " ", 
+     "broker", " ", "communication", " ", "with", " ", "the", " ", 
+     "framework", 
+     RowBox[{"InstallableNET", ".", "exe"}]}], " ", "-", " ", 
+    RowBox[{"in", " ", 
+     RowBox[{"InstallableNET", ".", "exe", ".", "config"}], " ", "you", " ", 
+     "can", " ", "set", " ", "which", " ", "version", " ", "of", " ", 
+     RowBox[{"the", " ", ".", "NET"}], " ", "framework", " ", "is", " ", 
+     "used", " ", "by", " ", "the", " ", 
+     RowBox[{"interlude", ".", "NET"}], " ", "application"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"StringJoin", "[", 
+   RowBox[{
+   "$InstallationDirectory", ",", "\"\</\>\"", ",", "\"\<SystemFiles/\>\"", 
+    ",", "\"\<Links/\>\"", ",", "\"\<NETLink/\>\"", ",", 
+    "\"\<InstallableNET.exe\>\""}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.571590054280132*^9, 3.5715901697953415`*^9}, {
+  3.571591019320843*^9, 3.571591019751868*^9}, {3.571591056071777*^9, 
+  3.571591067634438*^9}, {3.571591103573494*^9, 3.5715911641057897`*^9}, {
+  3.571591210389271*^9, 3.571591215878585*^9}, {3.571635339500807*^9, 
+  3.571635389017625*^9}, {3.571635426731331*^9, 3.5716354270753508`*^9}, {
+  3.5716467283407793`*^9, 3.571646778213217*^9}}],
+
+Cell[BoxData["\<\"C:\\\\Program Files (x86)\\\\Wolfram \
+Research\\\\Mathematica\\\\6.0/SystemFiles/Links/NETLink/InstallableNET.exe\"\
+\>"], "Output",
+ CellChangeTimes->{
+  3.5715910212199516`*^9, 3.571591058314905*^9, {3.5715911044645443`*^9, 
+   3.5715911648018293`*^9}, {3.5716353445670967`*^9, 3.571635392824032*^9}, 
+   3.5716354279694023`*^9, 3.571637687158221*^9, 3.5716467169801292`*^9, 
+   3.5716467793152795`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Check", " ", "the", " ", "version", " ", "of", " ", 
+    RowBox[{"the", " ", ".", "NET"}], " ", "framework", " ", "used", " ", 
+    "by", " ", "the", " ", 
+    RowBox[{"NETLink", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"LoadNETType", "[", "\"\<System.Environment\>\"", "]"}], ";"}], 
+   "\n", 
+   RowBox[{"System`Environment`Version", "@", 
+    RowBox[{"ToString", "[", "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.571589538518894*^9, 3.571589601505325*^9}, {
+  3.5715896352412543`*^9, 3.5715896435387287`*^9}}],
+
+Cell[BoxData["\<\"4.0.30319.296\"\>"], "Output",
+ CellChangeTimes->{
+  3.5715896449628105`*^9, 3.571590038621236*^9, {3.5715908217421227`*^9, 
+   3.5715908247521267`*^9}, 3.571590950437071*^9, 3.571591492513631*^9, {
+   3.571635481480463*^9, 3.57163548528068*^9}, 3.571637775292376*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.5715854858026695`*^9, 3.571585486013682*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Get", " ", "lists", " ", "of", " ", 
+    RowBox[{"loaded", " ", ".", "NET"}], " ", "assemblies", " ", "and", " ", 
+    RowBox[{"types", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"LoadedNETAssemblies", "[", "]"}], ";", " ", 
+   RowBox[{"LoadedNETTypes", "[", "]"}], ";"}]}]], "Input",
+ CellChangeTimes->{{3.571582409653371*^9, 3.571582427187374*^9}, {
+  3.5715824592039537`*^9, 3.571582506404403*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"formType", "=", 
+   RowBox[{"LoadNETType", "[", "\"\<System.Windows.Forms.Form\>\"", "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"form", "=", 
+   RowBox[{"NETNew", "[", "formType", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", "formType", "\[IndentingNewLine]", 
+ RowBox[{"form", "\[IndentingNewLine]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.5715835390544214`*^9, 3.571583552945216*^9}, {
+   3.571583904833686*^9, 3.571583949587053*^9}, 3.571583981730891*^9, {
+   3.5715841056586175`*^9, 3.5715841120419827`*^9}, {3.571584205057597*^9, 
+   3.5715842149499702`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"NETType", "[", 
+  RowBox[{"\<\"System.Windows.Forms.Form\"\>", ",", "1"}], "]"}]], "Output",
+ CellChangeTimes->{{3.5715841413062506`*^9, 3.571584164430273*^9}, {
+  3.5715842017814093`*^9, 3.571584218371166*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\[LeftGuillemet]", 
+   RowBox[{"NETObject", "[", 
+    RowBox[{"System", ".", "Windows", ".", "Forms", ".", "Form"}], "]"}], 
+   "\[RightGuillemet]"}],
+  NETLink`Objects`NETObject$1055885933674497]], "Output",
+ CellChangeTimes->{{3.5715841413062506`*^9, 3.571584164430273*^9}, {
+  3.5715842017814093`*^9, 3.571584218388167*^9}}],
+
+Cell[BoxData[
+ StyleBox["\[IndentingNewLine]", "MB"]], "Input",
+ CellChangeTimes->{
+  3.5715835542292323`*^9, {3.571583909721966*^9, 3.5715839516691723`*^9}, 
+   3.571583984366042*^9, 3.5715841148311424`*^9, 3.5715841525635943`*^9}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.5715841191422234`*^9, 3.571584121956359*^9}}],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.5715841233644395`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"Instantiate", " ", ".", "NET"}], " ", "object", " ", "and", " ", 
+    "set", " ", "property", " ", "on", " ", 
+    RowBox[{"it", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"pt", "=", 
+     RowBox[{"NETNew", "[", "\"\<System.Drawing.Point\>\"", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    StyleBox[
+     RowBox[{
+      RowBox[{"pt", "@", "X"}], "=", "42"}], "MB"], 
+    StyleBox[";", "MB"], " ", 
+    RowBox[{
+     RowBox[{"pt", "@", "Y"}], " ", "=", " ", "8"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pt", "@", "X"}], "+", 
+    RowBox[{"pt", "@", "Y"}]}], "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.571584181424245*^9, 3.571584190681775*^9}, {
+  3.5715842317079287`*^9, 3.5715842557213025`*^9}, {3.57158429084912*^9, 
+  3.57158433386458*^9}, {3.5715844220241027`*^9, 3.571584443056778*^9}}],
+
+Cell[BoxData["50"], "Output",
+ CellChangeTimes->{3.571584256498347*^9, 3.571584340216778*^9, 
+  3.5715844442038436`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Print", " ", "information", " ", 
+    RowBox[{"about", " ", ".", "NET"}], " ", 
+    RowBox[{"type", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"NETTypeInfo", "[", "\"\<System.Drawing.Point\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"NETTypeInfo", "[", 
+   RowBox[{
+   "\"\<System.Diagnostics.Process\>\"", ",", "\"\<Properties\>\"", ",", 
+    "\"\<PeakW*\>\""}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.571584531020618*^9, 3.5715846639258366`*^9}}],
+
+Cell[BoxData[GridBox[{
+   {""},
+   {Cell[BoxData[
+     RowBox[{
+      RowBox[{"\[FilledCircle]", " "}], 
+      StyleBox["Properties",
+       FontSize->18,
+       FontWeight->"Bold",
+       FontSlant->
+        "Italic"], "\<\" (matching string pattern PeakW*)\"\>"}]]]},
+   {
+    RowBox[{"\<\"int\"\>", " ", 
+     StyleBox["PeakWorkingSet",
+      FontWeight->"Bold"], 
+     RowBox[{"  ", 
+      RowBox[{"[", 
+       RowBox[{"read", " ", "only"}], "]"}]}]}]},
+   {
+    RowBox[{"\<\"long\"\>", " ", 
+     StyleBox["PeakWorkingSet64",
+      FontWeight->"Bold"], 
+     RowBox[{"  ", 
+      RowBox[{"[", 
+       RowBox[{"read", " ", "only"}], "]"}]}]}]}
+  },
+  GridBoxAlignment->{
+   "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+    "RowsIndexed" -> {}},
+  GridBoxItemSize->{
+   "Columns" -> {{All}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.2}}, 
+    "RowsIndexed" -> {}}]], "Output",
+ CellChangeTimes->{3.571637826028321*^9},
+ AutoSpacing->False]
+}, Closed]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.5716378356379375`*^9, 3.571637835825138*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "List", " ", "types", " ", "that", " ", "are", " ", "contained", " ", "in",
+     " ", "an", " ", 
+    RowBox[{"assembly", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"NETTypeInfo", "[", 
+   RowBox[{
+    RowBox[{"LoadNETAssembly", "[", "\"\<System.Data\>\"", "]"}], ",", 
+    "\"\<Classes\>\"", ",", "\"\<DataRe*\>\""}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5715847428724146`*^9, 3.5715847745062237`*^9}, {
+  3.571584813754222*^9, 3.571584837249566*^9}}],
+
+Cell[BoxData[GridBox[{
+   {
+    RowBox[{
+     RowBox[{"Assembly", ":", " "}], 
+     StyleBox["\<\"System.Data\"\>",
+      FontWeight->"Bold"]}]},
+   {"\<\"Full Name: System.Data, Version=2.0.0.0, Culture=neutral, \
+PublicKeyToken=b77a5c561934e089\"\>"},
+   {"\<\"Location: \
+C:\\\\windows\\\\assembly\\\\GAC_32\\\\System.Data\\\\2.0.0.0__\
+b77a5c561934e089\\\\System.Data.dll\"\>"},
+   {""},
+   {Cell[BoxData[
+     RowBox[{
+      RowBox[{"\[FilledCircle]", " "}], 
+      StyleBox["Classes",
+       FontSize->18,
+       FontWeight->"Bold",
+       FontSlant->"Italic"]}]]]},
+   {
+    RowBox[{
+     RowBox[{"class", " "}], "\<\"System.Data.\"\>", 
+     StyleBox["DataRelation",
+      FontWeight->"Bold"]}]},
+   {
+    RowBox[{
+     RowBox[{"class", " "}], "\<\"System.Data.\"\>", 
+     StyleBox["DataRelationCollection",
+      FontWeight->"Bold"]}]}
+  },
+  GridBoxAlignment->{
+   "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+    "RowsIndexed" -> {}},
+  GridBoxItemSize->{
+   "Columns" -> {{All}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.2}}, 
+    "RowsIndexed" -> {}}]], "Output",
+ CellChangeTimes->{3.5715848386056433`*^9},
+ AutoSpacing->False]
+}, Closed]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.5716378458715553`*^9, 3.5716378460431557`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Info", " ", "on", " ", "classe", " ", "in", " ", "my", " ", 
+    RowBox[{"assembly", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"myAssembly", " ", "=", " ", 
+     RowBox[{
+     "LoadNETAssembly", "[", 
+      "\"\<d:\\\\users\\\\workspace\\\\bin\\\\iglib.dll\>\"", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", "\[IndentingNewLine]", 
+    RowBox[{"NETTypeInfo", "[", 
+     RowBox[{
+     "myAssembly", ",", " ", "\"\<Structures\>\"", ",", "\"\<mat*\>\""}], 
+     "]"}], "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"NETTypeInfo", "[", 
+     RowBox[{"myAssembly", ",", " ", "\"\<Classes\>\"", ",", "\"\<mat*\>\""}],
+      "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.5715848566054263`*^9, 3.571584899051854*^9}, 
+   3.5715849688315997`*^9, {3.571585244316641*^9, 3.5715852465097666`*^9}, {
+   3.5716378601611805`*^9, 3.5716379172104807`*^9}, {3.5716379670681686`*^9, 
+   3.5716381694742017`*^9}}],
+
+Cell[BoxData[GridBox[{
+   {
+    RowBox[{"Assembly", ":", " ", 
+     StyleBox["iglib",
+      FontWeight->"Bold"]}]},
+   {"\<\"Full Name: iglib, Version=1.0.0.0, Culture=neutral, \
+PublicKeyToken=null\"\>"},
+   {"\<\"Location: d:\\\\users\\\\workspace\\\\bin\\\\iglib.dll\"\>"}
+  },
+  GridBoxAlignment->{
+   "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+    "RowsIndexed" -> {}},
+  GridBoxItemSize->{
+   "Columns" -> {{All}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.2}}, 
+    "RowsIndexed" -> {}}]], "Output",
+ CellChangeTimes->{3.571638170332203*^9},
+ AutoSpacing->False]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.5715919715639887`*^9, 3.5715919956903687`*^9}, {
+   3.571592137768057*^9, 3.5715921652176275`*^9}, 3.5716481543644686`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"<<", 
+  "\"\<d:/users/workspace/base/igtest/iglib_develop_shellext/mathematica/\
+notebooks/test.m\>\""}], "\[IndentingNewLine]", "MySpecifiedValue", "\
+\[IndentingNewLine]", "MySpecifiedValue1"}], "Input",
+ CellChangeTimes->{{3.571648518729724*^9, 3.57164852747118*^9}, {
+   3.5716485578131075`*^9, 3.5716485816364703`*^9}, {3.5716486802850943`*^9, 
+   3.5716487015483103`*^9}, {3.5716487390374546`*^9, 
+   3.5716487404685364`*^9}, {3.57164922154213*^9, 3.571649222092161*^9}, {
+   3.5716500252691393`*^9, 3.5716500262601957`*^9}, {3.5716501233889313`*^9, 
+   3.571650138364788*^9}, {3.5716505364928904`*^9, 3.571650537332938*^9}, {
+   3.571650642276918*^9, 3.571650643725001*^9}, 3.5716506780846887`*^9, {
+   3.571652487499448*^9, 3.5716525217647295`*^9}, {3.5716526492558117`*^9, 
+   3.5716526498330126`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"My specified value is: \"\>", "\[InvisibleSpace]", 
+   FractionBox["6.02214199`*^26", "Mole"]}],
+  SequenceForm["My specified value is: ", 6.02214199*^26/Units`Mole],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.5716526530407953`*^9}],
+
+Cell[BoxData[
+ FractionBox["6.02214199`*^26", "Mole"]], "Output",
+ CellChangeTimes->{{3.5716487023213544`*^9, 3.5716487417536097`*^9}, {
+   3.571648828688507*^9, 3.5716488485167217`*^9}, {3.5716488891270447`*^9, 
+   3.571648915149458*^9}, 3.5716500333776035`*^9, {3.5716501243699875`*^9, 
+   3.5716501424540215`*^9}, {3.5716505507747073`*^9, 3.571650576858199*^9}, {
+   3.57165063689861*^9, 3.5716506470381904`*^9}, 3.5716506821739225`*^9, {
+   3.571652526484999*^9, 3.5716525497213283`*^9}, {3.5716526438047466`*^9, 
+   3.571652653042795*^9}}],
+
+Cell[BoxData["12345"], "Output",
+ CellChangeTimes->{{3.5716487023213544`*^9, 3.5716487417536097`*^9}, {
+   3.571648828688507*^9, 3.5716488485167217`*^9}, {3.5716488891270447`*^9, 
+   3.571648915149458*^9}, 3.5716500333776035`*^9, {3.5716501243699875`*^9, 
+   3.5716501424540215`*^9}, {3.5716505507747073`*^9, 3.571650576858199*^9}, {
+   3.57165063689861*^9, 3.5716506470381904`*^9}, 3.5716506821739225`*^9, {
+   3.571652526484999*^9, 3.5716525497213283`*^9}, {3.5716526438047466`*^9, 
+   3.5716526530447955`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{"MySpecifiedValue", "\[IndentingNewLine]", \
+"MySpecifiedValue1"}], "Input",
+ CellChangeTimes->{{3.571649217017871*^9, 3.571649218380949*^9}}],
+
+Cell[BoxData[
+ FractionBox["6.02214199`*^26", "Mole"]], "Output",
+ CellChangeTimes->{{3.5716488686438727`*^9, 3.5716488845677834`*^9}, 
+   3.5716500169584837`*^9, 3.5716501312953835`*^9, 3.57165054556841*^9, 
+   3.571650628047104*^9, 3.5716507415328417`*^9}],
+
+Cell[BoxData["12345"], "Output",
+ CellChangeTimes->{{3.5716488686438727`*^9, 3.5716488845677834`*^9}, 
+   3.5716500169584837`*^9, 3.5716501312953835`*^9, 3.57165054556841*^9, 
+   3.571650628047104*^9, 3.571650741557843*^9}]
+}, Open  ]],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.571584133258005*^9}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.5715824693885365`*^9, 3.5715824698605633`*^9}, {
+  3.5715826251967945`*^9, 3.571582629854061*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.5715823315991573`*^9, 3.571582331805169*^9}}]
+}, Closed]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.5715823040188313`*^9, 3.5715823041998415`*^9}}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.571582253639018*^9, 3.5715822546290197`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Minimization ", "Subtitle",
+ CellChangeTimes->{{3.5718249389805*^9, 3.571824943110506*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"NMinimize", "[", "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.571824969658351*^9, 3.5718249811925306`*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.571824945957659*^9, 3.57182494615667*^9}}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.5715822559370813`*^9, 3.5715822562761*^9}}]
+}, Open  ]],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Running optimization from ",
+ StyleBox["\"Inverse\"",
+  FontSlant->"Italic"],
+ "  - ",
+ StyleBox["debugging mode",
+  FontWeight->"Bold"],
+ "   "
+}], "Subsubtitle"],
+
+Cell[TextData[{
+ "Instructions:\n  For debugging, run Inverse from debugger with the  ",
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    RowBox[{"-", "linkcreate"}],
+    FontVariations->{"Underline"->True}], TraditionalForm]],
+  FontColor->RGBColor[1, 0, 0.501961]],
+ StyleBox[" option",
+  FontColor->RGBColor[1, 0, 0.501961]],
+ ", e.g.\n  \n      C:/users/igor/cz/invmath.exe  optmath.cm -linkcreate\n    \
+  \n      A message box is launched stating the name of the link. You must \
+insert this name in the cell below and evaluate it, then swithch to debugger \
+and perform debugging (don't forget to set breakpoints).\n      "
+}], "Subsection"],
+
+Cell["\<\
+Important note:
+    Correct directory paths before evaluation! \
+\>", "Subsection"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"For", " ", "debugging"}], " ", "-", " ", 
+    RowBox[{
+    "insert", " ", "the", " ", "reported", " ", "link", " ", "name", " ", 
+     RowBox[{"(", 
+      RowBox[{"copy", " ", "from", " ", "message", " ", "box"}], ")"}], " ", 
+     RowBox[{"first", "!"}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"link", "=", 
+     RowBox[{"Install", "[", 
+      RowBox[{"LinkConnect", "[", "\"\<bmr_shm\>\"", "]"}], "]"}]}], ";"}], 
+   "\n", 
+   RowBox[{"InvInterpret", "[", "]"}]}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", "\<\"KONTROLA: InvInterpret - finished.\"\>", "}"}]], "Output"]
+}, Open  ]],
+
+Cell[BoxData[""], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Run ",
+ StyleBox["\"igsx\" (IGLib's Extended Shell)",
+  FontSlant->"Italic"],
+ " - ",
+ StyleBox["test",
+  FontColor->RGBColor[1, 0, 0]],
+ " \n",
+ StyleBox["This will run \"",
+  FontSize->14,
+  FontWeight->"Bold"],
+ StyleBox["igsx\".",
+  FontSize->16,
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ StyleBox[" ",
+  FontSize->16,
+  FontWeight->"Bold"],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"This", " ", "is", " ", "a", " ", "test"}], ",", " ", 
+      RowBox[{
+      "otherwise", " ", "igsx", " ", "is", " ", "run", " ", "by", " ", "the", 
+       " ", "command", " ", 
+       RowBox[{
+        RowBox[{"runinverse", "[", "]"}], "."}]}]}], " ", ")"}],
+    FontSize->12], TraditionalForm]]]
+}], "Subtitle",
+ CellChangeTimes->{{3.410603339*^9, 3.410603342828125*^9}, 3.41060568675*^9, {
+   3.41060581046875*^9, 3.41060582903125*^9}, {3.5715735721743975`*^9, 
+   3.5715736075344467`*^9}}],
+
+Cell["\<\
+You don't need to run this if you don't do optimization with Inverse.\
+\>", "Text"],
+
+Cell[CellGroupData[{
+
+Cell["Checks for of runiverse[ ]", "Subsection",
+ CellChangeTimes->{{3.410605733640625*^9, 3.41060577496875*^9}}],
+
+Cell["\<\
+Important note:
+    Correct directory paths before evaluation! \
+\>", "Subsubsection"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "SetDirectory", "[", "\"\<C:\\\\users\\\\igor\\\\c\\\\0exmath\>\"", "]"}],
+     ";", "\[IndentingNewLine]", 
+    RowBox[{"link", "=", 
+     RowBox[{
+     "Install", "[", "\"\<C:\\users\\igor\\cz\\invmath.exe invmath.cm\>\"", 
+      "]"}]}], ";"}], "\n", "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"Remark", ":", " ", 
+    RowBox[{"command", " ", "file", " ", 
+     RowBox[{"default", ".", "cm"}], " ", "must", " ", "be", " ", "in", " ", 
+     "the", " ", "current", " ", "directory", " ", "before", " ", 
+     "evaluating", " ", "this", " ", 
+     RowBox[{"cell", ".", " ", "The"}], " ", "file", " ", "can", " ", "be", 
+     " ", 
+     RowBox[{"empty", "."}]}]}], "  ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"link", "=", 
+     RowBox[{"Install", "[", "\"\<invmath.exe default.cm\>\"", "]"}]}], ";"}],
+    "\[IndentingNewLine]", "\n", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<Running \>\"", ",", 
+     RowBox[{"InvGetVar", "[", 
+      RowBox[{"\"\<string\>\"", ",", "\"\<program\>\"", ",", 
+       RowBox[{"{", "}"}]}], "]"}], ",", "\"\< \>\"", ",", 
+     RowBox[{"InvGetVar", "[", 
+      RowBox[{"\"\<scalar\>\"", ",", "\"\<version\>\"", ",", 
+       RowBox[{"{", "}"}]}], "]"}], ",", "\"\<.\>\""}], "]"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"InvInterpret", "[", "]"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"runinverse", "[", "]"}]}]}]], "Input"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Running \"\>", "\[InvisibleSpace]", "\<\"Inverse\"\>", 
+   "\[InvisibleSpace]", "\<\" \"\>", "\[InvisibleSpace]", "3.12`", 
+   "\[InvisibleSpace]", "\<\".\"\>"}],
+  SequenceForm["Running ", "Inverse", " ", 3.12, "."],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ RowBox[{"{", "\<\"KONTROLA: InvInterpret - finished.\"\>", "}"}]], "Output"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Directory", "[", "]"}]], "Input"],
+
+Cell[BoxData["\<\"c:\\\\users\\\\igor\\\\doc\\\\pr\\\\enlub\\\\work\\\\SRT_\
+identification_2006-01-20\\\\StripReduction\"\>"], "Output"]
+}, Open  ]],
+
+Cell[BoxData[""], "Input"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[""], "Input"]
+}, Open  ]],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.5715732808294287`*^9}]
+}, Open  ]],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.5715791240685387`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[".NET examples", "Title",
+ CellChangeTimes->{{3.571579143170907*^9, 3.5715791676122313`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Animation Window", "Subtitle",
+ CellChangeTimes->{{3.5715791784368505`*^9, 3.57157919721656*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Initialization", "Subsection",
+ CellChangeTimes->{{3.5715792054765716`*^9, 3.5715792096665773`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"Needs", "[", "\"\<NETLink`\>\"", "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{"SetAttributes", "[", 
+   RowBox[{"AnimationWindow", ",", "HoldFirst"}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"Options", "[", "AnimationWindow", "]"}], "=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"WindowSize", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"300", ",", "300"}], "}"}]}], ",", 
+      RowBox[{"Format", "\[Rule]", "Automatic"}], ",", 
+      RowBox[{"FramePause", "\[Rule]", "0"}]}], "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{"AnimationWindow", "[", 
+   RowBox[{"func_", ",", "range_", ",", 
+    RowBox[{"opts___", "?", "OptionQ"}]}], "]"}], ":=", 
+  RowBox[{"NETBlock", "[", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "form", ",", "box", ",", "funcStr", ",", "size", ",", "pauseTime"}], 
+      "}"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"size", ",", "pauseTime"}], "}"}], "=", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"WindowSize", ",", "FramePause"}], "}"}], "/.", 
+         RowBox[{"Flatten", "[", 
+          RowBox[{"{", "opts", "}"}], "]"}]}], "/.", 
+        RowBox[{"Options", "[", "AnimationWindow", "]"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"form", "=", 
+       RowBox[{"NETNew", "[", "\"\<System.Windows.Forms.Form\>\"", "]"}]}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"form", "@", "Width"}], "=", 
+       RowBox[{"size", "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"form", "@", "Height"}], "=", 
+       RowBox[{"size", "[", 
+        RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"box", "=", 
+       RowBox[{
+       "NETNew", "[", "\"\<Wolfram.NETLink.UI.MathPictureBox\>\"", "]"}]}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"box", "@", "Parent"}], "=", "form"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+      "LoadNETType", "[", "\"\<System.Windows.Forms.DockStyle\>\"", "]"}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{"LoadNETType", "[", "\"\<System.Drawing.Color\>\"", "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"box", "@", "Dock"}], "=", "DockStyle`Fill"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"box", "@", "BackColor"}], "=", "Color`White"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"box", "@", "PictureType"}], "=", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Format", "/.", 
+          RowBox[{"Flatten", "[", 
+           RowBox[{"{", "opts", "}"}], "]"}]}], "/.", 
+         RowBox[{"Options", "[", "AnimationWindow", "]"}]}], "/.", 
+        RowBox[{"Automatic", "\[Rule]", "\"\<Automatic\>\""}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"ShowNETWindow", "[", "form", "]"}], ";", "\[IndentingNewLine]",
+       
+      RowBox[{"funcStr", "=", 
+       RowBox[{"ToString", "[", 
+        RowBox[{
+         RowBox[{"Unevaluated", "[", "func", "]"}], ",", "InputForm"}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Do", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"box", "@", "MathCommand"}], "=", "funcStr"}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Pause", "[", "pauseTime", "]"}], ";", "\[IndentingNewLine]",
+          
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"form", "@", "IsDisposed"}], ",", 
+           RowBox[{"Break", "[", "]"}]}], "]"}]}], ",", "range"}], "]"}]}]}], 
+    "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+   "]"}]}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.571579212704669*^9, 3.5715792306484957`*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.5715792467261686`*^9, 3.5715792470961695`*^9}}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Example", "Subsection",
+ CellChangeTimes->{{3.57157925874533*^9, 3.5715792694875712`*^9}}],
+
+Cell["\<\
+AnimationWindow[
+\tPlot3D[BesselJ[0, Sqrt[x^2+y^2]+t], {x,-10,10}, {y,-10,10}, Axes \[Rule] \
+False, PlotRange \[Rule] {-0.5, 1.0}],
+\t{t, 0, 20}
+]\
+\>", "Input"],
+
+Cell["Try resizing while the animation is running.", "Text"],
+
+Cell["\<\
+AnimationWindow[
+\tExpand[(x+y)^t],
+\t{t,0,30},
+\tFormat -> \"StandardForm\", FramePause -> 0.2
+]\
+\>", "Input"],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.5715792723427343`*^9}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.571579273804818*^9, 3.5715792753269053`*^9}}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.5715792956380053`*^9, 3.5715792958580055`*^9}}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Next Example (Blank Template)", "Subtitle",
+ CellChangeTimes->{{3.5715791784368505`*^9, 3.57157919721656*^9}, {
+  3.5715794386846533`*^9, 3.571579441434657*^9}, {3.5715834808503428`*^9, 
+  3.5715834872297072`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Initialization", "Subsection",
+ CellChangeTimes->{{3.5715792054765716`*^9, 3.5715792096665773`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Needs", "[", "\"\<NETLink`\>\"", "]"}], ";"}], "\n", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.571579212704669*^9, 3.5715792306484957`*^9}, 
+   3.571579450463828*^9}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.5715792467261686`*^9, 3.5715792470961695`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Example", "Subsection",
+ CellChangeTimes->{{3.57157925874533*^9, 3.5715792694875712`*^9}}],
+
+Cell["", "Input",
+ CellChangeTimes->{3.571579459949371*^9}],
+
+Cell["", "Input",
+ CellChangeTimes->{3.5715794668367643`*^9}],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.5715792723427343`*^9}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.571579273804818*^9, 3.5715792753269053`*^9}}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.5715792956380053`*^9, 3.5715792958580055`*^9}}]
+}, Open  ]],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.5715791459909115`*^9}],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.571579125788541*^9}]
+}, Open  ]],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.571573297359479*^9}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ StyleBox["\n",
+  FontSize->24,
+  FontWeight->"Bold",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["Optimization utilities for use with ",
+  FontFamily->"Old English Text MT",
+  FontSize->24,
+  FontWeight->"Bold",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["Inverse",
+  FontFamily->"Old English Text MT",
+  FontSize->24,
+  FontWeight->"Bold",
+  FontSlant->"Italic",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox[".",
+  FontFamily->"Old English Text MT",
+  FontSize->24,
+  FontWeight->"Bold",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["\n",
+  FontFamily->"Old English Text MT",
+  FontSize->20,
+  FontWeight->"Bold"],
+ StyleBox["\nOriginal opt_inverse is contained in $IGHOME/inverse.\n",
+  FontWeight->"Bold",
+  FontColor->RGBColor[0, 0, 1],
+  Background->GrayLevel[0.666667]]
+}], "Subsubtitle"],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Set working directory:\n  ",
+ StyleBox[" ",
+  FontSize->36],
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    RowBox[{
+    "Allways", " ", "check", " ", "that", "  ", "working", " ", "directory", 
+     " ", "is", " ", "set", " ", 
+     RowBox[{"correctly", "!"}]}],
+    FontSize->12,
+    FontColor->RGBColor[1, 0, 1]], TraditionalForm]],
+  FontSize->24],
+ StyleBox[" ",
+  FontSize->24]
+}], "Subsubtitle"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Gradbena", ":", "\[IndentingNewLine]", 
+    RowBox[{
+    "SetDirectory", "[", 
+     "\"\<E:/users/c3m/igor/enlub/work/SRT_identification_2006-01-20/\
+StripReduction\>\"", "]"}]}], "\[IndentingNewLine]", "*)"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+   "SetDirectory", "[", 
+    "\"\<c:/users/igor/doc/pr/enlub/work/SRT_identification_2006-01-20/\
+StripReduction/\>\"", "]"}], "\[IndentingNewLine]"}]}]], "Input"],
+
+Cell[BoxData["\<\"c:\\\\users\\\\igor\\\\doc\\\\pr\\\\enlub\\\\work\\\\SRT_\
+identification_2006-01-20\\\\StripReduction\"\>"], "Output"]
+}, Open  ]],
+
+Cell[BoxData[""], "Input"]
+}, Open  ]],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Running optimization from ",
+ StyleBox["\"Inverse\"",
+  FontSlant->"Italic"],
+ "  - ",
+ StyleBox["debugging mode",
+  FontWeight->"Bold"],
+ "   "
+}], "Subsubtitle"],
+
+Cell[TextData[{
+ "Instructions:\n  For debugging, run Inverse from debugger with the  ",
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    RowBox[{"-", "linkcreate"}],
+    FontVariations->{"Underline"->True}], TraditionalForm]],
+  FontColor->RGBColor[1, 0, 0.501961]],
+ StyleBox[" option",
+  FontColor->RGBColor[1, 0, 0.501961]],
+ ", e.g.\n  \n      C:/users/igor/cz/invmath.exe  optmath.cm -linkcreate\n    \
+  \n      A message box is launched stating the name of the link. You must \
+insert this name in the cell below and evaluate it, then swithch to debugger \
+and perform debugging (don't forget to set breakpoints).\n      "
+}], "Subsection"],
+
+Cell["\<\
+Important note:
+    Correct directory paths before evaluation! \
+\>", "Subsection"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"For", " ", "debugging"}], " ", "-", " ", 
+    RowBox[{
+    "insert", " ", "the", " ", "reported", " ", "link", " ", "name", " ", 
+     RowBox[{"(", 
+      RowBox[{"copy", " ", "from", " ", "message", " ", "box"}], ")"}], " ", 
+     RowBox[{"first", "!"}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"link", "=", 
+     RowBox[{"Install", "[", 
+      RowBox[{"LinkConnect", "[", "\"\<bmr_shm\>\"", "]"}], "]"}]}], ";"}], 
+   "\n", 
+   RowBox[{"InvInterpret", "[", "]"}]}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", "\<\"KONTROLA: InvInterpret - finished.\"\>", "}"}]], "Output"]
+}, Open  ]],
+
+Cell[BoxData[""], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Run ",
+ StyleBox["\"Inverse\"",
+  FontSlant->"Italic"],
+ " - ",
+ StyleBox["test",
+  FontColor->RGBColor[1, 0, 0]],
+ " \n",
+ StyleBox["This will run \"",
+  FontSize->14,
+  FontWeight->"Bold"],
+ StyleBox["Inverse\".",
+  FontSize->16,
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ StyleBox[" ",
+  FontSize->16,
+  FontWeight->"Bold"],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"This", " ", "is", " ", "a", " ", "test"}], ",", " ", 
+      RowBox[{
+      "otherwise", " ", "Inverse", " ", "is", " ", "run", " ", "by", " ", 
+       "the", " ", "command", " ", 
+       RowBox[{
+        RowBox[{"runinverse", "[", "]"}], "."}]}]}], " ", ")"}],
+    FontSize->12], TraditionalForm]]]
+}], "Subtitle",
+ CellChangeTimes->{{3.410603339*^9, 3.410603342828125*^9}, 3.41060568675*^9, {
+   3.41060581046875*^9, 3.41060582903125*^9}}],
+
+Cell["\<\
+You don't need to run this if you don't do optimization with Inverse.\
+\>", "Text"],
+
+Cell[CellGroupData[{
+
+Cell["Checks for of runiverse[ ]", "Subsection",
+ CellChangeTimes->{{3.410605733640625*^9, 3.41060577496875*^9}}],
+
+Cell["\<\
+Important note:
+    Correct directory paths before evaluation! \
+\>", "Subsubsection"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "SetDirectory", "[", "\"\<C:\\\\users\\\\igor\\\\c\\\\0exmath\>\"", "]"}],
+     ";", "\[IndentingNewLine]", 
+    RowBox[{"link", "=", 
+     RowBox[{
+     "Install", "[", "\"\<C:\\users\\igor\\cz\\invmath.exe invmath.cm\>\"", 
+      "]"}]}], ";"}], "\n", "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"Remark", ":", " ", 
+    RowBox[{"command", " ", "file", " ", 
+     RowBox[{"default", ".", "cm"}], " ", "must", " ", "be", " ", "in", " ", 
+     "the", " ", "current", " ", "directory", " ", "before", " ", 
+     "evaluating", " ", "this", " ", 
+     RowBox[{"cell", ".", " ", "The"}], " ", "file", " ", "can", " ", "be", 
+     " ", 
+     RowBox[{"empty", "."}]}]}], "  ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"link", "=", 
+     RowBox[{"Install", "[", "\"\<invmath.exe default.cm\>\"", "]"}]}], ";"}],
+    "\[IndentingNewLine]", "\n", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<Running \>\"", ",", 
+     RowBox[{"InvGetVar", "[", 
+      RowBox[{"\"\<string\>\"", ",", "\"\<program\>\"", ",", 
+       RowBox[{"{", "}"}]}], "]"}], ",", "\"\< \>\"", ",", 
+     RowBox[{"InvGetVar", "[", 
+      RowBox[{"\"\<scalar\>\"", ",", "\"\<version\>\"", ",", 
+       RowBox[{"{", "}"}]}], "]"}], ",", "\"\<.\>\""}], "]"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"InvInterpret", "[", "]"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"runinverse", "[", "]"}]}]}]], "Input"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Running \"\>", "\[InvisibleSpace]", "\<\"Inverse\"\>", 
+   "\[InvisibleSpace]", "\<\" \"\>", "\[InvisibleSpace]", "3.12`", 
+   "\[InvisibleSpace]", "\<\".\"\>"}],
+  SequenceForm["Running ", "Inverse", " ", 3.12, "."],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ RowBox[{"{", "\<\"KONTROLA: InvInterpret - finished.\"\>", "}"}]], "Output"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Directory", "[", "]"}]], "Input"],
+
+Cell[BoxData["\<\"c:\\\\users\\\\igor\\\\doc\\\\pr\\\\enlub\\\\work\\\\SRT_\
+identification_2006-01-20\\\\StripReduction\"\>"], "Output"]
+}, Open  ]],
+
+Cell[BoxData[""], "Input"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[""], "Input"]
+}, Open  ]],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.5715732808294287`*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input"],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input"],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input"],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]"}]], "Input"],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input"],
+
+Cell[BoxData[""], "Input"],
+
+Cell[BoxData[""], "Input"]
+},
+AutoGeneratedPackage->None,
+CellGrouping->Manual,
+WindowSize->{1159, 1016},
+WindowMargins->{{296, Automatic}, {23, Automatic}},
+DockedCells->(FrontEndExecute[{
+   FrontEnd`NotebookApply[
+    FrontEnd`InputNotebook[], #, Placeholder]}]& ),
+ShowSelection->True,
+Magnification->1.25,
+FrontEndVersion->"6.0 for Microsoft Windows (64-bit) (June 19, 2007)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[568, 21, 87, 1, 58, "Input"],
+Cell[CellGroupData[{
+Cell[680, 26, 612, 17, 98, "Subsubtitle"],
+Cell[1295, 45, 45, 0, 58, "Input"],
+Cell[CellGroupData[{
+Cell[1365, 49, 416, 16, 87, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1806, 69, 505, 13, 146, "Input"],
+Cell[2314, 84, 137, 1, 35, "Output"]
+}, Open  ]],
+Cell[2466, 88, 26, 0, 35, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2529, 93, 121, 1, 62, "Subtitle"],
+Cell[CellGroupData[{
+Cell[2675, 98, 103, 1, 35, "Subsubtitle"],
+Cell[2781, 101, 3701, 89, 582, "Text"],
+Cell[6485, 192, 96, 1, 35, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6618, 198, 110, 1, 35, "Subsubtitle"],
+Cell[6731, 201, 7450, 174, 931, "Input",
+ InitializationCell->True],
+Cell[CellGroupData[{
+Cell[14206, 379, 106, 1, 34, "Subsubsection"],
+Cell[14315, 382, 968, 23, 139, "Input",
+ InitializationCell->True],
+Cell[15286, 407, 91, 1, 35, "Input"]
+}, Open  ]],
+Cell[15392, 411, 91, 1, 35, "Input"],
+Cell[15486, 414, 94, 1, 35, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15617, 420, 130, 1, 35, "Subsubtitle"],
+Cell[15750, 423, 10031, 225, 1288, "Input",
+ InitializationCell->True],
+Cell[CellGroupData[{
+Cell[25806, 652, 106, 1, 34, "Subsubsection"],
+Cell[25915, 655, 1554, 32, 254, "Input",
+ InitializationCell->True],
+Cell[27472, 689, 91, 1, 35, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27600, 695, 149, 2, 35, "Input"],
+Cell[27752, 699, 165, 2, 35, "Output"]
+}, Open  ]],
+Cell[27932, 704, 94, 1, 35, "Input"],
+Cell[28029, 707, 94, 1, 35, "Input"]
+}, Open  ]],
+Cell[28138, 711, 96, 1, 35, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[28271, 717, 162, 2, 62, "Subtitle"],
+Cell[CellGroupData[{
+Cell[28458, 723, 103, 1, 35, "Subsubtitle"],
+Cell[28564, 726, 745, 12, 76, "Text"],
+Cell[29312, 740, 96, 1, 35, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[29445, 746, 216, 3, 35, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[29686, 753, 109, 1, 46, "Subsection"],
+Cell[CellGroupData[{
+Cell[29820, 758, 106, 1, 34, "Subsubsection"],
+Cell[29929, 761, 704, 18, 119, "Input"],
+Cell[30636, 781, 91, 1, 52, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30764, 787, 1856, 39, 339, "Input"],
+Cell[32623, 828, 721, 11, 52, "Output"],
+Cell[33347, 841, 736, 11, 52, "Output"],
+Cell[34086, 854, 723, 11, 52, "Output"],
+Cell[34812, 867, 770, 12, 52, "Output"],
+Cell[35585, 881, 773, 12, 52, "Output"],
+Cell[36361, 895, 777, 12, 52, "Output"],
+Cell[37141, 909, 785, 12, 52, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37963, 926, 588, 13, 119, "Input"],
+Cell[38554, 941, 127, 1, 52, "Output"],
+Cell[38684, 944, 191, 2, 52, "Output"],
+Cell[38878, 948, 201, 2, 52, "Output"]
+}, Open  ]],
+Cell[39094, 953, 94, 1, 35, "Input"],
+Cell[39191, 956, 94, 1, 35, "Input"]
+}, Open  ]],
+Cell[39300, 960, 91, 1, 35, "Input"],
+Cell[39394, 963, 94, 1, 35, "Input"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[39525, 969, 227, 3, 35, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[39777, 976, 110, 1, 34, "Subsubsection"],
+Cell[39890, 979, 543, 13, 168, "Input"],
+Cell[40436, 994, 94, 1, 35, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[40567, 1000, 454, 10, 119, "Input"],
+Cell[41024, 1012, 885, 20, 97, "Output"],
+Cell[41912, 1034, 336, 8, 52, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[42285, 1047, 515, 12, 75, "Input"],
+Cell[42803, 1061, 116, 1, 52, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[42956, 1067, 1150, 26, 124, "Input"],
+Cell[44109, 1095, 223, 4, 35, "Output"],
+Cell[44335, 1101, 223, 4, 35, "Output"],
+Cell[44561, 1107, 360, 9, 35, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[44958, 1121, 636, 14, 80, "Input"],
+Cell[45597, 1137, 161, 3, 35, "Output"],
+Cell[45761, 1142, 171, 3, 35, "Output"],
+Cell[CellGroupData[{
+Cell[45957, 1149, 547, 13, 58, "Input"],
+Cell[46507, 1164, 348, 4, 300, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[46882, 1172, 94, 1, 35, "Input"],
+Cell[46979, 1175, 94, 1, 35, "Input"]
+}, Open  ]],
+Cell[47088, 1179, 141, 2, 58, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[47266, 1186, 96, 1, 103, "Title"],
+Cell[CellGroupData[{
+Cell[47387, 1191, 158, 2, 62, "Subtitle"],
+Cell[CellGroupData[{
+Cell[47570, 1197, 108, 1, 35, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[47703, 1202, 118, 1, 46, "Subsection"],
+Cell[47824, 1205, 52, 1, 35, "Input"],
+Cell[47879, 1208, 73, 1, 35, "Input"],
+Cell[CellGroupData[{
+Cell[47977, 1213, 124, 2, 35, "Input"],
+Cell[48104, 1217, 626, 10, 58, "Output"]
+}, Open  ]],
+Cell[48745, 1230, 127, 2, 35, "Input"],
+Cell[CellGroupData[{
+Cell[48897, 1236, 229, 4, 35, "Input"],
+Cell[49129, 1242, 450, 7, 58, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[49616, 1254, 1382, 26, 102, "Input"],
+Cell[51001, 1282, 424, 7, 35, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[51462, 1294, 610, 14, 80, "Input"],
+Cell[52075, 1310, 286, 4, 35, "Output"]
+}, Open  ]],
+Cell[52376, 1317, 94, 1, 35, "Input"]
+}, Open  ]],
+Cell[52485, 1321, 484, 10, 75, "Input"],
+Cell[CellGroupData[{
+Cell[52994, 1335, 618, 13, 146, "Input"],
+Cell[53615, 1350, 235, 4, 35, "Output"],
+Cell[53853, 1356, 372, 8, 35, "Output"],
+Cell[54228, 1366, 232, 4, 58, "Input"],
+Cell[54463, 1372, 94, 1, 35, "Input"],
+Cell[54560, 1375, 89, 1, 58, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[54686, 1381, 952, 25, 124, "Input"],
+Cell[55641, 1408, 120, 2, 35, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[55798, 1415, 620, 14, 124, "Input"],
+Cell[56421, 1431, 966, 32, 99, "Output"]
+}, Closed]],
+Cell[57402, 1466, 94, 1, 27, "Input"],
+Cell[CellGroupData[{
+Cell[57521, 1471, 530, 12, 58, "Input"],
+Cell[58054, 1485, 1166, 37, 159, "Output"]
+}, Closed]],
+Cell[59235, 1525, 96, 1, 27, "Input"],
+Cell[CellGroupData[{
+Cell[59356, 1530, 1043, 24, 146, "Input"],
+Cell[60402, 1556, 594, 16, 75, "Output"]
+}, Open  ]],
+Cell[61011, 1575, 172, 2, 35, "Input"],
+Cell[CellGroupData[{
+Cell[61208, 1581, 836, 13, 80, "Input"],
+Cell[62047, 1596, 289, 6, 46, "Print"],
+Cell[62339, 1604, 544, 8, 54, "Output"],
+Cell[62886, 1614, 513, 7, 35, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[63436, 1626, 156, 2, 58, "Input"],
+Cell[63595, 1630, 258, 4, 54, "Output"],
+Cell[63856, 1636, 223, 3, 35, "Output"]
+}, Open  ]],
+Cell[64094, 1642, 87, 1, 58, "Input"],
+Cell[64184, 1645, 147, 2, 35, "Input"],
+Cell[64334, 1649, 94, 1, 35, "Input"]
+}, Closed]],
+Cell[64443, 1653, 96, 1, 27, "Input"]
+}, Open  ]],
+Cell[64554, 1657, 94, 1, 35, "Input"],
+Cell[CellGroupData[{
+Cell[64673, 1662, 97, 1, 62, "Subtitle"],
+Cell[64773, 1665, 143, 3, 35, "Input"],
+Cell[64919, 1670, 91, 1, 35, "Input"]
+}, Open  ]],
+Cell[65025, 1674, 92, 1, 35, "Input"]
+}, Open  ]],
+Cell[65132, 1678, 45, 0, 58, "Input"],
+Cell[CellGroupData[{
+Cell[65202, 1682, 181, 8, 36, "Subsubtitle"],
+Cell[65386, 1692, 642, 14, 202, "Subsection"],
+Cell[66031, 1708, 93, 3, 58, "Subsection"],
+Cell[CellGroupData[{
+Cell[66149, 1715, 586, 16, 72, "Input"],
+Cell[66738, 1733, 91, 1, 35, "Output"]
+}, Open  ]],
+Cell[66844, 1737, 26, 0, 35, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[66907, 1742, 953, 34, 105, "Subtitle"],
+Cell[67863, 1778, 93, 2, 34, "Text"],
+Cell[CellGroupData[{
+Cell[67981, 1784, 113, 1, 46, "Subsection"],
+Cell[68097, 1787, 96, 3, 55, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[68218, 1794, 1571, 37, 314, "Input"],
+Cell[69792, 1833, 296, 6, 27, "Print"],
+Cell[70091, 1841, 91, 1, 35, "Output"],
+Cell[CellGroupData[{
+Cell[70207, 1846, 57, 1, 35, "Input"],
+Cell[70267, 1849, 137, 1, 35, "Output"]
+}, Open  ]],
+Cell[70419, 1853, 26, 0, 35, "Input"]
+}, Open  ]]
+}, Open  ]],
+Cell[70472, 1857, 26, 0, 35, "Input"]
+}, Open  ]],
+Cell[70513, 1860, 89, 1, 58, "Input"]
+}, Open  ]],
+Cell[70617, 1864, 89, 1, 58, "Input"],
+Cell[CellGroupData[{
+Cell[70731, 1869, 98, 1, 103, "Title"],
+Cell[CellGroupData[{
+Cell[70854, 1874, 103, 1, 62, "Subtitle"],
+Cell[CellGroupData[{
+Cell[70982, 1879, 106, 1, 46, "Subsection"],
+Cell[71091, 1882, 3880, 103, 652, "Input"],
+Cell[74974, 1987, 96, 1, 35, "Input"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[75107, 1993, 96, 1, 35, "Subsection"],
+Cell[75206, 1996, 172, 6, 90, "Input"],
+Cell[75381, 2004, 60, 0, 34, "Text"],
+Cell[75444, 2006, 122, 6, 108, "Input"],
+Cell[75569, 2014, 89, 1, 58, "Input"],
+Cell[75661, 2017, 94, 1, 35, "Input"]
+}, Open  ]],
+Cell[75770, 2021, 96, 1, 35, "Input"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[75903, 2027, 220, 3, 62, "Subtitle"],
+Cell[CellGroupData[{
+Cell[76148, 2034, 106, 1, 46, "Subsection"],
+Cell[76257, 2037, 254, 6, 102, "Input"],
+Cell[76514, 2045, 96, 1, 35, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[76647, 2051, 96, 1, 46, "Subsection"],
+Cell[76746, 2054, 59, 1, 35, "Input"],
+Cell[76808, 2057, 61, 1, 35, "Input"],
+Cell[76872, 2060, 89, 1, 58, "Input"],
+Cell[76964, 2063, 94, 1, 35, "Input"]
+}, Open  ]],
+Cell[77073, 2067, 96, 1, 35, "Input"]
+}, Open  ]],
+Cell[77184, 2071, 89, 1, 58, "Input"],
+Cell[77276, 2074, 87, 1, 58, "Input"]
+}, Open  ]],
+Cell[77378, 2078, 87, 1, 58, "Input"],
+Cell[CellGroupData[{
+Cell[77490, 2083, 806, 29, 159, "Subsubtitle"],
+Cell[78299, 2114, 45, 0, 58, "Input"],
+Cell[CellGroupData[{
+Cell[78369, 2118, 416, 16, 87, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[78810, 2138, 505, 13, 146, "Input"],
+Cell[79318, 2153, 137, 1, 35, "Output"]
+}, Open  ]],
+Cell[79470, 2157, 26, 0, 35, "Input"]
+}, Open  ]],
+Cell[79511, 2160, 45, 0, 58, "Input"],
+Cell[CellGroupData[{
+Cell[79581, 2164, 181, 8, 36, "Subsubtitle"],
+Cell[79765, 2174, 642, 14, 202, "Subsection"],
+Cell[80410, 2190, 93, 3, 58, "Subsection"],
+Cell[CellGroupData[{
+Cell[80528, 2197, 586, 16, 72, "Input"],
+Cell[81117, 2215, 91, 1, 35, "Output"]
+}, Open  ]],
+Cell[81223, 2219, 26, 0, 35, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[81286, 2224, 883, 33, 105, "Subtitle"],
+Cell[82172, 2259, 93, 2, 34, "Text"],
+Cell[CellGroupData[{
+Cell[82290, 2265, 113, 1, 46, "Subsection"],
+Cell[82406, 2268, 96, 3, 55, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[82527, 2275, 1571, 37, 314, "Input"],
+Cell[84101, 2314, 296, 6, 27, "Print"],
+Cell[84400, 2322, 91, 1, 35, "Output"],
+Cell[CellGroupData[{
+Cell[84516, 2327, 57, 1, 35, "Input"],
+Cell[84576, 2330, 137, 1, 35, "Output"]
+}, Open  ]],
+Cell[84728, 2334, 26, 0, 35, "Input"]
+}, Open  ]]
+}, Open  ]],
+Cell[84781, 2338, 26, 0, 35, "Input"]
+}, Open  ]],
+Cell[84822, 2341, 89, 1, 58, "Input"]
+}, Open  ]],
+Cell[84926, 2345, 26, 0, 35, "Input"],
+Cell[84955, 2347, 45, 0, 58, "Input"],
+Cell[85003, 2349, 45, 0, 58, "Input"],
+Cell[85051, 2351, 80, 1, 80, "Input"],
+Cell[85134, 2354, 80, 1, 80, "Input"],
+Cell[85217, 2357, 45, 0, 58, "Input"],
+Cell[85265, 2359, 26, 0, 35, "Input"],
+Cell[85294, 2361, 26, 0, 35, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

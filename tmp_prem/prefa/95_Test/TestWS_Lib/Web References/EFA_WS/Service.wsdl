@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.posta.si/EFA" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.posta.si/EFA" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.posta.si/EFA">
+      <s:element name="PosljiPaket">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="paketXml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PosljiPaketResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PosljiPaketResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PosljiPaketZip">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="paketZip" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PosljiPaketZipResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PosljiPaketZipResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StevilkaSeje">
+        <s:complexType />
+      </s:element>
+      <s:element name="StevilkaSejeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="StevilkaSejeResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PaketStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="paketid" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PaketStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PaketStatusResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PaketShema">
+        <s:complexType />
+      </s:element>
+      <s:element name="PaketShemaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PaketShemaResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PaketStatusShema">
+        <s:complexType />
+      </s:element>
+      <s:element name="PaketStatusShemaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PaketStatusShemaResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PaketTipZalogaVrednosti">
+        <s:complexType />
+      </s:element>
+      <s:element name="PaketTipZalogaVrednostiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PaketTipZalogaVrednostiResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PaketStatusZalogaVrednosti">
+        <s:complexType />
+      </s:element>
+      <s:element name="PaketStatusZalogaVrednostiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PaketStatusZalogaVrednostiResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PodrocjaZalogaVrednosti">
+        <s:complexType />
+      </s:element>
+      <s:element name="PodrocjaZalogaVrednostiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PodrocjaZalogaVrednostiResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="PosljiPaketSoapIn">
+    <wsdl:part name="parameters" element="tns:PosljiPaket" />
+  </wsdl:message>
+  <wsdl:message name="PosljiPaketSoapOut">
+    <wsdl:part name="parameters" element="tns:PosljiPaketResponse" />
+  </wsdl:message>
+  <wsdl:message name="PosljiPaketZipSoapIn">
+    <wsdl:part name="parameters" element="tns:PosljiPaketZip" />
+  </wsdl:message>
+  <wsdl:message name="PosljiPaketZipSoapOut">
+    <wsdl:part name="parameters" element="tns:PosljiPaketZipResponse" />
+  </wsdl:message>
+  <wsdl:message name="StevilkaSejeSoapIn">
+    <wsdl:part name="parameters" element="tns:StevilkaSeje" />
+  </wsdl:message>
+  <wsdl:message name="StevilkaSejeSoapOut">
+    <wsdl:part name="parameters" element="tns:StevilkaSejeResponse" />
+  </wsdl:message>
+  <wsdl:message name="PaketStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:PaketStatus" />
+  </wsdl:message>
+  <wsdl:message name="PaketStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:PaketStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="PaketShemaSoapIn">
+    <wsdl:part name="parameters" element="tns:PaketShema" />
+  </wsdl:message>
+  <wsdl:message name="PaketShemaSoapOut">
+    <wsdl:part name="parameters" element="tns:PaketShemaResponse" />
+  </wsdl:message>
+  <wsdl:message name="PaketStatusShemaSoapIn">
+    <wsdl:part name="parameters" element="tns:PaketStatusShema" />
+  </wsdl:message>
+  <wsdl:message name="PaketStatusShemaSoapOut">
+    <wsdl:part name="parameters" element="tns:PaketStatusShemaResponse" />
+  </wsdl:message>
+  <wsdl:message name="PaketTipZalogaVrednostiSoapIn">
+    <wsdl:part name="parameters" element="tns:PaketTipZalogaVrednosti" />
+  </wsdl:message>
+  <wsdl:message name="PaketTipZalogaVrednostiSoapOut">
+    <wsdl:part name="parameters" element="tns:PaketTipZalogaVrednostiResponse" />
+  </wsdl:message>
+  <wsdl:message name="PaketStatusZalogaVrednostiSoapIn">
+    <wsdl:part name="parameters" element="tns:PaketStatusZalogaVrednosti" />
+  </wsdl:message>
+  <wsdl:message name="PaketStatusZalogaVrednostiSoapOut">
+    <wsdl:part name="parameters" element="tns:PaketStatusZalogaVrednostiResponse" />
+  </wsdl:message>
+  <wsdl:message name="PodrocjaZalogaVrednostiSoapIn">
+    <wsdl:part name="parameters" element="tns:PodrocjaZalogaVrednosti" />
+  </wsdl:message>
+  <wsdl:message name="PodrocjaZalogaVrednostiSoapOut">
+    <wsdl:part name="parameters" element="tns:PodrocjaZalogaVrednostiResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceSoap">
+    <wsdl:operation name="PosljiPaket">
+      <wsdl:input message="tns:PosljiPaketSoapIn" />
+      <wsdl:output message="tns:PosljiPaketSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PosljiPaketZip">
+      <wsdl:input message="tns:PosljiPaketZipSoapIn" />
+      <wsdl:output message="tns:PosljiPaketZipSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StevilkaSeje">
+      <wsdl:input message="tns:StevilkaSejeSoapIn" />
+      <wsdl:output message="tns:StevilkaSejeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PaketStatus">
+      <wsdl:input message="tns:PaketStatusSoapIn" />
+      <wsdl:output message="tns:PaketStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PaketShema">
+      <wsdl:input message="tns:PaketShemaSoapIn" />
+      <wsdl:output message="tns:PaketShemaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PaketStatusShema">
+      <wsdl:input message="tns:PaketStatusShemaSoapIn" />
+      <wsdl:output message="tns:PaketStatusShemaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PaketTipZalogaVrednosti">
+      <wsdl:input message="tns:PaketTipZalogaVrednostiSoapIn" />
+      <wsdl:output message="tns:PaketTipZalogaVrednostiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PaketStatusZalogaVrednosti">
+      <wsdl:input message="tns:PaketStatusZalogaVrednostiSoapIn" />
+      <wsdl:output message="tns:PaketStatusZalogaVrednostiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PodrocjaZalogaVrednosti">
+      <wsdl:input message="tns:PodrocjaZalogaVrednostiSoapIn" />
+      <wsdl:output message="tns:PodrocjaZalogaVrednostiSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="PosljiPaket">
+      <soap:operation soapAction="http://www.posta.si/EFA/PosljiPaket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PosljiPaketZip">
+      <soap:operation soapAction="http://www.posta.si/EFA/PosljiPaketZip" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StevilkaSeje">
+      <soap:operation soapAction="http://www.posta.si/EFA/StevilkaSeje" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PaketStatus">
+      <soap:operation soapAction="http://www.posta.si/EFA/PaketStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PaketShema">
+      <soap:operation soapAction="http://www.posta.si/EFA/PaketShema" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PaketStatusShema">
+      <soap:operation soapAction="http://www.posta.si/EFA/PaketStatusShema" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PaketTipZalogaVrednosti">
+      <soap:operation soapAction="http://www.posta.si/EFA/PaketTipZalogaVrednosti" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PaketStatusZalogaVrednosti">
+      <soap:operation soapAction="http://www.posta.si/EFA/PaketStatusZalogaVrednosti" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PodrocjaZalogaVrednosti">
+      <soap:operation soapAction="http://www.posta.si/EFA/PodrocjaZalogaVrednosti" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="PosljiPaket">
+      <soap12:operation soapAction="http://www.posta.si/EFA/PosljiPaket" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PosljiPaketZip">
+      <soap12:operation soapAction="http://www.posta.si/EFA/PosljiPaketZip" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StevilkaSeje">
+      <soap12:operation soapAction="http://www.posta.si/EFA/StevilkaSeje" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PaketStatus">
+      <soap12:operation soapAction="http://www.posta.si/EFA/PaketStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PaketShema">
+      <soap12:operation soapAction="http://www.posta.si/EFA/PaketShema" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PaketStatusShema">
+      <soap12:operation soapAction="http://www.posta.si/EFA/PaketStatusShema" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PaketTipZalogaVrednosti">
+      <soap12:operation soapAction="http://www.posta.si/EFA/PaketTipZalogaVrednosti" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PaketStatusZalogaVrednosti">
+      <soap12:operation soapAction="http://www.posta.si/EFA/PaketStatusZalogaVrednosti" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PodrocjaZalogaVrednosti">
+      <soap12:operation soapAction="http://www.posta.si/EFA/PodrocjaZalogaVrednosti" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
+      <soap:address location="http://localhost:1792/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
+      <soap12:address location="http://localhost:1792/Service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

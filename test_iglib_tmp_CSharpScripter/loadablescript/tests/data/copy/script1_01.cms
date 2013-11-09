@@ -1,0 +1,44 @@
+﻿
+// CONTENTS TO BE PUT INTO CSM FILE - CoMmandSharp  file.
+
+using System;
+using System.Collections.Generic;
+// using System.Linq;
+using System.Text;
+
+using IG.Lib;
+using System.Windows.Forms;
+
+namespace IG.Lib
+{
+
+    public class TestClass : LoadableScriptBase, ILoadableScript
+    {
+
+        public TestClass()
+            : base()
+        {  }
+
+        public TestClass(string [] args) : base(args)
+        {  }
+
+        /// <summary>Initializes the current object.</summary>
+        protected override void InitializeThis(string[] arguments)
+        {
+            Console.WriteLine();
+            Console.WriteLine("TestLoadable object: initialization performed.");
+            Console.WriteLine();
+        }
+
+        /// <summary>Runs action of the current object.</summary>
+        /// <param name="arguments">Command-line arguments of the action.</param>
+        protected override string RunThis(string[] arguments)
+        {
+            MessageBox.Show("This is a testmessage from the file 'script1.cms'.");
+            return null;
+        }
+    }
+}
+
+
+

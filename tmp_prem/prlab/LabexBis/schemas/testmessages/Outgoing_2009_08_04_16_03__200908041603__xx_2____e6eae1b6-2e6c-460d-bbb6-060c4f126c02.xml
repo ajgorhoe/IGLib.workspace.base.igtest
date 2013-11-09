@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- 1  encoding: UTF-8 ali windows-1250 -->
+<!--  1	 -->
+<MCCI_MT000100HT02.Message xmlns="urn:hl7-org:v3" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:voc="urn:hl7-org:v3/voc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 MCCI_MT000100HT02.xsd">
+  <!--  1	Vrednost atributa extension pomeni zaporedno številko sporočila. X je BPI zdravstvene ustanove (velja enako za celotno ostalo sporočilo).   -->
+  <id root="1.2.3.4.1000.61.100" extension="200908041603__xx_2" />
+  <!--  1	Čas kreiranja sporočila (YYYYMMDDHHMI) - format velja za celotno ostalo sporočilo.   -->
+  <creationTime value="200908041603" />
+  <!--  1	"Možne vrednosti (ujemati se more s ControlActEvent.code):
+            - POXX_HN111003 (Activate or Revise Active Specimen Observation Event)
+            - POXX_HN111004 (Complete Specimen Observation Event)
+            - POXX_HN111005 (Revise Specimen Observation Event)."   -->
+  <interactionId root="2.1" extension="POXX_HN111004" />
+  <!--  1	Konstanta.   -->
+  <processingCode code="P" />
+  <!--  1	Konstanta.   -->
+  <processingModeCode code="T" />
+  <!--  1	Konstanta.   -->
+  <acceptAckCode code="AL" />
+  <!--  1	Prejemnik sporočila.   -->
+  <communicationFunctionRCV type="CommunicationFunction" association="communicationFunction">
+    <!--  1	Konstanta.  -->
+    <typeCode code="RCV" />
+    <!--  1	  -->
+    <deviceRCV type="Device" classCode="DEV" determinerCode="INSTANCE" association="entity">
+      <!--  1	V extensionu se poda šifro prejemnika (programa LABEX ali b21App), v root pa OID prejemnika (1.2.3.4.1000.61.x.1 za Labex in 1.2.3.4.1000.60.x.1 za Birpis)  -->
+      <id root="1.2.3.4.1000.60.100.1" extension="b21App" />
+    </deviceRCV>
+  </communicationFunctionRCV>
+  <!--  1	Odzivnik sporočila   -->
+  <communicationFunctionRSP type="CommunicationFunction" association="communicationFunction">
+    <!--  1	Konstanta.  -->
+    <typeCode code="RSP" />
+    <!--  1	  -->
+    <deviceRSP type="Device" classCode="DEV" determinerCode="INSTANCE" association="entity">
+      <!--  1	V extensionu se poda šifro odzivnika (programa LABEX ali b21App), v root pa OID odzivnika (1.2.3.4.1000.61.x.1 za Labex in 1.2.3.4.1000.60.x.1 za Birpis)  -->
+      <id root="1.2.3.4.1000.60.100.1" extension="Labex" />
+    </deviceRSP>
+  </communicationFunctionRSP>
+  <!--  1	Pošiljatelj sporočila.   -->
+  <communicationFunctionSND type="CommunicationFunction" association="communicationFunction">
+    <!--  1	Konstanta.  -->
+    <typeCode code="SND" />
+    <!--  1	  -->
+    <deviceSND type="Device" classCode="DEV" determinerCode="INSTANCE" association="entity">
+      <!--  1	V extensionu se poda šifro pošiljatelja (programa LABEX ali b21App), v root pa OID pošiljatelja (1.2.3.4.1000.61.x.1 za Labex in 1.2.3.4.1000.60.x.1 za Birpis)  -->
+      <id root="1.2.3.4.1000.61.100.1" extension="Labex" />
+    </deviceSND>
+  </communicationFunctionSND>
+  <!--  0..n	Konstanta.   -->
+  <attachment type="Attachment" association="attachment">
+    <!--  1	ID priponke  -->
+    <id root="1.2.3.4.1122.13" extension="15" />
+    <!--  1	Vsebina priponke kot inner XML  -->
+    <text encoding="UTF-8" mediaType="text/xml">&lt;Findings&gt;&lt;Head&gt;&lt;Header&gt;&lt;/Header&gt;&lt;Footer&gt;&lt;/Footer&gt;&lt;Heading&gt;PATOHISTOLOŠKI IZVID&lt;/Heading&gt;&lt;OrderCode&gt;H14/09&lt;/OrderCode&gt;&lt;Patient&gt;&lt;Name&gt;GORAN&lt;/Name&gt;&lt;FamilyName&gt;+++BAMBIČ&lt;/FamilyName&gt;&lt;Address&gt;SREDNJE BITNJE 14&lt;/Address&gt;&lt;Sex&gt;M&lt;/Sex&gt;&lt;DateOfBirth&gt;10.1.1977&lt;/DateOfBirth&gt;&lt;Age&gt;32&lt;/Age&gt;&lt;AgeMonths&gt;390&lt;/AgeMonths&gt;&lt;PersonId&gt;4&lt;/PersonId&gt;&lt;/Patient&gt;&lt;Physician&gt;&lt;Name&gt;Izidor&lt;/Name&gt;&lt;FamilyName&gt;Kern&lt;/FamilyName&gt;&lt;MiddleNames&gt;&lt;/MiddleNames&gt;&lt;Appellation&gt;Zdravnik&lt;/Appellation&gt;&lt;/Physician&gt;&lt;Orderer&gt;LAB. ZA CITOLOGIJO IN PATOLOG&lt;/Orderer&gt;&lt;OrdererAddress&gt;Tržaška 12&lt;/OrdererAddress&gt;&lt;SampleTime&gt;1.1.0001 0:00:00&lt;/SampleTime&gt;&lt;ReceptionTime&gt;30.7.2009 13:32:05&lt;/ReceptionTime&gt;&lt;CompletionTime&gt;4.8.2009 16:02:30&lt;/CompletionTime&gt;&lt;/Head&gt;&lt;FormerFindings&gt;&lt;Finding&gt;&lt;FindingReference&gt;P1/09&lt;/FindingReference&gt;&lt;Remark&gt;&lt;/Remark&gt;&lt;/Finding&gt;&lt;Finding&gt;&lt;FindingReference&gt;P2/09&lt;/FindingReference&gt;&lt;Remark&gt;&lt;/Remark&gt;&lt;/Finding&gt;&lt;/FormerFindings&gt;&lt;/Findings&gt;</text>
+  </attachment>
+  <!--  1	   -->
+  <MCAI_MT000001HT02.ControlActEvent type="ControlAct" classCode="CACT" moodCode="EVN" association="controlAct">
+    <!--  1	"Obvezno ujemanje z InteractionId. Možne vrednosti za code so:
+            - POXX_TE111003 (activate, revise active)
+            - POXX_TE111004 (complete)
+            - POXX_TE111005 (revise completed)."  -->
+    <code code="POXX_TE111004" codeSystemName="HTB Supplemental" />
+    <!--  1	Vsebina sporočila - konstanta.  -->
+    <subject type="ActRelationship" typeCode="SUBJ" association="outboundRelationship">
+      <!--  1	  -->
+      <POXX_MT111000HT01.SpecimenObservationEvent classCode="SPCOBS" moodCode="EVN" type="Observation">
+        <!--  1	Protokolna številka.  -->
+        <id root="1.2.3.4.1000.61.x.6" extension="H14/09" />
+        <!--  1	Konstanta.  -->
+        <code code="LAB" codeSystemName="HTB Supplemental" />
+        <!--  0..1	Morebitni komentarji/opombe/mnenja za izvid, vzorec.  -->
+        <!--  1	"Status naročila, možne vrednosti za code so:
+              - active (nepopolnoma zaključeno naročilo, lahko vsebuje preiskave brez rezultatov, s predhodnimi - active in istočasno tudi končnimi - completed rezultati)
+              - completed (v tem primeru morajo biti tudi vsi rezultati končni - completed) "  -->
+        <statusCode code="completed" />
+        <!--  1	Časi pomembni v obravnavi naročila.  -->
+        <effectiveTime dataType="IVL_TS" operator="I">
+          <!--  1	Čas kreiranja naročila v LAB sistemu (čas začetka izvajanja preiskave).  -->
+          <low value="200907301332" inclusive="true" />
+          <!--  0..1	Čas končanja naročila (tiskanje vseh rezultatov). V primeru popravljanja že zaključenega izvida se lahko naknadno spremeni.  -->
+          <high value="200908041602" inclusive="true" />
+        </effectiveTime>
+        <!--  1	Podatki o pacientu - Konstanta  -->
+        <recordTarget typeCode="RCT">
+          <!--  1	Konstanta  -->
+          <Patient type="Patient" classCode="PAT" association="role">
+            <!--  1	Id pacienta  -->
+            <id root="1.2.3.4.1000.60.x.2" extension="  33710" />
+          </Patient>
+        </recordTarget>
+        <!--  0..1	Izvajalec preiskave  -->
+        <author type="Participation" typeCode="AUT" association="participation">
+          <!--  1	  -->
+          <EmploymentStaff type="Employee" classCode="EMP" association="role">
+            <!--  1	Koda izvajalca preiskave v lab.  -->
+            <id root="1.2.3.4.1122.11" extension="XXXXX" />
+            <!--  1	  -->
+          </EmploymentStaff>
+          <!--  0..1	  -->
+        </author>
+        <!--  1	Avtorizator preiskave  -->
+        <verifier type="Participation" typeCode="AUT" association="participation">
+          <!--  1	  -->
+          <EmploymentStaff type="Employee" classCode="EMP" association="role">
+            <!--  1	Koda avtorizatorja preiskave  -->
+            <id root="1.2.3.4.1122.11" extension="07116" />
+            <!--  1	  -->
+          </EmploymentStaff>
+          <!--  1	  -->
+        </verifier>
+        <!--  1	  -->
+        <inFulfillmentOf type="ActRelationship" typeCode="FLFS" association="outboundRelationship">
+          <!--  1	  -->
+          <SpecimenObservationOrder>
+            <!--  1	Številka naročila (kot je bilo pridobljeno s strani BIS)  -->
+            <id root="1.2.3.4.1000.60.x.3" extension="55827" />
+          </SpecimenObservationOrder>
+        </inFulfillmentOf>
+      </POXX_MT111000HT01.SpecimenObservationEvent>
+    </subject>
+  </MCAI_MT000001HT02.ControlActEvent>
+</MCCI_MT000100HT02.Message>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sql="urn:schemas-microsoft-com:mapping-schema">
+
+<xsd:annotation>
+   <xsd:appinfo>
+    <sql:relationship name="pakettip"
+          parent="EfaPaket"
+          parent-key="PaketTipId"
+          child="EfaPaketTip"
+          child-key="Id" />
+    <sql:relationship name="paketstatus"
+          parent="EfaPaket"
+          parent-key="PaketStatusId"
+          child="EfaPaketStatus"
+          child-key="Id"/>
+   </xsd:appinfo>
+ </xsd:annotation>
+
+        <xsd:element name="EfaPaket"  sql:relation="EfaPaket" 
+                                      sql:key-fields="Id" >
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="Id" type="xsd:int" minOccurs="1" />
+              <xsd:element name="PaketTipId" type="xsd:byte" minOccurs="1" />
+              <xsd:element name="PaketTipOpis" type="xsd:IDREFS" minOccurs="1" 
+                                              sql:relation="EfaPaketTip" 
+                                              sql:field="Opis"
+                                              sql:relationship="pakettip"/>
+              <xsd:element name="PaketDatum" type="xsd:date" minOccurs="1" />
+              <xsd:element name="SteviloZapisov" type="xsd:int" minOccurs="1" />
+              <xsd:element name="VsotaDokumentDatum" type="xsd:float" minOccurs="1" />
+              <xsd:element name="VsotaCenaNeto" type="xsd:decimal" minOccurs="1" />
+              <xsd:element name="SteviloZapisovKontrola" type="xsd:int" minOccurs="1" />
+              <xsd:element name="VsotaDokumentDatumKontrola" type="xsd:float" minOccurs="1" />
+              <xsd:element name="VsotaCenaNetoKontrola" type="xsd:decimal" minOccurs="1" />
+              <xsd:element name="PaketStatusId" type="xsd:byte" minOccurs="1" />
+              <xsd:element name="PaketStatusOpis" type="xsd:IDREFS" minOccurs="1" 
+                                              sql:relation="EfaPaketStatus" 
+                                              sql:field="Opis"
+                                              sql:relationship="paketstatus"/>
+              <xsd:element name="NapakaSporocilo" type="xsd:string" minOccurs="1" />
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+
+</xsd:schema>

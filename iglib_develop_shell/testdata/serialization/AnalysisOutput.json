@@ -1,0 +1,124 @@
+{
+  "NumConstraints": 2,
+  "NumEqualityConstraints": 0,
+  "NumObjectives": 1,
+  "NumParameters": 3,
+  "Parameters": {
+    "Elements": [
+      0.1111,
+      0.2222,
+      0.33330000000000004
+    ],
+    "Length": 3
+  },
+  "RequestedConstraintGradients": true,
+  "RequestedConstraintHessians": true,
+  "RequestedConstraints": true,
+  "RequestedObjective": true,
+  "RequestedObjectiveGradient": true,
+  "RequestedObjectiveHessian": true,
+  "CalculatedConstraintGradients": true,
+  "CalculatedConstraintHessians": true,
+  "CalculatedConstraints": true,
+  "CalculatedObjective": true,
+  "CalculatedObjectiveGradient": true,
+  "CalculatedObjectiveHessian": true,
+  "ConstraintGradients": [
+    {
+      "Elements": [
+        1000.01,
+        1000.02,
+        1000.03
+      ],
+      "Length": 3
+    },
+    {
+      "Elements": [
+        2000.01,
+        2000.02,
+        2000.03
+      ],
+      "Length": 3
+    }
+  ],
+  "ConstraintHessians": [
+    {
+      "ColumnCount": 3,
+      "Components": [
+        [
+          1.0010009999999998,
+          1.002001,
+          1.0030009999999998
+        ],
+        [
+          1.002001,
+          1.002002,
+          1.003002
+        ],
+        [
+          1.0030009999999998,
+          1.003002,
+          1.0030029999999999
+        ]
+      ],
+      "RowCount": 3
+    },
+    {
+      "ColumnCount": 3,
+      "Components": [
+        [
+          2.001001,
+          2.002001,
+          2.0030010000000003
+        ],
+        [
+          2.002001,
+          2.0020019999999996,
+          2.003002
+        ],
+        [
+          2.0030010000000003,
+          2.003002,
+          2.003003
+        ]
+      ],
+      "RowCount": 3
+    }
+  ],
+  "Constraints": [
+    200,
+    200
+  ],
+  "ErrorCode": 0,
+  "ErrorString": null,
+  "Objective": 1.1111,
+  "ObjectiveGradient": {
+    "Elements": [
+      10,
+      10,
+      10
+    ],
+    "Length": 3
+  },
+  "ObjectiveHessian": {
+    "ColumnCount": 3,
+    "Components": [
+      [
+        1.01,
+        2.01,
+        3.01
+      ],
+      [
+        2.01,
+        2.02,
+        3.02
+      ],
+      [
+        3.01,
+        3.02,
+        3.03
+      ]
+    ],
+    "RowCount": 3
+  }
+}

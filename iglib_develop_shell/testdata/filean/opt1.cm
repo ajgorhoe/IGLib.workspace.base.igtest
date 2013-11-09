@@ -1,0 +1,611 @@
+
+
+
+if { (0) [
+  *{ TEST OF PARSING UTILITIES: }
+
+  newvector{ vecvar [10] }
+  setmatrix{ mat 5 2 { } }
+
+  parsefiletest{ "parsed.dat",
+    "count", NULL[],
+    "scal", NULL[],
+    "vec", vecvar[1],
+    "mat", mat[],
+    "str", NULL[],
+    "str", NULL[],
+    "in",
+    "scal", NULL[],
+    "vec", vecvar[2],
+    "out",
+    "scal", NULL[],
+    "scal", NULL[],
+
+    "anpt", NULL[],
+    "scal", NULL[],
+
+    "stop"
+  
+  }
+  printvector{ vecvar[1] }
+  printvector{ vecvar[2] }
+
+  printmatrix{mat}
+
+  exit{}
+]}
+
+
+
+* {*********************************************************************
+
+  TESTING OPTIMIZATION ALGORITHMS IN Inverse
+
+File: opt/opt1.cm
+
+  This file describes how to prepare the command file for solution of
+an optimisation problem. The problem to solve is
+  minimize f(x,y)=( sin( sqrt(A*(x-CX)^2+B*(y-CY)^2) ) )^2
+subject to constraints
+  x>=TX+y^2
+and
+  y>=TY
+where A=0.1, B=0.005, CX=0.2, CY=-1, TX=0.6, and TY=1. The problem has solution
+x=1.6, y=1.
+
+  Evluation of objective and constraint functions and their derivatives
+does not require use of external simulation programme, so everything is
+evaluated inside the optimisation shell.
+  The typical command file structure is empfasized. It is divided into
+INITIALISATION part which contains user's preliminary definitions,
+ANALYSIS block which is executed at every analysis, and final ACTION part,
+where user tells the shell what to do.
+
+Author: Igor Gresovnik, November 1999
+
+************************************************************************}
+
+
+* {
+**************************  INITIALISATION PART:  *****************************
+  In this part auxiliary definitions are usually prepared, which will be used
+in the analysis and possibly action part. General settings like specification
+of shell output file often take place in this part. 
+*******************************************************************************
+}
+
+*{ We set output file where results and messages will be written: }
+setfile{outfile opt1.ct}
+
+*{ Definition of calculator variable which will serve for switching between
+output or not additional control information at certain points: }
+={controlout:0}
+
+*{ Definition of problem parameters; we can quickly change the problem by
+changing these parameters (see definition at the top): }
+={A:0.1}
+={B:0.005}
+={CX:0.2}
+={CY:-1}
+={TX:0.6}
+={TY:1}
+
+={pi:2*arcsin[1]}   *{ Definition of number pi }
+
+*{ Definition of two-parametric calculator function f, which is exactly the
+objective function, and its derivatives with respect to x and y; For
+clearness and simplicity, definitions are composed. Intermediate function
+ff enables user to add a penalty term to f, which is used when optimising
+by the simplex method: }
+
+${fr[x,y]:sqrt[A*(x-CX)*(x-CX)+B*(y-CY)*(y-CY)]}
+${ff[x,y]:(sin[fr[x,y]])CP(2)}
+${f[x,y]:ff[x,y]}
+${fder[x,y]:2*sin[fr[x,y]]*cos[fr[x,y]]*(1/fr[x,y])}
+${derx[x,y]:fder[x,y]*2*A*(x-CX)}
+${dery[x,y]:fder[x,y]*2*B*(y-CY)}
+
+*{ Definition of constraint functions g1(x,y)=TX+y^2-x and g2(x,y)=TY-y and
+their derivatives. Inequality constraint functions must be defined in such a
+way that the i-th constraint is written as g_i(x_1,x_2,...x_n) <= 0 : }
+
+${g1[x,y]:TX+y*y-x}
+${g2[x,y]:TY-y}
+${derg1x[x,y]:-1}
+${derg1y[x,y]:2*y}
+${derg2x[x,y]:0}
+${derg2y[x,y]:-1}
+
+
+*{ Definition of a penalty term, which will be added to the objective function
+when using the simplex method. Simplex algorithms can handle only unconstraint
+optimization, there we add a penalty term to the objective functions, which
+grows rapidly as constraints are violated, and is close to zero when
+constraints are satisfied. Minimum of the objective function with penalty term
+therefore approximately corresponds to the solution of the constraint
+optimisation problem. Two parameters are introduced for varying properties of
+the penalty term, with the following meaning: while the value of constraint
+function reaches hpen (positive value), the penalty term increases to sizepen.
+Since simplex algorithm is a non-derivative one, we don't need to define
+derivatives: }
+
+={hpen:0.000001}
+={sizepen:100000}
+${penalty[x]:sizepen*(((x+hpen)/hpen)CP(2)*positive[x+hpen])}
+${penalty1[x]:penalty1[x]}
+
+
+
+
+* {
+****************************  ANALYSIS BLOCK:  *******************************
+  This is argument block of the "analysis" command. User specifies how
+objective and constraint functions (and eventually their derivatives) are
+evaluated. This block is executed in every direct analysis, which can be
+required by an optimisation algorithm, for example. In this block user can
+obtain values of optimisation parameters through a pre-defined vector variable
+parammom, and must store calculated values to appropriate pre-defined variables
+before the end of the analysis block (e.g. objective function to scalar
+variable objectivemom, its derivatives to vector variable gradobjectivemom,
+values of constraint functions to scalar variable constraintmom, etc. It is
+important to know that the analysis command itself does not do enything, it
+just stores the position of the analysis block, so that the shell can interpret
+later when analysis is required:
+*******************************************************************************
+}
+
+analysis
+{
+  ={numan:numan+1}   *{ incrementation of user-defined analysis counter }
+  
+  *{ User outputs some aditional control information. Since this is put into
+  "if" branch, user can switch between having or not this output simply by
+  setting calculator variable controloutput to 1 or 0: }
+  if {(controlout)
+  [
+    write{"\nBEGINNING OF THE ANALYSIS BLOCK:\n"}
+    fwrite{"\nBEGINNING OF THE ANALYSIS BLOCK:\n"}
+    write{$numan ". analysis.\n\n"}
+    write{$numan ". analysis.\n\n"}
+    printvector{parammom}
+    fprintvector{parammom}
+  ]}
+  
+  * {
+  ****************************  ANALYSIS BLOCK:  *****************************
+  Evaluation of relevant quantities that are result of the direct analysis;
+  user obtain current values of optimisation parameters from a pre-difined
+  vector variables parammom and must store results to the corresponding
+  pre-defined variables. Calculator function getparammom is used for obtaining
+  components of vector parammom. Calculator function defined in the
+  initialisation part are used at evaluation of the appropriate functions:
+  *****************************************************************************
+  }
+  
+  
+  *{ Objective function at current parameters is evaluated and stored in scalar
+  variable objectivemom, then its gradient is evaluated and stored in vector
+  variable gradobjectivemom: }
+  setscalar{objectivemom ${f[getparammom[1],getparammom[2]]}}
+  setvector{ gradobjectivemom { 
+    ${derx[getparammom[1],getparammom[2]]}
+    ${dery[getparammom[1],getparammom[2]]} }
+  }
+    
+  *{ Value of the first constraint function is stored in scalar
+  constraintmom[1] while its gradient is stored in vector
+  gradconstraintmom[1]: }
+  setscalar{constraintmom[1] ${g1[getparammom[1],getparammom[2]]} }
+  setvector{ gradconstraintmom[1],
+  {
+    ${derg1x[getparammom[1],getparammom[2]]}
+    ${derg1y[getparammom[1],getparammom[2]]}
+  } }
+  
+  
+  *{ Value of the second constraint function is stored in scalar
+  constraintmom[2] while its gradient is stored in vector
+  gradconstraintmom[2]: }
+  setscalar{constraintmom[2] ${g2[getparammom[1],getparammom[2]]} }
+  setvector{ gradconstraintmom[2],
+  {
+    ${derg2x[getparammom[1],getparammom[2]]}
+    ${derg2y[getparammom[1],getparammom[2]]}
+  } }
+  
+  
+  *{ Some additional output is generated again in the case that calculator
+  variable controlout is not 0: }
+  if {(controlout)
+  [
+    printscalar{objectivemom}
+    fprintscalar{objectivemom}
+    printvector{gradobjectivemom}
+    fprintvector{gradobjectivemom}
+    write{"END OF THE ANALYSIS BLOCK.\n\n"}
+    fwrite{"END OF THE ANALYSIS BLOCK.\n\n"}
+  ]}
+
+  if {(quadratic)
+  [
+    *{ UNCONSTRAINED OPTIMIZATION, QUADRATIC OBJECTIVE FUNCTION: }
+    write{"Unconstrained, quadratic objective function\n"}
+    if {(getscalardim["constraintmom",-1]>0) [
+      deletescalarvar{constraintmom}
+    ]}
+    if {(getvectordim["gradconstraintmom",-1]>0) [
+      deletevectorvar{gradconstraintmom}
+    ]}
+    setscalar{ objectivemom ${getparammom[1]^2+getparammom[2]^2}}
+    setvector{ gradobjectivemom { 
+      ${2*getparammom[1]}
+      ${2*getparammom[2]} }
+  }
+    
+  ]}
+
+}
+
+
+
+* {
+******************************  ACTION PART:  *********************************
+  In this part user algorithms are run. User can run individual analyses at
+different parameters, tabulate values of the relevant functions along lines
+or in nodes of two-dimensional meshes, run optimisation, inverse analysis
+or Monte Carlo simulations. Before anything is done, it is important that all
+necessary input data is set (e.g. measurements and measurement errors in the
+case of inverse analysis) and that characteristic dimensions of the problem
+such as the number of parameters or number of constraints are known to the
+shell. Some input data (e.g. starting guess) is usualy input through arguments
+of functions that run the corresponding algorithms. Other must be stored in
+tha appropriate pre-defined variables, e.g. vector of measurements in vector
+variable measmom when dealing with inverse analysis. Relevant dimensions are
+given by allocating the appropriate pre-defined variables that are related to
+these dimensions, e.g. scalar variable constraintmom whose dimension equals
+the number of constraint functios.
+*******************************************************************************
+}
+
+*{ The number of constraint functions can be specified by setting the dimension
+of vector variable constraintmom, and the number of parameters can be specified
+by setting the dimension of the element of vector variable parammom. There is
+no need to specify the number of objective functions if there is only one. A
+test direct analysis is then run by the "analyse" function. Components of the
+current parameter vector (parammom) are also set below because the "analyse"
+function does not take the parameter vector as argument, but rather uses the
+pre-defined vector variable parammom. }
+newscalar{constraintmom[2]}
+setvector{parammom 2 {0.942478,0.314159}}
+
+
+*{The following defines whether a simple quadratic objective function
+  without constraints is used:}
+={ quadratic: 0  }
+
+
+if { (1)
+[  
+  *{ Direct analysis: }
+  write{"Direct analysis:\n"}
+  
+  setcounter{calcobjectivemom 1 }
+  setcounter{calcconstraintmom 1 }
+  setcounter{calcgradobjectivemom 1 }
+  setcounter{calcgradconstraintmom 1 }
+
+  setvector{parammom 2 {0.942478,0.314159}}
+  setvector{parammom 2 { 2 , 1.7 }}
+  setvector{parammom 2 { 2 , 1.1 }}
+
+  analyse{ #parammom #calcobjectivemom #calcconstraintmom 
+                     #calcgradobjectivemom #calcgradconstraintmom } 
+  write{"After direct analysis.\n"}
+
+]}
+
+
+
+if { (0)
+[  
+
+  *{ OPTIMIZATION BY UNCONSTRAINED SIMPLEX, old version }
+
+  ={numan:0}   *{ initialisation of a user-defined analysis counter }
+
+  *{ A non-derivative simplex algorithm for unconstraint problems is used for
+  comparisson. To use this algorithm, a penalty term is first added to the
+  calculator function that is used in the analysis block for evaluation of the
+  objective function: }
+  ${f[x,y]:ff[x,y]+penalty[g1[x,y]]+penalty[g2[x,y]]}
+  inverse{nd simplex 0.00001 500
+    3 2
+    { 1 1 : 0.5 }
+    { 1 2 : 1 }
+    
+    { 2 1 : 0.51 }
+    { 2 2 : 1 }
+    
+    { 3 1 : 0.5 }
+    { 3 2 : 1.1 }
+    
+  }
+
+  *{ After use of the simplex method,the calculator function is reset to the
+  initial definition. This shows that in the shell problems can be defined in
+  such a way that user can easily play with them and introduce changes in
+  problem definition or solution strategy: }
+  ${f[x,y]:ff[x,y]}
+
+]}
+
+
+
+
+
+
+
+if { (0)
+[  
+  *{ OPTIMIZATION BY UNCONSTRAINED SIMPLEX, NEW VERSION }
+
+  *{ Finally the problem is solved using a gradient-based fsqp algorithm (see
+  manuals for detailed description of arguments): }
+  ={numan:0}
+
+  setcounter { numconstr 0 }
+  setscalar { tolf  0.011 }
+  setscalar { tolconstr  0.012 }
+  setcounter { maxit 100 }
+  setcounter { printlevel 4 }
+  setvector { tolx, 2 { 0.021, 0.022 } }
+  setvector { initial, 2 {0, 0} }
+  setvector { step, 2 {0.5, 0.6} }
+
+  write{\n\n "numconstr: " $numconstr  \n\n}
+  
+  *{ A non-derivative simplex algorithm for unconstraint problems is used for
+  comparisson. To use this algorithm, a penalty term is first added to the
+  calculator function that is used in the analysis block for evaluation of the
+  objective function: }
+  *{
+  ${f[x,y]:ff[x,y]+penalty[g1[x,y]]+penalty[g2[x,y]]}
+  }
+
+  minsimp {
+
+    #tolx , #tolf, 
+    #maxit, #printlevel,
+    #initial, #step
+  }
+
+  * {
+    NLPSimpS{
+      2 ,
+      2 { 0.021, 0.022 } , 0.011, 0.012,
+      100, 4,
+      2 {0, 0}, 2 {0.5, 0.6}
+    }
+  }
+  dwrite{"\n\nNumber of analyses: " $numan \n\n}
+
+]}
+
+
+
+
+
+
+
+
+if { (0)
+[  
+  *{ OPTIMIZATION BY FSQP }
+  *{ Finally the problem is solved using a gradient-based fsqp algorithm (see
+  manuals for detailed description of arguments): }
+  ={numan:0}
+  optfsqp1{
+    1
+    2
+    0
+    0
+    0
+    0.00001
+    0.00001
+    300
+    1
+    { 2 2 { 0.233 0.51 } }
+    {2 2}
+    {2 2}
+  }
+  dwrite{"\n\nNumber of analyses: " $numan \n\n}
+
+]}
+
+
+
+
+if { (0)
+[  
+
+  ={numrep:2}
+  ={iter:0}
+  while { (iter<numrep) [
+    ={iter:iter+1}
+    dwrite{"\n\n\n\n\nFSQP - Second run, iteration " $iter "\n\n\n" }
+    ={numan:0}
+    optfsqp1{
+      1
+      2
+      0
+      0
+      0
+      1.0e-8
+      1.0e-8
+      300
+      1
+      { 2 2 { -5.0 -5.0 } }
+      {2 2}
+      {2 2}
+    }
+
+    dwrite{"\n\nNumber of analyses: " $numan \n\n}
+
+  ]}
+
+  *{ User-defined analysis counter is output so that consistency with the
+  built-in analysis count can be checked: }
+  write{"\nnuman = " $numan \n\n}
+  fwrite{"\nnuman = " $numan \n\n}
+
+]}
+
+
+
+
+
+
+if { (0)
+[  
+  *{ OPTIMIZATION BY CONSTRAINED SIMPLEX }
+
+  *{ Finally the problem is solved using a gradient-based fsqp algorithm (see
+  manuals for detailed description of arguments): }
+  ={numan:0}
+
+  setcounter { numconstr 2 }
+  setscalar { tolf  0.0011 }
+  setscalar { tolconstr  0.012 }
+  setcounter { maxit 100 }
+  setcounter { printlevel 4 }
+  setvector { tolx, 2 { 0.0021, 0.0022 } }
+  setvector { initial, 2 {0, 0} }
+  setvector { step, 2 {0.5, 0.6} }
+
+
+
+
+  write{\n\n "numconstr: " $numconstr  \n\n}
+
+  *{ NLPSimpS   nlpsimp   }
+
+
+  NLPSimpS {
+
+    #numconstr ,
+    #tolx , #tolf, #tolconstr,
+    #maxit, #printlevel,
+    #initial, #step
+  }
+
+  * {
+    NLPSimpS{
+      2 ,
+      2 { 0.021, 0.022 } , 0.011, 0.012,
+      100, 4,
+      2 {0, 0}, 2 {0.5, 0.6}
+    }
+  }
+  dwrite{"\n\nNumber of analyses: " $numan \n\n}
+
+]}
+
+
+
+
+
+
+
+
+
+if { (1)
+[  
+  *{ OPTIMIZATION BY CONSTRAINED SIMPLEX WITH BOUND CONSTRAINTS }
+
+  *{ Finally the problem is solved using a gradient-based fsqp algorithm (see
+  manuals for detailed description of arguments): }
+  ={numan:0}
+
+  setvector{lowbounds 2 { 1 1 } }  *{No bounds}
+  setvector{upbounds 2 { 0 0 } }   *{No bounds}
+
+  setvector{lowbounds 2 {2.0 1.1} }
+  setvector{upbounds 2 {5 5} }
+
+  setvector { initial, 2 {2.0, 1.05} }
+
+  setvector { step, 2 {0.1, 0.1} }
+
+  setscalar{bignum 1.0e8 }
+  
+  setcounter { numconstr 2 }
+  setscalar { tolf  0.011 }
+  setscalar { tolconstr  0.012 }
+  setcounter { maxit 100 }
+  setcounter { printlevel 12 }
+  setvector { tolx, 2 { 0.021, 0.022 } }
+
+  setscalar {kpen 1 }
+  setscalar {kconstr 0 }
+
+  setcounter {numviolated 0}
+  setcounter {maxresid 0}
+
+  write{\n\n "numconstr: " $numconstr  \n\n}
+
+
+  *{
+      #kpen #kconstr #numviolated #maxresid
+  }
+
+  if {(1) [
+    nlpsimpbound0 {
+      #numconstr ,
+      #tolx , #tolf, #tolconstr,
+      #maxit, #printlevel,
+      #initial, #step, #lowbounds, #upbounds, #bignum
+      #kpen #kconstr #numviolated #maxresid
+    }
+    dwrite{"\n\nNumber of analyses: " $numan \n\n}
+    dwrite{ "Nonlinear simplex with bounds handling ability was used.\n"}
+  ]
+  [
+    if {(1) [
+      *{ No bounds, but method with bounds used: }
+      nlpsimpbound0 {
+        #numconstr ,
+        #tolx , #tolf, #tolconstr,
+        #maxit, #printlevel,
+        #initial, #step
+      }
+      dwrite{"\n\nNumber of analyses: " $numan \n\n}
+      dwrite{ "Nonlinear simplex with bounds handling ability was used,\n"
+              "  but with no bounds defined.\n"}
+    ]
+    [
+
+      NLPSimpS {
+
+        #numconstr ,
+        #tolx , #tolf, #tolconstr,
+        #maxit, #printlevel,
+        #initial, #step
+      }
+      dwrite{"\n\nNumber of analyses: " $numan \n\n}
+      dwrite{ "Nonlinear simplex - no bound handling!!!.\n"}
+
+    ]}
+  ]}
+
+
+]}
+
+
+
+
+
+
+
+
+
+

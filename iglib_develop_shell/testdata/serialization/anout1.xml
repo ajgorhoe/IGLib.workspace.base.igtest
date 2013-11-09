@@ -1,0 +1,37 @@
+<!-- Analysis output file, created by analysis wrapper. --> 
+<data type="analysispoint" mode="analysis_output" ind="1">
+  <ret type="counter">0</ret> 
+  <reqcalcobj type="counter">1</reqcalcobj> 
+  <reqcalcconstr type="counter">1</reqcalcconstr> 
+  <reqcalcgradobj type="counter">1</reqcalcgradobj> 
+  <reqcalcgradconstr type="counter">1</reqcalcgradconstr> 
+  <calcobj type="counter">1</calcobj> 
+  <calcconstr type="counter">1</calcconstr> 
+  <calcgradobj type="counter">1</calcgradobj> 
+  <calcgradconstr type="counter">1</calcgradconstr> 
+  <param type="vector" dim="2">
+    <vector_el type="scalar" ind="1">1.6</vector_el> 
+    <vector_el type="scalar" ind="2">1</vector_el> 
+  </param>
+  <obj type="scalar">0.20088905308774715</obj> 
+  <constr type="table" eltype="scalar" dim="2">
+    <table_el type="scalar" ind="1">0.0</table_el> 
+    <table_el type="scalar" ind="2">0.0</table_el> 
+  </constr>
+  <gradobj type="vector" dim="2">
+    <vector_el type="scalar" ind="1">0.24138</vector_el> 
+    <vector_el type="scalar" ind="2">0.0172418</vector_el> 
+  </gradobj>
+  <gradconstr type="table" eltype="vector" dim="2">
+    <table_el type="vector" dim="2" ind="1">
+      <vector_el type="scalar" ind="1">-1.1</vector_el> 
+      <vector_el type="scalar" ind="2">2.1</vector_el> 
+    </table_el>
+    <table_el type="vector" dim="2" ind="2">
+      <vector_el type="scalar" ind="1">0</vector_el> 
+      <vector_el type="scalar" ind="2">-1</vector_el> 
+    </table_el>
+  </gradconstr>
+  <!-— Optional definition data: --> 
+  <cd type="string">Definition data</cd> 
+</data>

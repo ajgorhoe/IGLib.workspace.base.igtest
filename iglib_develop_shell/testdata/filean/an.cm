@@ -1,0 +1,75 @@
+
+    *{  ANALYSIS PROGRAM  }
+
+*{ This is command file for Inverse that reads optimization parameters from
+anin.dat, performs the analysis and writes results to anout.dat. }
+
+
+*{ INITIALIZATION PART } 
+*{ read definitions: }
+setfile { outfile "an.ct" }
+interpret { "def.cm" }
+
+
+*{ Get analysis definition from the file }
+interpret { #ancomfile[] }
+
+
+
+*{ Bug:
+  setfile{ outfile "aa.ct"}
+}
+
+
+*{ ACTION PART: }
+
+
+*{ Prepare storage, read parameters & calculation flags: }
+newvector{ parammom[] }
+newcounter{calcobj[] }
+newcounter{calcconstr[] }
+newcounter{calcgradobj[] }
+newcounter{calcgradconstr[] }
+
+
+*{parsefilevarprint}
+parsefilevar{ #aninfile[],
+  "in",
+  "vector", parammom[],
+  "in",
+  "counter", calcobj[],
+  "counter", calcconstr[],
+  "counter", calcgradobj[],
+  "counter", calcgradconstr[],
+
+  "stop"
+}
+
+*{
+  write{"\n\nAfter parsing the file:\n\n"}
+  printvector{ parammom [] }
+  printcounter{ calcobj[] }
+  printcounter{ calcconstr[] }
+  printcounter{ calcgradobj[] }
+  printcounter{ calcgradconstr[] }
+}
+
+
+*{ Perform analysis: }
+*{analysenoprint}
+analysenoprint{}
+
+*{ Write analysis results to the output file: }
+filewriteanres{ #anoutfile }
+
+
+*{ Write analysis results to the XML output file: }
+filewriteanres_xml{ #anoutfilexml }
+
+
+
+
+
+*{
+}
+

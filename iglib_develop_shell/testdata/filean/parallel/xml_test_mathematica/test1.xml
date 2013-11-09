@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IOptLib XML data representation - BATCH TEST. -->
+<Analysis_table type="table" eltype="analysispoint" dim="2">
+  <table_el type="analysispoint" mode="full" ind="1">
+    <ret type="counter">0</ret>
+    <reqcalcobj type="counter">1</reqcalcobj>
+    <reqcalcconstr type="counter">1</reqcalcconstr>
+    <reqcalcgradobj type="counter">1</reqcalcgradobj>
+    <reqcalcgradconstr type="counter">1</reqcalcgradconstr>
+    <calcobj type="counter">1</calcobj>
+    <calcconstr type="counter">1</calcconstr>
+    <calcgradobj type="counter">1</calcgradobj>
+    <calcgradconstr type="counter">1</calcgradconstr>
+    <param type="vector" dim="2">
+      <vector_el type="scalar" ind="1">4.8588947683709893</vector_el>
+      <vector_el type="scalar" ind="2">1.5419080165545243</vector_el>
+    </param>
+    <obj type="scalar">0.99251904085178522</obj>
+    <constr type="table" eltype="scalar" dim="2">
+      <table_el type="scalar" ind="1">-1.8814144368558821</table_el>
+      <table_el type="scalar" ind="2">-0.54190801655452425</table_el>
+    </constr>
+    <gradobj type="vector" dim="2">
+      <vector_el type="scalar" ind="1">0.054096582164901583</vector_el>
+      <vector_el type="scalar" ind="2">0.0014757634880133224</vector_el>
+    </gradobj>
+    <gradconstr type="table" eltype="vector" dim="2">
+      <table_el type="vector" dim="2" ind="1">
+        <vector_el type="scalar" ind="1">-1</vector_el>
+        <vector_el type="scalar" ind="2">3.0838160331090485</vector_el>
+      </table_el>
+      <table_el type="vector" dim="2" ind="2">
+        <vector_el type="scalar" ind="1">0</vector_el>
+        <vector_el type="scalar" ind="2">-1</vector_el>
+      </table_el>
+    </gradconstr>
+  </table_el>
+  <table_el type="analysispoint" mode="full" ind="2">
+    <ret type="counter">0</ret>
+    <reqcalcobj type="counter">1</reqcalcobj>
+    <reqcalcconstr type="counter">1</reqcalcconstr>
+    <reqcalcgradobj type="counter">1</reqcalcgradobj>
+    <reqcalcgradconstr type="counter">1</reqcalcgradconstr>
+    <calcobj type="counter">1</calcobj>
+    <calcconstr type="counter">1</calcconstr>
+    <calcgradobj type="counter">1</calcgradobj>
+    <calcgradconstr type="counter">1</calcgradconstr>
+    <param type="vector" dim="2">
+      <vector_el type="scalar" ind="1">9.0579193432484573*10^-006</vector_el>
+      <vector_el type="scalar" ind="2">8.3500858997809912*10^-006</vector_el>
+    </param>
+    <obj type="scalar">0.0089727552416280464</obj>
+    <constr type="table" eltype="scalar" dim="2">
+      <table_el type="scalar" ind="1">0.59999094215038062</table_el>
+      <table_el type="scalar" ind="2">0.99999164991410017</table_el>
+    </constr>
+    <gradobj type="vector" dim="2">
+      <vector_el type="scalar" ind="1">-0.039758638303782345</vector_el>
+      <vector_el type="scalar" ind="2">0.009940192760278254</vector_el>
+    </gradobj>
+    <gradconstr type="table" eltype="vector" dim="2">
+      <table_el type="vector" dim="2" ind="1">
+        <vector_el type="scalar" ind="1">-1</vector_el>
+        <vector_el type="scalar" ind="2">1.6700171799561982*10^-005</vector_el>
+      </table_el>
+      <table_el type="vector" dim="2" ind="2">
+        <vector_el type="scalar" ind="1">0</vector_el>
+        <vector_el type="scalar" ind="2">-1</vector_el>
+      </table_el>
+    </gradconstr>
+  </table_el>
+</Analysis_table>

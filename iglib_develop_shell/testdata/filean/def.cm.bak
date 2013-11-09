@@ -1,0 +1,152 @@
+
+*{ DEFINITIONS FOR A GIVEN OPTIMIZATION PROBLEM. }
+
+*{ *************************************************************************
+                            CRUCIAL DEFINITIONS: 
+   ************************************************************************* }
+
+
+*{ PROBLEM (analysis) RELATED DATA }
+*{ Number of parameters and number of constraints: }
+={ numparam: 2 }
+={ numconstr: 2 }
+
+*{ Flag for definition of parameter bounds: }
+={ parambounds:0 }
+
+*{ PROCEDURE RELATED DATA:  }
+*{ Flag for unconstrained methods by using penalty term: }
+={ unconstrained: 0 }
+*{ Flag for analysis with gradients calculated: }
+={ angrad: 1 }
+
+
+*{ Definition of calculator variable which will serve for switching between
+output or not additional control information in analysis block: }
+={ controlout: 1 }
+
+
+*{ DEFINITION OF COMMANDS AND FILES: }
+setstring{ ancommand "inverse an.cm -silent" }  *{ command to execute analysis }
+setstring { aninfile "anin.dat" }  *{ analysis input file }
+setstring { anoutfile "anout.dat" }  *{ analysis output file }
+setstring { ancomfile "analysis.cm" }  *{ analysis command file }
+setstring { userfile "defuser.cm" }  *{ analysis command file }
+
+
+if { (0) [
+  newvector{v1[2,3]}
+  newvector{v2[3]}
+  setvector{v3}
+  setvector{v4 2 {1,2} }
+
+  write{"Number of elements of vector v1: "  ${getvectordim["v1",-1]}  \n\n\n }
+  write{"Number of elements of vector v2: "  ${getvectordim["v2",-1]}  \n\n\n }
+  write{"Number of elements of vector v3: "  ${getvectordim["v3",-1]}  \n\n\n }
+  write{"Number of elements of vector v4: "  ${getvectordim["v4",-1]}  \n\n\n }
+  write{"Number of elements of vector v5: "  ${getvectordim["v5",-1]}  \n\n\n }
+
+  exit{}
+] }
+
+
+*{ Some definitions regarding the penalty terms: }
+={jpen:0}        *{ discontinuous jump }
+={hpen:100}   *{ size of penalty term at value 0 }
+={dpen:0.0001}   *{ transient length }
+${penalty[x]:hpen*(((x+dpen)/dpen)CP(2)*positive[x+dpen]) + jpen*(x>1) }
+
+
+
+*{ *************************************************************************
+                            AUXILIARY DEFINITIONS: 
+   ************************************************************************* }
+
+
+*{ Vectors of lower & upper parameter bounds; large numbers mean that bounds are
+   effectively not set: }
+  setvector{ lowbounds 2 { -1.001e50, -1.002e50 } }
+  setvector{ upbounds  2 { 1.0011e50, 1.0022e50 } }
+
+*{ Allocate pre-defined variables: }
+setvector { parammom 2 {} }      *{ two parameters }
+newscalar { constraintmom[2] }   *{ two constraints }
+
+setcounter { calcobj[] 1}
+setcounter { calcconstr[] 1}
+setcounter { calcgradobj[] 1}
+setcounter { calcgradconstr[] 1}
+
+setscalar { objectivemom[] 1.111 }
+setvector { gradobjectivemom[] 2 { 1.1111 2.2222 } }
+setscalar { constraintmom[1] 0.1 }
+setscalar { constraintmom[2] 0.2 }
+newvector { gradconstraintmom[2] }
+setvector { gradconstraintmom[1] 2 {1.1 1.2} }
+setvector { gradconstraintmom[2] 2 {2.1 2.2} }
+
+
+
+*{ *************************************************************************
+                  SPACE FOR USER DEFINITIONS (external file): 
+   ************************************************************************* }
+if { (getstringdim["userfile",-1]>0) [
+  interpret { #userfile[] }
+]}
+
+
+*{ Re-allocate some predefined variables according to number of parameters
+   and numbe of constraints: }
+
+setvector { parammom $numparam {} } 
+setscalar { objectivemom[] 1.111 }
+setvector { gradobjectivemom[] $numparam {  } }
+
+newscalar { constraintmom[$numconstr] }
+newvector { gradconstraintmom[$numconstr] }
+
+={i:1}
+while{(i<=numconstr) [
+  setscalar{ constraintmom[$i] ${0.111*i} }
+  setvector{ gradconstraintmom[$i] $numparam {} }
+  ={ j:1 }
+  while{(j<=numparam) [
+    
+    ={j:j+1}
+  ] }
+  ={i:i+1}
+]}
+
+
+*{ Allocate vectors of lower & upper bounds if not yet allocated: }
+={setbounds:0}
+if { (getvectordim["lowbounds",-1]<1 || getvectordim["upbounds",-1]<1
+      || parambounds==0 )
+[
+  ={setbounds:1}
+] else
+[
+  if { (getvector["lowbounds",0]!=numparam ||  getvector["upbounds",0]!=numparam )
+  [
+    ={setbounds:1}
+  ]}
+] }
+
+if { ( setbounds==1 )
+[
+  *{
+    write{"\n\n\n\n>>>>Defining parameter bounds...\n\n\n"}
+  }
+  *{ Definition of parameter bounds: }
+  setvector{ lowbounds $numparam {} }
+  setvector{ upbounds  $numparam {} }
+  ={i:1}
+  while{(i<=numparam) [
+    setvector{ lowbounds { $i : -1.0e50 } }
+    setvector{ upbounds { $i : 1.0e50 } }
+    ={i:i+1}
+  ]}
+]}
+
+
+

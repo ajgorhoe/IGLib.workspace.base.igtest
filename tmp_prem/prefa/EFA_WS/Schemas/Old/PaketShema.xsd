@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="PaketShema"
+    targetNamespace="http://www.posta.si/EFA/PaketShema.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://www.posta.si/EFA/PaketShema.xsd"
+    xmlns:mstns="http://www.posta.si/EFA/PaketShema.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+	<xs:element name="EfaPaket" msdata:IsDataSet="true" msdata:Locale="en-US">
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="EfaGlava">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="VirID" type="xs:byte" minOccurs="1" />
+							<xs:element name="PoslovnaEnotaId" type="xs:string" minOccurs="1" />
+							<!--<xs:element name="PostaId" type="xs:string" minOccurs="1" />-->
+							<xs:element name="DokumentStatusId" type="xs:byte" minOccurs="1" />
+							<xs:element name="DokumentTipId" type="xs:byte" minOccurs="1" />
+							<xs:element name="DokumentVzrokNastankaId" type="xs:byte" minOccurs="0" />
+							<xs:element name="DokumentDatum" type="xs:date" minOccurs="1" />
+							<xs:element name="DokumentStevilka" type="xs:int" minOccurs="1" />
+							<xs:element name="VezaNaOriginal" type="xs:int" minOccurs="0" />
+							<xs:element name="DatumOpravljenihStoritev" type="xs:date" minOccurs="1" />
+							<xs:element name="PodruznicaId" type="xs:int" minOccurs="1" />
+							<xs:element name="KomitentNarocnikId" type="xs:int" minOccurs="1" />
+							<xs:element name="KomitentPlacnikDokumentStevilka" type="xs:string" minOccurs="1" />
+							<xs:element name="KomitentPlacnikDokumentTip" type="xs:byte" minOccurs="1" />
+							<xs:element name="PrometVrstaId" type="xs:int" minOccurs="1" />
+							<xs:element name="UporabnikId" type="xs:string" minOccurs="1" />
+							<xs:element name="PaketId" type="xs:int" minOccurs="1" />
+							<xs:element name="IzvorGlavaId" type="xs:int" minOccurs="1" />
+							<xs:element name="Storno" type="xs:boolean" minOccurs="1" />
+							<xs:element name="EfaPostavke" minOccurs="1" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="GlavaId" type="xs:int" minOccurs="1" />
+										<xs:element name="PaketId" type="xs:int" minOccurs="1" />
+										<xs:element name="IzvorGlavaId" type="xs:int" minOccurs="1" />
+										<xs:element name="IzvorPostavkaId" type="xs:int" minOccurs="1" />
+										<xs:element name="PoslovanjeGrupaId" type="xs:int" minOccurs="1" />
+										<xs:element name="TransakcijaTipId" type="xs:int" minOccurs="1" />
+										<xs:element name="TransakcijaVrstaId" type="xs:int" minOccurs="1" />
+										<xs:element name="StoritevId" type="xs:int" minOccurs="1" />
+										<xs:element name="StoritevNaziv" type="xs:string" minOccurs="1" />
+										<xs:element name="EnotaMereId" type="xs:int" minOccurs="1" />
+										<xs:element name="EnotaMereKratica" type="xs:string" minOccurs="1" />
+										<xs:element name="Kolicina" type="xs:decimal" minOccurs="1" />
+										<xs:element name="ValutaId" type="xs:string" minOccurs="1" />
+										<xs:element name="ValutaOznaka" type="xs:string" minOccurs="1" />
+										<xs:element name="SifraKontiranjaId" type="xs:int" minOccurs="1" />
+										<xs:element name="IzjavaId" type="xs:int" minOccurs="1" />
+										<xs:element name="Opomba" type="xs:string" minOccurs="0" />
+										<xs:element name="EfaPostavkeVrednosti" minOccurs="0" maxOccurs="1">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="CenaNeto" type="xs:decimal" minOccurs="1" />
+													<xs:element name="CenaNetoDejanska" type="xs:decimal" minOccurs="1" />
+													<xs:element name="CenaNetoDejanskaIzvor" type="xs:byte" minOccurs="1" />
+													<xs:element name="PopustProcent" type="xs:decimal" minOccurs="1" />
+													<xs:element name="DavekId" type="xs:string" minOccurs="1" />
+													<xs:element name="DavekProcent" type="xs:decimal" minOccurs="1" />
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="Windows-1250"?>
+<MCCI_MT000100HT03.Message xmlns="urn:hl7-org:v3" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:voc="urn:hl7-org:v3/voc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 MCCI_MT000100HT03.xsd">
+  <!-- 1 -->
+  <!-- Vrednost atributa extension pomeni zaporedno številko sporočila. X je BPI zdravstvene ustanove (velja enako za celotno ostalo sporočilo). -->
+  <id root="1.2.3.4.1000.61.x" extension="87655121" />
+  <!-- 1 -->
+  <!-- Čas kreiranja sporočila (YYYYMMDDHHMI) - format velja za celotno ostalo sporočilo. -->
+  <creationTime value="200906181613" />
+  <interactionId root="2.1" extension="FIAB_TE000001" />
+  <processingCode code="P" />
+  <processingModeCode code="T" />
+  <acceptAckCode code="AL" />
+  <!-- 1 -->
+  <!-- Prejemnik sporočila. -->
+  <communicationFunctionRCV type="CommunicationFunction" association="communicationFunction">
+    <typeCode code="RCV" />
+    <deviceRCV type="Device" classCode="DEV" determinerCode="INSTANCE" association="entity">
+      <!-- 1 -->
+      <!-- V extensionu se poda šifro prejemnika (programa LABEX ali b21App), v root pa OID prejemnika (1.2.3.4.1000.61.x.1 za Labex in 1.2.3.4.1000.60.x.1 za Birpis). -->
+      <id root="1.2.3.4.60.x.1" extension="b21App" />
+    </deviceRCV>
+  </communicationFunctionRCV>
+  <!-- 1 -->
+  <!-- Odzivnik sporočila. -->
+  <communicationFunctionRSP type="CommunicationFunction" association="communicationFunction">
+    <typeCode code="RSP" />
+    <deviceRSP type="Device" classCode="DEV" determinerCode="INSTANCE" association="entity">
+      <!-- 1 -->
+      <!-- V extensionu se poda šifro odzivnika (programa LABEX ali b21App), v root pa OID odzivnika (1.2.3.4.1000.61.x.1 za Labex in 1.2.3.4.1000.60.x.1 za Birpis). -->
+      <id root="1.2.3.4.1000.61.x.1" extension="Labex" />
+    </deviceRSP>
+  </communicationFunctionRSP>
+  <!-- 1 -->
+  <!-- Pošiljatelj sporočila. -->
+  <communicationFunctionSND type="CommunicationFunction" association="communicationFunction">
+    <typeCode code="SND" />
+    <deviceSND type="Device" classCode="DEV" determinerCode="INSTANCE" association="entity">
+      <!-- 1 -->
+      <!-- V extensionu se poda šifro pošiljatelja (programa LABEX ali b21App), v root pa OID pošiljatelja (1.2.3.4.1000.61.x.1 za Labex in 1.2.3.4.1000.60.x.1 za Birpis). -->
+      <id root="1.2.3.4.1000.61.x.1" extension="Labex" />
+    </deviceSND>
+  </communicationFunctionSND>
+  <MCAI_MT000001HT03.ControlActEvent>
+    <code code="FIAB_TE000001" codeSystemName="HTB Supplemental" />
+    <subject>
+      <contextConductionInd value="false" />
+      <FIAB_MT020000HT01.FinancialTransaction classCode="XACT" moodCode="EVN">
+        <!-- 1 -->
+        <!-- Številka naročila (kot je bilo pridobljeno s strani BIS) -->
+        <id root="1.2.3.4.1000.60.x.3" extension="55091" />
+        <code codeSystemName="ActCode" code="CHRG" />
+        <statusCode code="completed" />
+        <!-- 1 -->
+        <!--currentTimeStamp-->
+        <effectiveTime value="200906181613" />
+        <!-- 1 -->
+        <!--currentTimeStamp-->
+        <activityTime value="200511280838" />
+        <!-- 1 -->
+        <!-- konstantne vrednosti, ker ne potrebujemo, ampak tako zgradbo narekuje shema -->
+        <amt />
+        <author typeCode="AUT">
+          <participant classCode="IDENT">
+            <identifiedParty>
+              <Person classCode="ORG" determinerCode="INSTANCE">
+                <!-- BPI vnašalca storitev -->
+                <id extension="1.2.3.4.1122.4" root="99999" />
+              </Person>
+            </identifiedParty>
+          </participant>
+        </author>
+        <!-- 1..n -->
+        <!-- storitve -->
+        <component typeCode="COMP">
+          <financialTransactionChargeDetail classCode="INVE" moodCode="EVN">
+            <!-- 1 -->
+            <!-- ID storitve -->
+            <id root="1.2.3.4.1000.61.x.8.1" extension="1111" />
+            <!-- 1 -->
+            <!-- šifra storitve po zeleni knjigi-->
+            <code code="29107" />
+            <!-- 1 -->
+            <!-- opis storitve -->
+            <title>IZVEDBA TANKOIGELNE ASPIRACIJSKE BIOPSIJE</title>
+            <statusCode code="completed" />
+            <!-- čas pošiljanja -->
+            <effectiveTime>
+              <low value="200902191205" />
+              <high value="200902271205" />
+            </effectiveTime>
+            <!-- čas, ko je bila storitev zabeležena -->
+            <activityTime value="200902271210" />
+            <!-- 1 -->
+            <!-- količina v obliki 9999999 (7 mest),  kjer sta zadnji dve mesti decimalki -->
+            <unitQuantity value="000000100" />
+            <!-- 1 -->
+            <!-- konstantne vrednosti, ker ne potrebujemo, ampak tako zgradbo narekuje shema -->
+            <unitPriceAmt>
+              <numerator />
+              <denominator />
+            </unitPriceAmt>
+            <!-- 1 -->
+            <!-- konstantne vrednosti, ker ne potrebujemo, ampak tako zgradbo narekuje shema -->
+            <netAmt />
+          </financialTransactionChargeDetail>
+        </component>
+        <component typeCode="COMP">
+          <financialTransactionChargeDetail classCode="INVE" moodCode="EVN">
+            <!-- 1 -->
+            <!-- ID storitve -->
+            <id root="1.2.3.4.1000.61.x.8.1" extension="2222" />
+            <!-- 1 -->
+            <!-- šifra storitve po zeleni knjigi-->
+            <code code="29152" />
+            <!-- 1 -->
+            <!-- opis storitve -->
+            <title>HITRI PREGLED CITOLOŠKEGA VZORCA</title>
+            <statusCode code="completed" />
+            <!-- čas pošiljanja -->
+            <effectiveTime>
+              <low value="200902201205" />
+              <high value="200902231205" />
+            </effectiveTime>
+            <!-- čas, ko je bila storitev zabeležena -->
+            <activityTime value="200902281210" />
+            <!-- 1 -->
+            <!-- količina v obliki 9999999 (7 mest),  kjer sta zadnji dve mesti decimalki -->
+            <unitQuantity value="000000250" />
+            <!-- 1 -->
+            <!-- konstantne vrednosti, ker ne potrebujemo, ampak tako zgradbo narekuje shema -->
+            <unitPriceAmt>
+              <numerator />
+              <denominator />
+            </unitPriceAmt>
+            <!-- 1 -->
+            <!-- konstantne vrednosti, ker ne potrebujemo, ampak tako zgradbo narekuje shema -->
+            <netAmt />
+          </financialTransactionChargeDetail>
+        </component>
+      </FIAB_MT020000HT01.FinancialTransaction>
+    </subject>
+  </MCAI_MT000001HT03.ControlActEvent>
+</MCCI_MT000100HT03.Message>

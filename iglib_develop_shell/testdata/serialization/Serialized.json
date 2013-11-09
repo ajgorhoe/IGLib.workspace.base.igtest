@@ -1,0 +1,158 @@
+{
+  "Array1D": [
+    {
+      "DoubleNumber": 0,
+      "Index1": 0,
+      "Index2": 0,
+      "LongNumber": 0,
+      "Name": "Array element [0]"
+    },
+    {
+      "DoubleNumber": 0.1,
+      "Index1": 0,
+      "Index2": 1,
+      "LongNumber": 1,
+      "Name": "Array element [1]"
+    },
+    {
+      "DoubleNumber": 0.2,
+      "Index1": 0,
+      "Index2": 2,
+      "LongNumber": 2,
+      "Name": "Array element [2]"
+    }
+  ],
+  "BFlag": false,
+  "DNum": 22.333,
+  "JaggedArray2D": [
+    [
+      {
+        "DoubleNumber": 0,
+        "Index1": 0,
+        "Index2": 0,
+        "LongNumber": 0,
+        "Name": "Jagged array element [0][0]"
+      },
+      {
+        "DoubleNumber": 0.1,
+        "Index1": 0,
+        "Index2": 1,
+        "LongNumber": 1,
+        "Name": "Jagged array element [0][1]"
+      },
+      {
+        "DoubleNumber": 0.2,
+        "Index1": 0,
+        "Index2": 2,
+        "LongNumber": 2,
+        "Name": "Jagged array element [0][2]"
+      }
+    ],
+    [
+      {
+        "DoubleNumber": 1,
+        "Index1": 1,
+        "Index2": 0,
+        "LongNumber": 10,
+        "Name": "Jagged array element [1][0]"
+      },
+      {
+        "DoubleNumber": 1.1,
+        "Index1": 1,
+        "Index2": 1,
+        "LongNumber": 11,
+        "Name": "Jagged array element [1][1]"
+      },
+      {
+        "DoubleNumber": 1.2,
+        "Index1": 1,
+        "Index2": 2,
+        "LongNumber": 12,
+        "Name": "Jagged array element [1][2]"
+      }
+    ]
+  ],
+  "ObjectName": "TestObjectToSerialize",
+  "ObjectNameModified": "TestObjectToSerialize  \"\\\" ÄŚĹ Ĺ˝Ä†ÄÄŤĹˇĹľÄ‡Ä‘ - Modified",
+  "SingleElement": {
+    "DoubleNumber": 1,
+    "Index1": 0,
+    "Index2": 0,
+    "LongNumber": 1,
+    "Name": "Single Element"
+  },
+  "ZArray3D": [
+    [
+      [
+        0,
+        0.001,
+        0.002,
+        0.003,
+        0.004
+      ],
+      [
+        1,
+        1.001,
+        1.002,
+        1.003,
+        1.004
+      ],
+      [
+        2,
+        2.001,
+        2.002,
+        2.003,
+        2.004
+      ],
+      null
+    ],
+    [
+      [
+        1000,
+        1000.001,
+        1000.002,
+        1000.003,
+        1000.004
+      ],
+      [
+        1001,
+        1001.001,
+        1001.002,
+        1001.003,
+        1001.004
+      ],
+      [
+        1002,
+        1002.001,
+        1002.002,
+        1002.003,
+        1002.004
+      ],
+      null
+    ],
+    [
+      [
+        2000,
+        2000.001,
+        2000.002,
+        2000.003,
+        2000.004
+      ],
+      [
+        2001,
+        2001.001,
+        2001.002,
+        2001.003,
+        2001.004
+      ],
+      [
+        2002,
+        2002.001,
+        2002.002,
+        2002.003,
+        2002.004
+      ],
+      null
+    ]
+  ]
+}

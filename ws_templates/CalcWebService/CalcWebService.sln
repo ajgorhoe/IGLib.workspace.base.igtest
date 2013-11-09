@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Web Developer Express 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalcWebService", "CalcWebService\CalcWebService.csproj", "{03C0D891-07F2-4C62-99FC-FAFB54656366}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "CalcSetup", "CalcSetup\CalcSetup.vdproj", "{7F67263E-0408-4E05-8CD1-1EAA582B9A25}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{03C0D891-07F2-4C62-99FC-FAFB54656366}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03C0D891-07F2-4C62-99FC-FAFB54656366}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03C0D891-07F2-4C62-99FC-FAFB54656366}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03C0D891-07F2-4C62-99FC-FAFB54656366}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F67263E-0408-4E05-8CD1-1EAA582B9A25}.Debug|Any CPU.ActiveCfg = Debug
+		{7F67263E-0408-4E05-8CD1-1EAA582B9A25}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

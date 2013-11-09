@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sql="urn:schemas-microsoft-com:mapping-schema"
+            xmlns:msdata="urn:schemas-microsoft-com:xml-msdata"
+            xmlns:fn="http://www.w3.org/2005/02/xpath-functions" >
+
+
+
+
+  <!-- ********  BEGIN - DECLARATION OF ENUMERATOR TYPES ******** -->
+
+
+  <!-- ********  END - DECLARATION OF ENUMERATOR TYPES ******** -->
+
+  <xsd:annotation>
+    <xsd:appinfo>
+
+      <!--<sql:relationship
+            name="glavateksti"
+            parent ="EfaRacuniIzpisGlavaView"
+            parent-key="Id"
+            child="EfaRacuniGlavaTeksti"
+            child-key="RacunGlavaId"/>-->
+
+      <sql:relationship
+            name="glavapostavke"
+            parent ="EfaRacuniIzpisGlavaView"
+            parent-key="Id"
+            child="EfaRacuniIzpisPostavkeView"
+            child-key="RacunGlavaId"/>
+
+      <sql:relationship
+            name="glavapostavkestrm"
+            parent ="EfaRacuniIzpisGlavaView"
+            parent-key="Id"
+            child="EfaRacuniIzpisPostavkeStrmView"
+            child-key="RacunGlavaId"/>
+
+      <sql:relationship
+            name="glavapostavkestrmgroup"
+            parent ="EfaRacuniIzpisGlavaView"
+            parent-key="Id"
+            child="EfaRacuniIzpisPostavkeStrmGroupView"
+            child-key="RacunGlavaId"/>
+
+      <sql:relationship
+            name="glavapostavkedetails"
+            parent ="EfaRacuniIzpisGlavaView"
+            parent-key="Id"
+            child="EfaRacuniIzpisPostavkeDetailsView"
+            child-key="RacunGlavaId"/>
+
+      <sql:relationship
+            name="glavavsota"
+            parent ="EfaRacuniIzpisGlavaView"
+            parent-key="Id"
+            child="EfaRacuniIzpisVsotaView"
+            child-key="RacunGlavaId"/>
+
+      <sql:relationship
+            name="glavadavek"
+            parent ="EfaRacuniIzpisGlavaView"
+            parent-key="Id"
+            child="EfaRacuniIzpisDavekView"
+            child-key="RacunGlavaId"/>
+
+      <sql:relationship
+            name="glavaizjave"
+            parent ="EfaRacuniIzpisGlavaView"
+            parent-key="Id"
+            child="EfaRacuniIzpisIzjaveView"
+            child-key="RacunGlavaId"/>
+
+      <sql:relationship
+            name="glavaprihodki"
+            parent ="EfaRacuniIzpisGlavaView"
+            parent-key="Id"
+            child="EfaRacuniIzpisPrihodkiView"
+            child-key="RacunGlavaId"/>
+
+      <sql:relationship
+            name="glavapopusti"
+            parent ="EfaRacuniIzpisGlavaView"
+            parent-key="Id"
+            child="EfaRacuniIzpisPopustiView"
+            child-key="RacunGlavaId"/>
+
+      <sql:relationship
+            name="glavaizravnava"
+            parent ="EfaRacuniIzpisGlavaView"
+            parent-key="Id"
+            child="EfaRacuniIzpisIzravnavaView"
+            child-key="RacunGlavaId"/>
+
+      <sql:relationship
+            name="tekstiglava"
+            parent ="EfaRacuniIzpisGlavaView"
+            parent-key="Id"
+            child="EfaRacunIzpisTekstiGlava"
+            child-key="RacunGlavaId"/>
+
+      <sql:relationship
+            name="tekstinoga"
+            parent ="EfaRacuniIzpisGlavaView"
+            parent-key="Id"
+            child="EfaRacunIzpisTekstiNoga"
+            child-key="RacunGlavaId"/>
+
+      <sql:relationship
+            name="tekstifiksni"
+            parent ="EfaRacuniIzpisGlavaView"
+            parent-key="Id"
+            child="EfaRacunIzpisTekstiFiksni"
+            child-key="RacunGlavaId"/>
+
+      <sql:relationship
+            name="tekstiobjektov"
+            parent ="EfaRacuniIzpisGlavaView"
+            parent-key="Id"
+            child="EfaRacuniIzpisTekstiObjektovView"
+            child-key="RacunGlavaId"/>
+
+
+    </xsd:appinfo>
+  </xsd:annotation>
+
+  <xsd:element name="TestElement" type="xsd:string" default="Testni niz za testiranje zunanjih elementov"> </xsd:element>
+
+  <xsd:element name="EfaRacuniIzpisGlavaView" sql:relation="EfaRacuniIzpisGlavaView"
+                              sql:key-fields="Id" >
+    <xsd:complexType>
+      <xsd:sequence minOccurs="1" maxOccurs="1">
+        <xsd:element name="Id" type="xsd:int" minOccurs="1" sql:field="Id"/>
+        <xsd:element name="VirId" type="xsd:byte" minOccurs="1" sql:field="VirId"/>
+        <xsd:element name="PoslovanjeGrupaId" type="xsd:int" minOccurs="1" sql:field="PoslovanjeGrupaId"/>
+        <xsd:element name="TransakcijaTipId" type="xsd:int" minOccurs="1" sql:field="PoslovanjeGrupaId"/>
+        <xsd:element name="TransakcijaVrstaId" type="xsd:int" minOccurs="1" sql:field="TransakcijaVrstaId"/>
+        <xsd:element name="DokumentTipId" type="xsd:byte" minOccurs="1" sql:field="DokumentTipId"/>
+        <xsd:element name="DokumentTipOpis" type="xsd:string" minOccurs="0" default="" sql:field="DokumentTipOpis"/>
+        <xsd:element name="DokumentStatusId" type="xsd:byte" minOccurs="1" sql:field="DokumentStatusId"/>
+        <xsd:element name="DokumentVzrokNastankaId" type="xsd:byte" minOccurs="0" default="0" sql:field="DokumentVzrokNastankaId"/>
+        <!--
+          <xsd:element name="PredlogDokumentDatum" type="xsd:date" minOccurs="1" sql:field="PredlogDokumentDatum"/>
+          -->
+        <!--
+          <xsd:element name="PredlogDokumentStevilka" type="xsd:int" minOccurs="1" sql:field="PredlogDokumentStevilka"/>
+          -->
+        <xsd:element name="VezaNaOriginal" type="xsd:int" minOccurs="0" default="0" sql:field="VezaNaOriginal"/>
+        <xsd:element name="PoslovnaEnotaId" type="xsd:string" minOccurs="1" sql:field="PoslovnaEnotaId"/>
+        <xsd:element name="DatumOpravljenihStoritev" type="xsd:date" minOccurs="1" sql:field="DatumOpravljenihStoritev"/>
+
+        <!--
+          <xsd:element name="PodruznicaId" type="xsd:date" minOccurs="1" sql:field="PodruznicaId"/>
+          -->
+        <xsd:element name="KomitentNarocnikId" type="xsd:int" minOccurs="1" sql:field="KomitentNarocnikId"/>
+        <xsd:element name="KomitentPlacnikNaziv" type="xsd:string" minOccurs="1" sql:field="KomitentPlacnikNaziv"/>
+        <xsd:element name="KomitentPlacnikNaslov" type="xsd:string" minOccurs="1" sql:field="KomitentPlacnikNaslov"/>
+        <xsd:element name="KomitentPlacnikPostaId" type="xsd:string" minOccurs="1" sql:field="KomitentPlacnikPostaId"/>
+        <xsd:element name="KomitentPlacnikId" type="xsd:int" minOccurs="1" sql:field="KomitentPlacnikId"/>
+        <xsd:element name="KomitentPlacnikPostaNaziv" type="xsd:string" minOccurs="1" sql:field="KomitentPlacnikPostaNaziv"/>
+        <xsd:element name="KomitentPlacnikKraj" type="xsd:string" minOccurs="1" sql:field="KomitentPlacnikKraj"/>
+        <xsd:element name="KomitentPlacnikNazivDrzaveEN" type="xsd:string" minOccurs="1" sql:field="KomitentPlacnikNazivDrzaveEN"/>
+        <xsd:element name="KomitentPlacnikIsoDrzave" type="xsd:string" minOccurs="1" sql:field="KomitentPlacnikIsoDrzave"/>
+        <xsd:element name="KomitentPlacnikIdDdv" type="xsd:string" minOccurs="1" sql:field="KomitentPlacnikIdDdv"/>
+        <xsd:element name="KomitentPlacnikDavcniZavezanec" type="xsd:boolean" minOccurs="1" sql:field="KomitentPlacnikDavcniZavezanec"/>
+        <xsd:element name="DobavniNaslovId" type="xsd:int" minOccurs="1" sql:field="DobavniNaslovId"/>
+        <xsd:element name="DobavniNaslovNaziv" type="xsd:string" minOccurs="0" default="" sql:field="DobavniNaslovNaziv"/>
+        <xsd:element name="DobavniNaslovNaslov" type="xsd:string" minOccurs="0" default="" sql:field="DobavniNaslovNaslov"/>
+        <xsd:element name="DobavniNaslovKraj" type="xsd:string" minOccurs="0" default="" sql:field="DobavniNaslovKraj"/>
+        <xsd:element name="DobavniNaslovPostaId" type="xsd:string" minOccurs="0" default="" sql:field="DobavniNaslovPostaId"/>
+        <xsd:element name="DobavniNaslovPostaNaziv" type="xsd:string" minOccurs="0" default="" sql:field="DobavniNaslovPostaNaziv"/>
+        <xsd:element name="DobavniNaslovNazivDrzaveEN" type="xsd:string" minOccurs="0" sql:field="DobavniNaslovNazivDrzaveEN"/>
+        <xsd:element name="DobavniNaslovIsoDrzave" type="xsd:string" minOccurs="0" sql:field="DobavniNaslovIsoDrzave"/>
+        <xsd:element name="PogodbaId" type="xsd:int" minOccurs="0" default="0" sql:field="PogodbaId"/>
+
+        <!-- TODO: Vprašaj, zakaj je šlo to ven?
+          IG, NP, 23.1.2009: Polji PogodbaSt in PogodbaDatum sta bili dodani nazaj, preveriti, ce je to OK
+          -->
+        <xsd:element name="PogodbaSt" type="xsd:string" minOccurs="0" default="" sql:field="PogodbaSt"/>
+        <xsd:element name="PogodbaDatum" type="xsd:date" minOccurs="0" sql:field="PogodbaDatum"/>
+
+
+        <xsd:element name="KomitentPlacnikSifraKontiranjaId" type="xsd:int" minOccurs="1" sql:field="KomitentPlacnikSifraKontiranjaId"/>
+        <xsd:element name="PrometVrstaId" type="xsd:int" minOccurs="1" sql:field="PrometVrstaId"/>
+        <xsd:element name="UporabnikId" type="xsd:string" minOccurs="1" sql:field="UporabnikId"/>
+        <xsd:element name="IzstavitevRokId" type="xsd:byte" minOccurs="1" sql:field="IzstavitevRokId"/>
+        <xsd:element name="KomitentPlacnikJezikId" type="xsd:int" minOccurs="1" sql:field="KomitentPlacnikJezikId"/>
+        <xsd:element name="PeIzstaviRacunId" type="xsd:string" minOccurs="1" sql:field="PeIzstaviRacunId"/>
+        <xsd:element name="PeIzstaviRacunNaziv" type="xsd:string" minOccurs="0" default="" sql:field="PeIzstaviRacunNaziv"/>
+        <xsd:element name="PeIzstaviRacunNaslov" type="xsd:string" minOccurs="0" default="" sql:field="PeIzstaviRacunNaslov"/>
+        <xsd:element name="PeIzstaviRacunKraj" type="xsd:string" minOccurs="0" default="" sql:field="PeIzstaviRacunKraj"/>
+        <xsd:element name="StrmPeId" type="xsd:string" minOccurs="1" sql:field="StrmPeId"/>
+        <xsd:element name="NacinPosiljanjaId" type="xsd:int" minOccurs="1" sql:field="NacinPosiljanjaId"/>
+        <xsd:element name="RacunTipId" type="xsd:byte" minOccurs="1" sql:field="RacunTipId"/>
+        <xsd:element name="RacunVrstaId" type="xsd:int" minOccurs="1" sql:field="RacunVrstaId"/>
+        <xsd:element name="ValutaId" type="xsd:string" minOccurs="1" sql:field="ValutaId"/>
+        <xsd:element name="ValutaOznaka" type="xsd:string" minOccurs="1" sql:field="ValutaOznaka"/>
+        <xsd:element name="ValutaTecaj" type="xsd:decimal" minOccurs="1" sql:field="ValutaTecaj"/>
+        <xsd:element name="RokPlacilaId" type="xsd:int" minOccurs="1" sql:field="RokPlacilaId"/>
+
+        <!--
+          <xsd:element name="RacunStatus" type="xsd:int" minOccurs="0" default="0" sql:field="RacunStatus"/>
+          -->
+
+        <xsd:element name="RacunPaketId" type="xsd:int" minOccurs="0" default="0" sql:field="RacunPaketId"/>
+        <!--
+          <xsd:element name="RacunXml" type="xsd:string" minOccurs="0" default="" sql:field="RacunXml"/>
+          -->
+        <xsd:element name="Fakturiral" type="xsd:string" minOccurs="0" default="" sql:field="Fakturiral"/>
+        <xsd:element name="Vodja1" type="xsd:string" minOccurs="0" default="" sql:field="Vodja1"/>
+        <xsd:element name="Vodja1Tel" type="xsd:string" minOccurs="0" default="" sql:field="Vodja1Tel"/>
+        <xsd:element name="Vodja1Fax" type="xsd:string" minOccurs="0" default="" sql:field="Vodja1Fax"/>
+        <xsd:element name="DelovnoMestoNazivV1" type="xsd:string" minOccurs="0" default="" sql:field="DelovnoMestoNazivV1"/>
+        <xsd:element name="Vodja2" type="xsd:string" minOccurs="0" default="" sql:field="Vodja2"/>
+        <xsd:element name="DelovnoMestoNazivV2" type="xsd:string" minOccurs="0" default="" sql:field="DelovnoMestoNazivV2"/>
+        <xsd:element name="Sklic" type="xsd:string" minOccurs="0" default="" sql:field="Sklic"/>
+
+        <xsd:element name="DatumZapadlosti" type="xsd:date" minOccurs="0" sql:field="DatumZapadlosti"/>
+        <xsd:element name="DokumentDatum" type="xsd:date" minOccurs="0" sql:field="DokumentDatum"/>
+        <xsd:element name="DokumentStevilka" type="xsd:int" minOccurs="0" default="0" sql:field="DokumentStevilka"/>
+        <xsd:element name="DokumentStevilkaFormatirana" type="xsd:string" minOccurs="0" default="0" sql:field="DokumentStevilkaFormatirana"/>
+        <xsd:element name="DokumentKrajDatum" type="xsd:string" minOccurs="0" default="" sql:field="DokumentKrajDatum"/>
+
+        <xsd:element name="KontoTerjatev" type="xsd:string" minOccurs="0" default="" sql:field="KontoTerjatev"/>
+        <xsd:element name="Storno" type="xsd:boolean" minOccurs="0" default="0" sql:field="Storno"/>
+        <xsd:element name="DokumentOpisInStevilka" type="xsd:string" minOccurs="0" default="" sql:field="DokumentOpisInStevilka"/>
+        <xsd:element name="SifraKupcaSkala" type="xsd:int" minOccurs="1" sql:field="SifraKupcaSkala"/>
+
+
+        <xsd:element name="FakturistTel" type="xsd:string" minOccurs="0" default="" sql:field="FakturistTel"/>
+        <xsd:element name="FakturistFax" type="xsd:string" minOccurs="0" default="" sql:field="FakturistFax"/>
+        <xsd:element name="NasaStevilka" type="xsd:string" minOccurs="0" default="" sql:field="NasaStevilka"/>
+
+        <xsd:element name="UporabnikPodpis" type="xsd:hexBinary" minOccurs="0" default="" sql:field="UporabnikPodpis"/>
+        <xsd:element name="PostnaStevilka" type="xsd:string" minOccurs="1" default="" sql:field="PostnaStevilka"/>
+        <xsd:element name="Vodja1Podpis" type="xsd:hexBinary" minOccurs="0" default="" sql:field="Vodja1Podpis"/>
+        <xsd:element name="Vodja2Podpis" type="xsd:hexBinary" minOccurs="0" default="" sql:field="Vodja2Podpis"/>
+        <xsd:element name="DobavniNaslovSeIzpise" type="xsd:boolean" minOccurs="0" default="0" sql:field="DobavniNaslovSeIzpise"/>
+        <!--
+          <xsd:element name="KomitentPlacnikDrugDokumentStevilka" type="xsd:string" minOccurs="0" default="" sql:field="KomitentPlacnikDrugDokumentStevilka"/>
+          -->
+
+
+        <xsd:element name="EfaRacuniIzpisPostavkeView"
+               sql:relation="EfaRacuniIzpisPostavkeView"
+               sql:key-fields="RowId"
+               sql:relationship="glavapostavke">
+          <xsd:complexType>
+            <xsd:sequence minOccurs="1" maxOccurs ="unbounded">
+              <xsd:element name="RowId" type="xsd:int" minOccurs="1" sql:field="RowId"/>
+              <xsd:element name="RacunGlavaId" type="xsd:int" minOccurs="1" sql:field="RacunGlavaId"/>
+              <!--
+                <xsd:element name="StrmId" type="xsd:string" minOccurs="1" sql:field="StrmId"/>
+                -->
+              <xsd:element name="StoritevId" type="xsd:int" minOccurs="1" sql:field="StoritevId"/>
+              <xsd:element name="StoritevNaziv" type="xsd:string" minOccurs="1" sql:field="StoritevNaziv"/>
+              <xsd:element name="EnotaMereId" type="xsd:int" minOccurs="1" sql:field="EnotaMereId"/>
+              <xsd:element name="EnotaMereKratica" type="xsd:string" minOccurs="1" sql:field="EnotaMereKratica"/>
+              <xsd:element name="EnotaMereDecimalke" type="xsd:int" minOccurs="0" default="0" sql:field="EnotaMereDecimalke"/>
+              <xsd:element name="Kolicina" type="xsd:decimal" minOccurs="1" sql:field="Kolicina"/>
+              <xsd:element name="SifraKontiranjaId" type="xsd:int" minOccurs="1" sql:field="SifraKontiranjaId"/>
+              <xsd:element name="IzjavaId" type="xsd:int" minOccurs="1" sql:field="IzjavaId"/>
+              <!--
+                <xsd:element name="Opomba" type="xsd:string" minOccurs="1" sql:field="Opomba"/>
+                -->
+              <xsd:element name="CenaNeto" type="xsd:decimal" minOccurs="1" sql:field="CenaNeto"/>
+              <xsd:element name="CenaNetoDejanska" type="xsd:decimal" minOccurs="1" sql:field="CenaNetoDejanska"/>
+              <xsd:element name="CenaNetoDejanskaIzvor" type="xsd:byte" minOccurs="1" sql:field="CenaNetoDejanskaIzvor"/>
+              <xsd:element name="TipCene" type="xsd:int" minOccurs="1" sql:field="TipCene"/>
+              <xsd:element name="PopustProcent" type="xsd:decimal" minOccurs="1" sql:field="PopustProcent"/>
+              <xsd:element name="PopustVrednost" type="xsd:decimal  " minOccurs="1" sql:field="PopustVrednost"/>
+              <xsd:element name="DavekProcent" type="xsd:decimal" minOccurs="1" sql:field="DavekProcent"/>
+              <xsd:element name="DavekId" type="xsd:string" minOccurs="1" sql:field="DavekId"/>
+              <xsd:element name="DavekVrednost" type="xsd:decimal" minOccurs="1" sql:field="DavekVrednost"/>
+              <!-- DH 21.7 DavekIdZaDobropis-->
+              <xsd:element name="DavekIdZaDobropis" type="xsd:string" minOccurs="0" sql:field="DavekIdZaDobropis"/>
+              <xsd:element name="NetoVrednostBrezPopusta" type="xsd:decimal" minOccurs="1" sql:field="NetoVrednostBrezPopusta"/>
+              <xsd:element name="NetoVrednostSPopustom" type="xsd:decimal" minOccurs="1" sql:field="NetoVrednostSPopustom"/>
+              <!--
+                <xsd:element name="IsAttributeFromApiChanged" type="xsd:boolean" minOccurs="1" sql:field="IsAttributeFromApiChanged"/>
+                -->
+              <xsd:element name="PlacanoZnamka" type="xsd:decimal" minOccurs="1" sql:field="PlacanoZnamka"/>
+              <xsd:element name="PlacanoPostninskiStroj" type="xsd:decimal" minOccurs="1" sql:field="PlacanoPostninskiStroj"/>
+              <xsd:element name="PlacaNaslovnik" type="xsd:decimal" minOccurs="1" sql:field="PlacaNaslovnik"/>
+              <xsd:element name="PlacanoVsota" type="xsd:decimal" minOccurs="1" sql:field="PlacanoVsota"/>
+
+              <!--
+                <xsd:element name="PodruznicaId" type="xsd:int" minOccurs="0" default="0" sql:field="PodruznicaId"/>
+                -->
+
+              <xsd:element name="IzjavaOpis" type="xsd:string" minOccurs="0" default="" sql:field="IzjavaOpis"/>
+
+              <xsd:element name="PodruznicaNaziv" type="xsd:string" minOccurs="0" default="" sql:field="PodruznicaNaziv"/>
+
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+
+
+
+        <xsd:element name="EfaRacuniIzpisPostavkeStrmView"
+               sql:relation="EfaRacuniIzpisPostavkeStrmView"
+               sql:key-fields="RowId"
+               sql:relationship="glavapostavkestrm">
+          <xsd:complexType>
+            <xsd:sequence minOccurs="1" maxOccurs ="unbounded">
+
+              <xsd:element name="RacunGlavaId" type="xsd:int" minOccurs="1" sql:field="RacunGlavaId"/>
+              <xsd:element name="StoritevId" type="xsd:int" minOccurs="1" sql:field="StoritevId"/>
+              <xsd:element name="StoritevNaziv" type="xsd:string" minOccurs="1" sql:field="StoritevNaziv"/>
+              <xsd:element name="EnotaMereId" type="xsd:int" minOccurs="1" sql:field="EnotaMereId"/>
+              <xsd:element name="EnotaMereKratica" type="xsd:string" minOccurs="1" sql:field="EnotaMereKratica"/>
+              <xsd:element name="EnotaMereDecimalke" type="xsd:int" minOccurs="0" default="0" sql:field="EnotaMereDecimalke"/>
+              <xsd:element name="Kolicina" type="xsd:decimal" minOccurs="0" default="0" sql:field="Kolicina"/>
+              <xsd:element name="SifraKontiranjaId" type="xsd:int" minOccurs="1" sql:field="SifraKontiranjaId"/>
+              <xsd:element name="IzjavaId" type="xsd:int" minOccurs="1" sql:field="IzjavaId"/>
+              <!--
+                <xsd:element name="Opomba" type="xsd:string" minOccurs="1" sql:field="Opomba"/>
+                -->
+              <xsd:element name="CenaNeto" type="xsd:decimal" minOccurs="1" sql:field="CenaNeto"/>
+              <xsd:element name="CenaNetoDejanska" type="xsd:decimal" minOccurs="1" sql:field="CenaNetoDejanska"/>
+              <xsd:element name="CenaNetoDejanskaIzvor" type="xsd:int" minOccurs="1" sql:field="CenaNetoDejanskaIzvor"/>
+              <xsd:element name="TipCene" type="xsd:int" minOccurs="1" sql:field="TipCene"/>
+              <xsd:element name="PopustProcent" type="xsd:decimal" minOccurs="1" sql:field="PopustProcent"/>
+              <xsd:element name="DavekProcent" type="xsd:decimal" minOccurs="1" sql:field="DavekProcent"/>
+              <xsd:element name="DavekId" type="xsd:string" minOccurs="1" sql:field="DavekId"/>
+              <xsd:element name="IzjavaOpis" type="xsd:string" minOccurs="1" sql:field="IzjavaOpis"/>
+              <xsd:element name="StrmId" type="xsd:string" minOccurs="1" sql:field="StrmId"/>
+              <xsd:element name="RowId" type="xsd:int" minOccurs="1" sql:field="RowId"/>
+              <xsd:element name="NazivStrm" type="xsd:string" minOccurs="1" sql:field="NazivStrm"/>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="EfaRacuniIzpisPostavkeStrmGroupView"
+              sql:relation="EfaRacuniIzpisPostavkeStrmGroupView"
+              sql:key-fields="RowId"
+              sql:relationship="glavapostavkestrmgroup">
+          <xsd:complexType>
+            <xsd:sequence minOccurs="1" maxOccurs ="unbounded">
+              <xsd:element name="RowId" type="xsd:int" minOccurs="1" sql:field="RowId"/>
+              <xsd:element name="RacunGlavaId" type="xsd:int" minOccurs="1" sql:field="RacunGlavaId"/>
+              <xsd:element name="StrmId" type="xsd:string" minOccurs="1" sql:field="StrmId"/>
+              <xsd:element name="NazivStrm" type="xsd:string" minOccurs="1" sql:field="NazivStrm"/>
+              <xsd:element name="PodruznicaId" type="xsd:int" minOccurs="0" default="0" sql:field="PodruznicaId"/>
+
+              <xsd:element name="PodruznicaNaziv" type="xsd:string" minOccurs="0" default="" sql:field="PodruznicaNaziv"/>
+
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+
+        <xsd:element name="EfaRacuniIzpisPostavkeDetailsView"
+               sql:relation="EfaRacuniIzpisPostavkeDetailsView"
+               sql:key-fields="RowId"
+               sql:relationship="glavapostavkedetails">
+          <xsd:complexType>
+            <xsd:sequence minOccurs="1" maxOccurs ="unbounded">
+              <xsd:element name="RowId" type="xsd:int" minOccurs="1" sql:field="RowId"/>
+              <xsd:element name="RacunGlavaId" type="xsd:int" minOccurs="1" sql:field="RacunGlavaId"/>
+              <xsd:element name="StrmId" type="xsd:string" minOccurs="1" sql:field="StrmId"/>
+              <xsd:element name="StoritevId" type="xsd:int" minOccurs="1" sql:field="StoritevId"/>
+              <xsd:element name="StoritevNaziv" type="xsd:string" minOccurs="1" sql:field="StoritevNaziv"/>
+              <xsd:element name="EnotaMereId" type="xsd:int" minOccurs="1" sql:field="EnotaMereId"/>
+              <xsd:element name="EnotaMereKratica" type="xsd:string" minOccurs="1" sql:field="EnotaMereKratica"/>
+              <xsd:element name="EnotaMereDecimalke" type="xsd:int" minOccurs="0" default="0" sql:field="EnotaMereDecimalke"/>
+              <xsd:element name="Kolicina" type="xsd:decimal" minOccurs="0" default="0" sql:field="Kolicina"/>
+              <xsd:element name="SifraKontiranjaId" type="xsd:int" minOccurs="1" sql:field="SifraKontiranjaId"/>
+              <xsd:element name="IzjavaId" type="xsd:int" minOccurs="1" sql:field="IzjavaId"/>
+              <!--
+                <xsd:element name="Opomba" type="xsd:string" minOccurs="1" sql:field="Opomba"/>
+                -->
+              <xsd:element name="CenaNeto" type="xsd:decimal" minOccurs="1" sql:field="CenaNeto"/>
+              <xsd:element name="CenaNetoDejanska" type="xsd:decimal" minOccurs="1" sql:field="CenaNetoDejanska"/>
+              <xsd:element name="CenaNetoDejanskaIzvor" type="xsd:int" minOccurs="1" sql:field="CenaNetoDejanskaIzvor"/>
+              <xsd:element name="TipCene" type="xsd:int" minOccurs="1" sql:field="TipCene"/>
+              <xsd:element name="PopustProcent" type="xsd:decimal" minOccurs="1" sql:field="PopustProcent"/>
+              <xsd:element name="DavekProcent" type="xsd:decimal" minOccurs="1" sql:field="DavekProcent"/>
+              <xsd:element name="DavekId" type="xsd:string" minOccurs="1" sql:field="DavekId"/>
+              <xsd:element name="IzjavaOpis" type="xsd:string" minOccurs="1" sql:field="IzjavaOpis"/>
+              <xsd:element name="PopustVrednost" type="xsd:decimal  " minOccurs="1" sql:field="PopustVrednost"/>
+              <xsd:element name="NetoVrednostSPopustom" type="xsd:decimal" minOccurs="1" sql:field="NetoVrednostSPopustom"/>
+              <!--
+              <xsd:element name="PodruznicaNaziv" type="xsd:string" minOccurs="0" default="" sql:field="PodruznicaNaziv"/>
+              -->
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <!-- TODO: Check whether it's OK if RacunGlavaId is simply taken for sql:key-fields! -->
+        <xsd:element name="EfaRacuniIzpisVsotaView"
+               sql:relation="EfaRacuniIzpisVsotaView"
+               sql:key-fields="RacunGlavaId"
+               sql:relationship="glavavsota">
+          <xsd:complexType>
+            <xsd:sequence minOccurs="1" maxOccurs ="unbounded">
+
+              <xsd:element name="RacunGlavaId" type="xsd:int" minOccurs="1" sql:field="RacunGlavaId"/>
+              <xsd:element name="SkupajVrednostBrezPopusta" type="xsd:decimal" minOccurs="0" default="0" sql:field="SkupajVrednostBrezPopusta"/>
+              <xsd:element name="SkupajPopust" type="xsd:decimal" minOccurs="0" default="0" sql:field="SkupajPopust"/>
+              <xsd:element name="SkupajDavek" type="xsd:decimal" minOccurs="0" default="0" sql:field="SkupajDavek"/>
+              <xsd:element name="SkupajPlacano" type="xsd:decimal" minOccurs="0" default="0" sql:field="SkupajPlacano"/>
+              <xsd:element name="SkupajZaPlacilo" type="xsd:decimal" minOccurs="0" default="0" sql:field="SkupajZaPlacilo"/>
+
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+
+        <xsd:element name="EfaRacuniIzpisDavekView"
+               sql:relation="EfaRacuniIzpisDavekView"
+               sql:key-fields="RacunGlavaId"
+               sql:relationship="glavadavek">
+          <xsd:complexType>
+            <xsd:sequence minOccurs="1" maxOccurs ="unbounded">
+
+              <xsd:element name="RacunGlavaId" type="xsd:int" minOccurs="1" sql:field="RacunGlavaId"/>
+              <xsd:element name="DavekId" type="xsd:string" minOccurs="1" sql:field="DavekId"/>
+              <xsd:element name="DavekProcent" type="xsd:decimal" minOccurs="1" sql:field="DavekProcent"/>
+              <xsd:element name="Vrednost" type="xsd:decimal" minOccurs="0" default="0" sql:field="Vrednost"/>
+              <xsd:element name="Osnova" type="xsd:decimal" minOccurs="0" default="0" sql:field="Osnova"/>
+              <xsd:element name="BrutoVrednost" type="xsd:decimal" minOccurs="0" default="0" sql:field="BrutoVrednost"/>
+              <!-- DH 21.7 DavekIdZaDobropis-->
+              <xsd:element name="DavekIdZaDobropis" type="xsd:string" minOccurs="0" sql:field="DavekIdZaDobropis"/>
+              <xsd:element name="DokumentVzrokNastankaId" type="xsd:int" minOccurs="0" sql:field="DokumentVzrokNastankaId"/>
+
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+
+
+        <xsd:element name="EfaRacuniIzpisIzjaveView"
+               sql:relation="EfaRacuniIzpisIzjaveView"
+               sql:key-fields="RacunGlavaId"
+               sql:relationship="glavaizjave">
+          <xsd:complexType>
+            <xsd:sequence minOccurs="1" maxOccurs ="unbounded">
+
+              <xsd:element name="RacunGlavaId" type="xsd:int" minOccurs="1" sql:field="RacunGlavaId"/>
+              <xsd:element name="IzjavaId" type="xsd:int" minOccurs="1" sql:field="IzjavaId"/>
+              <xsd:element name="IzjavaOpis" type="xsd:string" minOccurs="1" sql:field="IzjavaOpis"/>
+
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+
+
+        <xsd:element name="EfaRacuniIzpisPrihodkiView"
+               sql:relation="EfaRacuniIzpisPrihodkiView"
+               sql:key-fields="RacunGlavaId"
+               sql:relationship="glavaprihodki">
+          <xsd:complexType>
+            <xsd:sequence minOccurs="1" maxOccurs ="unbounded">
+
+              <xsd:element name="Konto" type="xsd:string" minOccurs="1" sql:field="Konto"/>
+              <xsd:element name="StrmId" type="xsd:string" minOccurs="1" sql:field="StrmId"/>
+              <!-- The following field has been renamed - 'SPopustom' -> 'BrezPopusta'  
+                  <xsd:element name="NetoVrednostSPopustomNeg" type="xsd:decimal" minOccurs="0" default="0" sql:field="NetoVrednostSPopustomNeg"/>
+                -->
+              <xsd:element name="NetoVrednostBrezPopustaNeg" type="xsd:decimal" minOccurs="0" default="0" sql:field="NetoVrednostBrezPopustaNeg"/>
+              <xsd:element name="RacunGlavaId" type="xsd:int" minOccurs="1" sql:field="RacunGlavaId"/>
+
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+
+
+        <xsd:element name="EfaRacuniIzpisPopustiView"
+               sql:relation="EfaRacuniIzpisPopustiView"
+               sql:key-fields="RacunGlavaId"
+               sql:relationship="glavapopusti">
+          <xsd:complexType>
+            <xsd:sequence minOccurs="1" maxOccurs ="unbounded">
+
+              <xsd:element name="Konto" type="xsd:string" minOccurs="1" sql:field="Konto"/>
+              <xsd:element name="StrmId" type="xsd:string" minOccurs="1" sql:field="StrmId"/>
+              <xsd:element name="PopustVrednost" type="xsd:decimal" minOccurs="1" sql:field="PopustVrednost"/>
+              <xsd:element name="RacunGlavaId" type="xsd:int" minOccurs="1" sql:field="RacunGlavaId"/>
+
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+
+
+
+        <!--  TODO: Correct the view such that this field can be added!
+          -->
+        <xsd:element name="EfaRacuniIzpisIzravnavaView"
+               sql:relation="EfaRacuniIzpisIzravnavaView"
+               sql:key-fields="RacunGlavaId"
+               sql:relationship="glavaizravnava">
+          <xsd:complexType>
+            <xsd:sequence minOccurs="1" maxOccurs ="unbounded">
+
+
+              <xsd:element name="Konto" type="xsd:int" minOccurs="1" sql:field="Konto"/>
+
+              <!-- TODO: Check what should actually stand for this field (named differently in 
+                      view than in XML)!  -->
+              <xsd:element name="StrmPeId" type="xsd:string" minOccurs="1" sql:field="StrmPeId"/>
+
+              <xsd:element name="Izravnava" type="xsd:decimal" minOccurs="1" sql:field="Izravnava"/>
+              <xsd:element name="RacunGlavaId" type="xsd:int" minOccurs="1" sql:field="RacunGlavaId"/>
+
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+
+
+
+        <xsd:element name="EfaRacunIzpisTekstiGlava"
+               sql:relation="EfaRacunIzpisTekstiGlava"
+               sql:key-fields="RacunGlavaId"
+               sql:relationship="tekstiglava">
+          <xsd:complexType>
+            <xsd:sequence minOccurs="0" maxOccurs ="unbounded">
+              <xsd:element name="RacunGlavaId" type="xsd:int" minOccurs="1" maxOccurs="1" sql:field="RacunGlavaId" />
+              <xsd:element name="Tekst" type="xsd:string" minOccurs="1" maxOccurs="1" sql:field="Tekst" />
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+
+
+        <xsd:element name="EfaRacunIzpisTekstiNoga"
+               sql:relation="EfaRacunIzpisTekstiNoga"
+               sql:key-fields="RacunGlavaId"
+               sql:relationship="tekstinoga">
+          <xsd:complexType>
+            <xsd:sequence minOccurs="0" maxOccurs ="unbounded">
+              <xsd:element name="RacunGlavaId" type="xsd:int" minOccurs="1" maxOccurs="1" sql:field="RacunGlavaId" />
+              <xsd:element name="Tekst" type="xsd:string" minOccurs="1" maxOccurs="1" sql:field="Tekst" />
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+
+
+        <xsd:element name="EfaRacunIzpisTekstiFiksni"
+               sql:relation="EfaRacunIzpisTekstiFiksni"
+               sql:key-fields="RacunGlavaId"
+               sql:relationship="tekstifiksni">
+          <xsd:complexType>
+            <xsd:sequence minOccurs="0" maxOccurs ="unbounded">
+              <xsd:element name="RacunGlavaId" type="xsd:int" minOccurs="1" maxOccurs="1" sql:field="RacunGlavaId" />
+              <xsd:element name="Tekst" type="xsd:string" minOccurs="1" maxOccurs="1" sql:field="Tekst" />
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+
+        <xsd:element name="EfaRacuniIzpisTekstiObjektovView"
+               sql:relation="EfaRacuniIzpisTekstiObjektovView"
+               sql:key-fields="RacunGlavaId"
+               sql:relationship="tekstiobjektov">
+          <xsd:complexType>
+            <xsd:sequence minOccurs="0" maxOccurs ="unbounded">
+              <xsd:element name="RacunGlavaId" type="xsd:int" minOccurs="1" maxOccurs="1" sql:field="RacunGlavaId" />
+              <xsd:element name="ImeObjekta" type="xsd:string" minOccurs="1" maxOccurs="1" sql:field="ImeObjekta" />
+              <xsd:element name="Besedilo" type="xsd:string" minOccurs="1" maxOccurs="1" sql:field="Besedilo" />
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+
+
+
+        <!--
+          
+          <xsd:element name="EfaRacuniIzpisXXXX"
+                 sql:relation="EfaRacuniIzpisXXXX"
+                 sql:key-fields="RowId XXXX"
+                 sql:relationship="glavaXXXX">
+            <xsd:complexType>
+              <xsd:sequence minOccurs="1" maxOccurs ="unbounded">
+                
+                <xsd:element name="" type="xsd:" minOccurs="1" sql:field=""/>
+                <xsd:element name="" type="xsd:" minOccurs="1" sql:field=""/>
+                <xsd:element name="" type="xsd:" minOccurs="1" sql:field=""/>
+                <xsd:element name="" type="xsd:" minOccurs="1" sql:field=""/>
+                <xsd:element name="" type="xsd:" minOccurs="1" sql:field=""/>
+                <xsd:element name="" type="xsd:" minOccurs="1" sql:field=""/>
+                <xsd:element name="" type="xsd:" minOccurs="1" sql:field=""/>
+                <xsd:element name="" type="xsd:" minOccurs="1" sql:field=""/>
+                <xsd:element name="" type="xsd:" minOccurs="1" sql:field=""/>
+                <xsd:element name="" type="xsd:" minOccurs="1" sql:field=""/>
+                <xsd:element name="" type="xsd:" minOccurs="1" sql:field=""/>
+                <xsd:element name="" type="xsd:" minOccurs="1" sql:field=""/>
+                <xsd:element name="" type="xsd:" minOccurs="1" sql:field=""/>
+                <xsd:element name="" type="xsd:" minOccurs="1" sql:field=""/>
+                <xsd:element name="" type="xsd:" minOccurs="1" sql:field=""/>
+                
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          
+          -->
+
+
+
+
+
+
+
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+
+</xsd:schema>

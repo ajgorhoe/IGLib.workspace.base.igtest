@@ -1,0 +1,192 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C41E9244-CA77-4C74-88B4-5942DA508789}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EFA_Tests</RootNamespace>
+    <AssemblyName>EFA_Tests</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v7.2, Version=7.2.1.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v7.2, Version=7.2.1.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v7.2, Version=7.2.1.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v7.2, Version=7.2.1.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL" />
+    <Reference Include="Janus.Windows.ButtonBar.v2, Version=2.0.1169.0, Culture=neutral, PublicKeyToken=21d5517571b185bf">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\99_References\Janus\Janus.Windows.ButtonBar.v2.dll</HintPath>
+    </Reference>
+    <Reference Include="Janus.Windows.CalendarCombo.v2, Version=2.0.1169.0, Culture=neutral, PublicKeyToken=21d5517571b185bf">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\99_References\Janus\Janus.Windows.CalendarCombo.v2.dll</HintPath>
+    </Reference>
+    <Reference Include="Janus.Windows.Common.v2, Version=2.0.1169.0, Culture=neutral, PublicKeyToken=21d5517571b185bf">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\99_References\Janus\Janus.Windows.Common.v2.dll</HintPath>
+    </Reference>
+    <Reference Include="Janus.Windows.GridEX.v2, Version=2.0.1169.0, Culture=neutral, PublicKeyToken=21d5517571b185bf">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\99_References\Janus\Janus.Windows.GridEX.v2.dll</HintPath>
+    </Reference>
+    <Reference Include="Janus.Windows.UI.v2, Version=2.0.1169.0, Culture=neutral, PublicKeyToken=21d5517571b185bf">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\99_References\Janus\Janus.Windows.UI.v2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.SqlXml, Version=9.0.242.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files\SQLXML 4.0\bin\Microsoft.Data.SqlXml.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Premisa.PadoBaseClasses35, Version=2.1.1078.0, Culture=neutral, PublicKeyToken=a0886ae0ca3ad66a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\99_References\PADO\Premisa.PadoBaseClasses35.dll</HintPath>
+    </Reference>
+    <Reference Include="Premisa.PadoGuiService35, Version=2.1.1078.0, Culture=neutral, PublicKeyToken=a0886ae0ca3ad66a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\99_References\PADO\Premisa.PadoGuiService35.dll</HintPath>
+    </Reference>
+    <Reference Include="Premisa.PadoInterfaces35, Version=2.1.1078.0, Culture=neutral, PublicKeyToken=a0886ae0ca3ad66a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\99_References\PADO\Premisa.PadoInterfaces35.dll</HintPath>
+    </Reference>
+    <Reference Include="Premisa.PadoRemoteTrace35, Version=2.1.1078.0, Culture=neutral, PublicKeyToken=a0886ae0ca3ad66a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\99_References\PADO\Premisa.PadoRemoteTrace35.dll</HintPath>
+    </Reference>
+    <Reference Include="Premisa.PadoReportClasses35, Version=2.1.1078.0, Culture=neutral, PublicKeyToken=a0886ae0ca3ad66a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\99_References\PADO\Premisa.PadoReportClasses35.dll</HintPath>
+    </Reference>
+    <Reference Include="Premisa.PadoUtilities35, Version=2.1.1078.0, Culture=neutral, PublicKeyToken=a0886ae0ca3ad66a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\99_References\PADO\Premisa.PadoUtilities35.dll</HintPath>
+    </Reference>
+    <Reference Include="Premisa.PadoWinControls35, Version=2.1.10078.0, Culture=neutral, PublicKeyToken=a0886ae0ca3ad66a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\99_References\PADO\Premisa.PadoWinControls35.dll</HintPath>
+    </Reference>
+    <Reference Include="PS.GlavnoOkno.IBll, Version=2.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\99_References\GO\PS.GlavnoOkno.IBll.dll</HintPath>
+    </Reference>
+    <Reference Include="PS.GlavnoOkno.Model, Version=2.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\99_References\GO\PS.GlavnoOkno.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="PS.GlavnoOkno.UI.Base, Version=2.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\99_References\GO\PS.GlavnoOkno.UI.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SQL_to_XMLTest.cs" />
+    <Compile Include="Test_ConsoleTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ManualTest1.mht" />
+    <Shadow Include="Test References\TestWS_Console.accessor" />
+    <Shadow Include="Test References\EFA.accessor" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AuthoringTests.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\00_Utilities\EFA_Interfaces\EFA_Interfaces.csproj">
+      <Project>{6649CF3D-36CB-4874-A5BB-72FD478D7618}</Project>
+      <Name>EFA_Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\00_Utilities\EFA_Utilities\EFA_Utilities.csproj">
+      <Project>{068526B7-BF2B-40A8-8106-7EC0F02DFD70}</Project>
+      <Name>EFA_Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\10_Classes\EFA_BaseClasses\EFA_BaseClasses.csproj">
+      <Project>{731D270A-28F2-4FF2-ABCD-629D7F49D3FE}</Project>
+      <Name>EFA_BaseClasses</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\20_Layers\EFA_GuiService\EFA_GuiService.csproj">
+      <Project>{763E9B90-9608-47AC-8720-15288C09ADE3}</Project>
+      <Name>EFA_GuiService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\20_Layers\EFA_Server\EFA_Server.csproj">
+      <Project>{04EC597A-402A-4470-A89F-3DB3906AA5C8}</Project>
+      <Name>EFA_Server</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\30_Controls\EFA_Controls\EFA_Controls.csproj">
+      <Project>{E68231A1-E9FB-47CF-8527-E48AE7508296}</Project>
+      <Name>EFA_Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\40_GUI\EFA\EFA.csproj">
+      <Project>{D33F8C12-2E07-4F8D-961D-878997C7A2F0}</Project>
+      <Name>EFA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestWS_Console\TestWS_Console.csproj">
+      <Project>{75EB76A2-F86F-4D74-89A1-228C3DE103D4}</Project>
+      <Name>TestWS_Console</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestWS_Lib\TestWS_Lib.csproj">
+      <Project>{BD6535EC-BC7B-4342-A7E5-C73A2BCF8104}</Project>
+      <Name>TestWS_Lib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

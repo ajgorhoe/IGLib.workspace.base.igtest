@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!-- Comment before the root element -->
+<root_element>
+   <container_1>
+      <element_1_0 attr_0_1='val_0_1' attr_0_2='val_0_1'>text_0</element_1_0>
+      <element_1_1>text_1_1</element_1_1>
+      <element_1_2>
+        <element_1_2_1 ></element_1_2_1>
+        text_1_2
+        <element_1_2_2 ></element_1_2_2>
+      </element_1_2>
+     <!-- Comment between element_1_2 and element_1_3 -->
+      <element_1_3>text_1_3</element_1_3>
+     <!-- Comment before end of container_1 --> <!-- Adjacent before end of container_1 -->
+   </container_1>
+   <container_2>
+     <array_2 type='vector' dim='3'>
+       <el_2_1 comp='1' type='scalar'>2.1</el_2_1>
+       <el_2_2 comp='2' type='scalar'>2.2</el_2_2>
+       <el_2_3 comp='3' type='scalar'>2.3</el_2_3>
+     </array_2>
+   </container_2>
+</root_element>
+
+<!-- Comment after the document -->

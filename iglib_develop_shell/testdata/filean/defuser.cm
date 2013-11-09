@@ -1,0 +1,50 @@
+
+*{ ****************************************************************
+
+                          USER DEFINITIONS
+
+******************************************************************* }
+
+*{ **************************************************************************
+
+  In this file, users should include all the definitions necessary for
+ customization of the example for their particuar case.
+   Appart form this file, only the file def.cm and the optimization command
+ file (opt.cm) should eventually be modified.
+
+***************************************************************************** }
+
+
+*{
+
+
+
+  *{ Flag for unconstrained minimization by adding a penalty term: }
+  ={ unconstrained: 0 }
+
+  *{ Flag for analysis with gradients calculated: }
+  ={ angrad: 1 }
+
+  *{ Whether to impose parameter bounds or not: }
+  ={ parambounds: 0 }
+
+  *{Parameter bounds:}
+  setvector{ lowbounds 2 {0.1, 0.2} }
+  setvector{ upbounds 2 {5.1, 5,2} }
+  setvector{ lowbounds 2 { -1.0e50, -1.0e50 } }
+  setvector{ upbounds 2 { 1.0e50, 1.0e50 } }
+
+
+
+  *{ Initial guess: }
+
+  setvector { initial, 2 { 11.0 , 4.0 } }
+  setvector { initial, 2 { 3.0 , 2.0 } }
+
+  setvector { initialstep, 2 {1.111, 1.22222} }
+
+
+}
+
+
+

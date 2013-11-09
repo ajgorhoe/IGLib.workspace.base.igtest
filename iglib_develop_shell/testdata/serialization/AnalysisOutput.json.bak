@@ -1,0 +1,127 @@
+{
+
+"ErrorCode": 321,
+"ErrorString": "This is an error string."
+
+  "NumConstraints": 2,
+  "UnknownField": 123456,
+  "NumEqualityConstraints": 0,
+  "NumObjectives": 1,
+  "NumParameters": 3,
+  "Parameters": {
+    "Elements": [
+      0,
+      0.1,
+      0.2
+    ],
+    "Length": 3
+  },
+  "RequestedConstraintGradients": true,
+  "RequestedConstraintHessians": true,
+  "RequestedConstraints": true,
+  "RequestedObjective": true,
+  "RequestedObjectiveGradient": true,
+  "RequestedObjectiveHessian": true,
+  "CalculatedConstraintGradients": true,
+  "CalculatedConstraintHessians": true,
+  "CalculatedConstraints": true,
+  "CalculatedObjective": true,
+  "CalculatedObjectiveGradient": true,
+  "CalculatedObjectiveHessian": true,
+  "ConstraintGradients": [
+    {
+      "Elements": [
+        0,
+        0.01,
+        0.02
+      ],
+      "Length": 3
+    },
+    {
+      "Elements": [
+        1000,
+        1000.01,
+        1000.02
+      ],
+      "Length": 3
+    }
+  ],
+  "ConstraintHessians": [
+    {
+      "ColumnCount": 3,
+      "Components": [
+        [
+          0,
+          0.010001,
+          0.020002
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "RowCount": 3
+    },
+    {
+      "ColumnCount": 3,
+      "Components": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1.010001,
+          1.020002
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "RowCount": 3
+    }
+  ],
+  "Constraints": [
+    200,
+    200
+  ],
+  "Objective": 1.1111,
+  "ObjectiveGradient": {
+    "Elements": [
+      10,
+      10,
+      10
+    ],
+    "Length": 3
+  },
+  "ObjectiveHessian": {
+    "ColumnCount": 3,
+    "Components": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        1,
+        1,
+        2
+      ],
+      [
+        2,
+        2,
+        2
+      ]
+    ],
+    "RowCount": 3
+  }
+}

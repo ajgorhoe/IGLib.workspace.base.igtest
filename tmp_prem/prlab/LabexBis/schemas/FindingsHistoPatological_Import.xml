@@ -1,0 +1,97 @@
+<?xml-stylesheet type="text/xsl" href="FindingsHistoPatological.xsl"?>
+<Findings>
+  <Head>
+    <Header>THIS IS A TODO HEADER</Header>
+    <Footer>THIS IS A TODO FOOTER</Footer>
+    <Heading> </Heading>
+    <OrderCode>C1/09</OrderCode>
+    <Patient>
+      <Name>ŠIME</Name>
+      <FamilyName>AMBROŽIČ</FamilyName>
+      <MiddleNames> </MiddleNames>
+      <Address>KAPELSKA CESTA 15</Address>
+      <Sex>M</Sex>
+      <DateOfBirth>1.1.1955</DateOfBirth>
+      <Age>54</Age>
+      <AgeMonths>654</AgeMonths>
+      <PersonId> </PersonId>
+    </Patient>
+    <Physician>
+      <Name>Admini</Name>
+      <FamilyName>Strator</FamilyName>
+      <MiddleNames> </MiddleNames>
+      <Appellation>Zdravnik</Appellation>
+      <Title> </Title>
+      <TitleRight> </TitleRight>
+    </Physician>
+    <Orderer>ODD.ZA ENDOSKOPIJO DIHAL</Orderer>
+    <OrdererAddress>en naslov 123</OrdererAddress>
+    <SampleTime>1.1.1900 0:00:00</SampleTime>
+    <ReceptionTime>17.7.2009 10:05:19</ReceptionTime>
+    <CompletionTime>1.1.1900 0:00:00</CompletionTime>
+  </Head>
+
+  <DiagnosisClinical>
+    <Text>Prosti tekst klinične diagnoze.</Text>
+    <Codes>
+      <DiagnosisCode>
+        <Code> </Code>
+        <CodeDescription> </CodeDescription>
+        <ClassificationSystem> </ClassificationSystem>
+      </DiagnosisCode>
+    </Codes>
+  </DiagnosisClinical>
+
+  <MacroDescription>POZOR, to je makro opis iz testne datoteke, ne iz podatkov.
+  Preimenuj testno datoteko, da se bo prikazal pravi izvid, ki se generira iz podatkov.</MacroDescription>
+  <MicroDescription>{\rtf1\ansi\deff0{\fonttbl{\f0\fnil\fcharset238 Microsoft Sans Serif;}}
+\viewkind4\uc1\pard\lang1060\f0\fs17\par
+    Mikroskopski opis. WWWWWWWWWW Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.\par
+\tab Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.\par
+\tab Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.vMikroskopski opis.\par
+\tab Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.vMikroskopski opis.Mikroskopski opis.\par
+  \par
+}
+</MicroDescription>
+  <TemporaryOpinion>
+    Začasna diagnoza.Začasna diagnoza.Začasna diagnoza.Začasna diagnoza.Začasna diagnoza.Začasna diagnoza.
+	Začasna diagnoza.Začasna diagnoza.vvZačasna diagnoza.
+	Začasna diagnoza.Začasna diagnoza.
+  </TemporaryOpinion>
+  <Appendix>{\rtf1\ansi\deff0{\fonttbl{\f0\fnil\fcharset238 Microsoft Sans Serif;}}
+    \viewkind4\uc1\pard\lang1060\f0\fs17\par
+    Dodatek k izvidu.Dodatek k izvidu.Dodatek k izvidu.Dodatek k izvidu.\par
+    \tab Dodatek k izvidu.Dodatek k izvidu.Dodatek k izvidu.Dodatek k izvidu.\par
+    \tab Dodatek k izvidu.Dodatek k izvidu.Dodatek k izvidu.\par
+    \tab Dodatek k izvidu.Dodatek k izvidu.Dodatek k izvidu.Dodatek k izvidu.Dodatek k izvidu.\par
+    \par
+    }</Appendix>
+  <FormerFindings>
+    <Finding>
+      <FindingReference>Code1</FindingReference>
+      <Remark>Opomba 1.</Remark>
+    </Finding>
+    <Finding>
+      <FindingReference>Code2</FindingReference>
+      <Remark>Opomba 2.</Remark>
+    </Finding>
+    <Finding>
+      <FindingReference>Code3</FindingReference>
+      <Remark>Opomba 3.</Remark>
+    </Finding>
+  </FormerFindings>
+
+
+  <DiagnosisPatoHistological>
+    <Text>Patohistological diagnosis free text. 1111</Text>
+    <Codes>
+      <DiagnosisCode>
+        <Code> </Code>
+        <CodeDescription> </CodeDescription>
+        <ClassificationSystem> </ClassificationSystem>
+      </DiagnosisCode>
+    </Codes>
+  </DiagnosisPatoHistological>
+
+
+</Findings>

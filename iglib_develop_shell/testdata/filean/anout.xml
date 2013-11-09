@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Analysis output file, created by IOptLib. -->
+<analysis_results type="analysispoint" mode="analysis_output">
+  <ret type="counter">0</ret>
+  <reqcalcobj type="counter">1</reqcalcobj>
+  <reqcalcconstr type="counter">1</reqcalcconstr>
+  <reqcalcgradobj type="counter">1</reqcalcgradobj>
+  <reqcalcgradconstr type="counter">1</reqcalcgradconstr>
+  <calcobj type="counter">1</calcobj>
+  <calcconstr type="counter">1</calcconstr>
+  <calcgradobj type="counter">1</calcgradobj>
+  <calcgradconstr type="counter">1</calcgradconstr>
+  <param type="vector" dim="2">
+    <vector_el type="scalar" ind="1">2.9999999999999991</vector_el>
+    <vector_el type="scalar" ind="2">2.9999999999999991</vector_el>
+  </param>
+  <obj type="scalar">0.6421305657490215</obj>
+  <constr type="table" eltype="scalar" dim="2">
+    <table_el type="scalar" ind="1">6.5999999999999952</table_el>
+    <table_el type="scalar" ind="2">-1.9999999999999991</table_el>
+  </constr>
+  <gradobj type="vector" dim="2">
+    <vector_el type="scalar" ind="1">0.57761056242813114</vector_el>
+    <vector_el type="scalar" ind="2">0.041257897316295082</vector_el>
+  </gradobj>
+  <gradconstr type="table" eltype="vector" dim="2">
+    <table_el type="vector" dim="2" ind="1">
+      <vector_el type="scalar" ind="1">-1</vector_el>
+      <vector_el type="scalar" ind="2">5.9999999999999982</vector_el>
+    </table_el>
+    <table_el type="vector" dim="2" ind="2">
+      <vector_el type="scalar" ind="1">0</vector_el>
+      <vector_el type="scalar" ind="2">-1</vector_el>
+    </table_el>
+  </gradconstr>
+</analysis_results>

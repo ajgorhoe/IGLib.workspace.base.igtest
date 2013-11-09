@@ -1,0 +1,581 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 5.2'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[     21248,        487]*)
+(*NotebookOutlinePosition[     21939,        511]*)
+(*  CellTagsIndexPosition[     21895,        507]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Initialization", "Subtitle"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(SetDirectory["\</users/igor/c/filean/parallel/xml_test_mathematica\>"]\)\
+], "Input"],
+
+Cell[BoxData[
+    \("C:\\users\\igor\\c\\filean\\parallel\\xml_test_mathematica"\)], \
+"Output"]
+}, Open  ]],
+
+Cell[BoxData[""], "Input"],
+
+Cell[BoxData[""], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["XML handling tools", "Subtitle"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(xmldata[\([1]\)]\)], "Input"],
+
+Cell[BoxData[
+    \({\(XMLObject["Declaration"]\)["Version" \[Rule] "1.0", 
+        "Encoding" \[Rule] "UTF-8"], \(XMLObject["Comment"]\)[
+        " IOptLib XML data representation - BATCH TEST. "]}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+    \(xmldata[\([2, 0]\)]\), "\[IndentingNewLine]", 
+    \(xmldata[\([2, 1]\)]\), "\[IndentingNewLine]", 
+    \(xmldata[\([2, 2]\)]\)}], "Input"],
+
+Cell[BoxData[
+    \(XMLElement\)], "Output"],
+
+Cell[BoxData[
+    \("Analysis_table"\)], "Output"],
+
+Cell[BoxData[
+    \({"type" \[Rule] "table", "eltype" \[Rule] "analysispoint", 
+      "dim" \[Rule] "2"}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+    \(xmldata[\([2, 3, 1, 0]\)]\), "\[IndentingNewLine]", 
+    \(xmldata[\([2, 3, 1, 1]\)]\), "\[IndentingNewLine]", 
+    \(xmldata[\([2, 3, 1, 2]\)]\), "\[IndentingNewLine]", 
+    \(xmldata[\([2, 3, 1, 3, 1]\)]\), "\[IndentingNewLine]", 
+    \(xmldata[\([2, 3, 1, 3, 2]\)]\), "\[IndentingNewLine]", 
+    \(\)}], "Input"],
+
+Cell[BoxData[
+    \(XMLElement\)], "Output"],
+
+Cell[BoxData[
+    \("table_el"\)], "Output"],
+
+Cell[BoxData[
+    \({"type" \[Rule] "analysispoint", "mode" \[Rule] "full", 
+      "ind" \[Rule] "1"}\)], "Output"],
+
+Cell[BoxData[
+    \(XMLElement["ret", {"type" \[Rule] "counter"}, {"0"}]\)], "Output"],
+
+Cell[BoxData[
+    \(XMLElement["reqcalcobj", {"type" \[Rule] "counter"}, {"1"}]\)], "Output"],
+
+Cell[BoxData[
+    \(XMLElement[
+      "reqcalcconstr", {"type" \[Rule] "counter"}, {"1"}]\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(xmldata[\([2, 3, 1, 3, 10]\)]\)], "Input"],
+
+Cell[BoxData[
+    \(XMLElement[
+      "param", {"type" \[Rule] "vector", 
+        "dim" \[Rule] "2"}, {XMLElement[
+          "vector_el", {"type" \[Rule] "scalar", 
+            "ind" \[Rule] "1"}, {"4.8588947683709893"}], 
+        XMLElement[
+          "vector_el", {"type" \[Rule] "scalar", 
+            "ind" \[Rule] "2"}, {"1.5419080165545243"}]}]\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(xmldata[\([2, 3, 1]\)]\)], "Input"],
+
+Cell[BoxData[
+    \(XMLElement[
+      "table_el", {"type" \[Rule] "analysispoint", "mode" \[Rule] "full", 
+        "ind" \[Rule] "1"}, {XMLElement[
+          "ret", {"type" \[Rule] "counter"}, {"0"}], 
+        XMLElement["reqcalcobj", {"type" \[Rule] "counter"}, {"1"}], 
+        XMLElement["reqcalcconstr", {"type" \[Rule] "counter"}, {"1"}], 
+        XMLElement["reqcalcgradobj", {"type" \[Rule] "counter"}, {"1"}], 
+        XMLElement["reqcalcgradconstr", {"type" \[Rule] "counter"}, {"1"}], 
+        XMLElement["calcobj", {"type" \[Rule] "counter"}, {"1"}], 
+        XMLElement["calcconstr", {"type" \[Rule] "counter"}, {"1"}], 
+        XMLElement["calcgradobj", {"type" \[Rule] "counter"}, {"1"}], 
+        XMLElement["calcgradconstr", {"type" \[Rule] "counter"}, {"1"}], 
+        XMLElement[
+          "param", {"type" \[Rule] "vector", 
+            "dim" \[Rule] "2"}, {XMLElement[
+              "vector_el", {"type" \[Rule] "scalar", 
+                "ind" \[Rule] "1"}, {"4.8588947683709893"}], 
+            XMLElement[
+              "vector_el", {"type" \[Rule] "scalar", 
+                "ind" \[Rule] "2"}, {"1.5419080165545243"}]}], 
+        XMLElement[
+          "obj", {"type" \[Rule] "scalar"}, {"0.99251904085178522"}], 
+        XMLElement[
+          "constr", {"type" \[Rule] "table", "eltype" \[Rule] "scalar", 
+            "dim" \[Rule] "2"}, {XMLElement[
+              "table_el", {"type" \[Rule] "scalar", 
+                "ind" \[Rule] "1"}, {"-1.8814144368558821"}], 
+            XMLElement[
+              "table_el", {"type" \[Rule] "scalar", 
+                "ind" \[Rule] "2"}, {"-0.54190801655452425"}]}], 
+        XMLElement[
+          "gradobj", {"type" \[Rule] "vector", 
+            "dim" \[Rule] "2"}, {XMLElement[
+              "vector_el", {"type" \[Rule] "scalar", 
+                "ind" \[Rule] "1"}, {"0.054096582164901583"}], 
+            XMLElement[
+              "vector_el", {"type" \[Rule] "scalar", 
+                "ind" \[Rule] "2"}, {"0.0014757634880133224"}]}], 
+        XMLElement[
+          "gradconstr", {"type" \[Rule] "table", "eltype" \[Rule] "vector", 
+            "dim" \[Rule] "2"}, {XMLElement[
+              "table_el", {"type" \[Rule] "vector", "dim" \[Rule] "2", 
+                "ind" \[Rule] "1"}, {XMLElement[
+                  "vector_el", {"type" \[Rule] "scalar", 
+                    "ind" \[Rule] "1"}, {"-1"}], 
+                XMLElement[
+                  "vector_el", {"type" \[Rule] "scalar", 
+                    "ind" \[Rule] "2"}, {"3.0838160331090485"}]}], 
+            XMLElement[
+              "table_el", {"type" \[Rule] "vector", "dim" \[Rule] "2", 
+                "ind" \[Rule] "2"}, {XMLElement[
+                  "vector_el", {"type" \[Rule] "scalar", 
+                    "ind" \[Rule] "1"}, {"0"}], 
+                XMLElement[
+                  "vector_el", {"type" \[Rule] "scalar", 
+                    "ind" \[Rule] "2"}, {"-1"}]}]}]}]\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(xmldata[\([2]\)]\)], "Input"],
+
+Cell[BoxData[
+    \(XMLElement[
+      "Analysis_table", {"type" \[Rule] "table", 
+        "eltype" \[Rule] "analysispoint", 
+        "dim" \[Rule] "2"}, {XMLElement[
+          "table_el", {"type" \[Rule] "analysispoint", "mode" \[Rule] "full", 
+            "ind" \[Rule] "1"}, {XMLElement[
+              "ret", {"type" \[Rule] "counter"}, {"0"}], 
+            XMLElement["reqcalcobj", {"type" \[Rule] "counter"}, {"1"}], 
+            XMLElement["reqcalcconstr", {"type" \[Rule] "counter"}, {"1"}], 
+            XMLElement["reqcalcgradobj", {"type" \[Rule] "counter"}, {"1"}], 
+            XMLElement[
+              "reqcalcgradconstr", {"type" \[Rule] "counter"}, {"1"}], 
+            XMLElement["calcobj", {"type" \[Rule] "counter"}, {"1"}], 
+            XMLElement["calcconstr", {"type" \[Rule] "counter"}, {"1"}], 
+            XMLElement["calcgradobj", {"type" \[Rule] "counter"}, {"1"}], 
+            XMLElement["calcgradconstr", {"type" \[Rule] "counter"}, {"1"}], 
+            XMLElement[
+              "param", {"type" \[Rule] "vector", 
+                "dim" \[Rule] "2"}, {XMLElement[
+                  "vector_el", {"type" \[Rule] "scalar", 
+                    "ind" \[Rule] "1"}, {"4.8588947683709893"}], 
+                XMLElement[
+                  "vector_el", {"type" \[Rule] "scalar", 
+                    "ind" \[Rule] "2"}, {"1.5419080165545243"}]}], 
+            XMLElement[
+              "obj", {"type" \[Rule] "scalar"}, {"0.99251904085178522"}], 
+            XMLElement[
+              "constr", {"type" \[Rule] "table", "eltype" \[Rule] "scalar", 
+                "dim" \[Rule] "2"}, {XMLElement[
+                  "table_el", {"type" \[Rule] "scalar", 
+                    "ind" \[Rule] "1"}, {"-1.8814144368558821"}], 
+                XMLElement[
+                  "table_el", {"type" \[Rule] "scalar", 
+                    "ind" \[Rule] "2"}, {"-0.54190801655452425"}]}], 
+            XMLElement[
+              "gradobj", {"type" \[Rule] "vector", 
+                "dim" \[Rule] "2"}, {XMLElement[
+                  "vector_el", {"type" \[Rule] "scalar", 
+                    "ind" \[Rule] "1"}, {"0.054096582164901583"}], 
+                XMLElement[
+                  "vector_el", {"type" \[Rule] "scalar", 
+                    "ind" \[Rule] "2"}, {"0.0014757634880133224"}]}], 
+            XMLElement[
+              "gradconstr", {"type" \[Rule] "table", 
+                "eltype" \[Rule] "vector", 
+                "dim" \[Rule] "2"}, {XMLElement[
+                  "table_el", {"type" \[Rule] "vector", "dim" \[Rule] "2", 
+                    "ind" \[Rule] "1"}, {XMLElement[
+                      "vector_el", {"type" \[Rule] "scalar", 
+                        "ind" \[Rule] "1"}, {"-1"}], 
+                    XMLElement[
+                      "vector_el", {"type" \[Rule] "scalar", 
+                        "ind" \[Rule] "2"}, {"3.0838160331090485"}]}], 
+                XMLElement[
+                  "table_el", {"type" \[Rule] "vector", "dim" \[Rule] "2", 
+                    "ind" \[Rule] "2"}, {XMLElement[
+                      "vector_el", {"type" \[Rule] "scalar", 
+                        "ind" \[Rule] "1"}, {"0"}], 
+                    XMLElement[
+                      "vector_el", {"type" \[Rule] "scalar", 
+                        "ind" \[Rule] "2"}, {"-1"}]}]}]}], 
+        XMLElement[
+          "table_el", {"type" \[Rule] "analysispoint", "mode" \[Rule] "full", 
+            "ind" \[Rule] "2"}, {XMLElement[
+              "ret", {"type" \[Rule] "counter"}, {"0"}], 
+            XMLElement["reqcalcobj", {"type" \[Rule] "counter"}, {"1"}], 
+            XMLElement["reqcalcconstr", {"type" \[Rule] "counter"}, {"1"}], 
+            XMLElement["reqcalcgradobj", {"type" \[Rule] "counter"}, {"1"}], 
+            XMLElement[
+              "reqcalcgradconstr", {"type" \[Rule] "counter"}, {"1"}], 
+            XMLElement["calcobj", {"type" \[Rule] "counter"}, {"1"}], 
+            XMLElement["calcconstr", {"type" \[Rule] "counter"}, {"1"}], 
+            XMLElement["calcgradobj", {"type" \[Rule] "counter"}, {"1"}], 
+            XMLElement["calcgradconstr", {"type" \[Rule] "counter"}, {"1"}], 
+            XMLElement[
+              "param", {"type" \[Rule] "vector", 
+                "dim" \[Rule] "2"}, {XMLElement[
+                  "vector_el", {"type" \[Rule] "scalar", 
+                    "ind" \[Rule] "1"}, {"9.0579193432484573*10^-006"}], 
+                XMLElement[
+                  "vector_el", {"type" \[Rule] "scalar", 
+                    "ind" \[Rule] "2"}, {"8.3500858997809912*10^-006"}]}], 
+            XMLElement[
+              "obj", {"type" \[Rule] "scalar"}, {"0.0089727552416280464"}], 
+            XMLElement[
+              "constr", {"type" \[Rule] "table", "eltype" \[Rule] "scalar", 
+                "dim" \[Rule] "2"}, {XMLElement[
+                  "table_el", {"type" \[Rule] "scalar", 
+                    "ind" \[Rule] "1"}, {"0.59999094215038062"}], 
+                XMLElement[
+                  "table_el", {"type" \[Rule] "scalar", 
+                    "ind" \[Rule] "2"}, {"0.99999164991410017"}]}], 
+            XMLElement[
+              "gradobj", {"type" \[Rule] "vector", 
+                "dim" \[Rule] "2"}, {XMLElement[
+                  "vector_el", {"type" \[Rule] "scalar", 
+                    "ind" \[Rule] "1"}, {"-0.039758638303782345"}], 
+                XMLElement[
+                  "vector_el", {"type" \[Rule] "scalar", 
+                    "ind" \[Rule] "2"}, {"0.009940192760278254"}]}], 
+            XMLElement[
+              "gradconstr", {"type" \[Rule] "table", 
+                "eltype" \[Rule] "vector", 
+                "dim" \[Rule] "2"}, {XMLElement[
+                  "table_el", {"type" \[Rule] "vector", "dim" \[Rule] "2", 
+                    "ind" \[Rule] "1"}, {XMLElement[
+                      "vector_el", {"type" \[Rule] "scalar", 
+                        "ind" \[Rule] "1"}, {"-1"}], 
+                    XMLElement[
+                      "vector_el", {"type" \[Rule] "scalar", 
+                        "ind" \[Rule] 
+                          "2"}, {"1.6700171799561982*10^-005"}]}], 
+                XMLElement[
+                  "table_el", {"type" \[Rule] "vector", "dim" \[Rule] "2", 
+                    "ind" \[Rule] "2"}, {XMLElement[
+                      "vector_el", {"type" \[Rule] "scalar", 
+                        "ind" \[Rule] "1"}, {"0"}], 
+                    XMLElement[
+                      "vector_el", {"type" \[Rule] "scalar", 
+                        "ind" \[Rule] "2"}, {"-1"}]}]}]}]}]\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(xmldata = Import["\<test1.xml\>"]\)], "Input"],
+
+Cell[BoxData[
+    \(\(XMLObject[
+        "Document"]\)[{\(XMLObject["Declaration"]\)["Version" \[Rule] "1.0", 
+          "Encoding" \[Rule] "UTF-8"], \(XMLObject["Comment"]\)[
+          " IOptLib XML data representation - BATCH TEST. "]}, 
+      XMLElement[
+        "Analysis_table", {"type" \[Rule] "table", 
+          "eltype" \[Rule] "analysispoint", 
+          "dim" \[Rule] "2"}, {XMLElement[
+            "table_el", {"type" \[Rule] "analysispoint", 
+              "mode" \[Rule] "full", 
+              "ind" \[Rule] "1"}, {XMLElement[
+                "ret", {"type" \[Rule] "counter"}, {"0"}], 
+              XMLElement["reqcalcobj", {"type" \[Rule] "counter"}, {"1"}], 
+              XMLElement["reqcalcconstr", {"type" \[Rule] "counter"}, {"1"}], 
+              XMLElement[
+                "reqcalcgradobj", {"type" \[Rule] "counter"}, {"1"}], 
+              XMLElement[
+                "reqcalcgradconstr", {"type" \[Rule] "counter"}, {"1"}], 
+              XMLElement["calcobj", {"type" \[Rule] "counter"}, {"1"}], 
+              XMLElement["calcconstr", {"type" \[Rule] "counter"}, {"1"}], 
+              XMLElement["calcgradobj", {"type" \[Rule] "counter"}, {"1"}], 
+              XMLElement[
+                "calcgradconstr", {"type" \[Rule] "counter"}, {"1"}], 
+              XMLElement[
+                "param", {"type" \[Rule] "vector", 
+                  "dim" \[Rule] "2"}, {XMLElement[
+                    "vector_el", {"type" \[Rule] "scalar", 
+                      "ind" \[Rule] "1"}, {"4.8588947683709893"}], 
+                  XMLElement[
+                    "vector_el", {"type" \[Rule] "scalar", 
+                      "ind" \[Rule] "2"}, {"1.5419080165545243"}]}], 
+              XMLElement[
+                "obj", {"type" \[Rule] "scalar"}, {"0.99251904085178522"}], 
+              XMLElement[
+                "constr", {"type" \[Rule] "table", "eltype" \[Rule] "scalar", 
+                  "dim" \[Rule] "2"}, {XMLElement[
+                    "table_el", {"type" \[Rule] "scalar", 
+                      "ind" \[Rule] "1"}, {"-1.8814144368558821"}], 
+                  XMLElement[
+                    "table_el", {"type" \[Rule] "scalar", 
+                      "ind" \[Rule] "2"}, {"-0.54190801655452425"}]}], 
+              XMLElement[
+                "gradobj", {"type" \[Rule] "vector", 
+                  "dim" \[Rule] "2"}, {XMLElement[
+                    "vector_el", {"type" \[Rule] "scalar", 
+                      "ind" \[Rule] "1"}, {"0.054096582164901583"}], 
+                  XMLElement[
+                    "vector_el", {"type" \[Rule] "scalar", 
+                      "ind" \[Rule] "2"}, {"0.0014757634880133224"}]}], 
+              XMLElement[
+                "gradconstr", {"type" \[Rule] "table", 
+                  "eltype" \[Rule] "vector", 
+                  "dim" \[Rule] "2"}, {XMLElement[
+                    "table_el", {"type" \[Rule] "vector", "dim" \[Rule] "2", 
+                      "ind" \[Rule] "1"}, {XMLElement[
+                        "vector_el", {"type" \[Rule] "scalar", 
+                          "ind" \[Rule] "1"}, {"-1"}], 
+                      XMLElement[
+                        "vector_el", {"type" \[Rule] "scalar", 
+                          "ind" \[Rule] "2"}, {"3.0838160331090485"}]}], 
+                  XMLElement[
+                    "table_el", {"type" \[Rule] "vector", "dim" \[Rule] "2", 
+                      "ind" \[Rule] "2"}, {XMLElement[
+                        "vector_el", {"type" \[Rule] "scalar", 
+                          "ind" \[Rule] "1"}, {"0"}], 
+                      XMLElement[
+                        "vector_el", {"type" \[Rule] "scalar", 
+                          "ind" \[Rule] "2"}, {"-1"}]}]}]}], 
+          XMLElement[
+            "table_el", {"type" \[Rule] "analysispoint", 
+              "mode" \[Rule] "full", 
+              "ind" \[Rule] "2"}, {XMLElement[
+                "ret", {"type" \[Rule] "counter"}, {"0"}], 
+              XMLElement["reqcalcobj", {"type" \[Rule] "counter"}, {"1"}], 
+              XMLElement["reqcalcconstr", {"type" \[Rule] "counter"}, {"1"}], 
+              XMLElement[
+                "reqcalcgradobj", {"type" \[Rule] "counter"}, {"1"}], 
+              XMLElement[
+                "reqcalcgradconstr", {"type" \[Rule] "counter"}, {"1"}], 
+              XMLElement["calcobj", {"type" \[Rule] "counter"}, {"1"}], 
+              XMLElement["calcconstr", {"type" \[Rule] "counter"}, {"1"}], 
+              XMLElement["calcgradobj", {"type" \[Rule] "counter"}, {"1"}], 
+              XMLElement[
+                "calcgradconstr", {"type" \[Rule] "counter"}, {"1"}], 
+              XMLElement[
+                "param", {"type" \[Rule] "vector", 
+                  "dim" \[Rule] "2"}, {XMLElement[
+                    "vector_el", {"type" \[Rule] "scalar", 
+                      "ind" \[Rule] "1"}, {"9.0579193432484573*10^-006"}], 
+                  XMLElement[
+                    "vector_el", {"type" \[Rule] "scalar", 
+                      "ind" \[Rule] "2"}, {"8.3500858997809912*10^-006"}]}], 
+              XMLElement[
+                "obj", {"type" \[Rule] "scalar"}, {"0.0089727552416280464"}], 
+              XMLElement[
+                "constr", {"type" \[Rule] "table", "eltype" \[Rule] "scalar", 
+                  "dim" \[Rule] "2"}, {XMLElement[
+                    "table_el", {"type" \[Rule] "scalar", 
+                      "ind" \[Rule] "1"}, {"0.59999094215038062"}], 
+                  XMLElement[
+                    "table_el", {"type" \[Rule] "scalar", 
+                      "ind" \[Rule] "2"}, {"0.99999164991410017"}]}], 
+              XMLElement[
+                "gradobj", {"type" \[Rule] "vector", 
+                  "dim" \[Rule] "2"}, {XMLElement[
+                    "vector_el", {"type" \[Rule] "scalar", 
+                      "ind" \[Rule] "1"}, {"-0.039758638303782345"}], 
+                  XMLElement[
+                    "vector_el", {"type" \[Rule] "scalar", 
+                      "ind" \[Rule] "2"}, {"0.009940192760278254"}]}], 
+              XMLElement[
+                "gradconstr", {"type" \[Rule] "table", 
+                  "eltype" \[Rule] "vector", 
+                  "dim" \[Rule] "2"}, {XMLElement[
+                    "table_el", {"type" \[Rule] "vector", "dim" \[Rule] "2", 
+                      "ind" \[Rule] "1"}, {XMLElement[
+                        "vector_el", {"type" \[Rule] "scalar", 
+                          "ind" \[Rule] "1"}, {"-1"}], 
+                      XMLElement[
+                        "vector_el", {"type" \[Rule] "scalar", 
+                          "ind" \[Rule] 
+                            "2"}, {"1.6700171799561982*10^-005"}]}], 
+                  XMLElement[
+                    "table_el", {"type" \[Rule] "vector", "dim" \[Rule] "2", 
+                      "ind" \[Rule] "2"}, {XMLElement[
+                        "vector_el", {"type" \[Rule] "scalar", 
+                          "ind" \[Rule] "1"}, {"0"}], 
+                      XMLElement[
+                        "vector_el", {"type" \[Rule] "scalar", 
+                          "ind" \[Rule] 
+                            "2"}, {"-1"}]}]}]}]}], {}]\)], "Output"]
+}, Open  ]],
+
+Cell[BoxData[""], "Input"],
+
+Cell[BoxData[""], "Input"]
+}, Open  ]]
+},
+FrontEndVersion->"5.2 for Microsoft Windows",
+ScreenRectangle->{{0, 1680}, {0, 963}},
+CellGrouping->Manual,
+WindowSize->{968, 929},
+WindowMargins->{{320, Automatic}, {Automatic, 2103}},
+Magnification->1.25
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[1776, 53, 34, 0, 64, "Subtitle"],
+
+Cell[CellGroupData[{
+Cell[1835, 57, 105, 2, 35, "Input"],
+Cell[1943, 61, 96, 2, 35, "Output"]
+}, Open  ]],
+Cell[2054, 66, 26, 0, 35, "Input"],
+Cell[2083, 68, 26, 0, 35, "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[2146, 73, 38, 0, 64, "Subtitle"],
+
+Cell[CellGroupData[{
+Cell[2209, 77, 49, 1, 35, "Input"],
+Cell[2261, 80, 212, 3, 56, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[2510, 88, 160, 3, 77, "Input"],
+Cell[2673, 93, 44, 1, 35, "Output"],
+Cell[2720, 96, 50, 1, 35, "Output"],
+Cell[2773, 99, 118, 2, 35, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[2928, 106, 336, 6, 140, "Input"],
+Cell[3267, 114, 44, 1, 35, "Output"],
+Cell[3314, 117, 44, 1, 35, "Output"],
+Cell[3361, 120, 115, 2, 35, "Output"],
+Cell[3479, 124, 86, 1, 35, "Output"],
+Cell[3568, 127, 93, 1, 35, "Output"],
+Cell[3664, 130, 103, 2, 35, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[3804, 137, 62, 1, 35, "Input"],
+Cell[3869, 140, 364, 8, 77, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[4270, 153, 55, 1, 35, "Input"],
+Cell[4328, 156, 2941, 56, 455, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[7306, 217, 49, 1, 35, "Input"],
+Cell[7358, 220, 6551, 120, 1001, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[13946, 345, 66, 1, 35, "Input"],
+Cell[14015, 348, 7147, 131, 1022, "Output"]
+}, Open  ]],
+Cell[21177, 482, 26, 0, 35, "Input"],
+Cell[21206, 484, 26, 0, 35, "Input"]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

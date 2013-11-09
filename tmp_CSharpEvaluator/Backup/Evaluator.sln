@@ -1,0 +1,27 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evaluator", "Evaluator.csproj", "{B3300022-30CC-4DDC-B72A-0AA3F90E1F23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestEvaluator", "TestEvaluator\TestEvaluator.csproj", "{3B3D16FA-FC18-4FAA-9528-8E4466C31523}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{B3300022-30CC-4DDC-B72A-0AA3F90E1F23}.Debug.ActiveCfg = Debug|.NET
+		{B3300022-30CC-4DDC-B72A-0AA3F90E1F23}.Debug.Build.0 = Debug|.NET
+		{B3300022-30CC-4DDC-B72A-0AA3F90E1F23}.Release.ActiveCfg = Release|.NET
+		{B3300022-30CC-4DDC-B72A-0AA3F90E1F23}.Release.Build.0 = Release|.NET
+		{3B3D16FA-FC18-4FAA-9528-8E4466C31523}.Debug.ActiveCfg = Debug|.NET
+		{3B3D16FA-FC18-4FAA-9528-8E4466C31523}.Debug.Build.0 = Debug|.NET
+		{3B3D16FA-FC18-4FAA-9528-8E4466C31523}.Release.ActiveCfg = Release|.NET
+		{3B3D16FA-FC18-4FAA-9528-8E4466C31523}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

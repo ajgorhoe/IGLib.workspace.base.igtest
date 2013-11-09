@@ -1,0 +1,325 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A05C0C55-DA35-43B5-9CF8-C3BF509A4F6B}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IG.Lib</RootNamespace>
+    <AssemblyName>igs</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="00Test.cs" />
+    <Compile Include="00testscriptsopt\templates\ScriptOptTemplate.cs" />
+    <Compile Include="00testscriptsopt\tests\AppTestShell.cs" />
+    <Compile Include="00testscriptsopt\tests\Script_Misc.cs" />
+    <Compile Include="00testscriptsopt\tests\Script_Numeric.cs" />
+    <Compile Include="00testscriptsopt\tests\Script_Optimization.cs" />
+    <Compile Include="00testscriptsopt\tests\Scrip_OdeChem.cs" />
+    <Compile Include="00testscriptsopt\tests\Script_Examples.cs" />
+    <Compile Include="00testscriptsopt\tmp\S_TestOpt1.cs" />
+    <Compile Include="00testscriptsopt\tmp\S_TestOpt2.cs" />
+    <Compile Include="00testscriptsopt\tmp\S_TestOpt3.cs" />
+    <Compile Include="AppTestOpt.cs" />
+    <Compile Include="Configuration.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\WsBaseRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\WSDevelop1Ref\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\WSDevelopRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="WebServices\0WebServiceReferences\0WSReferences.cs" />
+    <Compile Include="WebServices\0WebServiceReferences\WSBaseRef.cs" />
+    <Compile Include="WebServices\0WebServiceReferences\WSDevelop1Ref.cs">
+      <SubType>code</SubType>
+    </Compile>
+    <Compile Include="WebServices\0WebServiceReferences\WSDevelopRef.cs">
+      <SubType>code</SubType>
+    </Compile>
+    <Compile Include="WebServices\WebServiceForms\Applications\WSClientsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WebServices\WebServiceForms\Applications\WSClientsForm.Designer.cs">
+      <DependentUpon>WSClientsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WebServices\WebServiceForms\WSClient1Control.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WebServices\WebServiceForms\WSClient1Control.Designer.cs">
+      <DependentUpon>WSClient1Control.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WebServices\WebServiceForms\WSClientFormsAbout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WebServices\WebServiceForms\WSClientFormsAbout.Designer.cs">
+      <DependentUpon>WSClientFormsAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WebServices\WebServiceForms\WSClientsFormAboutWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WebServices\WebServiceForms\WSClientsFormAboutWindow.Designer.cs">
+      <DependentUpon>WSClientsFormAboutWindow.cs</DependentUpon>
+    </Compile>
+    <None Include="00testscriptsopt\examples_testshell.cmd" />
+    <Compile Include="ProgIgLibShell.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\WsBaseRef\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\WsBaseRef\WSBase.wsdl" />
+    <None Include="Web References\WSDevelop1Ref\ClientDataBase.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WSDevelop1Ref\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\WSDevelop1Ref\WSDevelop1.wsdl" />
+    <None Include="Web References\WSDevelopRef\ClientDataBase.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WSDevelopRef\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\WSDevelopRef\WSDevelop.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="testdata\filean\an.cm" />
+    <None Include="testdata\filean\an.cm.bak" />
+    <None Include="testdata\filean\an.ct" />
+    <None Include="testdata\filean\analysis.cm" />
+    <None Include="testdata\filean\anin.dat" />
+    <None Include="testdata\filean\anout.dat" />
+    <None Include="testdata\filean\anout1.dat" />
+    <None Include="testdata\filean\def.cm" />
+    <None Include="testdata\filean\def.cm.bak" />
+    <None Include="testdata\filean\defuser.cm" />
+    <None Include="testdata\filean\opt.cm" />
+    <None Include="testdata\filean\opt.cm.bak" />
+    <None Include="testdata\filean\opt.ct" />
+    <None Include="testdata\filean\opt1.cm" />
+    <None Include="testdata\filean\out.dat" />
+    <None Include="testdata\filean\parallel\xml_test_mathematica\test_xml.nb" />
+    <None Include="testdata\filean\parse\optoriginal.cm" />
+    <None Include="testdata\filean\parse\parsed.dat" />
+    <None Include="testdata\filean\tmptest.tmp" />
+    <None Include="testdata\serialization\AnalysisOutput.json.bak" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="00testscriptsopt\igor\archive\" />
+    <Folder Include="data\" />
+    <Folder Include="testdata\scripts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\iglib\extensions\ann\LibNeural\LibNeural.csproj">
+      <Project>{FBF3C5F7-A0CA-46A1-8973-7689FFFAAEBA}</Project>
+      <Name>LibNeural</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\iglib\extensions\iglibext\iglib_ext.csproj">
+      <Project>{4E4B240A-6994-4747-BB6C-0CC0D2578D04}</Project>
+      <Name>iglibext</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\iglib\extensions\igplot2d\plot2d\igplot2d.csproj">
+      <Project>{C9A09DBC-B304-42DF-9CEE-6BA0E856ABC2}</Project>
+      <Name>igplot2d</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\iglib\extensions\igplot3d\plot3d\igplot3d.csproj">
+      <Project>{8BBF5C58-2562-4E9B-ACB8-3F3A3B031F62}</Project>
+      <Name>igplot3d</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\iglib\external\MathNetNumerics\src\Numerics\Numerics.csproj">
+      <Project>{B7CAE5F4-A23F-4438-B5BE-41226618B695}</Project>
+      <Name>Numerics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\iglib\external\MathNet\Iridium\Sources\Library\Iridium.csproj">
+      <Project>{26FC15DE-EFDA-403A-8284-1E2A4AE8A9D8}</Project>
+      <Name>Iridium</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\iglib\external\zedGraph\lib_5.1.2\ZedGraph 5.1\source\ZedGraph.csproj">
+      <Project>{2541686B-1673-43BF-AF89-3163945DB009}</Project>
+      <Name>ZedGraph</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\iglib\igbase\iglib_base.csproj">
+      <Project>{1959D290-8600-410D-B02B-FD178B931FDB}</Project>
+      <Name>iglib_base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\iglib\igforms\igform.csproj">
+      <Project>{50235FC8-A69D-47AE-A557-6518B35CC7C9}</Project>
+      <Name>igform</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\shelldev\extensions\ExtAppAnnApp\ExtAppAnnApp.csproj">
+      <Project>{2D1D1D0F-58C5-4E9B-853E-7C1E89DCEF14}</Project>
+      <Name>ExtAppAnnApp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\shelldev\lib\extended\LibNeuralExtForms\LibNeuralExtFormsIT.csproj">
+      <Project>{B40A1C81-70FD-42A6-A154-755E15AD0BCA}</Project>
+      <Name>LibNeuralExtFormsIT</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\shelldev\lib\extended\LibNeuralExt\LibNeuralExtIT.csproj">
+      <Project>{6BF0099C-05A5-4A72-9634-CD402F60B52B}</Project>
+      <Name>LibNeuralExtIT</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\iglib_develop\test_iglib_develop.csproj">
+      <Project>{B7EBC02E-D688-4DD9-94C2-801DDF4342AA}</Project>
+      <Name>test_iglib_develop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\iglib_develop_aux\test_iglib_develop_aux.csproj">
+      <Project>{759A223B-28E7-4F01-BB84-4F9E97150E90}</Project>
+      <Name>test_iglib_develop_aux</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="00testscriptsopt\tmp\0ReadMeCustomScriptsOpt.txt" />
+    <Content Include="testdata\filean\analysis.c" />
+    <Content Include="testdata\filean\anin.xml" />
+    <Content Include="testdata\filean\anout.xml" />
+    <Content Include="testdata\filean\parallel\xml_test_mathematica\test1.xml" />
+    <Content Include="testdata\filean\readme.txt" />
+    <Content Include="testdata\serialization\AnalysisInput.json" />
+    <Content Include="testdata\serialization\AnalysisInput_restored.json" />
+    <Content Include="testdata\serialization\AnalysisOutput.json" />
+    <Content Include="testdata\serialization\AnalysisOutput_restored.json" />
+    <Content Include="testdata\serialization\anout1.xml" />
+    <Content Include="testdata\serialization\Serialized.json" />
+    <Content Include="testdata\serialization\Serialized_restored.json" />
+    <None Include="Web References\WsBaseRef\WSBase.disco" />
+    <None Include="Web References\WSDevelopRef\WSDevelop.disco" />
+    <None Include="Web References\WSDevelop1Ref\WSDevelop1.disco" />
+    <Content Include="WebServices\0readme_webservices_level_3.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WebServices\WebServiceForms\Applications\WSClientsForm.resx">
+      <DependentUpon>WSClientsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WebServices\WebServiceForms\WSClient1Control.resx">
+      <DependentUpon>WSClient1Control.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WebServices\WebServiceForms\WSClientFormsAbout.resx">
+      <DependentUpon>WSClientFormsAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WebServices\WebServiceForms\WSClientsFormAboutWindow.resx">
+      <DependentUpon>WSClientsFormAboutWindow.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost:40197/WSBase.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WsBaseRef\</RelPath>
+      <UpdateFromURL>http://localhost:40197/WSBase.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>igs_WsBaseRef_WSBase</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:40197/WSDevelop.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WSDevelopRef\</RelPath>
+      <UpdateFromURL>http://localhost:40197/WSDevelop.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>igs_WSDevelopRef_WSDevelop</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:40197/WSDevelop1.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WSDevelop1Ref\</RelPath>
+      <UpdateFromURL>http://localhost:40197/WSDevelop1.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>igs_WSDevelop1Ref_WSDevelop1</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

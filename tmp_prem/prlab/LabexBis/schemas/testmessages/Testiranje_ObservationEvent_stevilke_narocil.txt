@@ -1,0 +1,77 @@
+
+
+
+KODE avtorjev:
+99999, 77777, 44444, 55555
+
+Kode iz zelene knjige:
+
+STORITVE po zeleni knjigi:
+29107	IZVEDBA TANKOIGELNE ASPIRACIJSKE BIOPSIJE
+29161	DIFERENCIACIJA CELIC
+22835	DOLOÈANJE KONCENTARCIJE CELIC IN VIABILNOSTI
+29152	HITRI PREGLED CITOLOŠKEGA VZORCA
+
+
+
+PODATKI IZ SPOROÈIL MSGOBSERVATIONORDER:
+
+Številke naroèil oziroma preiskav:
+
+Incoming_2009_05_27_15_31_38__ID.682a5fd8-c86d-1004-8308-fceda6e7ba8a.xml
+55083
+
+
+Incoming_2009_05_27_15_31_44__ID.71161330-c86d-1004-8308-fceda6e7ba8a.xml
+55092
+
+Incoming_2009_05_27_15_31_52__ID.7296cb15-c86d-1004-8308-fceda6e7ba8a.xml
+55096
+
+Incoming_2009_05_27_15_31_59__ID.7347013c-c86d-1004-8308-fceda6e7ba8a.xml
+55098
+
+
+Incoming_2009_05_28_10_20_06__ID.8244c5fd-c86d-1004-8308-fceda6e7ba8a.xml
+55091
+
+
+Incoming_2009_05_28_10_20_28__ID.83b59d09-c86d-1004-8308-fceda6e7ba8a.xml
+33685
+
+
+Incoming_2009_05_28_10_20_38__ID.86c62d15-c86d-1004-8308-fceda6e7ba8a.xml
+55104
+
+Incoming_2009_05_28_10_20_57__ID.87958a3d-c86d-1004-8308-fceda6e7ba8a.xml
+55108
+
+Incoming_2009_05_28_10_21_05__ID.87de5add-c86d-1004-8308-fceda6e7ba8a.xml
+55111
+
+Incoming_2009_05_28_10_21_13__ID.87e3c210-c86d-1004-8308-fceda6e7ba8a.xml
+55112
+
+Incoming_2009_05_28_10_21_21__ID.88468545-c86d-1004-8308-fceda6e7ba8a.xml
+55113
+
+Incoming_2009_05_28_10_21_27__ID.884807fd-c86d-1004-8308-fceda6e7ba8a.xml
+55114
+
+Incoming_2009_05_28_10_21_33__ID.884bbdfd-c86d-1004-8308-fceda6e7ba8a.xml
+55115
+
+
+Aplikacija s tem ID ne obstaja
+
+
+
+                                <inFulfillmentOf type="ActRelationship" typeCode="FLFS" association="outboundRelationship">
+                                        <!--  1          -->
+                                        <SpecimenObservationOrder>
+                                                <!--  1        Številka naroèila (kot je bilo pridobljeno s strani BIS)  -->
+                                                <id root="1.2.3.4.1000.60.x.3" extension="2103/06"/>
+                                        </SpecimenObservationOrder>
+                                </inFulfillmentOf>
+
+

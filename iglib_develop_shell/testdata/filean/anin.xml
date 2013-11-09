@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IOptLib analysis input file in XML format -->
+<!-- Analysis input file, created by IOptLib. -->
+<analysis_input type="analysispoint" mode="analysis_input">
+  <reqcalcobj type="counter">1</reqcalcobj>
+  <reqcalcconstr type="counter">1</reqcalcconstr>
+  <reqcalcgradobj type="counter">1</reqcalcgradobj>
+  <reqcalcgradconstr type="counter">1</reqcalcgradconstr>
+  <param type="vector" dim="2">
+    <vector_el type="scalar" ind="1">2.9999999999999991</vector_el>
+    <vector_el type="scalar" ind="2">2.9999999999999991</vector_el>
+  </param>
+</analysis_input>

@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MCCI_MT000100HT03.Message xmlns="urn:hl7-org:v3" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:voc="urn:hl7-org:v3/voc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 MCCI_MT000100HT03.xsd">
+  <id root="1.2.3.4.1000.60.100" extension="39" />
+  <creationTime value="200905271614" />
+  <versionCode code="V3PR1" />
+  <interactionId root="2.1" extension="POXX_HN121002" />
+  <processingCode code="P" />
+  <processingModeCode code="T" />
+  <acceptAckCode code="AL" />
+  <responseCode code="C" />
+  <communicationFunctionRCV type="CommunicationFunction" association="communicationFunction">
+    <typeCode code="RSP" />
+    <deviceRCV classCode="DEV" determinerCode="INSTANCE" association="entity">
+      <id root="1.2.3.4.1000.61.x.1" extension="Labex" />
+      <playedAgentRCV classCode="AGNT">
+        <representedOrganizationRCV classCode="ORG" determinerCode="INSTANCE">
+          <id root="1.2.3.4.1122.6" extension="50005" />
+        </representedOrganizationRCV>
+      </playedAgentRCV>
+    </deviceRCV>
+  </communicationFunctionRCV>
+  <communicationFunctionRSP type="CommunicationFunction" association="communicationFunction">
+    <deviceRSP type="Device" classCode="DEV" determinerCode="INSTANCE" association="entity">
+      <id root="1.2.3.4.1000.61.x.1" extension="Labex" />
+      <playedAgentRSP type="RoleHeir" classCode="AGNT" association="playedRole">
+        <representedOrganizationRSP type="Organization" classCode="ORG" determinerCode="INSTANCE" association="scoper">
+          <id root="1.2.3.4.1122.6" extension="50005" />
+        </representedOrganizationRSP>
+      </playedAgentRSP>
+    </deviceRSP>
+  </communicationFunctionRSP>
+  <communicationFunctionSND type="CommunicationFunction" association="CommunicationFunction">
+    <typeCode code="SND" />
+    <deviceSND type="Device" classCode="DEV" determinerCode="INSTANCE" association="entity">
+      <id root="1.2.3.4.1000.60.100.1" extension="b21App" />
+      <playedAgentSND type="RoleHeir" classCode="AGNT" association="playedRole">
+        <representedOrganizationSND type="Organization" classCode="ORG" determinerCode="INSTANCE" association="scoper">
+          <id root="1.2.3.4.1122.6" extension="50005" />
+        </representedOrganizationSND>
+      </playedAgentSND>
+    </deviceSND>
+  </communicationFunctionSND>
+  <MCAI_MT000001HT03.ControlActEvent type="ControlAct" classCode="CACT" moodCode="EVN" association="ControlAct">
+    <code code="POXX_TE121002" codeSystem="HTB Supplemental" />
+    <dataEnterer type="Participation" typeCode="ENT" association="Participation">
+      <AssignedEntity classCode="ASSIGNED" type="RoleHeir" association="role">
+        <id root="1.2.3.4.1122.9" extension="1" />
+        <code code="MAR" codeSystem="IB - DataEnterer" />
+      </AssignedEntity>
+    </dataEnterer>
+    <subject type="ActRelationship" typeCode="SUBJ" association="outboundRelationship">
+      <contextConductionInd value="FALSE" />
+      <POXX_MT121000HT02.SpecimenObservationOrder type="Observation" classCode="SPCOBS" moodCode="RQO" association="target" negationInd="FALSE">
+        <id root="1.2.3.4.1000.60.100.3" extension="55104" />
+        <code code="CIT" codeSystemName="IB - OrderType" />
+        <text encoding="TXT" mediaType="text/plain">komentar</text>
+        <statusCode code="completed" />
+        <effectiveTime value="200905271606" />
+        <priorityCode code="R" codeSystemName="ActPriority" />
+        <confidentialityCode code="N" codeSystemName="Confidentiality" />
+        <subject type="Participation" typeCode="SBJ" association="participation">
+          <Specimen classCode="SPEC" type="RoleHeir" association="role">
+            <id root="1.2.3.4.1122.12" extension="89" />
+            <code code="KRI" codeSystemName="IB - SpecimenType" displayName="vzorec krvi" />
+            <effectiveTime dataType="IVL_TS" value="200905271606" />
+            <productOf type="Participation" typeCode="PRD" association="participation">
+              <procedureEventSpecimenCollection classCode="PROC" moodCode="EVN" association="act">
+                <code code="OP" codeSystemName="IB - BarCode" />
+                <statusCode code="completed" />
+                <methodCode code="HIST" codeSystemName="IB - FixativeType" displayName="HISTOKON" />
+                <approachSiteCode code="L" codeSystemName="IB - ApproachSideType" displayName="Levo" />
+                <targetSiteCode code="BEZMV" codeSystemName="IB - TargetSideType" displayName="VISOKE MEDIASTINALNE BEZGAVKE (1)" />
+              </procedureEventSpecimenCollection>
+            </productOf>
+            <specimenMaterialChoice>
+              <Material type="Material" classCode="MAT" determinerCode="INSTANCE" association="player">
+                <quantity value="2" />
+              </Material>
+            </specimenMaterialChoice>
+          </Specimen>
+        </subject>
+        <subject type="Participation" typeCode="SBJ" association="participation">
+          <Specimen classCode="SPEC" type="RoleHeir" association="role">
+            <id root="1.2.3.4.1122.12" extension="90" />
+            <code code="KRI" codeSystemName="IB - SpecimenType" displayName="vzorec krvi" />
+            <effectiveTime dataType="IVL_TS" value="200905271606" />
+            <productOf type="Participation" typeCode="PRD" association="participation">
+              <procedureEventSpecimenCollection classCode="PROC" moodCode="EVN" association="act">
+                <statusCode code="completed" />
+                <methodCode code="MET" codeSystemName="IB - FixativeType" displayName="METANOL" />
+                <approachSiteCode code="D" codeSystemName="IB - ApproachSideType" displayName="Desno" />
+                <targetSiteCode code="BEZPL" codeSystemName="IB - TargetSideType" displayName="BEZGAVKA V PLJUČNEM LIGAMENTU (9)" />
+              </procedureEventSpecimenCollection>
+            </productOf>
+            <specimenMaterialChoice>
+              <Material type="Material" classCode="MAT" determinerCode="INSTANCE" association="player">
+                <quantity value="4" />
+              </Material>
+            </specimenMaterialChoice>
+          </Specimen>
+        </subject>
+        <subject type="Participation" typeCode="SBJ" association="participation">
+          <Specimen classCode="SPEC" type="RoleHeir" association="role">
+            <id root="1.2.3.4.1122.12" extension="91" />
+            <code code="URIN" codeSystemName="IB - SpecimenType" displayName="vzorec urina" />
+            <effectiveTime dataType="IVL_TS" value="200905271606" />
+            <productOf type="Participation" typeCode="PRD" association="participation">
+              <procedureEventSpecimenCollection classCode="PROC" moodCode="EVN" association="act">
+                <statusCode code="completed" />
+                <methodCode code="SVEZET" codeSystemName="IB - FixativeType" displayName="NEFIKSIRANO TKIVO (SVEŽ, NATIVNI VZOREC, PREPARAT)" />
+                <approachSiteCode code="D" codeSystemName="IB - ApproachSideType" displayName="Desno" />
+                <targetSiteCode code="BEZRT" codeSystemName="IB - TargetSideType" displayName="PREVASKULARNA / RETROTRAHEALNE BEZGAVKE (3)" />
+              </procedureEventSpecimenCollection>
+            </productOf>
+            <specimenMaterialChoice>
+              <Material type="Material" classCode="MAT" determinerCode="INSTANCE" association="player">
+                <quantity value="1" />
+              </Material>
+            </specimenMaterialChoice>
+          </Specimen>
+        </subject>
+        <recordTarget type="Participation" typeCode="RCT" association="participation">
+          <Patient type="Patient" classCode="PAT" association="role">
+            <id root="1.2.3.4.1000.60.100.2" extension="  33685" />
+            <Person classCode="PSN" type="Person" determinerCode="INSTANCE" association="player">
+              <id root="1.2.3.4.1000.60.100.2" extension="  33685" />
+              <name use="L" dataType="PN">
+                <family partType="FAM">BAJŽELJ</family>
+                <given partType="GIV">MITJA</given>
+              </name>
+              <administrativeGenderCode code="1" codeSystemName="IB - Gender SI" />
+              <birthTime value="19800713" />
+              <deceasedInd value="false" />
+              <addr use="H">
+                <country partType="CNT" encoding="TXT">705</country>
+                <county encoding="TXT">052</county>
+                <city partType="CTY" encoding="TXT">KRANJ</city>
+                <postalCode partType="ZIP" encoding="TXT">4000</postalCode>
+                <streetAddressLine partType="SAL" encoding="TXT">BRITOF 49</streetAddressLine>
+              </addr>
+              <birthplace classCode="BIRTHPL" type="RoleHeir" association="scopedRole">
+                <Place classCode="PLC" type="Place" determinerCode="INSTANCE" association="player">
+                  <name use="L">KRANJ</name>
+                </Place>
+              </birthplace>
+              <playedIdentifications type="RoleHeir" classCode="ROL" association="playedRole">
+                <id root="1.2.3.4.1122.1" extension="038815260" />
+              </playedIdentifications>
+            </Person>
+          </Patient>
+        </recordTarget>
+        <author type="Participation" typeCode="AUT" association="participation">
+          <AssignedEntity type="RoleHeir" classCode="ASSIGNED" association="role">
+            <id root="1.2.3.4.1122.9" extension="XXXXX" />
+            <Organization type="Organization" classCode="ORG" determinerCode="INSTANCE" association="scoper">
+              <id root="1.2.3.4.1122.6" extension="HISTO" />
+              <name use="L" dataType="ON">LAB. ZA CITOLOGIJO IN PATOLOG</name>
+              <addr use="H">
+                <country partType="CNT" encoding="TXT">705</country>
+                <city partType="CTY" encoding="TXT">LJUBLJANA</city>
+                <postalCode partType="ZIP" encoding="TXT">1000</postalCode>
+                <streetAddressLine partType="SAL" encoding="TXT">Tržaška 12</streetAddressLine>
+              </addr>
+            </Organization>
+            <assignedEntityChoice choice="TRUE">
+              <Person classCode="PSN" determinerCode="INSTANCE">
+                <name use="L" dataType="PN">
+                  <family partType="FAM" />
+                  <given partType="GIV" />
+                </name>
+              </Person>
+            </assignedEntityChoice>
+          </AssignedEntity>
+        </author>
+        <responsibleParty type="Participation" typeCode="RESP" association="Participation">
+          <AssignedEntity type="RoleHeir" classCode="ASSIGNED" association="role">
+            <id root="1.2.3.4.1122.9" extension="XXXXX" />
+            <Organization type="Organization" classCode="ORG" determinerCode="INSTANCE" association="scoper">
+              <id root="1.2.3.4.1122.9" extension="HISTO" />
+              <name dataType="ON" use="L">LAB. ZA CITOLOGIJO IN PATOLOG</name>
+            </Organization>
+          </AssignedEntity>
+        </responsibleParty>
+        <tracker type="Participation" typeCode="TRC" association="Participation">
+          <AssignedEntity>
+            <Organization type="Organization" classCode="ORG" association="scoper" determinerCode="INSTANCE">
+              <code code="HISTO" codeSystemName="LAB. ZA CITOLOGIJO IN PATOLOG" />
+            </Organization>
+            <assignedEntityChoice choice="TRUE">
+              <Organization type="Organization" classCode="ORG" association="player" determinerCode="INSTANCE">
+                <name use="L">LAB. ZA CITOLOGIJO IN PATOLOG</name>
+              </Organization>
+            </assignedEntityChoice>
+          </AssignedEntity>
+        </tracker>
+        <pertinentInformation type="ActRelationship" typeCode="PERT" association="outboundRelationship">
+          <ObservationEventAnnotation classCode="OBS" association="target" moodCode="EVN" type="Observation" negationInd="FALSE">
+            <code code="1" codeSystemName="LABPayerType" />
+          </ObservationEventAnnotation>
+        </pertinentInformation>
+        <support type="ActRelationship" typeCode="SPRT" association="outboundRelationship">
+          <ObservationEventGeneral classCode="OBS" moodCode="EVN" type="Observation" association="target">
+            <id root="1.2.3.4.1000.60.100.4" extension="125289" />
+            <code code="NAPDIAG" codeSystemName="IB - RecordTargetObservations" />
+            <value dataType="ST" value="kdo pa si" />
+          </ObservationEventGeneral>
+        </support>
+      </POXX_MT121000HT02.SpecimenObservationOrder>
+    </subject>
+  </MCAI_MT000001HT03.ControlActEvent>
+</MCCI_MT000100HT03.Message>

@@ -1,0 +1,22 @@
+C:\<appfolderpath>\PFXOpen>TestPfx mykeys.pfx
+Loaded pfx file 'mykeys.pfx'
+
+Keycontainer and certificate parameters:
+ContainerName:  {C40B75A1-1857-46DB-A074-72670226CD41}
+ProviderName:   Microsoft Base Cryptographic Provider v1.0
+ProvType: 1     (PROV_RSA_FULL)
+KeySpec:  1     (AT_KEYEXCHANGE)
+CERTIFICATE:
+        Format:  X509
+        Name:  O="VeriSign, Inc.", OU=VeriSign Trust Network, 
+        OU="www.verisign.com/repository/RPA Incorp. b TD(c)98", 
+	....
+        Key Alogrithm Parameters:  0500
+        Public Key:  30818902818100BF8B6C98B0DCA8C6FF ....
+
+Keysize:        1024 bits
+
+Use the new keycontainer here (2 second pause) ....
+
+Attempting to delete keycontainer: {C40B75A1-1857-46DB-A074-72670226CD41} ...
+Deleted keycontainer

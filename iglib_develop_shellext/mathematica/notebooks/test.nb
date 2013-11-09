@@ -1,0 +1,337 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     10739,        328]
+NotebookOptionsPosition[      8849,        258]
+NotebookOutlinePosition[      9394,        280]
+CellTagsIndexPosition[      9351,        277]
+WindowFrame->Normal
+ContainsDynamic->False*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{3.571573273659418*^9, 3.5716478391243105`*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Instructions - Test Mathematica Package", "Subsubtitle",
+ CellChangeTimes->{{3.5716507798190317`*^9, 3.571650791107801*^9}}],
+
+Cell[TextData[{
+ "This notebook is used to create a test mathematica package, which can be \
+loaded (executed) by\n\t",
+ StyleBox["<< \"FilePath\";", "Input"],
+ "\nwhere FilePath is the string defining path to the ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " package (extenion .m).\n\nIn order to create a valid package:\n\n\n"
+}], "Text",
+ CellChangeTimes->{{3.571650809780869*^9, 3.5716509496994295`*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.5716508009393635`*^9, 3.5716508011323743`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Block with initialization cells :", "Subsubtitle",
+ CellChangeTimes->{{3.5716501854866066`*^9, 3.571650192331998*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Initialization Block With Initialization Cells", "Subsection",
+ CellChangeTimes->{{3.5716502386251698`*^9, 3.5716502856839643`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"<<", "PhysicalConstants`"}], "\n", 
+ RowBox[{
+  RowBox[{"MySpecifiedValue", " ", "=", 
+   RowBox[{"AvogadroConstant", "*", "1000"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"OpenNewWindow", " ", "=", " ", "True"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"PlotSomething", " ", "=", " ", "True"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"PrintSomething", " ", "=", " ", "True"}], ";"}], "\n", 
+ RowBox[{"InputForm", "[", "MySpecifiedValue", "]"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.571652896266841*^9, 3.5716528965558577`*^9}, {
+  3.5716529879750633`*^9, 3.571653004470186*^9}, {3.571653039021163*^9, 
+  3.571653043662428*^9}, {3.5716532069816155`*^9, 3.571653217148197*^9}},
+ Background->RGBColor[
+  0.984313725490196, 0.9725490196078431, 0.8431372549019608]],
+
+Cell["6.02214199*^26/Mole", "Output",
+ CellChangeTimes->{3.571653300228728*^9, 3.5718329614782543`*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.5716530217781763`*^9, 3.5716530220281906`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Execution Block With Initialization Cells", "Subsection",
+ CellChangeTimes->{{3.571650261254464*^9, 3.5716502954838676`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"If", "[", 
+   RowBox[{"OpenNewWindow", ",", "\n", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+     "Create", " ", "a", " ", "new", " ", "Mathematica", " ", "window", " ", 
+      "and", " ", "write", " ", "on", " ", 
+      RowBox[{"it", ":"}]}], " ", "*)"}], "\n", 
+    RowBox[{
+     RowBox[{"n", "=", 
+      RowBox[{"CreateWindow", "[", "]"}]}], ";", " ", 
+     RowBox[{"NotebookWrite", "[", 
+      RowBox[{"n", ",", "\"\<Plot[Sin[x],{x,0,6 Pi}]\>\""}], "]"}], ";", 
+     RowBox[{"SelectionMove", "[", 
+      RowBox[{"n", ",", "All", ",", "CellContents"}], "]"}], ";", 
+     RowBox[{"SelectionEvaluateCreateCell", "[", "n", "]"}], ";"}]}], "\n", 
+   "]"}], ";"}], "\n", 
+ RowBox[{"If", "[", 
+  RowBox[{"PlotSomething", ","}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "\n", 
+   RowBox[{"Plot3D", "[", 
+    RowBox[{
+     RowBox[{"Sin", "[", 
+      RowBox[{"8", "*", "x", "*", "y"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", 
+       RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"y", ",", 
+       RowBox[{"-", "1"}], ",", "1"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+   "*)"}], "\n", "]"}], "\n", 
+ RowBox[{
+  RowBox[{"If", "[", 
+   RowBox[{"PrintSomething", ",", "\n", 
+    RowBox[{"Print", "[", 
+     RowBox[{"\"\<My specified value is: \>\"", ",", "MySpecifiedValue"}], 
+     "]"}]}], "\n", "]"}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.571652896266841*^9, 3.5716528965558577`*^9}, {
+  3.5716529879750633`*^9, 3.571653004470186*^9}, {3.571653226431728*^9, 
+  3.5716533571204205`*^9}, {3.5718329442682304`*^9, 3.571832949748238*^9}},
+ Background->RGBColor[
+  0.984313725490196, 0.9725490196078431, 0.8431372549019608]],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"My specified value is: \"\>", "\[InvisibleSpace]", 
+   FractionBox["6.02214199`*^26", "Mole"]}],
+  SequenceForm["My specified value is: ", 6.02214199*^26/Units`Mole],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.5716533038999376`*^9, 3.5716533580876217`*^9}, {
+  3.571832961588255*^9, 3.571832961678255*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Non-Initialization Executable Cells:", "Subsubsection",
+ CellChangeTimes->{{3.57165043696264*^9, 3.5716504611548023`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"MySpecifiedValue1", "=", "12345"}], ";"}]], "Input",
+ CellChangeTimes->{{3.571652974028266*^9, 3.571652979732592*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.5716504665251093`*^9, 3.5716504668441277`*^9}}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.571650324698841*^9, 3.571650325155867*^9}}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.5716502008734865`*^9, 3.571650201123501*^9}}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.5716501801393003`*^9, 3.5716501804353175`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Initialization Block", "Subsubtitle",
+ CellChangeTimes->{{3.57164785450613*^9, 3.57164786046047*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"<<", "PhysicalConstants`"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"MySpecifiedValue", " ", "=", 
+   RowBox[{"AvogadroConstant", "*", "1000"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"OpenNewWindow", " ", "=", " ", "True"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"PrintSomething", " ", "=", " ", "True"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"InputForm", "[", "MySpecifiedValue", "]"}]}], "Input",
+ CellChangeTimes->{{3.5716478770134172`*^9, 3.571647877219429*^9}, {
+   3.5716479356517525`*^9, 3.5716479685626163`*^9}, 3.5716480018763833`*^9, {
+   3.5716481670121927`*^9, 3.5716482246039724`*^9}, {3.5716482606849613`*^9, 
+   3.5716483615874286`*^9}, {3.571648402041625*^9, 3.5716484035236273`*^9}}],
+
+Cell["6.02214199*^26/Mole", "Output",
+ CellChangeTimes->{
+  3.5716482733505983`*^9, {3.571648308081585*^9, 3.571648362452478*^9}, 
+   3.5716484046780295`*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.57164792512615*^9, 3.571647925363164*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Execution Block", "Subsubtitle",
+ CellChangeTimes->{{3.571647588913975*^9, 3.5716475892999973`*^9}, {
+  3.5716478475247307`*^9, 3.5716478517959747`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"If", "[", 
+    RowBox[{"OpenNewWindow", ",", "\[IndentingNewLine]", 
+     RowBox[{"(*", " ", 
+      RowBox[{
+      "Create", " ", "a", " ", "new", " ", "Mathematica", " ", "window", " ", 
+       "and", " ", "write", " ", "on", " ", 
+       RowBox[{"it", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"n", "=", 
+       RowBox[{"CreateWindow", "[", "]"}]}], ";", " ", 
+      RowBox[{"NotebookWrite", "[", 
+       RowBox[{"n", ",", "\"\<Plot[Sin[x],{x,0,6 Pi}]\>\""}], "]"}], ";", 
+      RowBox[{"SelectionMove", "[", 
+       RowBox[{"n", ",", "All", ",", "CellContents"}], "]"}], ";", 
+      RowBox[{"SelectionEvaluateCreateCell", "[", "n", "]"}], ";"}]}], 
+    "\[IndentingNewLine]", "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"If", "[", 
+   RowBox[{"PrintSomething", ",", "\[IndentingNewLine]", 
+    RowBox[{"Print", "[", 
+     RowBox[{"\"\<My specified value is: \>\"", ",", "MySpecifiedValue"}], 
+     "]"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.5716479922778344`*^9, 3.571648069588238*^9}, 
+   3.57164816172689*^9, {3.5716483695738854`*^9, 3.571648395918392*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"My specified value is: \"\>", "\[InvisibleSpace]", 
+   FractionBox["6.02214199`*^26", "Mole"]}],
+  SequenceForm["My specified value is: ", 6.02214199*^26/Units`Mole],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.571648411667619*^9, 3.571648420149104*^9}}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.5716478770134172`*^9, 3.571647877219429*^9}}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input"]
+},
+AutoGeneratedPackage->None,
+CellGrouping->Manual,
+WindowSize->{823, 864},
+WindowMargins->{{217, Automatic}, {Automatic, 93}},
+DockedCells->(FrontEndExecute[{
+   FrontEnd`NotebookApply[
+    FrontEnd`InputNotebook[], #, Placeholder]}]& ),
+ShowSelection->True,
+Magnification->1.25,
+FrontEndVersion->"6.0 for Microsoft Windows (64-bit) (June 19, 2007)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[568, 21, 92, 1, 35, "Input"],
+Cell[CellGroupData[{
+Cell[685, 26, 130, 1, 35, "Subsubtitle"],
+Cell[818, 29, 417, 9, 181, "Text"],
+Cell[1238, 40, 96, 1, 35, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1371, 46, 124, 1, 35, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1520, 51, 138, 1, 46, "Subsection"],
+Cell[CellGroupData[{
+Cell[1683, 56, 815, 18, 183, "Input",
+ InitializationCell->True],
+Cell[2501, 76, 103, 1, 52, "Output"]
+}, Open  ]],
+Cell[2619, 80, 96, 1, 35, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2752, 86, 131, 1, 46, "Subsection"],
+Cell[CellGroupData[{
+Cell[2908, 91, 1724, 43, 337, "Input",
+ InitializationCell->True],
+Cell[4635, 136, 364, 7, 46, "Print"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5036, 148, 128, 1, 34, "Subsubsection"],
+Cell[5167, 151, 153, 3, 35, "Input"],
+Cell[5323, 156, 96, 1, 35, "Input"]
+}, Open  ]],
+Cell[5434, 160, 92, 1, 35, "Input"]
+}, Open  ]],
+Cell[5541, 164, 94, 1, 35, "Input"]
+}, Open  ]],
+Cell[5650, 168, 96, 1, 35, "Input"],
+Cell[CellGroupData[{
+Cell[5771, 173, 107, 1, 35, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[5903, 178, 770, 16, 124, "Input"],
+Cell[6676, 196, 158, 3, 35, "Output"]
+}, Open  ]],
+Cell[6849, 202, 91, 1, 35, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6977, 208, 159, 2, 35, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[7161, 214, 1220, 27, 212, "Input"],
+Cell[8384, 243, 311, 6, 46, "Print"]
+}, Open  ]],
+Cell[8710, 252, 94, 1, 35, "Input"]
+}, Open  ]],
+Cell[8819, 256, 26, 0, 35, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

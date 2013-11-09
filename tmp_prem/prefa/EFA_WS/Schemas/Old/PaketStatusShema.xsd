@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="PaketStatusShema"
+    targetNamespace="http://www.posta.si/EFA/PaketStatusShema.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://www.posta.si/EFA/PaketStatusShema.xsd"
+    xmlns:mstns="http://www.posta.si/EFA/PaketStatusShema.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+	<xs:element name="EfaPaketStatus" msdata:IsDataSet="true" msdata:Locale="en-US">
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="EfaPaket">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Id" type="xs:int" minOccurs="1" />
+							<xs:element name="PaketTipId" type="xs:byte" minOccurs="1" />
+							<xs:element name="PaketTipOpis" type="xs:string" minOccurs="1" />
+							<xs:element name="PaketDatum" type="xs:date" minOccurs="1" />
+							<xs:element name="SteviloZapisov" type="xs:int" minOccurs="1" />
+							<xs:element name="VsotaDokumentDatum" type="xs:float" minOccurs="1" />
+							<xs:element name="VsotaCenaNeto" type="xs:decimal" minOccurs="1" />
+							<xs:element name="SteviloZapisovKontrola" type="xs:int" minOccurs="0" />
+							<xs:element name="VsotaDokumentDatumKontrola" type="xs:float" minOccurs="0" />
+							<xs:element name="VsotaCenaNetoKontrola" type="xs:decimal" minOccurs="0" />
+							<xs:element name="PaketStatusId" type="xs:byte" minOccurs="1" />
+							<xs:element name="PaketStatusOpis" type="xs:string" minOccurs="1" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

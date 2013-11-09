@@ -1,0 +1,616 @@
+
+    *{  PERFORMANCE OF OPTIMIZATION  }
+
+
+*{
+**************************  INITIALIZATION PART:  *****************************
+  In this part auxiliary definitions are usually prepared, which will be used
+in the analysis and possibly action part. General settings like specification
+of shell output file often take place in this part. 
+*******************************************************************************
+}
+
+*{ We set output file where results and messages will be written: }
+setfile{outfile opt.ct}
+
+*{ Read definitions: }
+interpret { def.cm } 
+
+={numan:0}  *{ analysis counter }
+
+
+
+*{
+****************************  ANALYSIS BLOCK:  *******************************
+  This is argument block of the "analysis" command. User specifies how
+objective and constraint functions (and eventually their derivatives) are
+evaluated. This block is executed in every direct analysis, which can be
+required by an optimisation algorithm, for example. In this block user can
+obtain values of optimisation parameters through a pre-defined vector variable
+parammom, and must store calculated values to appropriate pre-defined variables
+before the end of the analysis block (e.g. objective function to scalar
+variable objectivemom, its derivatives to vector variable gradobjectivemom,
+values of constraint functions to scalar variable constraintmom, etc. It is
+important to know that the analysis command itself does not do enything, it
+just stores the position of the analysis block, so that Inverse can interpret
+later when analysis is required:
+*******************************************************************************
+}
+
+analysis
+{
+  ={numan:numan+1}   *{ incrementation of user-defined analysis counter }
+    write{"\n\n\n>>>> Analysis No. " $numan ": \n" }
+  *{Mark current date & time}
+  dwrite{"  "}  dwritedate{}  dwrite{"  "}  dwritetime{}  dwrite{\n\n}
+
+  *{ Set the flags accorging to the peroblem and analysis capabilities: }
+  setcounter{ calcobj 1 }  setcounter { calcconstr 1 } 
+  setcounter{calcgradobj 1 }   setcounter{calcgradconstr 1 }
+  if { (numconstr<1) [ setcounter {calcconstr 0} setcounter{calcgradconstr 0} ]}
+  if { (angrad==0) [  setcounter{calcgradobj 0} setcounter{calcgradconstr 0} ]}
+
+  filewriteaninput {#aninfilexml[]}
+
+  *{  Execute external analysis program with exchange of data through files:  }
+  fileanalysis 
+  { 
+    #ancommand[], #aninfile[], #anoutfile[] "def_data"
+  }
+
+  if { (  0  )  [   *{ Print the response read from analysis output file: }
+    dwrite{"\n\nResults of the analysis program:\n\n"}
+    dwrite{"Parameters: {" ${getvector["parammom",1]} ", " 
+        ${getvector["parammom",2]} " } \n "  }
+    dwrite{ "\nObjective f.: " ${getscalar["objectivemom"]} "\n" }
+    dwrite{"Flags: " ${getcounter["calcobj"]} ${getcounter["calcconstr"]}
+            ${getcounter["calcgradobj"]} ${getcounter["calcgradconstr"]} "\n" }
+    dwrite{ "Constraints: "  ${getscalar["constraintmom",1]} ", "
+            ${getscalar["constraintmom",2]} "\n"  }
+    *{
+      printvector{gradobjectivemom}
+      printvector{gradconstraintmom}
+    }
+    dwrite{"\n\n\n"}
+  ]}
+
+  
+
+  ={  objorig:  getscalar["objectivemom"]  }
+  ={ penall: 0 }
+  if { (unconstrained)
+  [
+    ={savecontrolout:controlout}
+    ={controlout: 0 }  *{ define whether to print about addition of penalty tems: }
+    
+    ={ obj:  getscalar["objectivemom"] }
+    ={ penterm: 0 }
+
+    if { (controlout) [
+      write{ "\n\n===================\nAdding penalty terms ...\n" }
+      write{"Unpenalized objective function: " $obj \n\n }
+      *{
+        printvector{lowbounds}
+        printvector{upbounds}
+      }
+    ] }
+    
+    if { (parambounds)
+    [
+      *{ Parameter bounds are also defined, add penaly terms for their violation: }
+      ={ i:1 }
+      while { (i<=numparam)
+      [
+        ={ param: getvector["parammom",i] }
+        ={ lb: getvector["lowbounds",i] }
+        ={ ub: getvector["upbounds",i] }
+        if { ( ub>lb )
+        [
+          ={penterm:penalty[param-ub]+penalty[lb-param]}
+          ={obj:obj+penterm}
+          ={penall:penall+penterm}
+
+          if { (controlout) [
+            write{ "Parameter bound " $i ": lb = " $lb ", ub = " $ub 
+                    ", p = " $param ", penalty term: " $penterm ", new obj: " $obj \n }
+          ] }
+
+        ] }
+        ={i:i+1}
+      ] }
+    ] }
+
+    *{ Add penalty terms for constraint violations: }
+    ={ i:1 }
+    while { (i<=numconstr)
+    [
+      ={ constr: getscalar["constraintmom",i] }
+      ={ penterm: penalty[constr] }
+      ={obj:obj+penterm}
+      ={penall:penall+penterm}
+
+      if { (controlout) [
+        write{ "Constraint c" $i " = " $constr ", penalty term: " $penterm
+        ", obj: " $obj \n }
+      ] }
+      ={i:i+1}
+    ] }
+    setscalar{ objectivemom[], $obj }
+
+    setcounter{calcgradobj 0}
+    setcounter{calcconstr 0}
+    setcounter{calcgradconstr 0}
+
+    ={constrolout:savecontrolout}
+  ]}
+
+
+  *{
+    interactive{ "After calculation of penalty terms." }
+  }
+
+
+
+  if { (  1  )  [   *{ Control output: }
+    dwrite{"\n*********\n"}
+    dwrite{"Parameters: {" ${getvector["parammom",1]} ", " 
+        ${getvector["parammom",2]} " } \n "  }
+    dwrite{ "\nOriginal objective: " $objorig ", penalty term: " $penall ", obj: " $obj "\n" }
+    dwrite{"Flags: " ${getcounter["calcobj"]} ${getcounter["calcconstr"]}
+            ${getcounter["calcgradobj"]} ${getcounter["calcgradconstr"]} "\n" }
+    dwrite{ "Constraints: "  ${getscalar["constraintmom",1]} ", "
+            ${getscalar["constraintmom",2]} "\n"  }
+  ]}
+  
+  if { (0)  [   *{ print the response: }
+    dwrite{"\n\n\n\n*******************************************\n"}
+    dwrite{"Results - analysis No. " $numan ":\n\n"}
+    dwrite{ "calcobj: " ${getcounter["calcobj"]}  \n
+           "calcconstr: " ${getcounter["calcconstr"]}  \n 
+           "calcgradobj: " ${getcounter["calcgradobj"]}  \n 
+           "calcgradconstr: " ${getcounter["calcgradconstr"]}  \n   }
+    dwrite{ "\nOriginal objective: " $objorig ", penalty term: " $penall ", obj: " $obj "\n" }
+    dprintvector{parammom}
+    dprintscalar{objectivemom}
+    dprintscalar{constraintmom}
+    *{
+      dprintvector{gradobjectivemom}
+      dprintvector{gradconstraintmom}
+    }
+    dwrite{"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\n"}
+  ]}
+  
+}
+
+
+
+*{
+******************************  ACTION PART:  *********************************
+  In this part user algorithms are run. User can run individual analyses at
+different parameters, tabulate values of the relevant functions along lines
+or in nodes of two-dimensional meshes, run optimisation, inverse analysis
+or Monte Carlo simulations. Before anything is done, it is important that all
+necessary input data is set (e.g. measurements and measurement errors in the
+case of inverse analysis) and that characteristic dimensions of the problem
+such as the number of parameters or number of constraints are known to the
+shell. Some input data (e.g. starting guess) is usualy input through arguments
+of functions that run the corresponding algorithms. Other must be stored in
+tha appropriate pre-defined variables, e.g. vector of measurements in vector
+variable measmom when dealing with inverse analysis. Relevant dimensions are
+given by allocating the appropriate pre-defined variables that are related to
+these dimensions, e.g. scalar variable constraintmom whose dimension equals
+the number of constraint functios.
+*******************************************************************************
+}
+
+
+
+*{ The number of constraint functions can be specified by setting the dimension
+of vector variable constraintmom, and the number of parameters can be specified
+by setting the dimension of the element of vector variable parammom. There is
+no need to specify the number of objective functions if there is only one. A
+test direct analysis is then run by the "analyse" function. Components of the
+current parameter vector (parammom) are also set below because the "analyse"
+function does not take the parameter vector as argument, but rather uses the
+pre-defined vector variable parammom. }
+
+
+
+
+if { ( 1 )
+[  
+  
+  *{ TEST ANALYSES: }
+
+    setvector{parammom 2  { 0.5 , -1 }  }
+    analyse{ }
+
+  *{
+    exit{  }
+  }
+
+  
+
+
+  *{  store of test parameter vectors:
+
+    setvector{parammom 2  {1.6, 1.0 }  }
+    setvector{parammom 2 {10.0, 3.0 }}
+    setvector{parammom 2  {1.6, 1.0 }  }
+    setvector{parammom 2  { 0.5 , -1 }  }
+    setvector{parammom $numparam { 1 2 3 4 } }
+  *}
+
+] }
+
+
+
+
+  analysenoprint{}
+*{
+  analysenoprint{}
+}
+
+
+
+if { (controlout) [
+  write{ \n\n\n "\n\n\n  CONTROL OUTPUT is set.\n\n" }
+]
+}
+
+
+
+
+
+
+
+*{
+  interactive{ "After the test analysis run." }
+}
+
+
+
+
+*{Mark current date & time}
+dwrite{"\n\n"}  dwritedate{}  dwrite{"  "}  dwritetime{}  dwrite{\n\n\n}
+
+
+
+
+
+if { ( 1 )
+[  
+
+  *{ 1D TABLE OF ANALYSIS RESULTS: }
+
+
+  ={numan:0}   *{ initialisation of a user-defined analysis counter }
+  
+  *{ Landmarks of the table: }
+  setvector { point0, 2 { 0.0, 0.0 } }  *{ starting point }
+  setvector { point1, 2 { 3.0, 3.0 } }  *{ end point }
+
+  *{ Parameters that define distribution of sampling points: }
+  setcounter { numpt1    6    }
+  setcounter { centered1 1    }
+  setscalar  { factor1   1.2  }
+  setscalar  { scaling1  0  }
+
+  *{ Printing flags for different kinds of tables: }
+  setcounter{ printtab    1  }
+  setcounter{ printparam  1  }
+  setcounter{ printlist   1  }
+
+  *{ Printing flags for response components: }
+  setcounter{ printobj         1  }
+  setcounter{ printconstr      1  }
+  setcounter{ printgradobj     1  }
+  setcounter{ printgradconstr  1  }
+
+
+  if {(unconstrained==1) [
+    setcounter{ printconstr 0 }
+    setcounter{ printgradconstr 0 }
+    setcounter{ printgradobj 0 }
+  ]}
+
+  taban1d { 
+    #point0, #point1, 
+    #numpt1, #centered1, #factor1, #scaling1, 
+    #printtab, #printparam, #printlist, 
+    #printobj, #printconstr, #printgradobj, #printgradconstr  }
+
+
+
+  dwrite{"\n\nNumber of analyses: " $numan \n\n}
+
+  exit{}
+
+]}
+
+
+
+
+
+if { ( 0 )
+[  
+
+  *{ 2D TABLE OF ANALYSIS RESULTS: }
+
+
+  ={numan:0}   *{ initialisation of a user-defined analysis counter }
+  
+  *{ Landmarks of the table: }
+  setvector { point0, 2 { 0.0, 0.0 } }   *{ Starting or center point }
+  setvector { point1, 2 { 5.0, 0.0 } }   *{ First endpoint }
+  setvector { point2, 2 { 0.0, 4.0 } }   *{ Second endpoint }
+
+  *{ Parameters that define sampling points in the 1st direction: }
+  setcounter { numpt1    5    }
+  setcounter { centered1 0    }
+  setscalar  { factor1   0.95  }
+  setscalar  { scaling1  1.01  }
+
+  *{ Parameters that define sampling points in the 2nd direction: }
+  setcounter { numpt2    4   }
+  setcounter { centered2 1   }
+  setscalar  { factor2   1.22  }
+  setscalar  { scaling2  1.02  }
+
+  *{ Printing flags for different kinds of tables: }
+  setcounter{ printtab    1  }
+  setcounter{ printparam  1  }
+  setcounter{ printlist   1  }
+
+  *{ Printing flags for response components: }
+  setcounter{ printobj         1  }
+  setcounter{ printconstr      1  }
+  setcounter{ printgradobj     1  }
+  setcounter{ printgradconstr  1  }
+
+  *{
+    interactive{"This is before performing the 2D table.\n"}
+  }
+
+  if {(unconstrained==1) [
+    setcounter{ printconstr 0 }
+    setcounter{ printgradconstr 0 }
+    setcounter{ printgradobj 0 }
+  ]}
+
+  taban2d { 
+    #point0, #point1, #point2
+    #numpt1, #centered1, #factor1, #scaling1, 
+    #numpt2, #centered2, #factor2, #scaling2, 
+    #printtab, #printparam, #printlist, 
+    #printobj, #printconstr, #printgradobj, #printgradconstr  }
+
+
+
+  dwrite{"\n\nNumber of analyses: " $numan \n\n}
+
+  exit{}
+
+]}
+
+
+
+
+
+
+
+if { ( 1 && unconstrained )
+[  
+
+  *{ OPTIMIZATION BY UNCONSTRAINED SIMPLEX (nonlinear) }
+  *{ In order to use the simplex method, set the flag unconstrained in def.cm
+  to 1! }
+
+  *{ A non-derivative simplex algorithm for unconstraint problems is used for
+  comparisson. To use this algorithm, a penalty term is added to the
+  calculator function that is used in the analysis block for evaluation of the
+  objective function. }
+
+  if {(unconstrained==0) [
+    dwrite{"\n\n\nERROR: flag \dunconstrained\d (calculator variable) is not set for optimization with simplex.\n"}
+    dwrite{"Set the flag in def.cm!\n\n"}
+    exit{}
+  ]}
+
+  ={numan:0}   *{ initialisation of a user-defined analysis counter }
+
+  setscalar { tolf  0.01 }
+  setcounter { maxit 300 }
+  setcounter { printlevel 1 }
+  setvector { tolx, 2 { 0.01, 0.01 } }
+  if { ( getvectordim["initial",-1] < 1 ) [
+    setvector { initial, 2 {0, 0} }
+  ]}
+  if { (getvectordim["initialstep",-1] < 1 ) [
+    setvector { initialstep, 2 {1.111, 1.22222} }
+  ]}
+
+  printvector{initial}
+  printvector{initialstep}
+
+  write{\n\n "numconstr: " $numconstr  \n\n}
+
+
+  *{ NLPSimpS   nlpsimp   }
+
+
+  MinSimp {
+    #tolx , #tolf, 
+    #maxit, #printlevel,
+    #initial, #initialstep
+  }
+
+
+  dwrite{"\n\nNumber of analyses: " $numan \n\n}
+  dwrite {"\nOptimal parameters: \n"}
+  dprintvector { paramopt }
+
+]}
+
+
+
+
+
+
+
+if { (1 && unconstrained==0)
+[  
+  *{ OPTIMIZATION BY FSQP }
+  *{ Here the problem is solved using a constrained gradient-based fsqp algorithm
+  (see manuals for detailed description of arguments): }
+
+  if {(unconstrained) [
+    dwrite{"\n\n\nERROR: flag \dunconstrained\d (calculator variable) is set.\n"}
+    dwrite{"Set the flag in def.cm to 0!\n\n"}
+  ]}
+
+
+  setcounter { nobj 1 }
+  setcounter { nconstr $numconstr }  *{ defined in def.cm }
+  setscalar { tol  0.0000000111 }
+  setscalar { toleq 0.0002222 }
+  setcounter { maxit 100 }
+  setcounter { graddef 1 }
+  if { (getvectordim["initial",-1] < 1 ) [
+    setvector { initial, 2 { 0.233 0.51 } }
+  ]}
+  *{ Definition of parameter bounds; Equal bounds mean that bounds are not specified: }
+  if { (getvectordim["lowbounds",-1] < 1  || getvectordim["upbounds",-1] < 1 ) [
+    setvector{ lowbounds 2 { 0 0 } }
+    setvector{ upbounds  2 { 0 0 } }
+  ]}
+
+
+  ={numan:0}
+  optfsqp {
+    #nobj
+    #nconstr
+    0
+    0
+    0
+    #tol
+    #toleq
+    #maxit
+    #graddef
+    #initial 
+    #lowbounds
+    #upbounds
+  }
+  dwrite {"\n\nNumber of analyses: " $numan \n\n}
+  dwrite {"\nOptimal parameters: \n"}
+  dprintvector { paramopt }
+
+] }
+
+
+
+
+if { (0 && unconstrained==0)
+[  
+  *{ OPTIMIZATION BY SolvOpt }
+  *{ The problem is solved using a gradient-based SolvOpt algorithm (see
+  manuals for detailed description of arguments): }
+
+  if {(unconstrained) [
+    dwrite{"\n\n\nERROR: flag \dunconstrained\d (calculator variable) is set.\n"}
+    dwrite{"Set the flag in def.cm to 0!\n\n"}
+  ]}
+
+  setcounter { nconstr $numconstr }  *{ defined in def.cm }
+  setcounter { nconstreq 0 }
+  setscalar { tolx 0.01 }
+  setscalar { tolf 0.01 }
+  setscalar { tolconstr 0.001 }
+  setcounter { maxit 400 }
+  setscalar {lowgradstep 1e-5}
+  if { (getvectordim["initial",-1] < 1 ) [
+    setvector { initial, 2 { 0.233 0.51 } }
+  ]}
+
+
+  ={numan:0}
+  solvopt {
+    #nconstr, #nconstreq,
+    #tolx, #tolf, #tolconstr,
+    #maxit, #lowgradstep,
+    #initial
+  }
+  dwrite{"\n\nNumber of analyses: " $numan \n\n}
+  dwrite {"\nOptimal parameters: \n"}
+  dprintvector { paramopt }
+
+] }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if { (0 && unconstrained)
+[  
+
+  *{ OPTIMIZATION BY UNCONSTRAINED SIMPLEX - OLD VERSION }
+  *{ In order to use the simplex method, set the flag unconstrained in def.cm
+  to 1! }
+
+  if {(unconstrained==0) [
+    dwrite{"\n\n\nERROR: flag \dunconstrained\d (calculator variable) is not set for optimization with simplex.\n"}
+    dwrite{"Set the flag in def.cm!\n\n"}
+    exit{}
+  ]}
+
+  ={numan:0}   *{ initialisation of a user-defined analysis counter }
+
+  *{ A non-derivative simplex algorithm for unconstraint problems is used for
+  comparisson. To use this algorithm, a penalty term is first added to the
+  calculator function that is used in the analysis block for evaluation of the
+  objective function: }
+  inverse{nd simplex 0.00001 500
+    3 2
+    { 1 1 : 0.5 }
+    { 1 2 : 1 }
+    
+    { 2 1 : 0.51 }
+    { 2 2 : 1 }
+    
+    { 3 1 : 0.5 }
+    { 3 2 : 1.1 }
+    
+  }
+
+  dwrite{"\n\nNumber of analyses: " $numan \n\n}
+
+]}
+
+
+
+
+
+
+
+
+
+

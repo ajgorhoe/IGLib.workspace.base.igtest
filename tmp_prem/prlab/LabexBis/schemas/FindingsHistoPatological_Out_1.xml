@@ -1,0 +1,153 @@
+<?xml-stylesheet type="text/xsl" href="FindingsHistoPatological.xsl"?>
+<Findings>
+  <Head>
+    <Header>Tole je glava strani...</Header>
+    <Footer>Tole je noga strani...</Footer>
+    <Heading>Patohistološki izvid</Heading>
+    <OrderCode>Order code.</OrderCode>
+    <Patient>
+      <Name>Ime_pacienta</Name>
+      <FamilyName>Priimek_pacienta</FamilyName>
+      <MiddleNames>
+      </MiddleNames>
+      <Address>Naslov_pacienta, ulica, kraj in postna stevilka</Address>
+      <Sex>1</Sex>
+      <DateOfBirth>19650411120500</DateOfBirth>
+      <Age>44</Age>
+      <AgeMonths>529</AgeMonths>
+      <PersonId>Patient_1</PersonId>
+    </Patient>
+    <Physician>
+      <Name>ime_zdravnika</Name>
+      <FamilyName>priimek_zdravnika</FamilyName>
+      <MiddleNames>A.J.</MiddleNames>
+      <Appellation>naziv_pred_imenom</Appellation>
+      <Title>zdravnikov_title</Title>
+      <TitleRight>desni_title</TitleRight>
+    </Physician>
+    <Orderer>tole je naročnik preiskave</Orderer>
+    <OrdererAddress>tole je naslov naročnika preiskave</OrdererAddress>
+    <SampleTime>20030410130400</SampleTime>
+    <ReceptionTime>20030411120500</ReceptionTime>
+    <CompletionTime>20030413111400</CompletionTime>
+  </Head>
+  <DiagnosisClinical>
+    <Text>Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.
+	Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.
+	</Text>
+    <Codes>
+      <DiagnosisCode>
+        <Code>diagnosiscode_1</Code>
+        <CodeDescription>diagnosiscodepart2_1</CodeDescription>
+        <CodeDescription>diagnosiscodepart2_1</CodeDescription>
+        <ClassificationSystem>BP10_1</ClassificationSystem>
+      </DiagnosisCode>
+      <DiagnosisCode>
+        <Code>diagnosiscode_2</Code>
+        <CodeDescription>diagnosiscodepart2_n</CodeDescription>
+        <CodeDescription>diagnosiscodepart2_n</CodeDescription>
+        <ClassificationSystem>BP10_n</ClassificationSystem>
+      </DiagnosisCode>
+      <DiagnosisCode>
+        <Code>diagnosiscode_3</Code>
+        <CodeDescription>diagnosiscodepart2_n</CodeDescription>
+        <CodeDescription>diagnosiscodepart2_n</CodeDescription>
+        <ClassificationSystem>BP10_n</ClassificationSystem>
+      </DiagnosisCode>
+      <DiagnosisCode>
+        <Code>diagnosiscode_4</Code>
+        <CodeDescription>diagnosiscodepart2_n</CodeDescription>
+        <CodeDescription>diagnosiscodepart2_n</CodeDescription>
+        <ClassificationSystem>BP10_n</ClassificationSystem>
+      </DiagnosisCode>
+      <DiagnosisCode>
+        <Code>diagnosiscode_n</Code>
+        <CodeDescription>diagnosiscodepart2_n</CodeDescription>
+        <CodeDescription>diagnosiscodepart2_n</CodeDescription>
+        <ClassificationSystem>BP10_n</ClassificationSystem>
+      </DiagnosisCode>
+    </Codes>
+  </DiagnosisClinical>
+  <MacroDescription>
+    Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.
+	Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.
+	Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.
+	Makroskopski opis.Makroskopski opis.Makroskopski opis.
+	Makroskopski opis.Makroskopski opis.
+	Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.
+	Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.
+	Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.
+	Makroskopski opis.Makroskopski opis.Makroskopski opis.
+	Makroskopski opis.Makroskopski opis.
+	Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.
+  </MacroDescription>
+  <MicroDescription>
+    Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.
+	Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.
+	Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.vMikroskopski opis.
+	Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.vMikroskopski opis.Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.
+	Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.
+	Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.vMikroskopski opis.
+	Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.vMikroskopski opis.Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.
+	Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.
+	Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.vMikroskopski opis.
+	Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.vMikroskopski opis.Mikroskopski opis.
+  </MicroDescription>
+  <Appendix>
+    Dodatek k izvidu.Dodatek k izvidu.Dodatek k izvidu.Dodatek k izvidu.
+	Dodatek k izvidu.Dodatek k izvidu.Dodatek k izvidu.Dodatek k izvidu.
+	Dodatek k izvidu.Dodatek k izvidu.Dodatek k izvidu.
+	Dodatek k izvidu.Dodatek k izvidu.Dodatek k izvidu.Dodatek k izvidu.Dodatek k izvidu.
+  </Appendix>
+  <FormerFindings>
+    <Finding>
+      <FindingReference>Code1</FindingReference>
+      <Remark>Opomba 1.</Remark>
+    </Finding>
+    <Finding>
+      <FindingReference>Code2</FindingReference>
+      <Remark>Opomba 2.</Remark>
+    </Finding>
+    <Finding>
+      <FindingReference>Code3</FindingReference>
+      <Remark>Opomba 3.</Remark>
+    </Finding>
+  </FormerFindings>
+  <DiagnosisPatoHistological>
+    <Text>Opis PatoHisto diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.
+	Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.
+	Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.
+	Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.
+	Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.
+	Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.
+	Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.
+	Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.
+	Opis diagnoze v obliki prostega teksta.</Text>
+    <Codes>
+      <DiagnosisCode>
+        <Code>PatoHistologicalDiagnosiscode_1</Code>
+        <CodeDescription>diagnosiscodepart2_1</CodeDescription>
+        <CodeDescription>diagnosiscodepart2_1</CodeDescription>
+        <ClassificationSystem>BP10_1</ClassificationSystem>
+      </DiagnosisCode>
+      <DiagnosisCode>
+        <Code>PatoHistologicalDiagnosiscode_2</Code>
+        <CodeDescription>diagnosiscodepart2_2</CodeDescription>
+        <CodeDescription>diagnosiscodepart2_2</CodeDescription>
+        <ClassificationSystem>BP10_2</ClassificationSystem>
+      </DiagnosisCode>
+      <DiagnosisCode>
+        <Code>PatoHistologicalDiagnosiscodee_3</Code>
+        <CodeDescription>diagnosiscodepart2_3</CodeDescription>
+        <CodeDescription>diagnosiscodepart2_3</CodeDescription>
+        <ClassificationSystem>BP10_3</ClassificationSystem>
+      </DiagnosisCode>
+      <DiagnosisCode>
+        <Code>PatoHistologicalDiagnosiscode_4</Code>
+        <CodeDescription>diagnosiscodepart2_4</CodeDescription>
+        <CodeDescription>diagnosiscodepart2_4</CodeDescription>
+        <ClassificationSystem>BP10_n</ClassificationSystem>
+      </DiagnosisCode>
+    </Codes>
+  </DiagnosisPatoHistological>
+</Findings>

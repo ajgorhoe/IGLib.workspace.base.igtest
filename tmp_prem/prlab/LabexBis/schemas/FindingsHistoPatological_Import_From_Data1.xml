@@ -1,0 +1,77 @@
+<?xml-stylesheet type="text/xsl" href="FindingsHistoPatological.xsl"?>
+<Findings>
+  <Head>
+    <Header>THIS IS A TODO HEADER</Header>
+    <Footer>THIS IS A TODO FOOTER</Footer>
+    <Heading> </Heading>
+    <OrderCode>C1/09</OrderCode>
+    <Patient>
+      <Name>ŠIME</Name>
+      <FamilyName>AMBROŽIČ</FamilyName>
+      <MiddleNames> </MiddleNames>
+      <Address>KAPELSKA CESTA 15</Address>
+      <Sex>M</Sex>
+      <DateOfBirth>1.1.1955</DateOfBirth>
+      <Age>54</Age>
+      <AgeMonths>654</AgeMonths>
+      <PersonId> </PersonId>
+    </Patient>
+    <Physician>
+      <Name>Admini</Name>
+      <FamilyName>Strator</FamilyName>
+      <MiddleNames> </MiddleNames>
+      <Appellation>Zdravnik</Appellation>
+      <Title> </Title>
+      <TitleRight> </TitleRight>
+    </Physician>
+    <Orderer>ODD.ZA ENDOSKOPIJO DIHAL</Orderer>
+    <OrdererAddress>en naslov 123</OrdererAddress>
+    <SampleTime>1.1.1900 0:00:00</SampleTime>
+    <ReceptionTime>17.7.2009 10:05:19</ReceptionTime>
+    <CompletionTime>1.1.1900 0:00:00</CompletionTime>
+  </Head>
+  <DiagnosisClinical>
+    <Text>Prosti tekst klinične diagnoze.</Text>
+    <Codes>
+      <DiagnosisCode>
+        <Code> </Code>
+        <CodeDescription> </CodeDescription>
+        <ClassificationSystem> </ClassificationSystem>
+      </DiagnosisCode>
+    </Codes>
+  </DiagnosisClinical>
+  <MacroDescription>{\rtf1\ansi\ansicpg1250\uc0\deff0{\fonttbl
+{\f0\fswiss\fcharset238\fprq2 Arial;}
+{\f1\froman\fcharset238\fprq2 Times New Roman;}
+{\f2\froman\fcharset2\fprq2 Symbol;}}
+{\colortbl;\red0\green0\blue0;\red255\green255\blue255;}
+{\stylesheet{\s0\itap0\f0\fs24 [Normal];}{\*\cs10\additive Default Paragraph Font;}}
+{\*\generator TX_RTF32 11.0.401.501;}
+\deftab1134\paperw12240\paperh15840\margl1440\margt1440\margr1440\margb1440\pard\itap0\qj{\*\txfieldstart\txfieldtype0\txfieldflags217\txfielddata 00001447}\plain\f1\fs22 Makroskopski opis\par\par hh\par\par\pard\itap0\qj jklkl\loch\f1\hich\f1\'e8jkl\'e8{\*\txfieldend}}</MacroDescription>
+  <MicroDescription>{\rtf1\ansi\ansicpg1250\uc0\deff0{\fonttbl
+{\f0\fswiss\fcharset238\fprq2 Arial;}
+{\f1\froman\fcharset238\fprq2 Times New Roman;}
+{\f2\froman\fcharset2\fprq2 Symbol;}}
+{\colortbl;\red0\green0\blue0;\red255\green255\blue255;}
+{\stylesheet{\s0\itap0\f0\fs24 [Normal];}{\*\cs10\additive Default Paragraph Font;}}
+{\*\generator TX_RTF32 11.0.401.501;}
+\deftab1134\paperw12240\paperh15840\margl1440\margt1440\margr1440\margb1440\pard\itap0\qj{\*\txfieldstart\txfieldtype0\txfieldflags217\txfielddata 00001451}\plain\f1\fs22 222 Mikroskopski opis 222{\*\txfieldend}}</MicroDescription>
+  <TemporaryOpinion> </TemporaryOpinion>
+  <Appendix> </Appendix>
+  <FormerFindings>
+    <Finding>
+      <FindingReference> </FindingReference>
+      <Remark> </Remark>
+    </Finding>
+  </FormerFindings>
+  <DiagnosisPatoHistological>
+    <Text>Začasne diagnoze</Text>
+    <Codes>
+      <DiagnosisCode>
+        <Code> </Code>
+        <CodeDescription> </CodeDescription>
+        <ClassificationSystem> </ClassificationSystem>
+      </DiagnosisCode>
+    </Codes>
+  </DiagnosisPatoHistological>
+</Findings>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="Evaluator">
+</Property><Property Name="Solution File" Value="D:\users\igor\cvis\igcs\igtest\tmp_CSharpEvaluator\Evaluator.sln">
+</Property><Property Name="User Options File" Value="D:\users\igor\cvis\igcs\igtest\tmp_CSharpEvaluator\Evaluator.suo">
+</Property><Property Name="Date" Value="17. avgust 2010">
+</Property><Property Name="Time" Value="11:34">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="Evaluator.sln" Description="File successfully backed up as D:\users\igor\cvis\igcs\igtest\tmp_CSharpEvaluator\Backup\Evaluator.sln">
+</Event><Event ErrorLevel="0" Project="" Source="Evaluator.suo" Description="File successfully backed up as D:\users\igor\cvis\igcs\igtest\tmp_CSharpEvaluator\Backup\Evaluator.suo">
+</Event><Event ErrorLevel="0" Project="Evaluator" Source="Evaluator.csproj" Description="Project file successfully backed up as D:\users\igor\cvis\igcs\igtest\tmp_CSharpEvaluator\Backup\Evaluator.csproj">
+</Event><Event ErrorLevel="0" Project="Evaluator" Source="Evaluator.csproj.user" Description="Project user file successfully backed up as D:\users\igor\cvis\igcs\igtest\tmp_CSharpEvaluator\Backup\Evaluator.csproj.user">
+</Event><Event ErrorLevel="0" Project="Evaluator" Source="AssemblyInfo.cs" Description="File successfully backed up as D:\users\igor\cvis\igcs\igtest\tmp_CSharpEvaluator\Backup\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="Evaluator" Source="Evaluator.cs" Description="File successfully backed up as D:\users\igor\cvis\igcs\igtest\tmp_CSharpEvaluator\Backup\Evaluator.cs">
+</Event><Event ErrorLevel="0" Project="Evaluator" Source="Evaluator.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Evaluator" Source="Evaluator.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="TestEvaluator" Source="TestEvaluator\TestEvaluator.csproj" Description="Project file successfully backed up as D:\users\igor\cvis\igcs\igtest\tmp_CSharpEvaluator\Backup\TestEvaluator\TestEvaluator.csproj">
+</Event><Event ErrorLevel="0" Project="TestEvaluator" Source="TestEvaluator\TestEvaluator.csproj.user" Description="Project user file successfully backed up as D:\users\igor\cvis\igcs\igtest\tmp_CSharpEvaluator\Backup\TestEvaluator\TestEvaluator.csproj.user">
+</Event><Event ErrorLevel="0" Project="TestEvaluator" Source="TestEvaluator\AssemblyInfo.cs" Description="File successfully backed up as D:\users\igor\cvis\igcs\igtest\tmp_CSharpEvaluator\Backup\TestEvaluator\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="TestEvaluator" Source="TestEvaluator\Test.cs" Description="File successfully backed up as D:\users\igor\cvis\igcs\igtest\tmp_CSharpEvaluator\Backup\TestEvaluator\Test.cs">
+</Event><Event ErrorLevel="0" Project="TestEvaluator" Source="TestEvaluator\App.ico" Description="File successfully backed up as D:\users\igor\cvis\igcs\igtest\tmp_CSharpEvaluator\Backup\TestEvaluator\App.ico">
+</Event><Event ErrorLevel="0" Project="TestEvaluator" Source="TestEvaluator\TestEvaluator.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="TestEvaluator" Source="TestEvaluator\TestEvaluator.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="Evaluator.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="Evaluator.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Evaluator" Source="Evaluator.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="TestEvaluator" Source="TestEvaluator\TestEvaluator.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

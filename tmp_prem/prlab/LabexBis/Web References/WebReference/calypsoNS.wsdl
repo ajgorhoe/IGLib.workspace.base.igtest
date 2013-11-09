@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns1="exceptions.calypso.infonet.com" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns2="valueobjects.calypso.infonet.com" xmlns:impl="http://192.168.0.21:8080/InfonetWS/services/calypsoNS" xmlns:intf="http://192.168.0.21:8080/InfonetWS/services/calypsoNS" targetNamespace="http://192.168.0.21:8080/InfonetWS/services/calypsoNS" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.apache.org/xml-soap">
+      <xsd:import namespace="valueobjects.calypso.infonet.com" />
+      <xsd:import namespace="exceptions.calypso.infonet.com" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:complexType name="Vector">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="xsd:anyType" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="exceptions.calypso.infonet.com">
+      <xsd:import namespace="http://xml.apache.org/xml-soap" />
+      <xsd:import namespace="valueobjects.calypso.infonet.com" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:complexType name="CalypsoException">
+        <xsd:sequence>
+          <xsd:element name="info" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="valueobjects.calypso.infonet.com">
+      <xsd:import namespace="http://xml.apache.org/xml-soap" />
+      <xsd:import namespace="exceptions.calypso.infonet.com" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:complexType name="Message">
+        <xsd:sequence>
+          <xsd:element name="text" nillable="true" type="xsd:string" />
+          <xsd:element name="ID" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="receiveMessageResponse1">
+    <wsdl:part name="receiveMessageReturn" type="tns2:Message" />
+  </wsdl:message>
+  <wsdl:message name="getUniqueIDResponse">
+    <wsdl:part name="getUniqueIDReturn" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getVersionListResponse">
+    <wsdl:part name="getVersionListReturn" type="apachesoap:Vector" />
+  </wsdl:message>
+  <wsdl:message name="ackMessageRequest">
+    <wsdl:part name="msgID" type="xsd:string" />
+    <wsdl:part name="queueName" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="sendMessageRequest1">
+    <wsdl:part name="msg" type="xsd:string" />
+    <wsdl:part name="HL7Version" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getVersionListRequest" />
+  <wsdl:message name="sendMessageResponse" />
+  <wsdl:message name="receiveMessageRequest">
+    <wsdl:part name="queueName" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getUniqueIDRequest" />
+  <wsdl:message name="receiveMessageRequest1">
+    <wsdl:part name="queueName" type="xsd:string" />
+    <wsdl:part name="HL7Version" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="ackMessageResponse" />
+  <wsdl:message name="CalypsoException">
+    <wsdl:part name="fault" type="tns1:CalypsoException" />
+  </wsdl:message>
+  <wsdl:message name="sendMessageRequest">
+    <wsdl:part name="msg" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="receiveMessageResponse">
+    <wsdl:part name="receiveMessageReturn" type="tns2:Message" />
+  </wsdl:message>
+  <wsdl:message name="sendMessageResponse1" />
+  <wsdl:portType name="CalypsoWSNS">
+    <wsdl:operation name="getVersionList">
+      <wsdl:input name="getVersionListRequest" message="intf:getVersionListRequest" />
+      <wsdl:output name="getVersionListResponse" message="intf:getVersionListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="sendMessage" parameterOrder="msg">
+      <wsdl:input name="sendMessageRequest" message="intf:sendMessageRequest" />
+      <wsdl:output name="sendMessageResponse" message="intf:sendMessageResponse" />
+      <wsdl:fault name="CalypsoException" message="intf:CalypsoException" />
+    </wsdl:operation>
+    <wsdl:operation name="sendMessage" parameterOrder="msg HL7Version">
+      <wsdl:input name="sendMessageRequest1" message="intf:sendMessageRequest1" />
+      <wsdl:output name="sendMessageResponse1" message="intf:sendMessageResponse1" />
+      <wsdl:fault name="CalypsoException" message="intf:CalypsoException" />
+    </wsdl:operation>
+    <wsdl:operation name="receiveMessage" parameterOrder="queueName">
+      <wsdl:input name="receiveMessageRequest" message="intf:receiveMessageRequest" />
+      <wsdl:output name="receiveMessageResponse" message="intf:receiveMessageResponse" />
+      <wsdl:fault name="CalypsoException" message="intf:CalypsoException" />
+    </wsdl:operation>
+    <wsdl:operation name="receiveMessage" parameterOrder="queueName HL7Version">
+      <wsdl:input name="receiveMessageRequest1" message="intf:receiveMessageRequest1" />
+      <wsdl:output name="receiveMessageResponse1" message="intf:receiveMessageResponse1" />
+      <wsdl:fault name="CalypsoException" message="intf:CalypsoException" />
+    </wsdl:operation>
+    <wsdl:operation name="ackMessage" parameterOrder="msgID queueName">
+      <wsdl:input name="ackMessageRequest" message="intf:ackMessageRequest" />
+      <wsdl:output name="ackMessageResponse" message="intf:ackMessageResponse" />
+      <wsdl:fault name="CalypsoException" message="intf:CalypsoException" />
+    </wsdl:operation>
+    <wsdl:operation name="getUniqueID">
+      <wsdl:input name="getUniqueIDRequest" message="intf:getUniqueIDRequest" />
+      <wsdl:output name="getUniqueIDResponse" message="intf:getUniqueIDResponse" />
+      <wsdl:fault name="CalypsoException" message="intf:CalypsoException" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="calypsoNSSoapBinding" type="intf:CalypsoWSNS">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="getVersionList">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getVersionListRequest">
+        <wsdlsoap:body use="literal" namespace="http://webservice.calypso.infonet.com" />
+      </wsdl:input>
+      <wsdl:output name="getVersionListResponse">
+        <wsdlsoap:body use="literal" namespace="http://192.168.0.21:8080/InfonetWS/services/calypsoNS" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendMessage">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="sendMessageRequest">
+        <wsdlsoap:body use="literal" namespace="http://webservice.calypso.infonet.com" />
+      </wsdl:input>
+      <wsdl:output name="sendMessageResponse">
+        <wsdlsoap:body use="literal" namespace="http://192.168.0.21:8080/InfonetWS/services/calypsoNS" />
+      </wsdl:output>
+      <wsdl:fault name="CalypsoException">
+        <wsdlsoap:fault use="literal" name="CalypsoException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="sendMessage">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="sendMessageRequest1">
+        <wsdlsoap:body use="literal" namespace="http://webservice.calypso.infonet.com" />
+      </wsdl:input>
+      <wsdl:output name="sendMessageResponse1">
+        <wsdlsoap:body use="literal" namespace="http://192.168.0.21:8080/InfonetWS/services/calypsoNS" />
+      </wsdl:output>
+      <wsdl:fault name="CalypsoException">
+        <wsdlsoap:fault use="literal" name="CalypsoException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="receiveMessage">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="receiveMessageRequest">
+        <wsdlsoap:body use="literal" namespace="http://webservice.calypso.infonet.com" />
+      </wsdl:input>
+      <wsdl:output name="receiveMessageResponse">
+        <wsdlsoap:body use="literal" namespace="http://192.168.0.21:8080/InfonetWS/services/calypsoNS" />
+      </wsdl:output>
+      <wsdl:fault name="CalypsoException">
+        <wsdlsoap:fault use="literal" name="CalypsoException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="receiveMessage">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="receiveMessageRequest1">
+        <wsdlsoap:body use="literal" namespace="http://webservice.calypso.infonet.com" />
+      </wsdl:input>
+      <wsdl:output name="receiveMessageResponse1">
+        <wsdlsoap:body use="literal" namespace="http://192.168.0.21:8080/InfonetWS/services/calypsoNS" />
+      </wsdl:output>
+      <wsdl:fault name="CalypsoException">
+        <wsdlsoap:fault use="literal" name="CalypsoException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ackMessage">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="ackMessageRequest">
+        <wsdlsoap:body use="literal" namespace="http://webservice.calypso.infonet.com" />
+      </wsdl:input>
+      <wsdl:output name="ackMessageResponse">
+        <wsdlsoap:body use="literal" namespace="http://192.168.0.21:8080/InfonetWS/services/calypsoNS" />
+      </wsdl:output>
+      <wsdl:fault name="CalypsoException">
+        <wsdlsoap:fault use="literal" name="CalypsoException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getUniqueID">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getUniqueIDRequest">
+        <wsdlsoap:body use="literal" namespace="http://webservice.calypso.infonet.com" />
+      </wsdl:input>
+      <wsdl:output name="getUniqueIDResponse">
+        <wsdlsoap:body use="literal" namespace="http://192.168.0.21:8080/InfonetWS/services/calypsoNS" />
+      </wsdl:output>
+      <wsdl:fault name="CalypsoException">
+        <wsdlsoap:fault use="literal" name="CalypsoException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CalypsoWSNSService">
+    <wsdl:port name="calypsoNS" binding="intf:calypsoNSSoapBinding">
+      <wsdlsoap:address location="http://195.246.6.201:8080/InfonetWS/services/calypsoNS" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

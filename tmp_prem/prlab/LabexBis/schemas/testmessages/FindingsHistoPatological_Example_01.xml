@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="FindingsHistoPatological.xsl"?>
+
+<Findings>
+
+  <Head>    <!-- 1, glava izvida -->
+    <Header>Tole je glava strani...</Header>    <!-- 0..1, Tekst, ki se izpiše v glavi strani -->
+    <Footer>Tole je noga strani...</Footer>    <!-- 0..1, Tekst, ki se izpiše v nogi strani -->
+    <Heading>Patohistološki izvid ČŠŽĆĐčšžćđ</Heading>    <!-- 1, naslov dokumenta. -->
+    <OrderCode>Order code.</OrderCode>    <!-- 0..1, koda preiskave -->
+    <Patient>      <!-- 1, podatki o pacientu -->
+      <Name>Ime_pacienta</Name>      <!-- 1, ime -->
+      <FamilyName>Priimek_pacienta</FamilyName>      <!-- 1, priimek -->
+      <MiddleNames></MiddleNames>      <!-- 0..1, srednja imena -->
+      <Address>Naslov_pacienta, ulica, kraj in postna stevilka</Address>      <!-- 0..1, naslov pacienta -->
+      <Sex>1</Sex>      <!-- 1, spol (int, 1 moški, 2 ženska) -->
+      <DateOfBirth>196504111205</DateOfBirth>      <!-- Datum rojstva -->
+      <Age>55 let</Age>      <!-- 0..1, starost v letih (to se da sicer izračunati iz starosti, vendar je včasi bolje, da 
+                              pride podatek kar not v dokument; to pride prav recimo pri XSLT) -->
+      <AgeMonths>9 mes</AgeMonths>      <!-- 0..1, starost - mesecev čez polna leta. -->
+      <PersonId>Patient_1</PersonId>      <!-- Matična številka ali številka zdrav. zavarovanja, to se verjetno ne izpiše. -->
+    </Patient>
+    <Physician>      <!-- 1, zdravnik, ki je izdal oz. potrdil izvid; po možnosti preimenuj to polje na bolj primerno ime. -->
+      <!-- Podatke o zdravniku bo treba verjetno še usklajevati -->
+      <Name>ime_zdravnika</Name>      <!-- 1, ime -->
+      <FamilyName>priimek_zdravnika</FamilyName>      <!-- 1, priimek -->
+      <MiddleNames>A.J.</MiddleNames>      <!-- 0..1, srednja imena -->
+      <Appellation>naziv_pred_imenom</Appellation>      <!-- 1, naziv, ki se izpiše pred imenom, npr. Patolog specialist. -->
+      <Title>zdravnikov_title</Title>      <!-- Naslov, npr. Prof. dr. -->
+      <TitleRight>desni_title</TitleRight>      <!-- Naslov, ki se izpiše za imenom, npr. dr. med. -->
+    </Physician>
+    <!-- Opomba: Premisli, ali bi moral naročnikove podatke grupirati v poseben element. Verjetno to ne bo potrebno. -->
+    <Orderer>tole je naročnik preiskave</Orderer>    <!-- 0..1, naročnik preiskave -->
+    <OrdererAddress>tole je naslov naročnika preiskave</OrdererAddress>    <!-- 0..1, naslov naročnika -->
+    <SampleTime>200304101304</SampleTime>    <!-- 0..1, čas odvzema vzorca -->
+    <ReceptionTime>200304111205</ReceptionTime>    <!-- 0..1, čas sprejema -->
+    <CompletionTime>200304131114</CompletionTime>    <!-- 0..1, datum zaključitve. -->
+  </Head>
+
+  <DiagnosisClinical>    <!-- 1 , klinična (napotna) diagnoza (odločiti se je treba, ali je to obvezen element): -->
+    <Text>Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.
+	Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.
+	</Text>    <!-- 0..1, prosti tekst -->
+    <Codes>      <!-- 0..n, kode z poisi in identifikacijo klasifikacijskega sistema -->
+      <DiagnosisCode>        <!-- 0..n, koda diagnoze z opisom -->
+        <Code>diagnosiscode_1</Code>        <!-- 1, koda diagnoze (1) -->
+        <CodeDescription>diagnosiscodepart2_1</CodeDescription>        <!-- 0..1, opcijska ekstenzija v primeru, da je koda sestavljena iz dveh delov -->
+        <ClassificationSystem>BP10_1</ClassificationSystem>        <!-- 1, klasifikacijski sistem, iz katerega so kode -->
+      </DiagnosisCode>
+
+      <!-- ...  -->
+
+	  <DiagnosisCode>
+        <Code>diagnosiscode_2</Code>
+        <CodeDescription>diagnosiscodepart2_n</CodeDescription>
+        <ClassificationSystem>BP10_n</ClassificationSystem>
+      </DiagnosisCode>
+	  <DiagnosisCode>
+        <Code>diagnosiscode_3</Code>
+        <CodeDescription>diagnosiscodepart2_n</CodeDescription>
+        <ClassificationSystem>BP10_n</ClassificationSystem>
+      </DiagnosisCode>
+	  <DiagnosisCode>
+        <Code>diagnosiscode_4</Code>
+        <CodeDescription>diagnosiscodepart2_n</CodeDescription>
+        <ClassificationSystem>BP10_n</ClassificationSystem>
+      </DiagnosisCode>
+	  
+      <DiagnosisCode>
+        <Code>diagnosiscode_n</Code>
+        <CodeDescription>diagnosiscodepart2_n</CodeDescription>
+        <ClassificationSystem>BP10_n</ClassificationSystem>
+      </DiagnosisCode>
+    </Codes>
+  </DiagnosisClinical>
+
+  <MacroDescription>    <!-- 0..1, makroskopski opis (ali je dovoljeno 0 elementov - še ne vemo) -->
+    Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.
+	Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.
+	Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.
+	Makroskopski opis.Makroskopski opis.Makroskopski opis.
+	Makroskopski opis.Makroskopski opis.
+	Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.
+	Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.
+	Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.
+	Makroskopski opis.Makroskopski opis.Makroskopski opis.
+	Makroskopski opis.Makroskopski opis.
+	Makroskopski opis.Makroskopski opis.Makroskopski opis.Makroskopski opis.
+  </MacroDescription>
+  <MicroDescription>    <!-- 0..1 element, mikroskopski opis (ali je dovoljeno 0 elementov - še ne vemo) -->
+    Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.
+	Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.
+	Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.vMikroskopski opis.
+	Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.vMikroskopski opis.Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.
+	Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.
+	Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.vMikroskopski opis.
+	Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.vMikroskopski opis.Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.
+	Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.
+	Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.vMikroskopski opis.
+	Mikroskopski opis.Mikroskopski opis.Mikroskopski opis.vMikroskopski opis.Mikroskopski opis.
+  </MicroDescription>
+  <TemporaryOpinion>    <!-- 0..1 element, začasna diagnoza (-e) (ali je dovoljeno 0 elementov, kaj pa več? - še ne vemo) -->
+    Začasna diagnoza.Začasna diagnoza.Začasna diagnoza.Začasna diagnoza.Začasna diagnoza.Začasna diagnoza.
+	Začasna diagnoza.Začasna diagnoza.Začasna diagnoza.Začasna diagnoza.Začasna diagnoza.
+	Začasna diagnoza.Začasna diagnoza.
+	Začasna diagnoza.Začasna diagnoza.vvZačasna diagnoza.
+	Začasna diagnoza.Začasna diagnoza.Začasna diagnoza.Začasna diagnoza.Začasna diagnoza.Začasna diagnoza.Začasna diagnoza.Začasna diagnoza.
+	Začasna diagnoza.Začasna diagnoza.Začasna diagnoza.Začasna diagnoza.Začasna diagnoza.
+	Začasna diagnoza.Začasna diagnoza.
+	Začasna diagnoza.Začasna diagnoza.vvZačasna diagnoza.
+	Začasna diagnoza.Začasna diagnoza.
+  </TemporaryOpinion>
+  <Appendix>    <!-- 0..1 element, dodatek k izvidu. -->
+    Dodatek k izvidu.Dodatek k izvidu.Dodatek k izvidu.Dodatek k izvidu.
+	Dodatek k izvidu.Dodatek k izvidu.Dodatek k izvidu.Dodatek k izvidu.
+	Dodatek k izvidu.Dodatek k izvidu.Dodatek k izvidu.
+	Dodatek k izvidu.Dodatek k izvidu.Dodatek k izvidu.Dodatek k izvidu.Dodatek k izvidu.
+  </Appendix>
+  <!-- 0..1, prejšnji izvidi: -->
+  <FormerFindings>
+    <!-- 0..n, prej. izvid. -->
+    <Finding>
+      <!-- 1 -->
+      <FindingReference>Code1</FindingReference>
+      <!-- 0..1 -->
+      <Remark>Opomba 1.</Remark>
+    </Finding>
+    <Finding>
+      <FindingReference>Code2</FindingReference>
+      <Remark>Opomba 2.</Remark>
+    </Finding>
+    <Finding>
+      <FindingReference>Code3</FindingReference>
+      <Remark>Opomba 3.</Remark>
+    </Finding>
+  </FormerFindings>
+
+  <DiagnosisPatoHistological>    <!-- 1 , diagnoza (odločiti se je treba, ali je obvezen), struktura je enaka kot pri napotni : -->
+    <Text>Opis PatoHisto diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.
+	Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.
+	Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.
+	Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.
+	Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.
+	Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.
+	Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.
+	Opis diagnoze v obliki prostega teksta.Opis diagnoze v obliki prostega teksta.
+	Opis diagnoze v obliki prostega teksta.</Text>
+    <Codes>
+      <DiagnosisCode>
+        <Code>PatoHistologicalDiagnosiscode_1</Code>
+        <CodeDescription>diagnosiscodepart2_1</CodeDescription>
+        <ClassificationSystem>BP10_1</ClassificationSystem>
+      </DiagnosisCode>
+
+      <!-- ...  -->
+
+      <DiagnosisCode>
+        <Code>PatoHistologicalDiagnosiscode_2</Code>
+        <CodeDescription>diagnosiscodepart2_2</CodeDescription>
+        <ClassificationSystem>BP10_2</ClassificationSystem>
+      </DiagnosisCode>
+	  <DiagnosisCode>
+        <Code>PatoHistologicalDiagnosiscodee_3</Code>
+        <CodeDescription>diagnosiscodepart2_3</CodeDescription>
+        <ClassificationSystem>BP10_3</ClassificationSystem>
+      </DiagnosisCode>
+	  <DiagnosisCode>
+        <Code>PatoHistologicalDiagnosiscode_4</Code>
+        <CodeDescription>diagnosiscodepart2_4</CodeDescription>
+        <ClassificationSystem>BP10_n</ClassificationSystem>
+      </DiagnosisCode>
+    </Codes>
+  </DiagnosisPatoHistological>
+
+</Findings>
+
+    
+
+  
+  

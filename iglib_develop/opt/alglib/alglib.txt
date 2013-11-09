@@ -1,0 +1,42 @@
+﻿
+
+Main pages:
+http://en.wikipedia.org/wiki/ALGLIB
+http://www.alglib.net/
+
+In September 2009, GPL was adopted (with version 2.1.0), which makes newer versions useless for 
+commercial software distributions. History:
+http://www.alglib.net/about/history.php 
+http://www.alglib.net/arcnews.php 
+Look for alglib-2.0.0.stable.csharp.zip or alglib-2.0.1.stable.csharp.zip!
+
+
+
+Older version (but still GPL):
+http://dev.heuristiclab.com/svn/hl/core/branches/3.2/sources/HeuristicLab.ExtLibs/HeuristicLab.ALGLIB/2.1.2.2591/ALGLIB-2.1.2.2591/
+
+Of interest: ap.cs (mathematical functions used by other files), lbfgs.cs, maybe conjugategradient.cs.
+
+Na Wayback machine:
+http://web.archive.org/web/20090620052403/http://alglib.net/
+http://wayback.archive.org/web/20091022050855*/http://www.alglib.net/
+omenja
+alglib-2.0.0.stable.csharp.zip, vedar tega nisem mogl najti. Treba je dobiti posamezne datoteke za algoritme.
+Verzija z 20.junija še ni pof GPL, za optimizacijo pa vsebuje le metode lbfgs, lbgs-b (bond constraints), 
+Levenberg-Marquardtovo in Brentovo (1D).
+ 	
+
+OTHER FREE SOURCE LIBRARIES WITH OPTIMIZATION:
+nMath.Net 1.1 and 1.1.1, but newer versions do not have the optimization module.
+License is permissive.
+Download source here: 
+http://dnanalytics.codeplex.com/SourceControl/list/changesets
+dnA.Optimization namespace is in dnAnalyticsAll\0.1.1.1\src\dnA\optimization\ !
+
+Yet another - but with LGPL license:
+Accord.NET
+http://accord.googlecode.com/svn/docs/html/N_Accord_Math_Optimization.htm
+
+Search for packages and soure files (example link is for optimization namespace in dnanalytics):
+http://www.koders.com/csharp/fidA522A433065B5D359C943562507882606B1AD25D.aspx?s=search#L15
+

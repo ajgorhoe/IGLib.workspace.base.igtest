@@ -1,0 +1,20 @@
+{
+  "NumConstraints": 2,
+  "NumEqualityConstraints": 0,
+  "NumObjectives": 1,
+  "NumParameters": 3,
+  "Parameters": {
+    "Elements": [
+      0.1111,
+      0.2222,
+      0.33330000000000004
+    ],
+    "Length": 3
+  },
+  "RequestedConstraintGradients": true,
+  "RequestedConstraintHessians": true,
+  "RequestedConstraints": true,
+  "RequestedObjective": true,
+  "RequestedObjectiveGradient": true,
+  "RequestedObjectiveHessian": true
+}

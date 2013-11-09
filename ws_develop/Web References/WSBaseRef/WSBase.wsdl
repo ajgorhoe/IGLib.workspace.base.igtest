@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www2.arnes.si/~ljc3m2/igor/iglib/index.html" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www2.arnes.si/~ljc3m2/igor/iglib/index.html" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This is a demonstration WebService.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www2.arnes.si/~ljc3m2/igor/iglib/index.html">
+      <s:element name="TestCount">
+        <s:complexType />
+      </s:element>
+      <s:element name="TestCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestCountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestService">
+        <s:complexType />
+      </s:element>
+      <s:element name="TestServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestServiceResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestServiceArg">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="commandlineArguments" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestServiceArgResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestServiceArgResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestServiceArgs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="commandlineArguments" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TestServiceArgsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestServiceArgsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="TestCountSoapIn">
+    <wsdl:part name="parameters" element="tns:TestCount" />
+  </wsdl:message>
+  <wsdl:message name="TestCountSoapOut">
+    <wsdl:part name="parameters" element="tns:TestCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:TestService" />
+  </wsdl:message>
+  <wsdl:message name="TestServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:TestServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestServiceArgSoapIn">
+    <wsdl:part name="parameters" element="tns:TestServiceArg" />
+  </wsdl:message>
+  <wsdl:message name="TestServiceArgSoapOut">
+    <wsdl:part name="parameters" element="tns:TestServiceArgResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestServiceArgsSoapIn">
+    <wsdl:part name="parameters" element="tns:TestServiceArgs" />
+  </wsdl:message>
+  <wsdl:message name="TestServiceArgsSoapOut">
+    <wsdl:part name="parameters" element="tns:TestServiceArgsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WSBaseSoap">
+    <wsdl:operation name="TestCount">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Increments and retrns a new ID.</wsdl:documentation>
+      <wsdl:input message="tns:TestCountSoapIn" />
+      <wsdl:output message="tns:TestCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestService">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Tests whether the service functions is alive. Returns a stiring containing some data about the service (e.g. its calas and ID) and a ist of arguments passed to the service.</wsdl:documentation>
+      <wsdl:input message="tns:TestServiceSoapIn" />
+      <wsdl:output message="tns:TestServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestServiceArg">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Tests whether the service functions is alive. Returns a stiring containing some data about the service (e.g. its calas and ID) and a ist of arguments passed to the service.</wsdl:documentation>
+      <wsdl:input message="tns:TestServiceArgSoapIn" />
+      <wsdl:output message="tns:TestServiceArgSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestServiceArgs">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Tests whether the service functions is alive. Returns a stiring containing some data about the service (e.g. its calas and ID) and a ist of arguments passed to the service.</wsdl:documentation>
+      <wsdl:input message="tns:TestServiceArgsSoapIn" />
+      <wsdl:output message="tns:TestServiceArgsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSBaseSoap" type="tns:WSBaseSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TestCount">
+      <soap:operation soapAction="http://www2.arnes.si/~ljc3m2/igor/iglib/index.html/TestCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestService">
+      <soap:operation soapAction="http://www2.arnes.si/~ljc3m2/igor/iglib/index.html/TestService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestServiceArg">
+      <soap:operation soapAction="http://www2.arnes.si/~ljc3m2/igor/iglib/index.html/TestServiceArg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestServiceArgs">
+      <soap:operation soapAction="http://www2.arnes.si/~ljc3m2/igor/iglib/index.html/TestServiceArgs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WSBaseSoap12" type="tns:WSBaseSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TestCount">
+      <soap12:operation soapAction="http://www2.arnes.si/~ljc3m2/igor/iglib/index.html/TestCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestService">
+      <soap12:operation soapAction="http://www2.arnes.si/~ljc3m2/igor/iglib/index.html/TestService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestServiceArg">
+      <soap12:operation soapAction="http://www2.arnes.si/~ljc3m2/igor/iglib/index.html/TestServiceArg" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestServiceArgs">
+      <soap12:operation soapAction="http://www2.arnes.si/~ljc3m2/igor/iglib/index.html/TestServiceArgs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSBase">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This is a demonstration WebService.</wsdl:documentation>
+    <wsdl:port name="WSBaseSoap" binding="tns:WSBaseSoap">
+      <soap:address location="http://localhost:40197/WSBase.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WSBaseSoap12" binding="tns:WSBaseSoap12">
+      <soap12:address location="http://localhost:40197/WSBase.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

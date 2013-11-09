@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Findings>
+
+  <Head>    <!-- 1, glava izvida -->
+    <Header></Header>    <!-- 0..1, Tekst, ki se izpiše v glavi strani -->
+    <Footer></Footer>    <!-- 0..1, Tekst, ki se izpiše v nogi strani -->
+    <Heading>Niz, recimo "Patohistološki izvid".</Heading>    <!-- 1, naslov dokumenta. -->
+    <OrderCode></OrderCode>    <!-- 0..1, koda preiskave -->
+    <Patient>      <!-- 1, podatki o pacientu -->
+      <Name></Name>      <!-- 1, ime -->
+      <FamilyName></FamilyName>      <!-- 1, priimek -->
+      <MiddleNames></MiddleNames>      <!-- 0..1, srednja imena -->
+      <Address></Address>      <!-- 0..1, naslov pacienta -->
+      <Sex>1</Sex>      <!-- 1, spol (int, 1 moški, 2 ženska) -->
+      <DateOfBirth></DateOfBirth>      <!-- Datum rojstva -->
+      <Age></Age>      <!-- 0..1, starost v letih (to se da sicer izračunati iz starosti, vendar je včasi bolje, da 
+                              pride podatek kar not v dokument; to pride prav recimo pri XSLT) -->
+      <AgeMonths></AgeMonths>      <!-- 0..1, starost - mesecev čez polna leta. -->
+      <PersonId></PersonId>      <!-- Matična številka ali številka zdrav. zavarovanja, to se verjetno ne izpiše. -->
+    </Patient>
+    <Physician>      <!-- 1, zdravnik, ki je izdal oz. potrdil izvid; po možnosti preimenuj to polje na bolj primerno ime. -->
+      <!-- Podatke o zdravniku bo treba verjetno še usklajevati -->
+      <Name></Name>      <!-- 1, ime -->
+      <FamilyName></FamilyName>      <!-- 1, priimek -->
+      <MiddleNames></MiddleNames>      <!-- 0..1, srednja imena -->
+      <Appellation></Appellation>      <!-- 1, naziv, ki se izpiše pred imenom, npr. Patolog specialist. -->
+      <Title></Title>      <!-- Naslov, npr. Prof. dr. -->
+      <TitleRight></TitleRight>      <!-- Naslov, ki se izpiše za imenom, npr. dr. med. -->
+      <TitleRight></TitleRight>    </Physician>
+    <!-- Opomba: Premisli, ali bi moral naročnikove podatke grupirati v poseben element. Verjetno to ne bo potrebno. -->
+    <Orderer></Orderer>    <!-- 0..1, naročnik preiskave -->
+    <OrdererAddress></OrdererAddress>    <!-- 0..1, naslov naročnika -->
+    <SampleTime></SampleTime>    <!-- 0..1, čas odvzema vzorca -->
+    <ReceptionTime></ReceptionTime>    <!-- 0..1, čas sprejema -->
+    <CompletionTime></CompletionTime>    <!-- 0..1, datum zaključitve. -->
+  </Head>
+
+  <DiagnosisClinical>    <!-- 1 , klinična (napotna) diagnoza (odločiti se je treba, ali je to obvezen element): -->
+    <Text>Opis diagnoze v obliki prostega teksta.</Text>    <!-- 0..1, prosti tekst -->
+    <Codes>      <!-- 0..n, kode z poisi in identifikacijo klasifikacijskega sistema -->
+      <DiagnosisCode>        <!-- 0..n, koda diagnoze z opisom -->
+        <Code>diagnosiscode_1</Code>        <!-- 1, koda diagnoze (1) -->
+        <CodeDescription>diagnosiscodepart2_1</CodeDescription>        <!-- 0..1, opcijska ekstenzija v primeru, da je koda sestavljena iz dveh delov -->
+        <ClassificationSystem>BP10_1</ClassificationSystem>        <!-- 1, klasifikacijski sistem, iz katerega so kode -->
+      </DiagnosisCode>
+
+      <!-- ...  -->
+
+      <DiagnosisCode>
+        <Code>diagnosiscode_n</Code>
+        <CodeDescription>diagnosiscodepart2_n</CodeDescription>
+        <ClassificationSystem>BP10_n</ClassificationSystem>
+      </DiagnosisCode>
+    </Codes>
+  </DiagnosisClinical>
+
+  <MacroDescription>    <!-- 0..1, makroskopski opis (ali je dovoljeno 0 elementov - še ne vemo) -->
+    Makroskopski opis.
+  </MacroDescription>
+  <MicroDescription>    <!-- 0..1 element, mikroskopski opis (ali je dovoljeno 0 elementov - še ne vemo) -->
+    Mikroskopski opis.
+  </MicroDescription>
+  <!-- Tega verjetno ni, ker je to že v DiagnosisPatoHistological;  0..1 element, začasna diagnoza (-e) (ali je dovoljeno 0 elementov, kaj pa več? - še ne vemo) 
+  <TemporaryOpinion>   
+    Začasna diagnoza.
+  </TemporaryOpinion>
+  -->
+  <Appendix>    <!-- 0..1 element, dodatek k izvidu. -->
+    Dodatek k izvidu.
+  </Appendix>
+  <!-- 0..1, prejšnji izvidi: -->
+  <FormerFindings>
+    <!-- 0..n, prej. izvidi. -->
+    <Finding> 
+      <FindingReference>Code1</FindingReference>   
+      <Remark>Opomba - former finding 1.</Remark>
+    </Finding>
+    <Finding> 
+      <FindingReference>Opomba - former finding 2.</FindingReference>   
+      <Remark>Opomba.</Remark>
+    </Finding>
+  </FormerFindings>
+
+  <DiagnosisPatoHistological>    <!-- 1 , diagnoza (odločiti se je treba, ali je obvezen), struktura je enaka kot pri napotni : -->
+    <Text>Opis diagnoze v obliki prostega teksta.</Text>
+    <Codes>
+      <DiagnosisCode>
+        <Code>PatoHistoDiagnosiscode_1</Code>
+        <CodeDescription>description: diagnosiscodepart2_1</CodeDescription>
+        <ClassificationSystem>BP10_1</ClassificationSystem>
+      </DiagnosisCode>
+
+      <!-- ...  -->
+
+      <DiagnosisCode>
+        <Code>PatoHistoDiagnosiscode_n</Code>
+        <CodeDescription>description: diagnosiscodepart2_n</CodeDescription>
+        <ClassificationSystem>BP10_n</ClassificationSystem>
+      </DiagnosisCode>
+    </Codes>
+  </DiagnosisPatoHistological>
+
+</Findings>
+
+    
+
+  
+  
