@@ -191,9 +191,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\iglib\external\MathNetNumerics\src\Numerics\Numerics.csproj">
-      <Project>{B7CAE5F4-A23F-4438-B5BE-41226618B695}</Project>
-      <Name>Numerics</Name>
+    <ProjectReference Include="..\..\iglib\external\MathNetNumerics_2_6_1\src\Numerics\Numerics_2_6_1.csproj">
+      <Project>{8A0B0FD4-2315-499B-B3C9-544A4686414D}</Project>
+      <Name>Numerics_2_6_1</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\iglib\igbase\iglib_base.csproj">
       <Project>{1959D290-8600-410D-B02B-FD178B931FDB}</Project>
