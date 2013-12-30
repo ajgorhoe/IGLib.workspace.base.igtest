@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -10,7 +10,6 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>IG.Lib</RootNamespace>
     <AssemblyName>iglib_develop_test</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -31,7 +30,6 @@
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
     <UpgradeBackupLocation />
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,9 +47,6 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -78,6 +73,9 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="MathNet.Numerics">
+      <HintPath>..\..\iglib\bin\mumerics_2_6_1\Net40\MathNet.Numerics.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="datastructures\MultiIndexArray.cs" />
@@ -113,8 +111,6 @@
     <Compile Include="numeric\responseevaluator\ResponseEvaluatorAnalysis.cs" />
     <Compile Include="numeric\responseevaluator\ResponseEvaluatorGeneric.cs" />
     <Compile Include="numeric\responseevaluator\ResponseEvaluatorVector.cs" />
-    <Compile Include="numeric\zerofinder\ZeroFinderBase.cs" />
-    <Compile Include="numeric\zerofinder\ZeroFinderNewton.cs" />
     <Compile Include="opt\alglib\Alglib_Old_UniMb\0Functions.cs" />
     <Compile Include="opt\alglib\Alglib_Old_UniMb\AlgLib2008\ExampleAlgLib2008.cs" />
     <Compile Include="opt\alglib\Alglib_Old_UniMb\AlgLib2008\MinimizerClassBase.cs" />
@@ -157,6 +153,8 @@
     <Compile Include="WebServiceBase\WSDevelopClass.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="numeric\ZeroFinder\ZeroFinderBase.cs" />
+    <Compile Include="numeric\ZeroFinder\ZeroFinderNewton.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -191,12 +189,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\iglib\external\MathNetNumerics_2_6_1\src\Numerics\Numerics_2_6_1.csproj">
-      <Project>{8A0B0FD4-2315-499B-B3C9-544A4686414D}</Project>
-      <Name>Numerics_2_6_1</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\iglib\igbase\iglib_base.csproj">
-      <Project>{1959D290-8600-410D-B02B-FD178B931FDB}</Project>
+      <Project>{0AB31A6E-E0DE-4F4E-8D0E-7AD60AE65E26}</Project>
       <Name>iglib_base</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\iglib\igforms\igform.csproj">

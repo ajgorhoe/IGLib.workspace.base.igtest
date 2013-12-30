@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -10,13 +10,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>IG.Lib</RootNamespace>
     <AssemblyName>igs</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
     <UpgradeBackupLocation />
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -37,7 +35,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -56,6 +53,7 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="00Test.cs" />
@@ -192,7 +190,7 @@
     </ProjectReference>
     <ProjectReference Include="..\..\iglib\extensions\iglibext\iglib_ext.csproj">
       <Project>{4E4B240A-6994-4747-BB6C-0CC0D2578D04}</Project>
-      <Name>iglibext</Name>
+      <Name>iglib_ext</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\iglib\extensions\igplot2d\plot2d\igplot2d.csproj">
       <Project>{C9A09DBC-B304-42DF-9CEE-6BA0E856ABC2}</Project>
@@ -215,7 +213,7 @@
       <Name>ZedGraph</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\iglib\igbase\iglib_base.csproj">
-      <Project>{1959D290-8600-410D-B02B-FD178B931FDB}</Project>
+      <Project>{0AB31A6E-E0DE-4F4E-8D0E-7AD60AE65E26}</Project>
       <Name>iglib_base</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\iglib\igforms\igform.csproj">
@@ -284,10 +282,8 @@
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\WsBaseRef\</RelPath>
       <UpdateFromURL>http://localhost:40197/WSBase.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
+      <ServiceLocationURL />
+      <CachedDynamicPropName />
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>igs_WsBaseRef_WSBase</CachedSettingsPropName>
     </WebReferenceUrl>
@@ -295,10 +291,8 @@
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\WSDevelopRef\</RelPath>
       <UpdateFromURL>http://localhost:40197/WSDevelop.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
+      <ServiceLocationURL />
+      <CachedDynamicPropName />
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>igs_WSDevelopRef_WSDevelop</CachedSettingsPropName>
     </WebReferenceUrl>
@@ -306,10 +300,8 @@
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\WSDevelop1Ref\</RelPath>
       <UpdateFromURL>http://localhost:40197/WSDevelop1.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
+      <ServiceLocationURL />
+      <CachedDynamicPropName />
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>igs_WSDevelop1Ref_WSDevelop1</CachedSettingsPropName>
     </WebReferenceUrl>
