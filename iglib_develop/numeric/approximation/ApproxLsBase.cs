@@ -12,6 +12,7 @@ namespace IG.Num
 {
 
 
+    [Obsolete("Use of this class will be gradually dropped in favor of a simplified base class and its subclasses.")]
     /// <summary>Base class for least squares approximation and various derived methods.
     /// <para>Base for ordinary least squares, weighted least squares (WLS), and moving least squares (MLS).</para></summary>
     /// <remarks>

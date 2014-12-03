@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -87,7 +87,6 @@
     <Compile Include="difordinary\DifferentialFirstOrderSystemBase.cs" />
     <Compile Include="difordinary\DifferentialHarmonicOscillation.cs" />
     <Compile Include="difordinary\DiffLorenzOscillator.cs" />
-    <Compile Include="numeric\approximation\ApproxBasis.cs" />
     <Compile Include="numeric\approximation\ApproximationMls.cs" />
     <Compile Include="numeric\approximation\ApproximationWls.cs" />
     <Compile Include="numeric\approximation\ApproxLsBase.cs" />
