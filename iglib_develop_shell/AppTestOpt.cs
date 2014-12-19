@@ -49,16 +49,11 @@ namespace IG.Lib
                 if (args.Length > 0)
                     if (args[0] == "?")
                     {
-                        string executableName = Path.GetFileName(System.Reflection.Assembly.GetEntryAssembly().Location);
-                        Console.WriteLine();
-                        Console.WriteLine(executableName + " " + cmdName + " : prints some basic information about the current command interpreter.");
-                        Console.WriteLine();
-                        return null;
+                        return base.CmdAbout(interpreter, cmdName, args);
                     }
-            Console.WriteLine();
-            Console.WriteLine("This is a prototype application, written by Igor Grešovnik and others.");
-            Console.WriteLine();
-            return null;
+            string retBase = base.CmdAbout(interpreter, cmdName, args);
+            return "This is a prototypic application, written by Igor Grešovnik and others."
+                    + Environment.NewLine + retBase;
         }
 
 

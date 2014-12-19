@@ -12,7 +12,6 @@ namespace IG.Num
 {
 
 
-    [Obsolete("Use of this class will be gradually dropped in favor of a simplified base class and its subclasses.")]
     /// <summary>Base class for least squares approximation and various derived methods.
     /// <para>Base for ordinary least squares, weighted least squares (WLS), and moving least squares (MLS).</para></summary>
     /// <remarks>
@@ -65,6 +64,7 @@ namespace IG.Num
     /// expected elsewhere.</para>
     /// </remarks>
     /// $A Igor xx Jan08 Nov08 Jun09 Jul10;
+    [Obsolete("Use of this class will be gradually dropped in favor of a simplified base class and its subclasses.")]
     public class ApproximationLeastSquaresBase : ILockable
     {
 
