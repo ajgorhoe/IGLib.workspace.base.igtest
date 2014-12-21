@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MathNet.Numerics">
+      <HintPath>..\..\iglib\bin\mumerics_2_6_1\Net40\MathNet.Numerics.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -115,10 +118,6 @@
     <ProjectReference Include="..\..\iglib\extensions\igplot3d\plot3d\igplot3d.csproj">
       <Project>{8BBF5C58-2562-4E9B-ACB8-3F3A3B031F62}</Project>
       <Name>igplot3d</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\iglib\external\MathNetNumerics\src\Numerics\Numerics.csproj">
-      <Project>{B7CAE5F4-A23F-4438-B5BE-41226618B695}</Project>
-      <Name>Numerics</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\iglib\external\MathNet\Iridium\Sources\Library\Iridium.csproj">
       <Project>{26FC15DE-EFDA-403A-8284-1E2A4AE8A9D8}</Project>
