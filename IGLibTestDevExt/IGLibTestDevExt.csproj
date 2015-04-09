@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>IG.Lib</RootNamespace>
-    <AssemblyName>iglib_develop_test_aux</AssemblyName>
+    <AssemblyName>IGTestDevExt</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -124,9 +124,9 @@
       <Project>{50235FC8-A69D-47AE-A557-6518B35CC7C9}</Project>
       <Name>igform</Name>
     </ProjectReference>
-    <ProjectReference Include="..\iglib_develop\test_iglib_develop.csproj">
+    <ProjectReference Include="..\IGLibTestDev\IGLibTestDev.csproj">
       <Project>{B7EBC02E-D688-4DD9-94C2-801DDF4342AA}</Project>
-      <Name>test_iglib_develop</Name>
+      <Name>IGLibTestDev</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
