@@ -9,7 +9,7 @@
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>IG.Lib</RootNamespace>
-    <AssemblyName>igsx</AssemblyName>
+    <AssemblyName>igstx</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -147,17 +147,17 @@
       <Project>{9BF93378-2777-4EF4-B4BF-B5760F385DBA}</Project>
       <Name>LibShellExtIT</Name>
     </ProjectReference>
-    <ProjectReference Include="..\iglib_develop\test_iglib_develop.csproj">
+    <ProjectReference Include="..\IGLibTestDev\IGLibTestDev.csproj">
       <Project>{B7EBC02E-D688-4DD9-94C2-801DDF4342AA}</Project>
-      <Name>test_iglib_develop</Name>
+      <Name>IGLibTestDev</Name>
     </ProjectReference>
-    <ProjectReference Include="..\iglib_develop_aux\test_iglib_develop_aux.csproj">
+    <ProjectReference Include="..\IGLibTestDevExt\IGLibTestDevExt.csproj">
       <Project>{759A223B-28E7-4F01-BB84-4F9E97150E90}</Project>
-      <Name>test_iglib_develop_aux</Name>
+      <Name>IGLibTestDevExt</Name>
     </ProjectReference>
-    <ProjectReference Include="..\iglib_develop_shell\test_iglib_develop_shell.csproj">
+    <ProjectReference Include="..\IGLibTestShell\IGLibTestShell.csproj">
       <Project>{A05C0C55-DA35-43B5-9CF8-C3BF509A4F6B}</Project>
-      <Name>test_iglib_develop_shell</Name>
+      <Name>IGLibTestShell</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
