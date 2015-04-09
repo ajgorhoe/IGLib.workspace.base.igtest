@@ -9,7 +9,7 @@
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>IG.Lib</RootNamespace>
-    <AssemblyName>igs</AssemblyName>
+    <AssemblyName>igst</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -231,13 +231,13 @@
       <Project>{6BF0099C-05A5-4A72-9634-CD402F60B52B}</Project>
       <Name>LibNeuralExtIT</Name>
     </ProjectReference>
-    <ProjectReference Include="..\iglib_develop\test_iglib_develop.csproj">
+    <ProjectReference Include="..\IGLibTestDev\IGLibTestDev.csproj">
       <Project>{B7EBC02E-D688-4DD9-94C2-801DDF4342AA}</Project>
-      <Name>test_iglib_develop</Name>
+      <Name>IGLibTestDev</Name>
     </ProjectReference>
-    <ProjectReference Include="..\iglib_develop_aux\test_iglib_develop_aux.csproj">
+    <ProjectReference Include="..\IGLibTestDevExt\IGLibTestDevExt.csproj">
       <Project>{759A223B-28E7-4F01-BB84-4F9E97150E90}</Project>
-      <Name>test_iglib_develop_aux</Name>
+      <Name>IGLibTestDevExt</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -47,6 +47,7 @@ namespace TestOpt
             new IGLibShellMainProgram().AplicationMain(args);
         } // Main(string[])
 
+
         /// <summary>Optimization directory that contains data and message files of optimization server.</summary>
         public string OptDir;
 
@@ -465,7 +466,7 @@ namespace TestOpt
         {
 
             public IGLibShellApp()
-                : base("IGLib Shell (IGS)", 2 /* version */, 7 /* subversion */, "Beta" /* release */)
+                : base("IGLib Test Shell (IGST)", 2 /* version */, 7 /* subversion */, "Beta" /* release */)
             {
             }
 
