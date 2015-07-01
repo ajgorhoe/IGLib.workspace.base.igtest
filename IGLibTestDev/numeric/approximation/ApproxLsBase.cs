@@ -155,17 +155,17 @@ namespace IG.Num
             }
         }
 
-        protected StopWatch _timer = null;
+        protected StopWatch1 _timer = null;
 
         /// <summary>Gets a stopwatch that measures time of operations when in test mode.</summary>
-        public StopWatch Timer
+        public StopWatch1 Timer
         {
             get
             {
                 lock (Lock)
                 {
                     if (_timer == null)
-                        _timer = new StopWatch();
+                        _timer = new StopWatch1();
                     return _timer;
                 }
             }

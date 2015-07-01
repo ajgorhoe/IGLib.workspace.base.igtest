@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -70,20 +70,21 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\iglib\igbase\iglib_base.csproj">
-      <Project>{0AB31A6E-E0DE-4F4E-8D0E-7AD60AE65E26}</Project>
-      <Name>iglib_base</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\iglib\igforms\igform.csproj">
-      <Project>{50235FC8-A69D-47AE-A557-6518B35CC7C9}</Project>
-      <Name>igform</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="data\My_Test_Certificate.cer" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\iglib\igbase\iglib_base.csproj">
+      <Project>{0ab31a6e-e0de-4f4e-8d0e-7ad60ae65e26}</Project>
+      <Name>iglib_base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\iglib\igforms\igform.csproj">
+      <Project>{50235fc8-a69d-47ae-a557-6518b35cc7c9}</Project>
+      <Name>igform</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

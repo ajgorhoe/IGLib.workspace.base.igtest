@@ -549,7 +549,7 @@ namespace IG.Num
             IVector samplingPoint = new Vector(dimension);
             double minSize = double.MaxValue;
             double maxSize = 0.0;
-            StopWatch t = new StopWatch();
+            StopWatch1 t = new StopWatch1();
             t.Start();
             for (int i = 0; i < numGenerated; ++i)
             {

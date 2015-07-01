@@ -40,7 +40,16 @@ namespace IG.Crypt
             Asym.CertSetDefault();
             Asym.CertValidFrom = "12/21/2001";
             //Asym.CertValidTo = "01/01/2022";
-            Asym.CertFile = @"c:\Users\ajgorhoe\cvis\igcs\forms\00test\encryption\My_Test_Certificate.cer";
+
+            string certFile = null;
+            // certFile =  @"c:\Users\ajgorhoe\cvis\igcs\forms\00test\encryption\My_Test_Certificate.cer";
+            certFile = "../../data/My_Test_Certificate.cer";
+            if (!File.Exists(certFile))
+                Console.WriteLine(Environment.NewLine + "Certificate file does not exist: " + certFile + "." + Environment.NewLine);
+            else
+                Console.WriteLine(Environment.NewLine + "Certificate file exists. " + Environment.NewLine);
+
+            Asym.CertFile = certFile;
 
             Asym.CertCreate();
 

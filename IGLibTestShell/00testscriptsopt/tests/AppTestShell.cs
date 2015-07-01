@@ -467,7 +467,7 @@ namespace IG.Script
             int numCalls = 100;
             Console.WriteLine(Environment.NewLine + Environment.NewLine + "SPEED TEST:" + Environment.NewLine
                 + "Testing speed by performing " + numCalls + " calls to the web service method TestServiceArgs...");
-            StopWatch t = new StopWatch();
+            StopWatch1 t = new StopWatch1();
             t.Reset();
             t.Start();
             for (int i = 0; i < numCalls; ++i)
