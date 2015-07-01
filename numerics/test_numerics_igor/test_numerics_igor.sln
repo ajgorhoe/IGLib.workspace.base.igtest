@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test_alglib_igor", "test_alglib_igor\test_alglib_igor.csproj", "{40B779CD-8407-4D15-95DD-D3A7A0D6AAC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgLibLibrary", "..\alglib_0.8.2\src\AlgLibLibrary.csproj", "{1138D0C9-D73C-40C6-B669-B95145378DDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test_ludecomp_McCaffrey", "..\McCaffreyMatrix1212\ludecomp_McCaffrey_original\test_ludecomp_McCaffrey.csproj", "{39A7768D-2225-4A2A-AAD0-CECD53BB16AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test_numerics_igor", "test_numerics_igor\test_numerics_igor.csproj", "{0F096209-B487-4DE8-ABCD-D85D64573337}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iglib_base", "..\..\..\iglib\igbase\iglib_base.csproj", "{0AB31A6E-E0DE-4F4E-8D0E-7AD60AE65E26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestNumeric", "..\..\..\unittests\TestNumeric\TestNumeric.csproj", "{ADB91E4C-2A67-4D8E-90BA-825EEB5E9DCE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{40B779CD-8407-4D15-95DD-D3A7A0D6AAC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40B779CD-8407-4D15-95DD-D3A7A0D6AAC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40B779CD-8407-4D15-95DD-D3A7A0D6AAC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40B779CD-8407-4D15-95DD-D3A7A0D6AAC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1138D0C9-D73C-40C6-B669-B95145378DDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1138D0C9-D73C-40C6-B669-B95145378DDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1138D0C9-D73C-40C6-B669-B95145378DDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1138D0C9-D73C-40C6-B669-B95145378DDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39A7768D-2225-4A2A-AAD0-CECD53BB16AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39A7768D-2225-4A2A-AAD0-CECD53BB16AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39A7768D-2225-4A2A-AAD0-CECD53BB16AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39A7768D-2225-4A2A-AAD0-CECD53BB16AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F096209-B487-4DE8-ABCD-D85D64573337}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F096209-B487-4DE8-ABCD-D85D64573337}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F096209-B487-4DE8-ABCD-D85D64573337}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F096209-B487-4DE8-ABCD-D85D64573337}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AB31A6E-E0DE-4F4E-8D0E-7AD60AE65E26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AB31A6E-E0DE-4F4E-8D0E-7AD60AE65E26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AB31A6E-E0DE-4F4E-8D0E-7AD60AE65E26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AB31A6E-E0DE-4F4E-8D0E-7AD60AE65E26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADB91E4C-2A67-4D8E-90BA-825EEB5E9DCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADB91E4C-2A67-4D8E-90BA-825EEB5E9DCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADB91E4C-2A67-4D8E-90BA-825EEB5E9DCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADB91E4C-2A67-4D8E-90BA-825EEB5E9DCE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
