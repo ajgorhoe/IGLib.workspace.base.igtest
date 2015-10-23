@@ -295,7 +295,7 @@ namespace TestOpt
 
                 if (ScriptGroupChoice == ConstInteractive)
                 {
-                    TestInterpreter.Run(new string[] { ConstRunInteractive });
+                    TestInterpreter.Run(TestInterpreter.MainThread, new string[] { ConstRunInteractive });
                 }
 
 
@@ -359,7 +359,7 @@ namespace TestOpt
                             throw new InvalidDataException("Script file does not exist: \"" + InterpreterArguments[1] + "\".");
                         Console.WriteLine("Running TEST script through interpreter...");
                         // Remark: current rule is that initializatin and run arguments are the same.
-                        TestInterpreter.Run(InterpreterArguments);
+                        TestInterpreter.Run(TestInterpreter.MainThread, InterpreterArguments);
                     }
                     else
                     {
@@ -424,7 +424,7 @@ namespace TestOpt
                         Console.WriteLine("Running " + ScriptChoice + " through interpreter...");
                         Directory.SetCurrentDirectory(DefaultActiveDir);
                         // Remark: current rule is that initializatin and run arguments are the same.
-                        TestInterpreter.Run(InterpreterArguments);
+                        TestInterpreter.Run(TestInterpreter.MainThread, InterpreterArguments);
                     }
                     else
                     {

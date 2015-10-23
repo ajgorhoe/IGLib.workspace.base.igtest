@@ -39,19 +39,19 @@ namespace IG.Lib
 
 
         /// <summary>Execution method that prints some information about the application.</summary>
-        /// <param name="interpreter">Interpreter on which commad is run.</param>
+        /// <param name="thread">Interpreter thread on which commad is run.</param>
         /// <param name="cmdName">Command name.</param>
         /// <param name="args">Command arguments.</param>
-        protected override string CmdAbout(ICommandLineApplicationInterpreter interpreter,
+        protected override string CmdAbout(CommandThread thread,
             string cmdName, string[] args)
         {
             if (args != null)
                 if (args.Length > 0)
                     if (args[0] == "?")
                     {
-                        return base.CmdAbout(interpreter, cmdName, args);
+                        return base.CmdAbout(thread, cmdName, args);
                     }
-            string retBase = base.CmdAbout(interpreter, cmdName, args);
+            string retBase = base.CmdAbout(thread, cmdName, args);
             return "This is a prototypic application, written by Igor Grešovnik and others."
                     + Environment.NewLine + retBase;
         }
