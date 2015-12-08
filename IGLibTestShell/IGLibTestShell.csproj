@@ -281,8 +281,10 @@
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\WsBaseRef\</RelPath>
       <UpdateFromURL>http://localhost:40197/WSBase.asmx</UpdateFromURL>
-      <ServiceLocationURL />
-      <CachedDynamicPropName />
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>igs_WsBaseRef_WSBase</CachedSettingsPropName>
     </WebReferenceUrl>
@@ -290,8 +292,10 @@
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\WSDevelopRef\</RelPath>
       <UpdateFromURL>http://localhost:40197/WSDevelop.asmx</UpdateFromURL>
-      <ServiceLocationURL />
-      <CachedDynamicPropName />
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>igs_WSDevelopRef_WSDevelop</CachedSettingsPropName>
     </WebReferenceUrl>
@@ -299,8 +303,10 @@
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\WSDevelop1Ref\</RelPath>
       <UpdateFromURL>http://localhost:40197/WSDevelop1.asmx</UpdateFromURL>
-      <ServiceLocationURL />
-      <CachedDynamicPropName />
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>igs_WSDevelop1Ref_WSDevelop1</CachedSettingsPropName>
     </WebReferenceUrl>

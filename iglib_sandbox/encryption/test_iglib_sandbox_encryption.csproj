@@ -78,11 +78,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\iglib\igbase\iglib_base.csproj">
-      <Project>{0ab31a6e-e0de-4f4e-8d0e-7ad60ae65e26}</Project>
+      <Project>{0AB31A6E-E0DE-4F4E-8D0E-7AD60AE65E26}</Project>
       <Name>iglib_base</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\iglib\igforms\igform.csproj">
-      <Project>{50235fc8-a69d-47ae-a557-6518b35cc7c9}</Project>
+      <Project>{50235FC8-A69D-47AE-A557-6518B35CC7C9}</Project>
       <Name>igform</Name>
     </ProjectReference>
   </ItemGroup>
