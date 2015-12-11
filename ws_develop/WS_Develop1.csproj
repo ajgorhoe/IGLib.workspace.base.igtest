@@ -55,13 +55,17 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Data" />
+    <Reference Include="System" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
@@ -127,25 +131,23 @@
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\WSBaseRef\</RelPath>
       <UpdateFromURL>http://localhost:40197/WSBase.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
+      <ServiceLocationURL />
+      <CachedDynamicPropName />
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>WSMyService_WSBaseRef_WSBase</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\iglib\igbase\iglib_base.csproj">
-      <Project>{0AB31A6E-E0DE-4F4E-8D0E-7AD60AE65E26}</Project>
+      <Project>{0ab31a6e-e0de-4f4e-8d0e-7ad60ae65e26}</Project>
       <Name>iglib_base</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\iglib\igforms\igform.csproj">
-      <Project>{50235FC8-A69D-47AE-A557-6518B35CC7C9}</Project>
+      <Project>{50235fc8-a69d-47ae-a557-6518b35cc7c9}</Project>
       <Name>igform</Name>
     </ProjectReference>
     <ProjectReference Include="..\IGLibTestDev\IGLibTestDev.csproj">
-      <Project>{B7EBC02E-D688-4DD9-94C2-801DDF4342AA}</Project>
+      <Project>{b7ebc02e-d688-4dd9-94c2-801ddf4342aa}</Project>
       <Name>IGLibTestDev</Name>
     </ProjectReference>
   </ItemGroup>
@@ -158,7 +160,6 @@
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
-  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{349C5851-65DF-11DA-9384-00065B846F21}">
@@ -178,8 +179,8 @@
       </FlavorProperties>
     </VisualStudio>
     <MonoDevelop>
-      <Properties VerifyCodeBehindFields="True" VerifyCodeBehindEvents="True">
-        <XspParameters Port="8080" Address="127.0.0.1" SslMode="None" SslProtocol="Default" KeyType="None" CertFile="" KeyFile="" PasswordOptions="None" Password="" Verbose="True" />
+      <Properties VerifyCodeBehindFields="true" VerifyCodeBehindEvents="true">
+        <XspParameters Port="8080" Address="127.0.0.1" SslMode="None" SslProtocol="Default" KeyType="None" CertFile="" KeyFile="" PasswordOptions="None" Password="" Verbose="true" />
       </Properties>
     </MonoDevelop>
   </ProjectExtensions>
