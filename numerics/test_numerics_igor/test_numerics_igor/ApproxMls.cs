@@ -97,7 +97,7 @@ namespace IG.Num
         /// deallocated when destructor is called.</para></remarks>
         public ApproximatorMls(int spaceDimension, bool copyData,
             VectorFunctionBaseComponentWise basisFunctions, IRealFunction function1d, IAffineTransformation transformation = null) :
-            this(spaceDimension, true /* copyData */, basisFunctions, null)
+            this(spaceDimension, true /* copyData */, basisFunctions, (IScalarFunction) null /* IWeightingFunction */)
         {
             this.WeightingFunction1d = function1d;
             if (transformation != null)

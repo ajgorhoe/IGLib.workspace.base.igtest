@@ -95,13 +95,13 @@ namespace IG.Num
         /// <para>When false, reference of provided data is taken.</para></param>
         /// <param name="basisFunctions">Basis functions used in approximation.</param>
         /// <param name="function1d">1D function that defines shape of the weighting function of vector parameter.</param>
+        /// <paramref name=""function1d/>1d weighting function, which specifies the (eventually affine-transformed) radial function in n-d.</param>
         /// <param name="transformation">Affine transformation that is used to transform the radial function defined by
-        /// <paramref name=""function1d/>.</param>
         /// <remarks><para>For each input data provided (such as points), internal copies are creaded, and are
         /// deallocated when destructor is called.</para></remarks>
         public ApproximatorMlsBase(int spaceDimension, bool copyData,
-            VectorFunctionBaseComponentWise basisFunctions, IRealFunction function1d, IAffineTransformation transformation = null) :
-            this(spaceDimension, true /* copyData */, basisFunctions, null)
+            VectorFunctionBaseComponentWise basisFunctions, IRealFunction function1d, IAffineTransformation transformation /*= null */) :
+            this(spaceDimension, true /* copyData */, basisFunctions, (IScalarFunction) null /* weighting function */)
         {
             this.WeightingFunction1d = function1d;
             if (transformation != null)
