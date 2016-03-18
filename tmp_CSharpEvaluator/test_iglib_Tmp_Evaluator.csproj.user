@@ -68,4 +68,10 @@
     </StartWorkingDirectory>
     <StartWithIE>true</StartWithIE>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <StartWithIE>true</StartWithIE>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <StartWithIE>true</StartWithIE>
+  </PropertyGroup>
 </Project>

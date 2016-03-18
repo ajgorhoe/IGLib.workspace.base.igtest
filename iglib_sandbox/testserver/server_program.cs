@@ -97,7 +97,7 @@ namespace IG.Forms
 
         private void ServerThreadFunc()
         {
-            UtilForms.WriteLine("    >> Starting server thread, NumLaunched = " + NumLaunched);
+            UtilForms.AppConsole.WriteLine("    >> Starting server thread, NumLaunched = " + NumLaunched);
             try
             {
                 lock (ServerLaunchLock)
@@ -119,15 +119,15 @@ namespace IG.Forms
                             LastServer.TooManyConnections=true;
                         }
                     }
-                    catch (Exception e) { UtilForms.ReportError(e); }
+                    catch (Exception e) { UtilForms.Reporter.ReportError(e); }
                     --LaunchingServer;  // Notify that launching has been completed
-                    UtilForms.WriteLine("    >> LaunchingServer decremented, value = " + LaunchingServer);
+                    UtilForms.AppConsole.WriteLine("    >> LaunchingServer decremented, value = " + LaunchingServer);
                     Servers.Add(LastServer);
                 }  // lock (ServerLaunchLock)
                 // Start the new server:
                 LastServer.StartServer();
             }
-            catch (Exception e) { UtilForms.ReportError(e); }
+            catch (Exception e) { UtilForms.Reporter.ReportError(e); }
         }
 
 
@@ -149,21 +149,21 @@ namespace IG.Forms
                     listener = new TcpListener(IPAddress.Parse(IPstr), Port);
                     listener.Start();
                 }
-                catch (Exception e) { UtilForms.ReportError(e, "Problem with 'new TcpListener(...)'."); }
+                catch (Exception e) { UtilForms.Reporter.ReportError(e, "Problem with 'new TcpListener(...)'."); }
                 while (!Stop)
                 {
                     // Listen for connection requests, establis connections with clients and launch servers
                     // in separate threadd:
                     try
                     {
-                        UtilForms.WriteLine("\nWaiting for connection request, NumLaunched = "+NumLaunched);
-                        UtilForms.WriteLine("                                  NumActive = "+NumActiveConnections);
-                        UtilForms.WriteLine("                                  LaunchingServer = " + LaunchingServer);
+                        UtilForms.AppConsole.WriteLine("\nWaiting for connection request, NumLaunched = "+NumLaunched);
+                        UtilForms.AppConsole.WriteLine("                                  NumActive = "+NumActiveConnections);
+                        UtilForms.AppConsole.WriteLine("                                  LaunchingServer = " + LaunchingServer);
 
                         // Listen on the port and wait for the next connection request:
                         client = listener.AcceptTcpClient();
 
-                        UtilForms.WriteLine("Request received, wait for: LaunchingServer = " + LaunchingServer);
+                        UtilForms.AppConsole.WriteLine("Request received, wait for: LaunchingServer = " + LaunchingServer);
 
                         // Wait until last launch is completed, such that data for the new server
                         // can be put on temporary storage (i.e. not to overwrite the data that 
@@ -185,12 +185,12 @@ namespace IG.Forms
                         if (SleepBetweenLaunches > 0)
                             Thread.Sleep(SleepBetweenLaunches);
                     }
-                    catch (Exception e) { UtilForms.ReportError(e, "Problem with 'listener.AcceptTcpClient()'."); }
+                    catch (Exception e) { UtilForms.Reporter.ReportError(e, "Problem with 'listener.AcceptTcpClient()'."); }
 
                 }  // while (!Stop)
                 
             }
-            catch (Exception e) { UtilForms.ReportError(e); }
+            catch (Exception e) { UtilForms.Reporter.ReportError(e); }
         }
     }
 
@@ -503,7 +503,7 @@ namespace IG.Forms
                     {
                         ++reccount;  // recursion counter prevents infinite recursion
                         if (reccount == 1)
-                            UtilForms.ReportError(e);
+                            UtilForms.Reporter.ReportError(e);
                         --reccount;
                     }
                 }
@@ -512,7 +512,7 @@ namespace IG.Forms
                     servercons = null;
                     ++totcount;
                     if (totcount == 1)  // report this error only once
-                        UtilForms.ReportError("Server console can not be initialized.");
+                        UtilForms.Reporter.ReportError("Server console can not be initialized.");
                 }
                 return servercons;
             }
@@ -520,7 +520,7 @@ namespace IG.Forms
             {
                 if (ConsoleReady())
                 {
-                    UtilForms.ReportWarning("Applicatin console is replaced by another console form.");
+                    UtilForms.Reporter.ReportWarning("Applicatin console is replaced by another console form.");
                     servercons.CloseForm();
                 };
                 servercons = value; 
@@ -562,7 +562,7 @@ namespace IG.Forms
                     ServerConsole.Style = currentstyle;
                 }
             }
-            catch (Exception ex) { UtilForms.ReportError(ex); }
+            catch (Exception ex) { UtilForms.Reporter.ReportError(ex); }
         }
 
         public void ReportMarked(string str)
@@ -581,7 +581,7 @@ namespace IG.Forms
                     ServerConsole.Style = currentstyle;
                 }
             }
-            catch (Exception ex) { UtilForms.ReportError(ex); }
+            catch (Exception ex) { UtilForms.Reporter.ReportError(ex); }
         }
 
         public void ReportError(string str)
@@ -600,7 +600,7 @@ namespace IG.Forms
                     ServerConsole.Style = currentstyle;
                 }
             }
-            catch (Exception ex) { UtilForms.ReportError(ex); }
+            catch (Exception ex) { UtilForms.Reporter.ReportError(ex); }
         }
 
         public void ReportError(Exception e, string additionalmessage)
@@ -613,7 +613,7 @@ namespace IG.Forms
                         str += "\n" + additionalmessage;
                 ReportError(str);
             }
-            catch (Exception ex) { UtilForms.ReportError(ex); }
+            catch (Exception ex) { UtilForms.Reporter.ReportError(ex); }
         }
 
         public void ReportError(Exception e) { ReportError(e, null); }

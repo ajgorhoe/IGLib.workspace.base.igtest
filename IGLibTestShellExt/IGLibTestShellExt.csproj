@@ -33,6 +33,24 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MathNet.Numerics">
       <HintPath>..\..\iglib\bin\mumerics_2_6_1\Net40\MathNet.Numerics.dll</HintPath>
@@ -103,13 +121,13 @@
     <Folder Include="mathematica\examples\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\iglib\extensions\ann\LibNeural\LibNeural.csproj">
-      <Project>{FBF3C5F7-A0CA-46A1-8973-7689FFFAAEBA}</Project>
-      <Name>LibNeural</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\iglib\extensions\iglibext\iglib_ext.csproj">
       <Project>{4E4B240A-6994-4747-BB6C-0CC0D2578D04}</Project>
       <Name>iglib_ext</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\iglib\extensions\iglibneural\neural\igneural.csproj">
+      <Project>{1793e37a-dae1-4bff-8a92-9addb3f8abf8}</Project>
+      <Name>igneural</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\iglib\extensions\igplot2d\plot2d\igplot2d.csproj">
       <Project>{C9A09DBC-B304-42DF-9CEE-6BA0E856ABC2}</Project>

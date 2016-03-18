@@ -352,7 +352,7 @@ namespace IG.Forms
                     {
                         ++reccount;  // recursion counter prevents infinite recursion
                         if (reccount == 1)
-                            UtilForms.ReportError(e);
+                            UtilForms.Reporter.ReportError(e);
                         --reccount;
                     }
                 }
@@ -361,7 +361,7 @@ namespace IG.Forms
                     clientcons = null;
                     ++totcount;
                     if (totcount == 1)  // report this error only once
-                        UtilForms.ReportError("Client console can not be initialized.");
+                        UtilForms.Reporter.ReportError("Client console can not be initialized.");
                 }
                 return clientcons;
             }
@@ -369,7 +369,7 @@ namespace IG.Forms
             {
                 if (ConsoleReady())
                 {
-                    UtilForms.ReportWarning("Applicatin console is replaced by another console form.");
+                    UtilForms.Reporter.ReportWarning("Applicatin console is replaced by another console form.");
                     clientcons.CloseForm();
                 };
                 clientcons = value;
@@ -412,7 +412,7 @@ namespace IG.Forms
                     ClientConsole.Style = currentstyle;
                 }
             }
-            catch (Exception ex) { UtilForms.ReportError(ex); }
+            catch (Exception ex) { UtilForms.Reporter.ReportError(ex); }
         }
 
         public void ReportMarked(string str)
@@ -431,7 +431,7 @@ namespace IG.Forms
                     ClientConsole.Style = currentstyle;
                 }
             }
-            catch (Exception ex) { UtilForms.ReportError(ex); }
+            catch (Exception ex) { UtilForms.Reporter.ReportError(ex); }
         }
 
         public void ReportError(string str)
@@ -450,7 +450,7 @@ namespace IG.Forms
                     ClientConsole.Style = currentstyle;
                 }
             }
-            catch (Exception ex) { UtilForms.ReportError(ex); }
+            catch (Exception ex) { UtilForms.Reporter.ReportError(ex); }
         }
 
         public void ReportError(Exception e,string additionalmessage)
@@ -463,7 +463,7 @@ namespace IG.Forms
                         str += "\n" + additionalmessage;
                 ReportError(str);
             }
-            catch (Exception ex) { UtilForms.ReportError(ex); }
+            catch (Exception ex) { UtilForms.Reporter.ReportError(ex); }
         }
 
         public void ReportError(Exception e) { ReportError(e, null); }

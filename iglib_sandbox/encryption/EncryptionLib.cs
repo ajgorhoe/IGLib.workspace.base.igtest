@@ -242,15 +242,15 @@ namespace IG.Crypt
                 }
                 if (ReportForm)
                 {
-                    UtilForms.WriteLine("\n\nCreating a certificate with the following parameters:");
-                    UtilForms.WriteLine("  Cert. name:         " + certname);
-                    UtilForms.WriteLine("  Storage name:       " + storage);
-                    UtilForms.WriteLine("  Storage location:   " + storelocation);
-                    UtilForms.WriteLine("  Key container name: " + contname);
-                    UtilForms.WriteLine("  Valid from:         " + from);
-                    UtilForms.WriteLine("  Valid to:           " + to);
-                    UtilForms.WriteLine("  Issued by:          " + issuername);
-                    UtilForms.WriteLine("Command string: \n  " + compath + CommandArgStr + "\n");
+                    UtilForms.AppConsole.WriteLine("\n\nCreating a certificate with the following parameters:");
+                    UtilForms.AppConsole.WriteLine("  Cert. name:         " + certname);
+                    UtilForms.AppConsole.WriteLine("  Storage name:       " + storage);
+                    UtilForms.AppConsole.WriteLine("  Storage location:   " + storelocation);
+                    UtilForms.AppConsole.WriteLine("  Key container name: " + contname);
+                    UtilForms.AppConsole.WriteLine("  Valid from:         " + from);
+                    UtilForms.AppConsole.WriteLine("  Valid to:           " + to);
+                    UtilForms.AppConsole.WriteLine("  Issued by:          " + issuername);
+                    UtilForms.AppConsole.WriteLine("Command string: \n  " + compath + CommandArgStr + "\n");
                 }
                 // Launch certificate maker via external command:
                 System.Diagnostics.Process.Start(compath, CommandArgStr);
@@ -260,7 +260,7 @@ namespace IG.Crypt
                 }
                 if (ReportForm)
                 {
-                    UtilForms.WriteLine("\nCertificate created.\n\n");
+                    UtilForms.AppConsole.WriteLine("\nCertificate created.\n\n");
                 }
             }
             catch (Exception e)
@@ -268,7 +268,7 @@ namespace IG.Crypt
                 if (ReportConsole)
                     Console.WriteLine("\n\nERROR in certificate creation:\n"+e.Message);
                 if (ReportForm)
-                    UtilForms.ReportError(e,"Problem in Certificate creation.");
+                    UtilForms.Reporter.ReportError(e,"Problem in Certificate creation.");
                 throw;
             }
         }

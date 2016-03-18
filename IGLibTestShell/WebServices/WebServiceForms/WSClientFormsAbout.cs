@@ -90,9 +90,9 @@ namespace IG.Web.Forms
             return location;
         }
 
-        protected BrowserSimpleWindow _browser;
+        protected BrowserSimpleForm _browser;
 
-        protected BrowserSimpleWindow Browser
+        protected BrowserSimpleForm Browser
         {
             get
             {
@@ -102,7 +102,7 @@ namespace IG.Web.Forms
                 else if (_browser.IsDisposed)
                     openNew = true;
                 if (openNew)
-                    _browser = new BrowserSimpleWindow();
+                    _browser = new BrowserSimpleForm();
                 return _browser;
             }
         }

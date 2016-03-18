@@ -27,21 +27,21 @@ namespace igform_console_test
         [STAThread]
         public static void Main(string[] args)
         {
+            
 
-
-
-            BrowserFormOld.Example();
+            BrowserSimpleForm.Example();
 
 
             FadingMessage.Example();
-            FadingMessage.Example2();
+            FadingMessage.ExampleInferior();
 
 
             UtilForms.ConsoleExample();
             UtilForms.ConsoleExample2();
 
 
-            XMLTreeView.Example();
+
+            XmlTreeViewControl.Example();
 
 
             ConsoleForm.Example();
