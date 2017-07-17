@@ -462,7 +462,7 @@ namespace TestOpt
 
 
         /// <summary>Application class for the current application (IGLib Shell Application, igs).</summary>
-        public class IGLibShellApp : App
+        public class IGLibShellApp : ApplicationBase
         {
 
             public IGLibShellApp()
@@ -471,9 +471,9 @@ namespace TestOpt
             }
 
 
-            protected override void BeforeInitialization()
+            protected override void ModuleInitializationBefore()
             {
-                base.BeforeInitialization();
+                base.ModuleInitializationBefore();
                 Expires = false;
                 AuthorFirstName = "Igor Grešovnik";
                 AuthorAddress1 = "Črneče 147";
@@ -481,9 +481,9 @@ namespace TestOpt
                 AuthorAddress3 = "Slovenia";
             }
 
-            protected override void AfterInitialization()
+            protected override void ModuleInitializationAfter()
             {
-                base.AfterInitialization();
+                base.ModuleInitializationAfter();
                 LaunchInitNotice();
                 // AddModule(ModuleTest.Get());
             }
@@ -522,7 +522,7 @@ namespace TestOpt
                 {
                     if (!InitializedGlobal)
                     {
-                        App.InitApp();
+                        ApplicationBase.InitApp();
                         Global = new IGLibShellApp();
                     }
                 }
