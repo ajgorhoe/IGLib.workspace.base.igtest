@@ -52,9 +52,6 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MathNet.Numerics">
-      <HintPath>..\..\iglib\bin\mumerics_2_6_1\Net40\MathNet.Numerics.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -137,10 +134,6 @@
       <Project>{8BBF5C58-2562-4E9B-ACB8-3F3A3B031F62}</Project>
       <Name>igplot3d</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\iglib\external\MathNet\Iridium\Sources\Library\Iridium.csproj">
-      <Project>{26FC15DE-EFDA-403A-8284-1E2A4AE8A9D8}</Project>
-      <Name>Iridium</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\iglib\external\zedGraph\lib_5.1.2\ZedGraph 5.1\source\ZedGraph.csproj">
       <Project>{2541686B-1673-43BF-AF89-3163945DB009}</Project>
       <Name>ZedGraph</Name>
@@ -168,10 +161,6 @@
     <ProjectReference Include="..\IGLibTestDev\IGLibTestDev.csproj">
       <Project>{B7EBC02E-D688-4DD9-94C2-801DDF4342AA}</Project>
       <Name>IGLibTestDev</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IGLibTestDevExt\IGLibTestDevExt.csproj">
-      <Project>{759A223B-28E7-4F01-BB84-4F9E97150E90}</Project>
-      <Name>IGLibTestDevExt</Name>
     </ProjectReference>
     <ProjectReference Include="..\IGLibTestShell\IGLibTestShell.csproj">
       <Project>{A05C0C55-DA35-43B5-9CF8-C3BF509A4F6B}</Project>

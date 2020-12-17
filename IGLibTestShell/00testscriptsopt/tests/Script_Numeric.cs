@@ -11,10 +11,6 @@ using System.Windows.Forms;
 using IG.Num;
 using IG.Lib;
 
-using IG.Plot2d;
-using IG.Gr3d;
-
-using IG.Old;
 
 
 namespace IG.Script
@@ -214,10 +210,10 @@ namespace IG.Script
                 {
 
                     Console.WriteLine("Test of LU decomposition with the MathNet library:");
-                    SpeedTestCpuOld.TestComputationalTimesLU_MathNet(dim, outLevel, testProduct);
+                    SpeedTestCpu.TestComputationalTimesLU(dim, outLevel, testProduct);
 
                     Console.WriteLine("Test of QR decomposition with the MathNet library:");
-                    SpeedTestCpuOld.TestComputationalTimesQR_MathNet(dim, outLevel, testProduct);
+                    SpeedTestCpu.TestComputationalTimesQR(dim, outLevel, testProduct);
                 }
             }
 
