@@ -222,10 +222,6 @@
       <Project>{d09bdc8f-a69b-4579-a574-f8e6bc9a5849}</Project>
       <Name>Numerics</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\iglib\external\zedGraph\lib_5.1.2\ZedGraph 5.1\source\ZedGraph.csproj">
-      <Project>{2541686B-1673-43BF-AF89-3163945DB009}</Project>
-      <Name>ZedGraph</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\iglib\igbase\iglib_base.csproj">
       <Project>{0AB31A6E-E0DE-4F4E-8D0E-7AD60AE65E26}</Project>
       <Name>iglib_base</Name>

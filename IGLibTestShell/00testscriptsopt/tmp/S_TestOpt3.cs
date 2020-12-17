@@ -11,10 +11,6 @@ using IG.Lib;
 using IG.Num;
 using IG.Neural;
 
-//using Kitware.VTK;
-using ZedGraph;
-using IG.Gr;
-using IG.Gr3d;
 
 
 namespace IG.Script

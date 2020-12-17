@@ -67,9 +67,6 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="ZedGraph">
-      <HintPath>..\..\iglib\bin\lib\ZedGraph.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="library\PlotterZedgraph.cs" />
@@ -91,6 +88,14 @@
     <ProjectReference Include="..\..\iglib\extensions\igplot2d\plot2d\igplot2d.csproj">
       <Project>{C9A09DBC-B304-42DF-9CEE-6BA0E856ABC2}</Project>
       <Name>igplot2d</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\iglib\external\ZedGraph\source\ZedGraph.WinForms\ZedGraph.WinForms.csproj">
+      <Project>{1086e89d-99b9-4afa-8ffe-064ef355e011}</Project>
+      <Name>ZedGraph.WinForms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\iglib\external\ZedGraph\source\ZedGraph\ZedGraph.csproj">
+      <Project>{7b58d480-a3a6-43b2-bb1d-5e014dc94fe0}</Project>
+      <Name>ZedGraph</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\iglib\igbase\iglib_base.csproj">
       <Project>{0AB31A6E-E0DE-4F4E-8D0E-7AD60AE65E26}</Project>
