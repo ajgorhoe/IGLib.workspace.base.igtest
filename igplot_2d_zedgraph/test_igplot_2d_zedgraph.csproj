@@ -92,10 +92,6 @@
       <Project>{C9A09DBC-B304-42DF-9CEE-6BA0E856ABC2}</Project>
       <Name>igplot2d</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\iglib\external\nplot\NPlot.csproj">
-      <Project>{E6867FF5-74EC-4464-8958-D71CB46232F3}</Project>
-      <Name>NPlot</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\iglib\igbase\iglib_base.csproj">
       <Project>{0AB31A6E-E0DE-4F4E-8D0E-7AD60AE65E26}</Project>
       <Name>iglib_base</Name>
