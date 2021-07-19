@@ -87,7 +87,7 @@
       <Project>{0AB31A6E-E0DE-4F4E-8D0E-7AD60AE65E26}</Project>
       <Name>iglib_base</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\iglib\modules\IGLibCore\IGLibCore.csproj">
+    <ProjectReference Include="..\..\..\..\iglib\modules\IGLibCore\src\IGLibCore.csproj">
       <Project>{aaa3e637-50ae-4f42-9771-a34975dbb3f0}</Project>
       <Name>IGLibCore</Name>
     </ProjectReference>
