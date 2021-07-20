@@ -83,9 +83,9 @@
       <Project>{f5fe0255-4c94-4689-87b3-964fcd8571f6}</Project>
       <Name>Numerics</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\iglib\igbase\iglib_base.csproj">
+    <ProjectReference Include="..\..\..\..\iglib\igbase\IGLib.csproj">
       <Project>{0AB31A6E-E0DE-4F4E-8D0E-7AD60AE65E26}</Project>
-      <Name>iglib_base</Name>
+      <Name>IGLib</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\..\iglib\modules\IGLibCore\src\IGLibCore.csproj">
       <Project>{aaa3e637-50ae-4f42-9771-a34975dbb3f0}</Project>
