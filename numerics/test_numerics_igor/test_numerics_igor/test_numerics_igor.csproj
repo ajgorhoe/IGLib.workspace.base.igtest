@@ -79,17 +79,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\IGLibCore\src\IGLib.Core\IGLib.Core.csproj">
+      <Project>{18eae9a0-2fe2-48c5-8905-b38238c27075}</Project>
+      <Name>IGLib.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\..\iglib\external\mathnet-numerics\src\Numerics\Numerics.csproj">
       <Project>{f5fe0255-4c94-4689-87b3-964fcd8571f6}</Project>
       <Name>Numerics</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\..\iglib\igbase\IGLib.csproj">
-      <Project>{0AB31A6E-E0DE-4F4E-8D0E-7AD60AE65E26}</Project>
+      <Project>{0ab31a6e-e0de-4f4e-8d0e-7ad60ae65e26}</Project>
       <Name>IGLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\iglib\modules\IGLibCore\src\IGLibCore.csproj">
-      <Project>{aaa3e637-50ae-4f42-9771-a34975dbb3f0}</Project>
-      <Name>IGLibCore</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\alglib_0.8.2\src\AlgLibLibrary.csproj">
       <Project>{1138D0C9-D73C-40C6-B669-B95145378DDA}</Project>
