@@ -1,16 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B7EBC02E-D688-4DD9-94C2-801DDF4342AA}</ProjectGuid>
+    <TargetFrameworks>net8.0;net48</TargetFrameworks>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>IG.Lib</RootNamespace>
     <AssemblyName>IGTestDev</AssemblyName>
-    <FileAlignment>512</FileAlignment>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -26,60 +19,23 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <OldToolsVersion>3.5</OldToolsVersion>
-    <UpgradeBackupLocation />
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+    <Configurations>ajgor;Debug;Release;Release-Signed</Configurations>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core">
+    <Reference Update="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.EnterpriseServices" />
-    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Web" />
@@ -88,93 +44,17 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Services" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml.Linq">
+    <Reference Update="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="datastructures\MultiIndexArray.cs" />
-    <Compile Include="0develop\geometry\Geometry3D.cs" />
-    <Compile Include="0develop\matrix\MatrixBaseDev.cs" />
-    <Compile Include="difordinary\DifferentialFirstOrderEuler.cs" />
-    <Compile Include="difordinary\DifferentialFirstOrderRungeKutta.cs" />
-    <Compile Include="difordinary\DifferentialFirstOrderSolverBase.cs" />
-    <Compile Include="difordinary\DifferentialFirstOrderSystemBase.cs" />
-    <Compile Include="difordinary\DifferentialHarmonicOscillation.cs" />
-    <Compile Include="difordinary\DiffLorenzOscillator.cs" />
-    <Compile Include="numeric\approximation\ApproximationMls.cs" />
-    <Compile Include="numeric\approximation\ApproximationWls.cs" />
-    <Compile Include="numeric\approximation\ApproxLsBase.cs" />
-    <Compile Include="numeric\responseevaluator\AnalysisTable.cs" />
-    <Compile Include="numeric\responseevaluator\old_to_delete\ResponseTab1dVector.cs" />
-    <Compile Include="numeric\responseevaluator\ResponseTab1dGeneric.cs" />
-    <Compile Include="numeric\responseevaluator\dto\ResponseEvaluatorAnalysisDto.cs" />
-    <Compile Include="numeric\responseevaluator\dto\ResponseEvaluatorDto.cs" />
-    <Compile Include="numeric\responseevaluator\dto\ResponseEvaluatorVectorDto.cs" />
-    <Compile Include="numeric\responseevaluator\EvaluatorBase.cs" />
-    <Compile Include="numeric\responseevaluator\EvaluatorConst.cs" />
-    <Compile Include="numeric\responseevaluator\old_to_delete\AnalysisTable.cs" />
-    <Compile Include="numeric\responseevaluator\old_to_delete\dto\ResponseEvaluatorAnalysisDto.cs" />
-    <Compile Include="numeric\responseevaluator\old_to_delete\dto\ResponseEvaluatorDto.cs" />
-    <Compile Include="numeric\responseevaluator\old_to_delete\dto\ResponseEvaluatorVectorDto.cs" />
-    <Compile Include="numeric\responseevaluator\old_to_delete\EvaluatorBase.cs" />
-    <Compile Include="numeric\responseevaluator\old_to_delete\EvaluatorConst.cs" />
-    <Compile Include="numeric\responseevaluator\old_to_delete\ResponseEvaluatorAnalysis.cs" />
-    <Compile Include="numeric\responseevaluator\old_to_delete\ResponseEvaluatorGeneric.cs" />
-    <Compile Include="numeric\responseevaluator\old_to_delete\ResponseEvaluatorVector.cs" />
-    <Compile Include="numeric\responseevaluator\ResponseEvaluatorAnalysis.cs" />
-    <Compile Include="numeric\responseevaluator\ResponseEvaluatorGeneric.cs" />
-    <Compile Include="numeric\responseevaluator\ResponseEvaluatorVector.cs" />
-    <Compile Include="opt\alglib\Alglib_Old_UniMb\0Functions.cs" />
-    <Compile Include="opt\alglib\Alglib_Old_UniMb\AlgLib2008\ExampleAlgLib2008.cs" />
-    <Compile Include="opt\alglib\Alglib_Old_UniMb\AlgLib2008\MinimizerClassBase.cs" />
-    <Compile Include="opt\alglib\Alglib_Old_UniMb\AlgLib2008\MinimizerClassLbfgs.cs" />
-    <Compile Include="opt\alglib\Alglib_Old_UniMb\AlgLib2008\OriginalCode\ap.cs" />
-    <Compile Include="opt\alglib\Alglib_Old_UniMb\AlgLib2008\OriginalCode\lbfgs.cs" />
-    <Compile Include="opt\alglib\Alglib_Old_UniMb\AlgLib2008\TestOptAlglib2008.cs" />
-    <Compile Include="opt\alglib\Alglib_Old_UniMb\ExampleOptimization.cs" />
-    <Compile Include="opt\alglib\Alglib_Old_UniMb\ProgramOptimization.cs" />
-    <Compile Include="opt\alglib\old\ap.cs" />
-    <Compile Include="opt\alglib\old\lbfgs.cs" />
-    <Compile Include="opt\alglib\old\TestOptAlglib.cs" />
-    <Compile Include="opt\linesearch\LineSearch.cs" />
-    <Compile Include="opt\linesearch\LineSearch1d.cs" />
-    <Compile Include="opt\linesearch\LineSearchTestFunc.cs" />
-    <Compile Include="opt\opttest\ParticlePotential.cs" />
-    <Compile Include="opt\sampling\SamplerBase.cs" />
-    <Compile Include="opt\testcases\OptTest1.cs" />
-    <Compile Include="physics\chemistry\ChemicalCompound.cs" />
-    <Compile Include="physics\chemistry\ChemicalElementProperties.cs" />
-    <Compile Include="physics\chemistry\ChemicalElements.cs" />
-    <Compile Include="physics\chemistry\ChemicalElement.cs" />
-    <Compile Include="physics\chemistry\dtos\ChemicalCompoundDto.cs" />
-    <Compile Include="physics\chemistry\dtos\ChemicalElementDto.cs" />
-    <Compile Include="physics\chemistry\dtos\ChemicalElementPropertiesDto.cs" />
-    <Compile Include="physics\PhysicalUnits.cs" />
-    <Compile Include="physics\SIUnits.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="scripting\ScalarFunctionScript.cs" />
-    <Compile Include="varstring\VarSettings.cs" />
-    <Compile Include="varstring\VarSystemString.cs" />
-    <Compile Include="varstring\VarSystemStringDto.cs" />
-    <Compile Include="WebServiceBase\IWSBase.cs" />
-    <Compile Include="WebServiceBase\IWSDevelop.cs" />
-    <Compile Include="WebServiceBase\ServiceHosting\ServiceHost.cs" />
-    <Compile Include="WebServiceBase\WSBaseClass.cs">
+    <Compile Update="WebServiceBase\WSBaseClass.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="WebServiceBase\DataTypes\WSData.cs" />
-    <Compile Include="WebServiceBase\WSDevelopClass.cs">
+    <Compile Update="WebServiceBase\WSDevelopClass.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="numeric\ZeroFinder\ZeroFinderBase.cs" />
-    <Compile Include="numeric\ZeroFinder\ZeroFinderNewton.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -209,27 +89,15 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\iglib\external\mathnet-numerics\src\Numerics\Numerics.csproj">
-      <Project>{d09bdc8f-a69b-4579-a574-f8e6bc9a5849}</Project>
-      <Name>Numerics</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\iglib\igbase\iglib_base.csproj">
-      <Project>{0AB31A6E-E0DE-4F4E-8D0E-7AD60AE65E26}</Project>
-      <Name>iglib_base</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\iglib\igforms\igform.csproj">
-      <Project>{50235FC8-A69D-47AE-A557-6518B35CC7C9}</Project>
-      <Name>igform</Name>
-    </ProjectReference>
+    <ProjectReference Include="..\..\iglib\external\mathnet-numerics\src\Numerics\Numerics.csproj" />
+    <ProjectReference Include="..\..\iglib\igbase\IGLib.csproj" />
+    <ProjectReference Include="..\..\iglib\igforms\IGLibForms.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Forms\" />
     <Folder Include="numeric\parallel\" />
     <Folder Include="opt\alglib\alglib_new_gpl\" />
     <Folder Include="opt\particleswarm\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="opt\alglib\alglib.txt" />
@@ -243,12 +111,30 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  <ItemGroup>
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="00archive\alglib\alglib-3.6.0.csharp\src\alglibinternal.cs" />
+    <Compile Remove="00archive\alglib\alglib-3.6.0.csharp\src\alglibmisc.cs" />
+    <Compile Remove="00archive\alglib\alglib-3.6.0.csharp\src\ap.cs" />
+    <Compile Remove="00archive\alglib\alglib-3.6.0.csharp\src\dataanalysis.cs" />
+    <Compile Remove="00archive\alglib\alglib-3.6.0.csharp\src\diffequations.cs" />
+    <Compile Remove="00archive\alglib\alglib-3.6.0.csharp\src\fasttransforms.cs" />
+    <Compile Remove="00archive\alglib\alglib-3.6.0.csharp\src\integration.cs" />
+    <Compile Remove="00archive\alglib\alglib-3.6.0.csharp\src\interpolation.cs" />
+    <Compile Remove="00archive\alglib\alglib-3.6.0.csharp\src\linalg.cs" />
+    <Compile Remove="00archive\alglib\alglib-3.6.0.csharp\src\optimization.cs" />
+    <Compile Remove="00archive\alglib\alglib-3.6.0.csharp\src\solvers.cs" />
+    <Compile Remove="00archive\alglib\alglib-3.6.0.csharp\src\specialfunctions.cs" />
+    <Compile Remove="00archive\alglib\alglib-3.6.0.csharp\src\statistics.cs" />
+    <Compile Remove="00archive\alglib\alglib-3.6.0.csharp\tests\test_c.cs" />
+    <Compile Remove="00archive\alglib\alglib-3.6.0.csharp\tests\test_i.cs" />
+    <Compile Remove="00archive\alglib\ap.cs" />
+    <Compile Remove="00archive\alglib\lbfgs.cs" />
+    <Compile Remove="linesearch\LineSearch.cs" />
+    <Compile Remove="linesearch\LineSearch1d.cs" />
+    <Compile Remove="linesearch\LineSearchTestFunc.cs" />
+    <Compile Remove="Service References\ServiceReferenceWSBase\Reference.cs" />
+  </ItemGroup>
 </Project>
