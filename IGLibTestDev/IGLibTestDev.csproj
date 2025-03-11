@@ -1,140 +1,35 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <TargetFrameworks>net8.0;net48</TargetFrameworks>
-    <OutputType>Library</OutputType>
-    <RootNamespace>IG.Lib</RootNamespace>
-    <AssemblyName>IGTestDev</AssemblyName>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <UseWindowsForms>true</UseWindowsForms>
-    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
-    <Configurations>ajgor;Debug;Release;Release-Signed</Configurations>
+	  <!--
+	Target frameworks that work with both IGLib legacy and the new IGLibCore:
+    <TargetFrameworks>net8.0;net48;netstandard2.0</TargetFrameworks>
+	Target frameworks that need to be maintained just for the new IGLib modules (no need for .NET Standard or Framework 4.x):
+    <TargetFrameworks>net8.0</TargetFrameworks>
+    -->
+	  <TargetFrameworks>net8.0;net48</TargetFrameworks>
+	  <OutputType>Library</OutputType>
+    <IsPackable>true</IsPackable>
+	<RootNamespace>IGLib</RootNamespace>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <OutputPath>bin\x86\Debug\</OutputPath>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <OutputPath>bin\x86\Release\</OutputPath>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
+  
   <ItemGroup>
-    <Reference Update="System.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.ServiceModel" />
-    <Reference Include="System.ServiceModel.Web" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Web.ApplicationServices" />
-    <Reference Include="System.Web.DynamicData" />
-    <Reference Include="System.Web.Entity" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Web.Services" />
-    <Reference Update="System.Xml.Linq">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Update="WebServiceBase\WSBaseClass.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="WebServiceBase\WSDevelopClass.cs">
-      <SubType>Component</SubType>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework Client Profile</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
-      <Visible>False</Visible>
-      <ProductName>Windows Installer 3.1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\iglib\external\mathnet-numerics\src\Numerics\Numerics.csproj" />
+    <ProjectReference Include="..\..\IGLibCore\src\IGLib.Core\IGLib.Core.csproj" />
     <ProjectReference Include="..\..\iglib\igbase\IGLib.csproj" />
-    <ProjectReference Include="..\..\iglib\igforms\IGLibForms.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\" />
-    <Folder Include="numeric\parallel\" />
-    <Folder Include="opt\alglib\alglib_new_gpl\" />
-    <Folder Include="opt\particleswarm\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="opt\alglib\alglib.txt" />
-    <Content Include="opt\alglib\Alglib_Old_UniMb\0readme.txt" />
-    <Content Include="opt\alglib\Alglib_Old_UniMb\AlgLib2008\doc\alglib_old_license.txt" />
-    <Content Include="opt\alglib\Alglib_Old_UniMb\AlgLib2008\doc\lbfgs.php.htm" />
-    <Content Include="opt\alglib\old\alglib_old_license.txt" />
-    <Content Include="physics\codegeneration\0readme_physics_codegeneration.txt" />
-    <Content Include="WebServiceBase\0readme_webservices_level_1.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="00archive\alglib\alglib-3.6.0.csharp\src\alglibinternal.cs" />
-    <Compile Remove="00archive\alglib\alglib-3.6.0.csharp\src\alglibmisc.cs" />
-    <Compile Remove="00archive\alglib\alglib-3.6.0.csharp\src\ap.cs" />
-    <Compile Remove="00archive\alglib\alglib-3.6.0.csharp\src\dataanalysis.cs" />
-    <Compile Remove="00archive\alglib\alglib-3.6.0.csharp\src\diffequations.cs" />
-    <Compile Remove="00archive\alglib\alglib-3.6.0.csharp\src\fasttransforms.cs" />
-    <Compile Remove="00archive\alglib\alglib-3.6.0.csharp\src\integration.cs" />
-    <Compile Remove="00archive\alglib\alglib-3.6.0.csharp\src\interpolation.cs" />
-    <Compile Remove="00archive\alglib\alglib-3.6.0.csharp\src\linalg.cs" />
-    <Compile Remove="00archive\alglib\alglib-3.6.0.csharp\src\optimization.cs" />
-    <Compile Remove="00archive\alglib\alglib-3.6.0.csharp\src\solvers.cs" />
-    <Compile Remove="00archive\alglib\alglib-3.6.0.csharp\src\specialfunctions.cs" />
-    <Compile Remove="00archive\alglib\alglib-3.6.0.csharp\src\statistics.cs" />
-    <Compile Remove="00archive\alglib\alglib-3.6.0.csharp\tests\test_c.cs" />
-    <Compile Remove="00archive\alglib\alglib-3.6.0.csharp\tests\test_i.cs" />
-    <Compile Remove="00archive\alglib\ap.cs" />
-    <Compile Remove="00archive\alglib\lbfgs.cs" />
-    <Compile Remove="linesearch\LineSearch.cs" />
-    <Compile Remove="linesearch\LineSearch1d.cs" />
-    <Compile Remove="linesearch\LineSearchTestFunc.cs" />
-    <Compile Remove="Service References\ServiceReferenceWSBase\Reference.cs" />
-  </ItemGroup>
+	
+	
+  <PropertyGroup>
+    <!-- Attributes that were previously put into AsemblyInfo.cs: -->
+    <AssemblyName>IGLibTestDev</AssemblyName>
+    <PackageId>IGLibTestDev</PackageId>
+    <Version>2.0.0</Version>
+    <AssemblyVersion>2.0.0</AssemblyVersion>
+    <FileVersion>2.0.0</FileVersion>
+    <Authors>Igor Grešovnik</Authors>
+    <Company>IGLib</Company>
+    <Product>IGLib</Product>
+    <NeutralLanguage>en-us</NeutralLanguage>
+  </PropertyGroup>
+    
 </Project>

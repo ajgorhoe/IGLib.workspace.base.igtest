@@ -73,10 +73,10 @@ namespace IG.Lib
                             mutexsecurity.AddAccessRule(new MutexAccessRule(sid, MutexRights.FullControl, AccessControlType.Allow));
                             mutexsecurity.AddAccessRule(new MutexAccessRule(sid, MutexRights.ChangePermissions, AccessControlType.Deny));
                             mutexsecurity.AddAccessRule(new MutexAccessRule(sid, MutexRights.Delete, AccessControlType.Deny));
-                            bool createdNew;
+                            bool createdNew = false;
                             //_mutexGlobal = new Mutex(false, MutexGlobalName);
                             _mutexGlobal = new Mutex(false, MutexGlobalName,
-                                out createdNew, mutexsecurity);
+                                out createdNew); // , mutexsecurity // - this parameter was abandoed in .NET Core
                         }
                     }
                 }
@@ -304,9 +304,9 @@ namespace IG.Lib
                             mutexsecurity.AddAccessRule(new MutexAccessRule(sid, MutexRights.FullControl, AccessControlType.Allow));
                             mutexsecurity.AddAccessRule(new MutexAccessRule(sid, MutexRights.ChangePermissions, AccessControlType.Deny));
                             mutexsecurity.AddAccessRule(new MutexAccessRule(sid, MutexRights.Delete, AccessControlType.Deny));
-                            bool createdNew;
+                            bool createdNew = false;
                             _lockFileMutex = new Mutex(false, LockFileMutexName,
-                                out createdNew, mutexsecurity);
+                                out createdNew);  // , mutexsecurity // - this parameter was abandoed in .NET Core
                         }
                     }
                 }

@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net48</TargetFramework>
+    <TargetFrameworks>net8.0;net48</TargetFrameworks>
     <OutputType>Exe</OutputType>
     <RootNamespace>test_alglib_igor</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>

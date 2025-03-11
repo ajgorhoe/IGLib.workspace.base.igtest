@@ -1,0 +1,1 @@
+Directories "Service References/" and WebServiceBase come from IGLibTestDev.They CAN BE DELETED.
